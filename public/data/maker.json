@@ -1,0 +1,254 @@
+{
+  "metadata": {
+    "title": "Bahçemiz — Maker Logu",
+    "description": "2024 Ocak'ta alınan 3D yazıcıdan sonra Erdoğan ve Yarim'in birbirleri için araştırdıkları, beğendikleri, basmak istedikleri 3D modeller.",
+    "total": 33,
+    "makerworld": 23,
+    "printables": 10,
+    "sender_split": {
+      "Erdoğan": 10,
+      "Yarim": 23
+    },
+    "date_range": "2024-01-14 → 2026-04-30",
+    "note": "3D yazıcı (Creality Ender-3 S1) 14.01.2024 alındı. İlk maker linki haftalar sonra geldi. Yarim ana paylaşımcı (23/33 = %70)."
+  },
+  "links_by_year": {
+    "2024": [
+      {
+        "date": "2024-03-23T17:33:45",
+        "sender": "Yarim",
+        "platform": "Printables",
+        "url": "https://www.printables.com/model/223221-stool-planter",
+        "context": ""
+      },
+      {
+        "date": "2024-03-24T17:13:06",
+        "sender": "Erdoğan",
+        "platform": "Printables",
+        "url": "https://www.printables.com/model/229447-playstation-5-ps5-horizontal-stand",
+        "context": ""
+      },
+      {
+        "date": "2024-03-24T17:18:18",
+        "sender": "Erdoğan",
+        "platform": "Printables",
+        "url": "https://www.printables.com/model/519956-ps5-horizontal-stand",
+        "context": ""
+      },
+      {
+        "date": "2024-03-24T17:22:04",
+        "sender": "Erdoğan",
+        "platform": "Printables",
+        "url": "https://www.printables.com/model/735888-the-luxar-planter-pot-with-drainage-tray-stand-inc",
+        "context": ""
+      },
+      {
+        "date": "2024-03-24T17:27:13",
+        "sender": "Erdoğan",
+        "platform": "Printables",
+        "url": "https://www.printables.com/model/233997-flexible-snake",
+        "context": ""
+      },
+      {
+        "date": "2024-03-28T19:27:42",
+        "sender": "Erdoğan",
+        "platform": "Printables",
+        "url": "https://www.printables.com/model/229447-playstation-5-ps5-horizontal-stand",
+        "context": ""
+      }
+    ],
+    "2025": [
+      {
+        "date": "2025-11-09T16:21:22",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/tr/models/965913-monument-valley-light-wireless-remote-control-lamp#profileId-936443",
+        "context": ""
+      },
+      {
+        "date": "2025-11-16T21:41:17",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/tr/models/425953-wizard-chess#profileId-845981",
+        "context": ""
+      },
+      {
+        "date": "2025-11-16T22:04:59",
+        "sender": "Erdoğan",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/tr/@jarvizar/upload",
+        "context": ""
+      },
+      {
+        "date": "2025-11-28T16:09:11",
+        "sender": "Yarim",
+        "platform": "Printables",
+        "url": "https://www.printables.com/model/673098-voronoi-holiday-christmas-deer",
+        "context": ""
+      },
+      {
+        "date": "2025-11-28T16:39:26",
+        "sender": "Yarim",
+        "platform": "Printables",
+        "url": "https://www.printables.com/model/1481473-moon-lamp-commercial-use-allowed",
+        "context": ""
+      },
+      {
+        "date": "2025-11-28T16:41:53",
+        "sender": "Yarim",
+        "platform": "Printables",
+        "url": "https://www.printables.com/model/1468942-cantilever-toolsewing-box-remix-modular-pins-pla-f/files",
+        "context": ""
+      }
+    ],
+    "2026": [
+      {
+        "date": "2026-01-03T17:25:09",
+        "sender": "Yarim",
+        "platform": "Printables",
+        "url": "https://www.printables.com/model/685382-moai-tissue-dispenser",
+        "context": ""
+      },
+      {
+        "date": "2026-02-04T22:08:48",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/1656903?appSharePlatform=copy",
+        "context": ""
+      },
+      {
+        "date": "2026-02-04T23:02:05",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/1826391?appSharePlatform=copy",
+        "context": ""
+      },
+      {
+        "date": "2026-02-10T20:38:45",
+        "sender": "Erdoğan",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/2185557?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-10T20:47:32",
+        "sender": "Erdoğan",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/1209171?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-10T23:31:52",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/tr/models/1396363-lion-low-poly-bust#profileId-1447475",
+        "context": "18 cm"
+      },
+      {
+        "date": "2026-02-10T23:41:56",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/tr/models/2168716-lion-on-stairs#profileId-2351896",
+        "context": ""
+      },
+      {
+        "date": "2026-02-13T00:38:27",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/148564?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T18:38:08",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/2245254?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T18:39:07",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/1232545?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T18:43:58",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/1335815?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T18:53:37",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/2231121?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T18:53:47",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/2138092?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T18:57:05",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/1769908?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T19:00:53",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/601833?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T19:05:41",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/698950?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T19:06:14",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/684549?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T19:14:04",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/1014142?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-14T19:18:51",
+        "sender": "Yarim",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/432861?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-28T22:29:23",
+        "sender": "Erdoğan",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/452521?appSharePlatform=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2026-02-28T22:31:50",
+        "sender": "Erdoğan",
+        "platform": "Makerworld",
+        "url": "https://makerworld.com/models/634680?appSharePlatform=whatsapp",
+        "context": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "metadata": {
+    "title": "Bahçemiz — Özel Kelimeler Sözlüğü",
+    "description": "Erdoğan ve Yarim'in WhatsApp arşivinde icat ettikleri, yumuşattıkları, kendilerine özgü kıldıkları kelimeler. Her kelime için: ilk kullanım tarihi ve cümlesi, ilk söyleyen, toplam kullanım, yıllık dağılım.",
+    "total_terms": 44,
+    "data_window": "2018-01-14 → 2026-04-30",
+    "note": "Sayımlar arşiv metni içinde geçen kelime sıklığı. Mesaj başlıklarındaki gönderici etiketleri (örn. 'Yarim:') sayılmamıştır."
+  },
+  "categories": {
+    "ana_hitaplar": [
+      {
+        "term": "yarim",
+        "category": "ana_hitap",
+        "total": 1635,
+        "etymology": "'Yarım'dan dönüşüm — Yarim'in 16.01.2018'deki 'Yarım saat mi sürdü' kelime oyunundan kalıcı hitaba evrildi",
+        "first_use": {"date": "2018-01-16T18:01:04", "sender": "Yarim", "text": "Yarım saat mi sürdü"},
+        "first_as_address": {"date": "2018-01-20", "context": "Hitap olarak ilk net kullanım"},
+        "yearly": {"2018": 600, "2019": 350, "2020": 80, "2021": 280, "2022": 110, "2023": 80, "2024": 40, "2025": 70, "2026": 25},
+        "note": "Çiftin imza hitabı. Diğer hitaplar (sevgilim, aşkım) zaman içinde azalırken yarim kalıcı."
+      },
+      {
+        "term": "aşk",
+        "category": "ana_hitap",
+        "total": 7669,
+        "etymology": "Standart Türkçe, çiftte 'aşkım' yerine sıkça kısaltılmış kullanım",
+        "first_use": {"date": "2018-01-15T14:26:47", "sender": "Yarim"},
+        "note": "En sık geçen kelime. Cümle içinde hitap, ünlem ve nesne olarak farklı işlevlerde."
+      },
+      {
+        "term": "aşkım",
+        "category": "ana_hitap",
+        "total": 684,
+        "first_use": {"date": "2018-01-15T13:48:28", "sender": "Yarim", "text": "Aşkım git bi gusül al vjskckks"},
+        "note": "Klasik tam form."
+      },
+      {
+        "term": "sevgilim",
+        "category": "ana_hitap",
+        "total": 3963,
+        "first_use": {"date": "2018-01-15T12:33:24", "sender": "Yarim", "text": "Haklı sevgilim"},
+        "note": "İlk yıllarda yoğun, evlilik sonrası azalıyor (2018: 1392 → 2024: 1)."
+      },
+      {
+        "term": "canım",
+        "category": "ana_hitap",
+        "total": 232,
+        "first_use": {"date": "2018-01-16T19:28:46", "sender": "Erdoğan", "text": "Ona söv canım"},
+        "note": "Evlilik sonrası 'canım eşim/karım/kocam' olarak yeniden hayata döndü."
+      },
+      {
+        "term": "bitanem",
+        "category": "ana_hitap",
+        "total": 830,
+        "first_use": {"date": "2018-01-15T19:15:57", "sender": "Yarim"},
+        "note": "Çok sık kullanılan ikinci dereceden hitap."
+      },
+      {
+        "term": "biriciğim",
+        "category": "ana_hitap",
+        "total": 181,
+        "first_use": {"date": "2018-02-12T23:25:47", "sender": "Yarim"},
+        "note": "Daha duygusal/ciddi anlarda."
+      },
+      {
+        "term": "tatlım",
+        "category": "ana_hitap",
+        "total": 0,
+        "note": "Bu form çiftte yaygın değil; 'tatlış' tercih edilmiş."
+      }
+    ],
+    "evlilik_dilinin_dogusu": [
+      {
+        "term": "eşim",
+        "category": "evlilik",
+        "total": 27,
+        "first_use": {"date": "2022-05-30T14:30:14", "sender": "Erdoğan", "text": "En güzel en tatlı benim eşim benim yarim"},
+        "note": "Düğünden 27 gün sonra Erdoğan'ın ağzından doğdu. ANCHOR."
+      },
+      {
+        "term": "karım",
+        "category": "evlilik",
+        "total": 13,
+        "first_use": {"date": "2022-09-17T00:09:54", "sender": "Erdoğan", "text": "Karım nerde dediler :d"},
+        "note": "Üçüncü-şahıs konuşurken kullanılan form (arkadaş ortamı)."
+      },
+      {
+        "term": "kocam",
+        "category": "evlilik",
+        "total": 9,
+        "first_use": {"date": "2023-05-29", "sender": "Yarim"},
+        "note": "Yarim'in evlilik dilinin ilk yansıması."
+      },
+      {
+        "term": "kocacım / kocacığım",
+        "category": "evlilik",
+        "total": "~15",
+        "first_use_kocacim": {"date": "2024 sonu / 2025 başı", "sender": "Yarim"},
+        "first_use_kocaciğim": {"date": "2024-06-07", "sender": "Yarim", "text": "kıyamam kocacığıma 🙁"},
+        "note": "Küçültme ekiyle yumuşatılmış. Yeni varyant — evlilik 2-3. yıllarında."
+      },
+      {
+        "term": "karıcım",
+        "category": "evlilik",
+        "total": "~10",
+        "first_use": {"date": "2025-09-17T18:03", "sender": "Erdoğan", "text": "götünü yerim canım karıcım"},
+        "note": "Erdoğan'ın 'karım'a sıfat eklemesi. Trafik orta yerinde doğdu."
+      },
+      {
+        "term": "canım eşim",
+        "category": "evlilik",
+        "total": "~12",
+        "first_use": {"date": "2023-11-24T02:58", "sender": "Erdoğan", "text": "Canım eşim komik de hem ❤️"},
+        "note": "Sıfat + isim birleşmesi. 'Canım' yeniden değerlendi."
+      }
+    ],
+    "rüyalar_ve_uyku": [
+      {
+        "term": "tatlı rüyalar",
+        "total": 110,
+        "first_use": {"date": "2018-01-17T00:20:22", "sender": "Yarim"},
+        "note": "Klasik 'iyi geceler' eki."
+      },
+      {
+        "term": "tatlış rüyalar",
+        "total": "~30",
+        "first_use": {"date": "2018-02-14T00:40", "sender": "Erdoğan", "context": "İlk Sevgililer Günü gecesi"},
+        "note": "'Tatlış' eki rüyalara da uzandı."
+      },
+      {
+        "term": "bizli rüyalar",
+        "total": 31,
+        "first_use": {"date": "2018-01-20T02:34:43", "sender": "Erdoğan"},
+        "note": "Çiftin imzası: 'biz'i içeren rüyalar. Nişan gecesi (30.01.2022) 'tatlı bizli jedi li rüyalarrrr' formuna evrildi."
+      },
+      {
+        "term": "tatlı bizli jedi li rüyalar",
+        "total": 1,
+        "first_use": {"date": "2022-01-30T02:41", "sender": "Erdoğan"},
+        "note": "NİŞAN GECESİ. Üç katmanlı bir tek-seferlik form. ANCHOR."
+      },
+      {
+        "term": "iyi geceler",
+        "total": 135,
+        "first_use": {"date": "2018-01-17T00:20:22", "sender": "Yarim"}
+      }
+    ],
+    "tatlilik_eki": [
+      {
+        "term": "tatlış",
+        "total": 95,
+        "first_use": {"date": "2018-01-17T13:34:48", "sender": "Yarim", "text": "Ne kadar tatlış oldun sen öyle 🙈"},
+        "note": "Yarim'in icadı. 'Tatlı' kelimesinin köşesinin yontulmuşu. Sıfat olarak (tatlış kekik) ve sıfat-fiil olarak (tatlış geçer) kullanılıyor."
+      }
+    ],
+    "böcek_serisi": [
+      {
+        "term": "böceğim",
+        "total": 202,
+        "first_use": {"date": "2018-01-15T20:58:57", "sender": "Yarim"},
+        "note": "Genel form."
+      },
+      {
+        "term": "bal böceğim",
+        "total": 36,
+        "first_use": {"date": "2018-03-17T16:02:47", "sender": "Yarim"},
+        "note": "Tatlı varyant."
+      },
+      {
+        "term": "bok böceğim",
+        "total": 33,
+        "first_use": {"date": "2018-03-12T01:23:49", "sender": "Yarim"},
+        "note": "Esprili varyant. Karşılığı: 'Bende seni bok böceğim' (14.10.2018, Merve dgn)."
+      }
+    ],
+    "duygusal_uclar": [
+      {
+        "term": "hayatımın anlamı",
+        "total": 71,
+        "first_use": {"date": "2018-01-16T03:25:57", "sender": "Erdoğan"},
+        "anchor_use": {"date": "2018-02-14T00:39", "context": "İlk Sevgililer Günü, Erdoğan'ın 4 satırlık uyku duası"},
+        "note": "En güçlü romantik kaydedicilerden. 'Uyu hayatımın anlamı' formu kalıcı."
+      },
+      {
+        "term": "ömrüm",
+        "total": 22,
+        "first_use": {"date": "2018-01-24T00:36:22", "sender": "Yarim", "text": "Bende seni seviyorum iyi uykular ömrüm 😚😚😚"},
+        "note": "Geceleri özel bir kelime."
+      },
+      {
+        "term": "kıyamam",
+        "total": 130,
+        "first_use": {"date": "2018-01-15T12:26:22", "sender": "Yarim", "text": "Kıyamam de"},
+        "note": "Şefkat ve acımanın eki. 'Kıyamam sana', 'kıyamam ya', 'kıyamam kocacığıma'."
+      },
+      {
+        "term": "iyi ki var",
+        "total": 35,
+        "first_use": {"date": "2018-01-31T10:24:56", "sender": "Yarim"},
+        "anchor_use": {"date": "2022-01-30T02:35", "context": "NİŞAN GECESİ — 'İyi ki varsın akıllı tatlı güzeller güzeli yarim'"},
+        "note": "Eşik anlarında dönüp gelen kalıp. Anchor günlerin imzası."
+      },
+      {
+        "term": "seni çok seviyorum",
+        "total": 251,
+        "first_use": {"date": "2018-01-17T00:20:53", "sender": "Erdoğan"},
+        "note": "Açık tam form. Ek formlar: 'çok seviyorum', 'seviyorum seni', 'cooooooook seviyorum'."
+      }
+    ],
+    "jedi_evreni": [
+      {
+        "term": "jedi",
+        "total": 491,
+        "first_use_in_chat": {"date": "2019-04-02T13:03:26", "sender": "Erdoğan"},
+        "real_arrival": "2019-03-31",
+        "note": "Yavru kediden aile üyesine. Yıllık: 2019: 197, 2020: 51, 2021: 160, 2022: 22, 2023: 30, 2024: 10, 2025: 21."
+      },
+      {
+        "term": "jedikun",
+        "total": "~5",
+        "first_use": {"date": "2022-01-30T02:39", "sender": "Yarim", "text": "Bir de jedikunumuz var"},
+        "note": "NİŞAN GECESİ doğdu. Sevgi versiyonu. ANCHOR."
+      },
+      {
+        "term": "kızım / kızımız",
+        "total": 63,
+        "first_use_general": {"date": "2018-01-28T01:33:19", "sender": "Yarim"},
+        "first_for_jedi": {"date": "2023 civarı", "context": "Evlilik sonrası 'canım kızım' Jedi'ye yerleşti"},
+        "note": "İki bağlamı var: sokak kedileri için 'kızım' ve Jedi için 'kızımız'."
+      },
+      {
+        "term": "canım kızım",
+        "total": "~30",
+        "note": "Erdoğan'ın Jedi için kalıcı hitabı. Yarim de 'canım kızım', 'biricik kızım' diyor."
+      },
+      {
+        "term": "mik mik",
+        "total": "~3",
+        "note": "Jedi'nin mavlama sesinin onomatopik karşılığı. 25.12.2025 'Jedi geldi mik mik'."
+      }
+    ],
+    "selamlama_ve_gunluk": [
+      {
+        "term": "günaydın",
+        "total": 494,
+        "first_use": {"date": "2018-01-16T11:02:09", "sender": "Erdoğan"},
+        "note": "Sabah ritüeli. Çoğu zaman 'günaydın yarim' veya 'günaydın sevgilimm' formunda."
+      }
+    ],
+    "ozel_takma_isimler_ve_oyunlar": [
+      {
+        "term": "pertingen / pert",
+        "total": 53,
+        "first_use": {"date": "2018-01-30T11:11:14", "sender": "Erdoğan"},
+        "note": "'Pert olmak' (yorgunluk/bitkinlik) hâlinin neşeli adı."
+      },
+      {
+        "term": "comando mode",
+        "total": "~5",
+        "note": "Erdoğan'ın aile yanında olduğunda Yarim'e yazmama tedbiri için kullandığı şifre. 'Kamufle' anlamı."
+      },
+      {
+        "term": "aşksu",
+        "total": "~3",
+        "first_use": {"date": "2022-12-12T12:33", "sender": "Erdoğan", "text": "yolladım aşksu"},
+        "note": "Aşk + su; bir varyant deneme. Kalıcı olmadı ama kayıtlı."
+      },
+      {
+        "term": "mervolii / sevgilimboli",
+        "total": "~3",
+        "first_use": {"date": "2019-10-01", "sender": "Erdoğan", "text": "Mervolii / Nabaymus benim sevcilum"},
+        "note": "Yarim'in cevabı: 'Sevgilimboliii / Uyudum'. Karşılıklı isim oyunu."
+      }
+    ]
+  }
+}

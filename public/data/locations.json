@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "title": "Bahçemiz — Lokasyonlar",
+    "description": "WhatsApp arşivinde geçen yer adları. Her yer için: koordinat (yaklaşık), toplam mention, ilk kullanım, anlam/bağlam, yıllık dağılım.",
+    "total_locations": 30,
+    "data_window": "2018-01-14 → 2026-04-30",
+    "note": "Koordinatlar yer merkezleri için yaklaşık değerlerdir, çiftin spesifik adres bilgisini içermez."
+  },
+  "categories": {
+    "istanbul_anadolu": [
+      {"name": "Kadıköy", "count": 184, "lat": 40.9928, "lng": 29.0277, "context": "En sık buluşma noktası — vapur, Marmaray durağı, ortak kahve mekânları", "first": "2018-01-17", "anchor_event": "İlk metro buluşmaları (28.01.2018 'Son metroya iniyorum'), Vahap Bey Sokak Starbucks (Timsahlı yer)"},
+      {"name": "Suadiye", "count": 11, "lat": 40.9626, "lng": 29.0747, "context": "Büyük olasılıkla ortak ev konumu", "first": "2019-02-08", "note": "İlk geçiş 2019 başında — taşınma/kira muhtemel"},
+      {"name": "Maltepe", "count": 51, "lat": 40.9351, "lng": 29.1344, "context": "Erdoğan'ın iş/aile bağlantısı", "first": "2018-03-06"},
+      {"name": "Üsküdar", "count": 13, "lat": 41.0233, "lng": 29.0151, "context": "Asya yakası geçiş", "first": "2018-01-31"},
+      {"name": "Bostancı", "count": 12, "lat": 40.9608, "lng": 29.0922, "context": "Anadolu yakası", "first": "2018-06-09"},
+      {"name": "Ataşehir", "count": 12, "lat": 40.9923, "lng": 29.1244, "context": "Asya iş bölgesi", "first": "2018-07-07"},
+      {"name": "Pendik", "count": 11, "lat": 40.8775, "lng": 29.2627, "context": "Anadolu yakası uzak", "first": "2019-03-02"},
+      {"name": "Caddebostan", "count": 1, "lat": 40.9667, "lng": 29.0667, "context": "Yusuf (arkadaş) bağlantısı", "first": "2018-04-22"}
+    ],
+    "istanbul_avrupa": [
+      {"name": "Beşiktaş", "count": 25, "lat": 41.0420, "lng": 29.0064, "context": "Avrupa, Cem bağlantısı, kıyafet/hediye alışverişi", "first": "2018-01-30"},
+      {"name": "Levent", "count": 16, "lat": 41.0820, "lng": 29.0144, "context": "İş bölgesi, ofis", "first": "2018-02-08"},
+      {"name": "Esenyurt", "count": 16, "lat": 41.0297, "lng": 28.6738, "context": "Avrupa uzak", "first": "2018-03-04"},
+      {"name": "Beylikdüzü", "count": 15, "lat": 40.9799, "lng": 28.6411, "context": "Avrupa uzak", "first": "2018-03-04"},
+      {"name": "Bağcılar", "count": 49, "lat": 41.0394, "lng": 28.8569, "context": "Yarim'in ilk yıllar bölgesi (aile/iş)", "first": "2018-02-10"},
+      {"name": "Şişli", "count": 6, "lat": 41.0608, "lng": 28.9870, "context": "Avrupa yakası", "first": "2018-02-08"},
+      {"name": "Taksim", "count": 3, "lat": 41.0370, "lng": 28.9857, "context": "Merkez", "first": "2018-07-30"}
+    ],
+    "ulasim_hatlari": [
+      {"name": "Marmaray", "count": 82, "lat": 41.0086, "lng": 28.9802, "context": "Asya-Avrupa hat, sık geçiş — 'Son metroya iniyorum' anılarının ekseni", "first": "2018-01-28"}
+    ],
+    "memleket_aile": [
+      {"name": "Hatay/İskenderun", "count": 103, "lat": 36.5942, "lng": 36.1697, "context": "Erdoğan'ın aile memleketi", "first": "2018-01-15", "anchor_event": "06.02.2023 Maraş depremi — Erdoğan ailesinin yardım için yola çıktığı bölge", "note": "İkinci en sık geçen lokasyon"},
+      {"name": "Adıyaman", "count": 25, "lat": 37.7648, "lng": 38.2786, "context": "Erdoğan'ın diğer aile bağlantısı", "first": "2018-01-20", "anchor_event": "06.02.2023 deprem"}
+    ],
+    "tatil_seyahat": [
+      {"name": "İzmir", "count": 26, "lat": 38.4192, "lng": 27.1287, "context": "Aile/tatil", "first": "2018-01-19"},
+      {"name": "Çeşme", "count": 22, "lat": 38.3243, "lng": 26.3046, "context": "Yaz tatil — yaz 2018'in popüler rotası", "first": "2018-01-24"},
+      {"name": "Bodrum", "count": 4, "lat": 37.0344, "lng": 27.4305, "context": "Yaz tatil", "first": "2019-08-21"},
+      {"name": "Marmaris", "count": 1, "lat": 36.8550, "lng": 28.2740, "context": "Yaz tatil", "first": "2019-07-16"},
+      {"name": "Antalya", "count": 6, "lat": 36.8969, "lng": 30.7133, "context": "Tatil", "first": "2020-01-02"},
+      {"name": "Trabzon", "count": 1, "lat": 41.0027, "lng": 39.7168, "context": "Seyahat", "first": "2019-04-27"}
+    ],
+    "yakin_kacamaklar_2024_2025": [
+      {"name": "Sapanca", "count": 2, "lat": 40.6914, "lng": 30.2664, "context": "2024 glamping rotası", "first": "2024-04-17", "first_message": "Yarim, Erdoğan'a iki Sapanca konaklama linki: Freedome Glamping ve Astral World Glamping", "note": "İstanbul'a yakın yeni gezi tipi — kamp ile otel arası"},
+      {"name": "Ağva", "count": 1, "lat": 41.1383, "lng": 29.8472, "context": "2024 Haziran offsite", "first": "2024-06-07", "first_message": "Erdoğan iş arkadaşlarıyla Ağva'da, Yarim İstanbul'da hasta — 'kıyamam kocacığıma'", "note": "Erdoğan'ın iş offsite'ı"},
+      {"name": "Şile", "count": 0, "context": "Ağva ile birlikte sıkça anılan komşu Karadeniz noktası — bu arşivde direkt mention yok ama yakın rota"},
+      {"name": "Yalova", "count": 5, "lat": 40.6500, "lng": 29.2667, "context": "Hafta sonu kaçamağı", "first": "2018-02-22"}
+    ],
+    "is_seyahatleri": [
+      {"name": "Ankara", "count": 19, "lat": 39.9334, "lng": 32.8597, "context": "İş seyahati / 06.02.2023 deprem yolu — Erdoğan Gölbaşı civarında ailesine yardım için ilerlerken", "first": "2018-03-02"},
+      {"name": "Eskişehir", "count": 10, "lat": 39.7767, "lng": 30.5206, "context": "Seyahat", "first": "2018-08-19"},
+      {"name": "Bursa", "count": 3, "lat": 40.1885, "lng": 29.0610, "context": "Seyahat", "first": "2018-06-15"}
+    ]
+  }
+}

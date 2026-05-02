@@ -1,26 +1,214 @@
 @import "tailwindcss";
 
+/* ============================================
+   Yarim'in Bahçesi — Coastal Garden tokens
+   3 themes: Coastal (default light/dark) | Wild Meadow | Vintage
+   ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #5a8b7e;
+  --primary-deep: #2d3d3a;
+  --accent: #e8826b;
+  --accent-soft: #f0a88f;
+  --gold: #e8d9b0;
+  --surface: #f0f5f0;
+  --surface-2: #ffffff;
+  --surface-3: #e5ede5;
+  --text: #2d3d3a;
+  --text-muted: #6b8780;
+  --text-soft: #8fa89e;
+  --border: #c8d8c8;
+  --border-soft: #dce6dc;
+
+  --shadow-sm: 0 1px 3px rgba(45, 61, 58, 0.06),
+    0 1px 2px rgba(45, 61, 58, 0.04);
+  --shadow-md: 0 4px 12px rgba(45, 61, 58, 0.08),
+    0 2px 4px rgba(45, 61, 58, 0.04);
+  --shadow-lg: 0 12px 32px rgba(45, 61, 58, 0.1),
+    0 4px 12px rgba(45, 61, 58, 0.06);
+  --shadow-glow: 0 0 40px rgba(232, 130, 107, 0.18);
+
+  --font-heading: var(--font-cormorant), "Playfair Display", Georgia, serif;
+  --font-body: var(--font-inter), -apple-system, sans-serif;
+  --font-accent: var(--font-caveat), "Kalam", cursive;
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-full: 999px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="coastal-dark"] {
+  --primary: #9fc5bd;
+  --primary-deep: #1f4239;
+  --accent: #e8826b;
+  --accent-soft: #f0a88f;
+  --gold: #9fc5bd;
+  --surface: #13201d;
+  --surface-2: #1f302d;
+  --surface-3: #2a3f3b;
+  --text: #e8d9b0;
+  --text-muted: #9fc5bd;
+  --text-soft: #6b8780;
+  --border: #2a3f3b;
+  --border-soft: #1f302d;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 40px rgba(232, 130, 107, 0.25);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="meadow"] {
+  --primary: #7a8b5a;
+  --primary-deep: #3a2e2a;
+  --accent: #b85c5c;
+  --accent-soft: #d4807f;
+  --gold: #d9b68c;
+  --surface: #faf6ec;
+  --surface-2: #fffef8;
+  --surface-3: #f0e9d8;
+  --text: #3a2e2a;
+  --text-muted: #6b5a52;
+  --text-soft: #9a8a7e;
+  --border: #ddd2b8;
+  --border-soft: #ede5d0;
+  --shadow-glow: 0 0 40px rgba(184, 92, 92, 0.18);
+}
+
+[data-theme="vintage"] {
+  --primary: #6b6249;
+  --primary-deep: #2e2a22;
+  --accent: #b8654a;
+  --accent-soft: #d08869;
+  --gold: #c9a876;
+  --surface: #f4ecd8;
+  --surface-2: #faf4e2;
+  --surface-3: #e8ddc2;
+  --text: #2e2a22;
+  --text-muted: #5c513f;
+  --text-soft: #8a7e66;
+  --border: #d4c4a0;
+  --border-soft: #e5dabe;
+  --shadow-glow: 0 0 40px rgba(184, 101, 74, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(
+      ellipse 60% 40% at 50% 0%,
+      color-mix(in srgb, var(--accent) 8%, transparent) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 80% 60% at 0% 50%,
+      color-mix(in srgb, var(--primary) 6%, transparent) 0%,
+      transparent 50%
+    ),
+    var(--surface);
 }
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* === ANIMATIONS === */
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-4px); }
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+@keyframes drift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-8px, -12px) rotate(8deg); }
+}
+@keyframes leaf-fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+}
+@keyframes grow-stroke {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  94%, 98% { transform: scaleY(0.1); }
+}
+@keyframes float-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.scroll-soft::-webkit-scrollbar { width: 0; }
+.scroll-soft { scrollbar-width: none; }
+
+.float-in { animation: float-up 600ms cubic-bezier(0.32, 0.72, 0.4, 1) both; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.hand { font-family: var(--font-accent); }

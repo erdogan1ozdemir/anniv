@@ -1,0 +1,680 @@
+{
+  "metadata": {
+    "title": "Bahçemiz — Müzik Logu",
+    "description": "Erdoğan ve Yarim arasında WhatsApp'ta paylaşılan tüm YouTube ve Spotify linkleri. Tarih, gönderici ve bağlam bilgisiyle.",
+    "youtube_count": 64,
+    "spotify_count": 40,
+    "total": 104,
+    "sender_split": {
+      "youtube": {
+        "Erdoğan": 41,
+        "Yarim": 23
+      },
+      "spotify": {
+        "Erdoğan": 27,
+        "Yarim": 13
+      }
+    },
+    "note": "Linkler erişilebilirse tıklandığında YouTube/Spotify'da açılır. Bazı linkler artık 404 olabilir; bu arşivin tarihi olarak kabul edilebilir."
+  },
+  "youtube_by_year": {
+    "2018": [
+      {
+        "date": "2018-01-31T21:27:01",
+        "sender": "Yarim",
+        "url": "https://youtu.be/KKAlf_01juM",
+        "context": ""
+      },
+      {
+        "date": "2018-02-08T12:18:04",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/OR-vDb7MQUA",
+        "context": ""
+      },
+      {
+        "date": "2018-02-22T23:21:34",
+        "sender": "Yarim",
+        "url": "https://youtu.be/4cYFplWWzow",
+        "context": ""
+      },
+      {
+        "date": "2018-03-06T21:04:54",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/ax9AZ9s5Mbo",
+        "context": ""
+      },
+      {
+        "date": "2018-03-27T22:45:27",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/VD1vuQJFvvY",
+        "context": ""
+      },
+      {
+        "date": "2018-04-02T23:09:28",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/8j741TUIET0",
+        "context": ""
+      },
+      {
+        "date": "2018-08-02T11:57:51",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/KZXhd5rXajo",
+        "context": ""
+      },
+      {
+        "date": "2018-08-27T12:28:53",
+        "sender": "Yarim",
+        "url": "https://youtu.be/UbQgXeY_zi4",
+        "context": ""
+      },
+      {
+        "date": "2018-09-24T22:32:54",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/U0Ba8o-tzBE",
+        "context": ""
+      },
+      {
+        "date": "2018-09-26T16:58:04",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/zf99kdFw9b8",
+        "context": ""
+      },
+      {
+        "date": "2018-10-16T12:13:14",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/hbnQqjMfr-U",
+        "context": ""
+      },
+      {
+        "date": "2018-11-01T12:23:24",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/OpSQLeu89lw",
+        "context": ""
+      },
+      {
+        "date": "2018-12-11T00:55:57",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/K_X4yA6FLBk",
+        "context": ""
+      },
+      {
+        "date": "2018-12-30T22:43:40",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/mYkhNWIdra0",
+        "context": ""
+      }
+    ],
+    "2019": [
+      {
+        "date": "2019-01-29T00:22:13",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/qi8O1-SErr8",
+        "context": ""
+      },
+      {
+        "date": "2019-05-30T00:28:56",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/u8ymzuwrS6M",
+        "context": ""
+      },
+      {
+        "date": "2019-06-08T23:30:29",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/5-4wIAmNxIs",
+        "context": ""
+      },
+      {
+        "date": "2019-06-13T23:07:09",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/LofYgpFMegg",
+        "context": ""
+      },
+      {
+        "date": "2019-06-25T10:29:41",
+        "sender": "Yarim",
+        "url": "https://www.youtube.com/watch?v=iYYRH4apXDo",
+        "context": ""
+      },
+      {
+        "date": "2019-07-22T12:44:39",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/Zcme1yQGkBQ",
+        "context": ""
+      },
+      {
+        "date": "2019-09-25T17:09:03",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/nKn9_HJzZ4w",
+        "context": ""
+      },
+      {
+        "date": "2019-10-30T00:07:40",
+        "sender": "Yarim",
+        "url": "https://youtu.be/9o1NixL4cP0",
+        "context": ""
+      },
+      {
+        "date": "2019-11-07T20:51:33",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/7PCK0JbkSuI",
+        "context": ""
+      }
+    ],
+    "2020": [
+      {
+        "date": "2020-12-05T18:07:34",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/1lI30Qw69AQ",
+        "context": ""
+      },
+      {
+        "date": "2020-12-16T16:34:20",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/i2XUrySbdUE",
+        "context": "bunu görünce aklıma şu bulamadığın şarkı geldi"
+      },
+      {
+        "date": "2020-12-20T13:37:23",
+        "sender": "Yarim",
+        "url": "https://youtu.be/nLUcVcxSHN0",
+        "context": ""
+      }
+    ],
+    "2021": [
+      {
+        "date": "2021-02-01T02:52:55",
+        "sender": "Yarim",
+        "url": "https://m.youtube.com/watch?v=331fm7sGK2I",
+        "context": ""
+      },
+      {
+        "date": "2021-02-07T16:57:16",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/StdF3139PCM",
+        "context": ""
+      },
+      {
+        "date": "2021-03-16T11:51:59",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/fDhlZITPKjo",
+        "context": ""
+      },
+      {
+        "date": "2021-03-29T14:10:34",
+        "sender": "Yarim",
+        "url": "https://youtu.be/fZoMzWraS_c",
+        "context": ""
+      },
+      {
+        "date": "2021-04-15T01:19:13",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/_mqL9NDm5WQ",
+        "context": ""
+      },
+      {
+        "date": "2021-04-29T11:06:39",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/hxaCtfmi6po",
+        "context": ""
+      },
+      {
+        "date": "2021-06-23T15:15:35",
+        "sender": "Yarim",
+        "url": "https://youtu.be/eC7eC8H0IkY",
+        "context": ""
+      },
+      {
+        "date": "2021-06-29T15:56:07",
+        "sender": "Yarim",
+        "url": "https://youtu.be/S66MmDWx8tE",
+        "context": ""
+      },
+      {
+        "date": "2021-06-29T15:56:26",
+        "sender": "Yarim",
+        "url": "https://youtu.be/vZjjgw8Nc6Q",
+        "context": ""
+      },
+      {
+        "date": "2021-07-02T15:30:21",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/0-hV37XRJR4",
+        "context": ""
+      },
+      {
+        "date": "2021-07-18T21:40:53",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/beiPP_MGz6I",
+        "context": ""
+      },
+      {
+        "date": "2021-08-28T01:48:05",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/X1p2HjpRN_Y",
+        "context": ""
+      },
+      {
+        "date": "2021-10-28T23:53:53",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/l26HqYMw1L4",
+        "context": ""
+      },
+      {
+        "date": "2021-10-29T14:39:13",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/pOOOrYDWZcQ",
+        "context": ""
+      },
+      {
+        "date": "2021-10-29T14:39:33",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/8QrHukf8m4E",
+        "context": ""
+      },
+      {
+        "date": "2021-10-29T14:40:38",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/9tuJXaJFreE",
+        "context": ""
+      },
+      {
+        "date": "2021-12-07T13:59:56",
+        "sender": "Erdoğan",
+        "url": "https://www.youtube.com/watch?v=v8oqbWrP1QY",
+        "context": "o zaman bu şarkı benden sana gelsin"
+      }
+    ],
+    "2022": [
+      {
+        "date": "2022-01-18T17:43:42",
+        "sender": "Yarim",
+        "url": "https://www.youtube.com/watch?v=np2HtyhjUhY",
+        "context": ""
+      },
+      {
+        "date": "2022-05-01T00:53:04",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/9E6b3swbnWg",
+        "context": ""
+      },
+      {
+        "date": "2022-05-24T10:41:37",
+        "sender": "Yarim",
+        "url": "https://www.youtube.com/watch?v=oxwEWJh3oCM&ab_channel=ErkanY%C4%B1ld%C4%B1z",
+        "context": ""
+      },
+      {
+        "date": "2022-09-05T02:02:36",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/RkIUhRg7iUs",
+        "context": ""
+      },
+      {
+        "date": "2022-11-20T00:22:43",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/1ZCCYiJBcHk",
+        "context": ""
+      }
+    ],
+    "2023": [
+      {
+        "date": "2023-05-21T16:52:20",
+        "sender": "Yarim",
+        "url": "https://youtube.com/shorts/Fa2uGZGG_KQ?feature=share",
+        "context": ""
+      },
+      {
+        "date": "2023-09-07T02:09:19",
+        "sender": "Yarim",
+        "url": "https://youtube.com/shorts/QY6T31-IdEc?si=nBsk36mo4b2zP3Gt",
+        "context": ""
+      },
+      {
+        "date": "2023-10-18T14:10:03",
+        "sender": "Erdoğan",
+        "url": "https://www.youtube.com/watch?v=quIwWz_xxnk",
+        "context": ""
+      },
+      {
+        "date": "2023-10-30T22:23:16",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/6Qf7IDqMMCM?si=gJ-G9L7x3AxRsFJu",
+        "context": ""
+      },
+      {
+        "date": "2023-12-19T01:31:56",
+        "sender": "Yarim",
+        "url": "https://youtube.com/shorts/pZUAB-loMkk?si=l67_qveQbfv-ngDC",
+        "context": ""
+      }
+    ],
+    "2024": [
+      {
+        "date": "2024-03-11T13:15:47",
+        "sender": "Yarim",
+        "url": "https://www.youtube.com/watch?v=Zq8Y7vbzgAA&list=RDZq8Y7vbzgAA&index=1",
+        "context": ""
+      },
+      {
+        "date": "2024-04-29T20:47:06",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/nrsjnWDwiiI?si=Yw-78wvq64Zn_joD",
+        "context": ""
+      },
+      {
+        "date": "2024-04-29T20:48:58",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/LhDWgJu6q7Q?si=QXivFUlwjKgfv91j",
+        "context": ""
+      },
+      {
+        "date": "2024-05-17T20:15:15",
+        "sender": "Yarim",
+        "url": "https://youtu.be/yJtEadVDhng?si=6Rvzs-MtAtWmzu-H",
+        "context": ""
+      },
+      {
+        "date": "2024-06-10T16:26:41",
+        "sender": "Yarim",
+        "url": "https://www.youtube.com/watch?v=qnIGfU4q16Q",
+        "context": ""
+      },
+      {
+        "date": "2024-09-03T16:53:20",
+        "sender": "Yarim",
+        "url": "https://www.youtube.com/watch?v=Ha7pS-olohw&list=OLAK5uy_mT0eDYdOEs4kivtTyMcgfyleUOvwKgIZE&index=4",
+        "context": ""
+      },
+      {
+        "date": "2024-11-02T16:41:35",
+        "sender": "Yarim",
+        "url": "https://youtube.com/shorts/vMJ_MUC234g?si=eWLuVneIPpngbE2i",
+        "context": ""
+      }
+    ],
+    "2025": [
+      {
+        "date": "2025-01-08T18:49:47",
+        "sender": "Yarim",
+        "url": "https://youtube.com/shorts/YqYqFIv4exs?si=ULaWHxwKAeYpiw-q",
+        "context": ""
+      },
+      {
+        "date": "2025-08-18T18:54:50",
+        "sender": "Yarim",
+        "url": "https://youtu.be/ceWoyvMXMz0?si=cx3ykmlvfLPZYi1_",
+        "context": ""
+      }
+    ],
+    "2026": [
+      {
+        "date": "2026-02-01T21:44:58",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/epupeIyjSq4?si=ilwpq2TifL6dEm7l",
+        "context": ""
+      },
+      {
+        "date": "2026-02-01T21:45:19",
+        "sender": "Erdoğan",
+        "url": "https://youtu.be/XspDkqEtWFE?si=evE4Q_jRa5YUCrPW",
+        "context": ""
+      }
+    ]
+  },
+  "spotify_by_year": {
+    "2018": [
+      {
+        "date": "2018-05-08T08:26:17",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/user/11131978263/playlist/4hGF6pDzhAViKTOxzdxe7N?si=I6X1wSeFQkeAFt0Yuth9fg",
+        "context": "İşte senin için bir çalma listesi… Your Highness - Erdogan Özdemir"
+      },
+      {
+        "date": "2018-06-23T19:08:58",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/user/11131978263/playlist/4hGF6pDzhAViKTOxzdxe7N?si=2v7CxoDjR9-1_J_p9VNdDw",
+        "context": "İşte senin için bir çalma listesi… Your Highness - Erdogan Özdemir"
+      }
+    ],
+    "2019": [
+      {
+        "date": "2019-11-18T19:23:38",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/playlist/37i9dQZF1DWSlw12ofHcMM?si=cXb4JheaQNGz9hMS2WUXlQ",
+        "context": "İşte senin için bir çalma listesi… Swagger - spotify"
+      }
+    ],
+    "2021": [
+      {
+        "date": "2021-07-27T17:54:25",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/2somBqBmx8OGSewNzfrt6V?si=J5AQKMGBTYiVhnGH6iNssg&utm_source=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2021-07-27T20:50:20",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/1SoxXBNfJhUueuxAZEwbtw?si=Zg72UwIyQo2CCpA-JH4Gsw&utm_source=whatsapp&dl_branch=1",
+        "context": ""
+      },
+      {
+        "date": "2021-08-29T21:36:59",
+        "sender": "Yarim",
+        "url": "https://open.spotify.com/track/4yA2SM7XCLkSgkBUSoZb5S?si=69yHCkiuQfKaDcL4No0MTg&utm_source=whatsapp&dl_branch=1",
+        "context": ""
+      },
+      {
+        "date": "2021-09-08T19:19:37",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/playlist/37i9dQZF1E37AK0qHVl5SX?si=nGfh_hsnSYWTxk7OL6BsUw&utm_source=whatsapp&dl_branch=1",
+        "context": ""
+      },
+      {
+        "date": "2021-09-28T02:25:40",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/4f1Swppc5dHLbByiEXrlu7?si=hw4V4ttdRy6qcckwZqdecg&utm_source=whatsapp&dl_branch=1",
+        "context": ""
+      },
+      {
+        "date": "2021-10-18T13:06:06",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/3UCZ5epH5A3PDA6pJZgFaN?si=T2LPzW5oS6yUPgjOnpgyzg&utm_source=whatsapp",
+        "context": ""
+      }
+    ],
+    "2022": [
+      {
+        "date": "2022-01-31T02:42:39",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/playlist/37i9dQZF1DWZixSclZdoFE?si=wntuDccMQEGDLL6b3yiNfA&utm_source=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2022-01-31T02:43:40",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/playlist/37i9dQZF1DX843Qf4lrFtZ?si=78nerI-cTt2D1_WI7b6iIQ&utm_source=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2022-05-02T19:04:03",
+        "sender": "Yarim",
+        "url": "https://open.spotify.com/track/4BxrgW9gZ9B3VQjHwNAF9P?si=BbgSbafTRRKeUkPSJUtGIw&utm_source=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2022-06-09T16:46:43",
+        "sender": "Yarim",
+        "url": "https://open.spotify.com/track/1jPh0c76C5RfbjjBIBZ69P?si=f27aae970e854f95",
+        "context": ""
+      },
+      {
+        "date": "2022-08-30T19:29:20",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/playlist/6EBfZo05bxUjv73lw0jXto?si=SAfiYIPLRgS-5hcpvh5nDw&utm_source=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2022-09-14T15:21:22",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/4h4RbnpXxdMIX6dFoa2MIW?si=f5e9e36bc9c84640",
+        "context": ""
+      },
+      {
+        "date": "2022-12-02T00:14:18",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/3zOTFSZvLeqE34YyCbQss0?si=CkqVCKeFSu2GJZGP_abgTg&utm_source=whatsapp",
+        "context": ""
+      },
+      {
+        "date": "2022-12-10T17:21:51",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/playlist/7vhWyIJzJwHEIQjgN6VkTW?si=oy9biKeLRRqKRk6MqWe8iw&utm_source=whatsapp",
+        "context": ""
+      }
+    ],
+    "2023": [
+      {
+        "date": "2023-09-01T19:24:13",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/playlist/1PlwUMfbDQEVykYtCjVmtA?si=-qi98RNBRS-djDJIZolTog",
+        "context": ""
+      },
+      {
+        "date": "2023-10-09T17:49:16",
+        "sender": "Yarim",
+        "url": "https://spotify.link/kF6qyjk6KDb",
+        "context": "Bu çalma listesini dinlemelisin: h"
+      },
+      {
+        "date": "2023-10-11T19:06:09",
+        "sender": "Yarim",
+        "url": "https://spotify.link/pcUsydDvODb",
+        "context": ""
+      },
+      {
+        "date": "2023-10-27T13:14:30",
+        "sender": "Yarim",
+        "url": "https://open.spotify.com/playlist/4Moes1CfKt1hsNVfUGSevR?si=0980a5e6dbbf4954",
+        "context": ""
+      },
+      {
+        "date": "2023-10-27T13:15:09",
+        "sender": "Yarim",
+        "url": "https://open.spotify.com/playlist/16l5uhUSxfZO3ICWQEx6eJ?si=bc7d09d5c4b6419a",
+        "context": ""
+      },
+      {
+        "date": "2023-11-05T18:43:26",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/5xVtfVrMb1WGypY4bIRLbk?si=vsxRBooGRIKNpKHcARyzwg",
+        "context": ""
+      },
+      {
+        "date": "2023-11-30T19:02:19",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/blend/taste-match/a7ebb7299b351a1b?si=EKnoqPKbTNqxoHBCRNiGlA&fallback=getapp",
+        "context": "Erdo seni Spotify'da bir Blend'e katılmaya davet etti. Spotify mobil uygulamasın"
+      },
+      {
+        "date": "2023-12-21T23:03:12",
+        "sender": "Erdoğan",
+        "url": "https://spotify.link/efWecoKCIFb",
+        "context": "Aynı anda birlikte müzik seçip dinleyelim."
+      },
+      {
+        "date": "2023-12-28T18:01:03",
+        "sender": "Yarim",
+        "url": "https://open.spotify.com/playlist/4Moes1CfKt1hsNVfUGSevR?si=33hRjG5uQgKg4eLOCbwDkQ&pi=e-7EMthpYYQJ6n",
+        "context": "Bu çalma listesini dinlemelisin: 2023-Sade"
+      },
+      {
+        "date": "2023-12-31T20:53:28",
+        "sender": "Yarim",
+        "url": "https://open.spotify.com/playlist/3ltzVOo9sa0TrWNb53WCLE?si=6gnV81ziSZCBzP9YE5FyNQ&pi=e-J7poY8-pRvuz",
+        "context": "Bu çalma listesini dinlemelisin: An Amusing Anecdote 🍷"
+      }
+    ],
+    "2024": [
+      {
+        "date": "2024-01-21T00:42:18",
+        "sender": "Yarim",
+        "url": "https://open.spotify.com/intl-tr/track/01Q3OyB05mLgH01fpdAMPP?si=3c654829a9f04db9",
+        "context": ""
+      },
+      {
+        "date": "2024-04-10T14:38:55",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/6causqx0iW2RiyjFrgtuw7?si=jpf5oU4XQiiV0EeMP00yuQ",
+        "context": ""
+      },
+      {
+        "date": "2024-05-09T16:26:46",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/2fHExaI0RzUuB3xrCYT7rP?si=0795ee45c18f4236",
+        "context": ""
+      },
+      {
+        "date": "2024-05-23T13:04:52",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/087cds8zjbUmokjg2jdMOp?si=5a0264181ed44050",
+        "context": ""
+      },
+      {
+        "date": "2024-09-06T17:38:53",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/0WbMK4wrZ1wFSty9F7FCgu?si=09f3d48ab7794dc7",
+        "context": ""
+      },
+      {
+        "date": "2024-09-27T19:04:23",
+        "sender": "Yarim",
+        "url": "https://open.spotify.com/track/02KGkBz8Tyc9TB2RqCd9Z5?si=D9eeLUB8RZur-2VsYKid-A",
+        "context": ""
+      },
+      {
+        "date": "2024-10-02T11:28:58",
+        "sender": "Yarim",
+        "url": "https://open.spotify.com/track/3RoQX4ou3qYEASsuC7YAWD?si=d61b6999262d4c3b",
+        "context": ""
+      },
+      {
+        "date": "2024-11-15T13:55:04",
+        "sender": "Yarim",
+        "url": "https://spotify.link/MgMOBIOHxOb",
+        "context": ""
+      },
+      {
+        "date": "2024-11-20T12:12:13",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/6BWcZ9FUYYoWPusEX831YU?si=ee220154378f4de5",
+        "context": ""
+      }
+    ],
+    "2025": [
+      {
+        "date": "2025-04-02T02:33:15",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/playlist/37i9dQZF1FbHJ1aytkXFEC?si=7a2b4abbdb3d499c",
+        "context": ""
+      },
+      {
+        "date": "2025-05-20T19:00:36",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/14hfncXvhWyt6KvboOqjCJ?si=a1ab8773573c4730",
+        "context": ""
+      },
+      {
+        "date": "2025-06-07T12:04:55",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/4QKUlJPEW9OksjTyx97hjo?si=m9PQauhkSICy7LgdeyrQGg&context=spotify%3Aplaylist%3A4edLwaF8nNFS9i5pm9uNqa",
+        "context": ""
+      },
+      {
+        "date": "2025-06-07T12:06:03",
+        "sender": "Erdoğan",
+        "url": "https://open.spotify.com/track/2Ckqa3lHzBz0MZmJqfFR5P?si=NKDp60P9TpaT4j1DYQNCcA&context=spotify%3Aplaylist%3A4edLwaF8nNFS9i5pm9uNqa",
+        "context": ""
+      }
+    ]
+  }
+}

@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yarim'in Bahçesi
 
-## Getting Started
+> Yıldönümü hediyesi olarak hazırlanan kişisel timeline web uygulaması. Şifreli, sadece ikimiz görüyoruz.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js 16 (App Router) + TypeScript
+- Tailwind CSS v4
+- Framer Motion
+- next/font (Cormorant Garamond + Inter + Caveat)
+- Coastal Garden palet sistemi (3 tema: Coastal light/dark, Wild Meadow, Vintage)
+
+## Geliştirme
 
 ```bash
+cd app
+cp .env.example .env.local   # şifreyi düzenle
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`http://localhost:3000` → `/giris` (şifre input). `.env.local` içindeki `BAHCE_PASSWORD` değerini girince ana ekrana (`/`) yönlendirir.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Yapı
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+├── api/auth/        Şifre POST/DELETE
+├── ani/[id]/        Anı detay sayfası (magazin layout)
+├── bugun/           Geçmiş yıllarda bugün
+├── galeri/          Foto-only masonry grid
+├── giris/           Login (Jedi portresi + şifre)
+├── harita/          Hayali parchment harita
+├── jedi/            Jedi profili
+├── kategoriler/     Tüm etiketler grid
+├── random/          Rastgele anı yönlendirici
+├── globals.css      Coastal Garden tokens + animasyonlar
+├── layout.tsx       Font + meta + theme yükleme
+└── page.tsx         Tree timeline ana sayfa
 
-## Learn More
+components/
+├── screens/         TreeTimeline, MemoryDetail, LoginForm
+├── svg/             Botanic, JediSilhouette
+└── ui/              IOSFrame, BottomNav
 
-To learn more about Next.js, take a look at the following resources:
+lib/
+├── data.ts          memories.json okuyucu, related logic
+└── categories.ts    kategori meta + Türkçe tarih formatlama
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+types/index.ts       TypeScript memory tipleri
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+public/data/
+├── memories.json    95 anı kartı (deep research'ten)
+├── glossary.json    özel kelime sözlüğü
+├── locations.json   yer logu
+├── music.json       müzik logu
+└── maker.json       maker projeleri logu
+```
 
-## Deploy on Vercel
+## Veri Pipeline
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`/public/data/*.json` dosyaları `bahcemiz/` klasöründeki deep research çıktılarından import edildi. Anı kartları `id, date, title, subtitle, category, tags, story, quote, whatsapp_excerpt, location, song_ref, mood, is_pinned, ai_confidence` alanlarına sahip.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+İçerik güncelleme:
+1. `bahcemiz/20_master_anilar.json` dosyasını güncelle
+2. `cp` ile `app/public/data/memories.json` üzerine yaz
+3. `npm run build` veya hot reload otomatik yansır
+
+## Deployment (Vercel)
+
+1. `vercel link` → projeyi bağla
+2. Environment variables: `BAHCE_PASSWORD`, `BAHCE_SECRET`
+3. `vercel deploy` veya GitHub push otomatik
+
+## Notlar
+
+- Tüm metinlerde em dash (—) yok, düz tire (-) kullan
+- Mobile-first (iPhone 13/11 öncelikli)
+- `prefers-reduced-motion` desteği var
+- Optional alanlar (şarkı, lokasyon, whatsapp) yoksa o bölüm hiç render edilmez
+- v2 planı: Supabase + canlı yorum + etiket önerisi (şu an donmuş hediye)
+
+## Kararlar Geçmişi
+
+Bkz: `../yildonumu-timeline-app-brief.md`, `../claude-design-handoff.md`, `../whatsapp-deep-research-prompt.md`.
