@@ -902,9 +902,21 @@ export function TreeOfLife({
                     ev.month !== focus.month &&
                     (level === "month" || level === "week"));
                 const eOpacity = eDimmed ? 0.18 : 1;
+                const showCatEmoji = level === "season" || level === "month" || level === "week";
                 return (
                   <g key={ev.id} opacity={eOpacity} style={{ transition: "opacity 400ms ease" }}>
                     <EventGlyph ev={ev} x={pos.x} y={pos.y} scale={eventScale} onClick={onSelectEvent} />
+                    {showCatEmoji && !eDimmed && ev.cat && (
+                      <text
+                        x={pos.x}
+                        y={pos.y - 18 * eventScale}
+                        textAnchor="middle"
+                        fontSize={14 * Math.min(eventScale, 1.4)}
+                        style={{ pointerEvents: "none" }}
+                      >
+                        {ev.cat}
+                      </text>
+                    )}
                     {eventLabelShow && !eDimmed && (
                       <g transform={`translate(${pos.x + tip.side * 22} ${pos.y - 6})`}>
                         <rect

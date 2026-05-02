@@ -335,62 +335,91 @@ export function MemoryDetail({ memory, related, prevId, nextId }: MemoryDetailPr
       </div>
 
       {memory.whatsapp_excerpt && memory.whatsapp_excerpt.length > 0 && (
-        <div
+        <figure
           style={{
             margin: "16px 22px",
-            padding: 14,
-            background:
-              "linear-gradient(135deg, #DCF8C6 0%, #E8F5DC 100%)",
-            borderRadius: 14,
+            padding: "20px 22px 18px",
+            background: "var(--surface-2)",
+            border: "1px solid var(--border-soft)",
+            borderRadius: 16,
+            position: "relative",
+            boxShadow: "var(--shadow-sm)",
           }}
         >
           <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              top: 6,
+              left: 16,
+              fontFamily: "var(--font-heading)",
+              fontStyle: "italic",
+              fontSize: 64,
+              lineHeight: 1,
+              color: "var(--accent)",
+              opacity: 0.35,
+              pointerEvents: "none",
+            }}
+          >
+            “
+          </div>
+          <div
             style={{
               fontSize: 10,
-              color: "#128C7E",
+              color: "var(--accent)",
               letterSpacing: 1.5,
               textTransform: "uppercase",
-              marginBottom: 10,
+              marginBottom: 14,
               fontWeight: 600,
+              paddingLeft: 28,
             }}
           >
             o gün konuşmamızdan
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 10,
+              paddingLeft: 12,
+              borderLeft: "2px solid color-mix(in srgb, var(--accent) 30%, transparent)",
+            }}
+          >
             {memory.whatsapp_excerpt.map((msg, i) => {
-              const isMe = msg.sender.toLowerCase().includes("erdoğan");
+              const sender = msg.sender.split(" ")[0];
               return (
-                <div
-                  key={i}
-                  style={{
-                    background: isMe ? "#FFF" : "#FFFCF4",
-                    borderRadius: isMe
-                      ? "8px 8px 8px 2px"
-                      : "8px 8px 2px 8px",
-                    padding: "8px 10px",
-                    maxWidth: "82%",
-                    marginLeft: isMe ? 0 : "auto",
-                    fontSize: 13,
-                    color: "#3A2E2A",
-                    boxShadow: "0 1px 1px rgba(0,0,0,0.08)",
-                  }}
-                >
-                  {msg.text}
-                  <div
+                <div key={i} style={{ paddingLeft: 12 }}>
+                  <p
                     style={{
-                      fontSize: 9,
-                      color: "#7C7C7C",
-                      marginTop: 3,
-                      textAlign: "right",
+                      fontFamily: "var(--font-heading)",
+                      fontStyle: "italic",
+                      fontSize: 16,
+                      lineHeight: 1.45,
+                      color: "var(--text)",
                     }}
                   >
-                    {msg.time}
+                    {msg.text}
+                  </p>
+                  <div
+                    style={{
+                      marginTop: 4,
+                      fontSize: 10,
+                      color: "var(--text-muted)",
+                      letterSpacing: 1,
+                      textTransform: "uppercase",
+                      fontWeight: 500,
+                    }}
+                  >
+                    — {sender}
+                    {msg.time && (
+                      <span style={{ color: "var(--text-soft)" }}> · {msg.time}</span>
+                    )}
                   </div>
                 </div>
               );
             })}
           </div>
-        </div>
+        </figure>
       )}
 
       {memory.location && (
