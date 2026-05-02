@@ -1,12 +1,14 @@
-import { TreeTimeline } from "@/components/screens/TreeTimeline";
+import { Timeline } from "@/components/screens/Timeline";
 import { BottomNav } from "@/components/ui/BottomNav";
-import { getYearGroups } from "@/lib/data";
+import { loadMemories } from "@/lib/data";
+import { memoryToEvent } from "@/lib/tree-data";
 
 export default async function Home() {
-  const groups = await getYearGroups();
+  const memories = await loadMemories();
+  const events = memories.map(memoryToEvent);
   return (
     <>
-      <TreeTimeline groups={groups} />
+      <Timeline events={events} season="spring" />
       <BottomNav />
     </>
   );

@@ -5,14 +5,12 @@ import { usePathname } from "next/navigation";
 
 const items = [
   { href: "/", icon: "🌿", label: "bahçe", id: "tree" },
-  { href: "/galeri", icon: "🖼", label: "galeri", id: "gallery" },
   { href: "/harita", icon: "🗺", label: "harita", id: "map" },
   { href: "/jedi", icon: "🐈", label: "jedi", id: "jedi" },
 ];
 
 function activeFor(pathname: string): string {
   if (pathname === "/") return "tree";
-  if (pathname.startsWith("/galeri")) return "gallery";
   if (pathname.startsWith("/harita")) return "map";
   if (pathname.startsWith("/jedi")) return "jedi";
   if (pathname.startsWith("/ani")) return "tree";
@@ -52,7 +50,7 @@ export function BottomNav() {
               gap: 2,
               color: isActive ? "var(--accent)" : "var(--text-muted)",
               transition: "color 200ms",
-              padding: "4px 12px",
+              padding: "4px 16px",
               borderRadius: 12,
             }}
           >
