@@ -5,6 +5,7 @@ import { motion, type PanInfo } from "framer-motion";
 import { useRouter } from "next/navigation";
 import type { Memory } from "@/types";
 import { CATEGORY_META, formatTurkishDate, shortTurkishDate } from "@/lib/categories";
+import { CategoryHero } from "@/components/svg/CategoryIcons";
 
 const MOOD_TINT: Record<string, string> = {
   romantic: "color-mix(in srgb, #E8826B 16%, transparent)",
@@ -120,57 +121,34 @@ export function MemoryDetail({ memory, related, prevId, nextId }: MemoryDetailPr
           position: "relative",
           overflow: "hidden",
           boxShadow: "var(--shadow-lg)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        <svg
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          style={{
-            position: "absolute",
-            top: -10,
-            left: -10,
-            width: 120,
-            color: "rgba(255,255,255,0.45)",
-            transform: "rotate(-15deg)",
-          }}
-        >
-          <path
-            d="M50 0 Q40 30 28 50 Q22 65 30 85 Q50 70 60 50 Q55 30 50 0"
-            fill="currentColor"
-          />
-        </svg>
-        <svg
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          style={{
-            position: "absolute",
-            bottom: -20,
-            right: -20,
-            width: 160,
-            color: "rgba(255,255,255,0.3)",
-            transform: "rotate(160deg)",
-          }}
-        >
-          <path
-            d="M50 0 Q40 30 28 50 Q22 65 30 85 Q50 70 60 50 Q55 30 50 0"
-            fill="currentColor"
-          />
-        </svg>
         <div
           style={{
             position: "absolute",
-            top: 16,
-            right: 16,
-            background: "rgba(31,41,32,0.7)",
-            backdropFilter: "blur(10px)",
+            inset: 0,
+            background:
+              "radial-gradient(ellipse at center, rgba(255,255,255,0.3) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          style={{
+            filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.18))",
             color: "var(--surface-2)",
-            fontSize: 11,
-            padding: "5px 12px",
-            borderRadius: 999,
-            fontWeight: 500,
+            position: "relative",
+            zIndex: 2,
           }}
         >
-          📷 {memory.media_count_estimate ?? 1}
+          <CategoryHero
+            category={memory.category}
+            size={180}
+            primary="rgba(255,255,255,0.95)"
+            accent="rgba(255,255,255,0.65)"
+          />
         </div>
         <div
           style={{
