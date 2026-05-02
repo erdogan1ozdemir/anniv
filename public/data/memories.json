@@ -59,13 +59,15 @@
         "id": "batch13",
         "cards": 6
       }
-    ]
+    ],
+    "total": 92,
+    "filtered_at": "2026-05-03"
   },
   "memories": [
     {
       "id": "2017-11-05-iliski-baslangici",
       "date": "2017-11-05",
-      "title": "İlk evet — birlikteliğin başladığı gün",
+      "title": "İlk evet",
       "subtitle": "her şey burada filizlendi",
       "category": "kilometre_tasi",
       "tags": [
@@ -73,7 +75,7 @@
         "anchor",
         "yıldönümü"
       ],
-      "story": "5 Kasım 2017. WhatsApp arşivinin yetişemediği o gün, Erdoğan ve Merve birbirlerine 'evet' dediler. Sevgili oldular. Bu sayfanın açılışı bu cümleyle başlamak zorunda — çünkü bahçenin ilk tohumu o gün toprağa düştü.\n\nÖnce kim sordu, kim cevap verdi, hangi sözcükler önce çıktı — bunlar chat'te kayıtlı değil; bu hafıza ikinizin içinde, yıldız haritası gibi gezdi. Sonraki sekiz yıl boyunca her 5 Kasım'da bu tarihi anacak; bahçeye yeni bir filiz eklenecek. WhatsApp arşivi 14 Ocak 2018'de başladığı için bu güne dair direkt bir mesaj alıntısı yok — ama tüm sonraki konuşmalar bu evetin meyvesi.",
+      "story": "5 Kasım 2017. WhatsApp arşivinin yetişemediği o gün, Erdoğan ve Merve birbirlerine 'evet' dediler. Sevgili oldular. Bu sayfanın açılışı bu cümleyle başlamak zorunda - çünkü bahçenin ilk tohumu o gün toprağa düştü.",
       "quote": null,
       "whatsapp_excerpt": [],
       "location": null,
@@ -86,83 +88,9 @@
       "_batch": "01_anilar_batch1"
     },
     {
-      "id": "2018-01-14-whatsapp-baslangic",
-      "date": "2018-01-14",
-      "title": "Samsung en cicisi",
-      "subtitle": "arşivin ilk sözü",
-      "category": "ilkler",
-      "tags": [
-        "whatsapp",
-        "ilk-mesaj",
-        "anchor",
-        "başlangıç"
-      ],
-      "story": "14 Ocak 2018, Pazar akşamı 19:22. Bu uygulamada, bu sohbet penceresinde kayıtlı ilk söz Yarim'e ait: *'Samsung en cicisi.'* Bağlamı yarım hatırlanan bir telefon muhabbeti — yine sevdiğin gibi, içinden uçup kayıveren küçük bir cümle.\n\nO geceden ertesi sabaha geçen 17 saatte yeni mesaj yok. Ama 15 Ocak günü sabah 12:26'da Yarim peş peşe yazmaya başlıyor: 'Anlıyorum kimle konuştuğunu diyo shdjdk', 'Jvkskvkdv', 'Kızcqğız öğle yemeği yiyo desene', 'Kıyamam de'. Gerçek konuşma o ikinci sabah açılıyor: ne ciddi bir 'merhaba', ne formal başlangıç. Tatlı bir telefon ailesi muhabbetinde, peynir yiyip yemediği konusunda Yarim'in 'no sevişme' tehdidiyle. Bu öyle bir sohbet ki — başlamadı, sadece zaten devam ettiği bir yerden açıldı.",
-      "quote": "Samsung en cicisi. — Yarim",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Samsung en cicisi",
-          "time": "19:22"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "nostalgic",
-      "is_pinned": true,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "anchor_type": "whatsapp_baslangici",
-      "_batch": "01_anilar_batch1"
-    },
-    {
-      "id": "2018-01-15-no-sevisme",
-      "date": "2018-01-15",
-      "title": "Yoksa no sevişme",
-      "subtitle": "ilk dolu günün şifresi",
-      "category": "kucuksey",
-      "tags": [
-        "esprili",
-        "tehdit-niyetine",
-        "tatlış",
-        "ilk-aylar"
-      ],
-      "story": "Arşivin gerçek anlamda dolu ilk günü. Erdoğan teyzesinde mi babaannesinde mi — 'amca Merve yola getirir' diyen birileri var. Peynir yer misin diye sorulmuş, Erdoğan 'yok' demiş. Yarim bunu duyunca üç kelime geliyor: *'Yoksa no sevişme.'*\n\nİlk *aşkım, sevgilim, canım, askim*'lar bu gün çıkıyor ortaya. 12:33'te Yarim Erdoğan'ın annesi/yengesi haklı olduğunu söylüyor: 'Haklı sevgilim. Ye o peyniri.' Erdoğan boyun eğiyor: 'Neyse oturdum ben yemeğe askim yiyom taam 😚😚'. Sonra: 'Tenks sevgilim 😚😚😚.' Tehdit yumuşadı, peynir yendi, gün dolup taştı. Sonraki sekiz yıl boyunca *aşkım* en az 8,353 kez tekrarlanacak.",
-      "quote": "Yoksa no sevişme. — Yarim",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Haklı sevgilim",
-          "time": "12:33"
-        },
-        {
-          "sender": "Yarim",
-          "text": "Ye o peyniri",
-          "time": "12:33"
-        },
-        {
-          "sender": "Yarim",
-          "text": "Yoksa no sevişme",
-          "time": "12:33"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Neyse oturdum ben yemeğe askim yiyom taam 😚😚",
-          "time": "12:34"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "funny",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "01_anilar_batch1"
-    },
-    {
       "id": "2018-01-16-yarim-dogusu",
       "date": "2018-01-16",
-      "title": "Yarım saat — bir hitabın doğuşu",
+      "title": "Yarım saat",
       "subtitle": "kelime oyunundan kalıcı isime",
       "category": "ilkler",
       "tags": [
@@ -171,8 +99,8 @@
         "etimoloji",
         "ilk-aylar"
       ],
-      "story": "16 Ocak 2018, 18:01. Yarim'in ağzından çıkan ilk *'yarim'* aslında bir hitap değildi — *'Yarım saat mi sürdü'* diye soruyordu. Yarım. Saat. Bir zaman birimi.\n\nAma o tek harfli düşüş — *'yarım' → 'yarim'* — sonradan ikinizin sözlüğüne en kalıcı kelime olarak yerleşecek. Sekiz yıl boyunca tam **24,948 kez** tekrar edilecek; ikinizin günlük dilinin omurgası olacak. Aşkım da denecek, sevgilim de — ama *yarim*, başkalarının çiftleri arasında bu kadar yoğun kullanmadığı, size özel bir şifre. Bir kelime oyununun rastlantıyla ortaya çıkardığı bir armağan.",
-      "quote": "Yarım saat mi sürdü — Yarim",
+      "story": "16 Ocak 2018, 18:01. Yarim'in ağzından çıkan ilk 'yarim' aslında bir hitap değildi - 'Yarım saat mi sürdü' diye soruyordu. Yarım. Saat. Bir zaman birimi.",
+      "quote": "Yarım saat mi sürdü - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -200,8 +128,8 @@
         "ilk-jargon",
         "ilk-aylar"
       ],
-      "story": "17 Ocak 2018, 13:34. Yarim, Erdoğan'a yazdığı bir mesajda yeni bir sıfat denedi: *'Ne kadar tatlış oldun sen öyle 🙈.'* Bu, 'tatlı'nın bir varyantı, ama daha küçük, daha sevimli, daha çocuksu — bir maymun-eli emojisiyle taçlanmış.\n\nO gün ilk kez yazılan bu kelime sonraki sekiz yılda 95 kez daha tekrar edilecek. Erdoğan da, Yarim de birbirlerine *tatlış* diyecek — *tatlış kekik, tatlış yarim, tatlış rüyalar.* Sıradan bir Türkçe kelimenin köşesini yontmuşsunuz, kendi ağzınızda yumuşatmışsınız. İçeriden bir lakap. Sözlük girdisi: *İçten gelen, kendinizden ödünç verilmiş bir tatlılık.*",
-      "quote": "Ne kadar tatlış oldun sen öyle 🙈 — Yarim",
+      "story": "17 Ocak 2018, 13:34. Yarim, Erdoğan'a yazdığı bir mesajda yeni bir sıfat denedi: 'Ne kadar tatlış oldun sen öyle 🙈.' Bu, 'tatlı'nın bir varyantı, ama daha küçük, daha sevimli, daha çocuksu - bir maymun-eli emojisiyle taçlanmış.",
+      "quote": "Ne kadar tatlış oldun sen öyle 🙈 - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -228,8 +156,8 @@
         "ömrüm",
         "ilk-aylar"
       ],
-      "story": "24 Ocak 2018, gece 00:36. Arşivde bu cümlenin ilk tam haliyle yazıldığı an: *'Bende seni seviyorum iyi uykular ömrüm 😚😚😚.'* Yarim yazıyor; öncesi bilinmiyor — büyük olasılıkla Erdoğan'ın iyi geceler dileğine cevap. *Ömrüm.* O kelime de, *seni seviyorum* gibi, sonraki yıllarda dönüp dönüp tekrar gelecek; akşam dileklerinin altın anahtarı olacak.\n\nO geceden sonra arşivde bu cümle, bu kelime kombinasyonu — 'seni' + 'seviyorum' — tam **49 kez** açık halde geçer. Ama gerçek 'seni seviyorum' sayısı çok daha fazla, çünkü birçok varyant var: *çok seviyorum, seviyorum seni, seviyorumzz, sevyrm.* Aşkın bir sözcüğü değil, bir morfolojisi.",
-      "quote": "Bende seni seviyorum iyi uykular ömrüm 😚😚😚 — Yarim",
+      "story": "24 Ocak 2018, gece 00:36. Arşivde bu cümlenin ilk tam haliyle yazıldığı an: 'Bende seni seviyorum iyi uykular ömrüm 😚😚😚.' Yarim yazıyor; öncesi bilinmiyor - büyük olasılıkla Erdoğan'ın iyi geceler dileğine cevap. Ömrüm.",
+      "quote": "Bende seni seviyorum iyi uykular ömrüm 😚😚😚 - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -246,49 +174,6 @@
       "_batch": "01_anilar_batch1"
     },
     {
-      "id": "2018-01-28-son-metroya-iniyorum",
-      "date": "2018-01-28",
-      "title": "Son metroya iniyorum",
-      "subtitle": "1165 mesajlık günün son üç kelimesi",
-      "category": "kucuksey",
-      "tags": [
-        "marmaray",
-        "metro",
-        "buluşma",
-        "geç-saat",
-        "kadıköy"
-      ],
-      "story": "Arşivin **rekor günü** — 1,165 mesaj. Sabah 00:01'den geceye kadar, kıskançlık konuşmasıyla başlayıp ('Cem'in arkadaş ortamı', 'Tanımadığınla içme'), bilgisayar arıza çözümlemesiyle devam edip, akşam karşılaşmaya kadar uzanan upuzun bir gün. Aralarda 'Pantolon niye giydin aşk?' gibi minik sıcaklıklar, 'erkeğin içmesi farklı' gibi tartışmalı satırlar, sonra dakikalarca süren teknik sohbetler.\n\nAma günün sonunda 22:37'de Yarim sadece üç kelime yazıyor: *'Son metroya iniyorum.'* Erdoğan iki saniye sonra: *'Taam geldim zaten.'* Sonra *'Aşağı indim sovuk'*. Karşılaşma. Buluşma. Marmaray'dan inen bir kadın, üşüyen, onu bekleyen bir adam. Konum daha sonra geldi — Kadıköy, Osmanağa Mahallesi, Vahap Bey Sokak. *Timsahlı yer*, ikinin de bildiği bir Starbucks. Ne kadar uzun olursa olsun gün, son söz hep buluşmadır bu sohbette.",
-      "quote": "Son metroya iniyorum. — Yarim",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Son metroya iniyorum",
-          "time": "22:37"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Taam geldim zaten",
-          "time": "22:37"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Aşağı indim sovuk",
-          "time": "22:40"
-        }
-      ],
-      "location": {
-        "name": "Kadıköy / Vahap Bey Sokak",
-        "context": "Starbucks/Timsahlı yer — sık buluşma noktası"
-      },
-      "song_ref": null,
-      "mood": "bittersweet",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "01_anilar_batch1"
-    },
-    {
       "id": "2018-02-12-erdogan-usumesin",
       "date": "2018-02-12",
       "title": "Erdoğan üşümesin",
@@ -300,8 +185,8 @@
         "üşüme",
         "bakım"
       ],
-      "story": "12 Şubat 2018, gece yarısını yedi dakika geçiyor. Yarim arkadaş ortamında bir yerlerde, ama aklı evde. Üç tane peşpeşe mesaj atıyor — anlamsız harfler arası bir niyet titreşiyor: *'Yapayım da döneyim. Erdoğan üşümesin. Sonra Merve bana carlar.'*\n\n'Erdoğan üşümesin.' Üç kelime, ama içinde bir hayat var. Bir adamın üşümeyeceği bir yere gitmek için acele eden bir kadın. Aşkın temel grameri böyle bir cümle aslında — sıfat fiil değil, gerek koşulu: *üşümemek için var olmak.* Aynı gün gece 23:25'te Yarim Erdoğan'a yazıyor: *'Öpüyorum kocamaaann 😚😚😚.'* Henüz koca değil. Henüz nişan da yok. Ama söz çoktan kurulmuş.",
-      "quote": "Erdoğan üşümesin. — Yarim",
+      "story": "12 Şubat 2018, gece yarısını yedi dakika geçiyor. Yarim arkadaş ortamında bir yerlerde, ama aklı evde. Üç tane peşpeşe mesaj atıyor - anlamsız harfler arası bir niyet titreşiyor: 'Yapayım da döneyim. Erdoğan üşümesin. Sonra Merve bana carlar.'",
+      "quote": "Erdoğan üşümesin. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -339,8 +224,8 @@
         "burun",
         "hayatımın-anlamı"
       ],
-      "story": "14 Şubat 2018'in dakikası daha yeni 21 olmuştu ki Erdoğan dayanamıyor: *'Sevgililer günü kutlicaktim amaaaaa. Uyumussun :('* Ama Yarim de uyumamış. *'Uyumadım bitanem. Uyanığım.'* Gece yarısı 00:25.\n\nBunlar yan yana yatakta değiller — sadece ekrandan birbirlerine sarılıyorlar. Ortada bir tartışma açılıyor: kim daha güzel? Yarim, Erdoğan'ın burnunun çok güzel olduğunu söylüyor — *'Çocuğumuzun bi burnunun düzgün olucağını düşünüyorum zaten.'* Erdoğan karşı çıkıyor: *'Benimki senden ötürü güzel.'* Yarim ısrarcı: *'Ne alakası var boklum.'*\n\nVe gecenin tılsımı 00:39'da kuruluyor — Erdoğan dört satırlık bir uyku duası yazıyor:\n\n*Uyu sevgilim benim*  \n*Uyu güzelim*  \n*Uyu herşeyim*  \n*Uyu hayatımın anlamı*\n\nYarim cevap veriyor: *'Oy ağzını yerim. Bunların yarın yüzyüze duymak istiyorum.'* Sevgililer Günü ekrandan başladı, gündüz yüz yüze tamamlanacaktı.",
-      "quote": "Uyu sevgilim benim. Uyu güzelim. Uyu herşeyim. Uyu hayatımın anlamı. — Erdoğan",
+      "story": "14 Şubat 2018'in dakikası daha yeni 21 olmuştu ki Erdoğan dayanamıyor: 'Sevgililer günü kutlicaktim amaaaaa. Uyumussun :(' Ama Yarim de uyumamış. 'Uyumadım bitanem. Uyanığım.' Gece yarısı 00:25.",
+      "quote": "Uyu sevgilim benim. Uyu güzelim. Uyu herşeyim. Uyu hayatımın anlamı. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -389,8 +274,8 @@
         "yatak",
         "ev"
       ],
-      "story": "603 mesajlık bir gün — Erdoğan, Yarim'e bir yerde *'Heranin bok yolunda bir yere geldik aşk'* diyor. Eşya taşınıyor, kutular sürükleniyor. Yarim klasik espri biçimini açıyor: *'Hareket ettirdiğin kutunun rüzgarı geldi mi pert.'* Erdoğan bir adım ileri gidiyor: *'Vücut geride.'* Komik mi? Hayır. Komedyen mi? Asla. Ama ikisinin omuzlarını okuduğunuzu hissediyorsunuz — biri kutuyu fırlatmaya kalkışıp omzunu çekmiş, diğeri uzaktan dalga geçmiş. \n\nGünün diğer kısımlarında konum at, fotoğraf gönder, *'Pozitif fotolar'* gibi minik notlar dolanıyor. Hayatın detayları taşıyor — sevgili olalı sadece üç buçuk ay. Hâlâ birbirinin gününe dair her küçük detayı bilmek istiyorlar.",
-      "quote": "Hareket ettirdiğin kutunun rüzgarı geldi mi pert. — Yarim",
+      "story": "603 mesajlık bir gün - Erdoğan, Yarim'e bir yerde 'Heranin bok yolunda bir yere geldik aşk' diyor. Eşya taşınıyor, kutular sürükleniyor. Yarim klasik espri biçimini açıyor: 'Hareket ettirdiğin kutunun rüzgarı geldi mi pert.' Erdoğan bir adım ileri gidiyor: 'Vücut geride.",
+      "quote": "Hareket ettirdiğin kutunun rüzgarı geldi mi pert. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -423,8 +308,8 @@
         "uyku",
         "şefkat"
       ],
-      "story": "24 Şubat 2018 sabahı, Erdoğan mesaja şu şekilde başlıyor: *'Keşke beni uyandirsaydin ya fark etmedim uyuyamadigini bok gibi hissettim 😔.'* Yarim açıklıyor: *'Bende beklemiyodum bu kadar uyuyamamayı garip oldu.'* Erdoğan iki kelime ekliyor: *'Bi daha böyle olursa uyandır lütfen.'*\n\n789 mesajlık bu gün, bir şey kaynamış olduğunu söylüyor — hem yanlış anlama, hem üzüntü, hem birinin diğerinden uzaklaştığını hissetmesi. Akşam 14:40'ta Erdoğan farklı bir kayıt giriyor: *'Belli ki biraz kırgınsın bana biraz da kızgın olabilir / Üstüne gelmiyorum / Ama seni cidden çok seviyorum.'* Bu üç satır o günün omurgası: *seni cidden çok seviyorum.* \n\nGece bitmeden iki taraf da odasına çekiliyor. Yarim 23:59'da: *'Benlik bi şey yok odaya geçtikten sonra.'* Erdoğan: *'İyit o zaman odaya geçince ara konuşalım 🤗.'* Bittersweet ama tatlı — barışma, gece odasının sessizliğinde bir telefon görüşmesiyle.",
-      "quote": "Belli ki biraz kırgınsın bana biraz da kızgın olabilir / Üstüne gelmiyorum / Ama seni cidden çok seviyorum. — Erdoğan",
+      "story": "24 Şubat 2018 sabahı, Erdoğan mesaja şu şekilde başlıyor: 'Keşke beni uyandirsaydin ya fark etmedim uyuyamadigini bok gibi hissettim 😔.' Yarim açıklıyor: 'Bende beklemiyodum bu kadar uyuyamamayı garip oldu.' Erdoğan iki kelime ekliyor: 'Bi daha böyle olursa uyandır lütfen.'",
+      "quote": "Belli ki biraz kırgınsın bana biraz da kızgın olabilir / Üstüne gelmiyorum / Ama seni cidden çok seviyorum. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -463,7 +348,7 @@
         "yürüyüş",
         "baraber"
       ],
-      "story": "Mart başı, hava ilk dönüşünü yapıyor. 378 mesajlık bu gün, 6 farklı yerde 'romantic ifade', 4 farklı yerde 'buluşma' işareti taşıyor — yani fiilen birlikte vakit geçiriyorlar. Karşılaştıkları yer büyük ihtimalle Kadıköy, çünkü o aralar sürekli oraya geldikleri o vapur duraklarından, Vahap Bey Sokak Starbucks'ından bahsediyorlar. *'Sirkeci İstasyonu'* ve *'Levent'* gibi noktalar da bu hafta geçiyor — birinde işten dönüş, diğerinde kahve molası.\n\nMart 2018'i WhatsApp arşivi 5,327 mesajla geçiriyor. Demek ki ne kadar buluşurlarsa buluşsunlar, hâlâ aralarda yazışacak çok şey kalıyor. Bu o döneme has bir cömertlik: tüm gün hiç paylaşılmamış küçük bir sokak hayvanı bile fotoğraflanıp gönderiliyor.",
+      "story": "Mart başı, hava ilk dönüşünü yapıyor. 378 mesajlık bu gün, 6 farklı yerde 'romantic ifade', 4 farklı yerde 'buluşma' işareti taşıyor - yani fiilen birlikte vakit geçiriyorlar.",
       "quote": null,
       "whatsapp_excerpt": [],
       "location": {
@@ -489,8 +374,8 @@
         "öğüt",
         "şefkat"
       ],
-      "story": "22 Nisan 2018, gece yarısı yaklaşıyor. Yarim yorgun, video izliyor, Erdoğan ona *'Tamam aşk sen yat'* diyor. Sonra ekliyor: *'Ben video izliyorum.'* İki saat sonra Erdoğan dışarı çıkıyor — *'Ya evden çıkıyorum şu an. Aklıma geldi. O yüzden sordum.'*\n\nGünün sonunda 23:59'da, üç saniye arayla üç mesaj geliyor:\n\n*'Yapicagin şeyler kafada otomatiklessin.'*  \n*'Arabaya dikkatini vermek zorunda kalma.'*  \n*'Burda dediğim gibi.'*\n\nKonu artık gündelik değil — Yarim sürüş öğreniyor olabilir, ya da yeni bir araba/yol konuşulmuş. Erdoğan tipik tavrıyla: dikkati istemiyor istemediğin yerden alsın. *Otomatikleşsin.* Bu, ileride binlerce kez tekrarlanacak bir Erdoğan kalıbı: 'önce zihnini düzenle, sonra hareketi düşün'. 630 mesajlık günün gizli felsefesi bu üç satırda.",
-      "quote": "Yapacağın şeyler kafada otomatikleşsin. Arabaya dikkatini vermek zorunda kalma. — Erdoğan",
+      "story": "22 Nisan 2018, gece yarısı yaklaşıyor. Yarim yorgun, video izliyor, Erdoğan ona 'Tamam aşk sen yat' diyor. Sonra ekliyor: 'Ben video izliyorum.' İki saat sonra Erdoğan dışarı çıkıyor - 'Ya evden çıkıyorum şu an. Aklıma geldi. O yüzden sordum.'",
+      "quote": "Yapacağın şeyler kafada otomatikleşsin. Arabaya dikkatini vermek zorunda kalma. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -523,7 +408,7 @@
         "ilk-aylar",
         "yarim-aşkım-tatlış"
       ],
-      "story": "Ocak ortasından Nisan sonuna kadar geçen 101 günde 24,932 mesaj attınız — günde ortalama 247 mesaj. Bu kadar yoğun bir iletişim, doğal olarak kendi şifrelerini de yarattı.\n\nİlk dört ayda ortaya çıkan kelimelerden bazıları: *yarim* (ilk: 16 Oca, 'yarım saat'ten dönüşüm), *aşkım* (ilk: 15 Oca), *sevgilim* (15 Oca), *tatlış* (17 Oca, Yarim'in icadı), *bitanem*, *ömrüm* (24 Oca), *biriciğim, hayatımın anlamı* (14 Şub gece). Sonra emojiler — 😚😚😚 'kocaman öpüyorum' yerine geçen üçlü, 🤗 'sarılıyorum' anlamında, 🙃 ironik-tatlı bir bakış.\n\nKonuşma kayıtlarına özen gösteren bir okur olsa, bir kişiden diğerine geçen ilk aylarda bir 'çiftin sözlüğü'nün nasıl filiz attığını incelikle takip ederdi. Burada görüldüğü gibi: kelimelerin doğum tarihi var, frekansları var, *kim ilk söyledi* notu var. Bahçenin ilk fideleri.",
+      "story": "Ocak ortasından Nisan sonuna kadar geçen 101 günde 24,932 mesaj attınız - günde ortalama 247 mesaj. Bu kadar yoğun bir iletişim, doğal olarak kendi şifrelerini de yarattı.",
       "quote": null,
       "whatsapp_excerpt": [],
       "location": null,
@@ -546,8 +431,8 @@
         "iyi-geceler",
         "emoji"
       ],
-      "story": "Mayıs 2018 — sevgili olalı altı ay olmuş, WhatsApp arşivi de dört aylık. Yaz nasıl başladı? Bir Çarşamba akşamı 23:38'de Yarim'in tek satırlık dileğiyle: *'Bende seni çok seviyoruuummm 😚😚.'* O 'seviyorum'un sonunda altı tane 'u' var — yazılan bir kelime değil, üfürülen bir öpücük gibi.\n\nErdoğan iki dakika sonra Yarim'i taklit ediyor: *'😚😚😴😴.'* Aralarda gün boyu konuşulmuş şeyler kalıyor — kahve etek, beyaz tişört, bir poşete koyduğu giysi. Bahar mektubu değil bunlar; günün son sayfası. Ama yaz mevsimi, dilin gevşediği, harflerin uzadığı, emojilerin çoğaldığı zaman olarak başlıyor — ve bu desen sekiz yıl sürecek.",
-      "quote": "Bende seni çok seviyoruuummm 😚😚 — Yarim",
+      "story": "Mayıs 2018 - sevgili olalı altı ay olmuş, WhatsApp arşivi de dört aylık. Yaz nasıl başladı? Bir Çarşamba akşamı 23:38'de Yarim'in tek satırlık dileğiyle: 'Bende seni çok seviyoruuummm 😚😚.",
+      "quote": "Bende seni çok seviyoruuummm 😚😚 - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -585,8 +470,8 @@
         "gezi-plani",
         "buluşma"
       ],
-      "story": "Pazar gecesi 23:42, Yarim soruyor: *'Levent'te ne yapabiliriz? Napsak?'* Erdoğan iki kelimelik cevap: *'Bende şu an onu düşünüyorum.'*\n\nİstanbul, beraber çıkmak için en lüks ama en yorucu şehir. İki tarafın eve hangi köprüden, hangi vapurdan, hangi metrodan döneceği gibi sıkıntıların yanında, şehir aynı zamanda **paylaşılması** gereken bir şey: hangi sokakta ilk kez yürüdük, hangi semti tercih ediyoruz, kahve hangi semt için iyi? Mayıs ayında ana soru bu — Kadıköy'ün ötesine geçmek, Levent gibi yepyeni bir bölgeyi paylaşmaya başlamak. Sokaklarınızın katalogu büyüyor: Kadıköy (184 mention) → Marmaray (82) → Maltepe (51) → Bağcılar (49) → Levent (16) — sıralama yıllar boyunca değişecek, ama şehrinizin haritası bu yaz çiziliyor.",
-      "quote": "Leventte ne yapabiliriz / Napsak — Yarim",
+      "story": "Pazar gecesi 23:42, Yarim soruyor: 'Levent'te ne yapabiliriz? Napsak?' Erdoğan iki kelimelik cevap: 'Bende şu an onu düşünüyorum.'",
+      "quote": "Leventte ne yapabiliriz / Napsak - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -627,8 +512,8 @@
         "is",
         "müdür"
       ],
-      "story": "21 Haziran 2018, Perşembe günü öğle saatlerinde Erdoğan dört peş peşe mesaj yazıyor: *'Günaydınn / 13-23 temmuz arası kurumu tatil yapmayı düşünüyomus müdür / Beş dk sonra toplantı yapcak / Yıllık izinden keserek yapmayı düşünüyo ama.'* Yarim'in tepkisi anında: *'Vay puşt.'*\n\nAma sonra ekleniyor: *'Sen de bişeyler ayarlarsan bişeyler yaparis.'* On günlük bir tatil penceresi açıldı — ikisi için, beraber, yaz ortasında. Bu sevgili oldukları ilk yazın ilk büyük plan haberi. Aynı gün öğleden sonra konuşma yıllık izine, müdürün yeni planına, Yarim'in dönüştürebileceği günlere kayıyor. Bir kurumun tatil takvimi sıradan bir haberdir — ama o tatilde size ait kim varsa, o haber bir armağana dönüşür.",
-      "quote": "Sen de bişeyler ayarlarsan bişeyler yaparis. — Erdoğan",
+      "story": "21 Haziran 2018, Perşembe günü öğle saatlerinde Erdoğan dört peş peşe mesaj yazıyor: 'Günaydınn / 13-23 temmuz arası kurumu tatil yapmayı düşünüyomus müdür / Beş dk sonra toplantı yapcak / Yıllık izinden keserek yapmayı düşünüyo ama.' Yarim'in tepkisi anında: 'Vay puşt.'",
+      "quote": "Sen de bişeyler ayarlarsan bişeyler yaparis. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -667,8 +552,8 @@
         "buluşma",
         "ortak-zevk"
       ],
-      "story": "7 Temmuz 2018 Cumartesi. Sabah 11:01'de Erdoğan ısrarcı: *'Aşkım geç kaliyon.'* Yarim hızlanıyor: *'Kalkrım kalktım. Hazırlanıcam hemen.'* Gün buluşmayla doluyor — birlikte hava alıyorlar, fiyat pazarlıkları yapıyorlar. Sonra gece 23:31, ekran açık, birlikte bir program izliyorlar; Erdoğan keyifli not düşüyor: *'Demet akbag sakalarken kendi şakalaniyo. Sermiyan Midyat demet akbag yaz çıkar. Şahane.'*\n\nBu detayın anlamı şu: ne izleyeceğinizi birlikte bulduğunuz, kahkahaların çift kişilik koltukta paylaşıldığı bir dönem başlamış. Sonraki yıllarda bu liste uzayacak — *Mouse* (Korean drama, Mart 2022'de geçiyor), *Wet Hot American Summer* (Mart 2019'da Erdoğan tek başına), sayısız diziler. Birlikte izleme alışkanlığı, ortak hafızanın belki en sık kullandığı kasıdır.",
-      "quote": "Demet akbag sakalarken kendi şakalaniyo. Şahane. — Erdoğan",
+      "story": "7 Temmuz 2018 Cumartesi. Sabah 11:01'de Erdoğan ısrarcı: 'Aşkım geç kaliyon.' Yarim hızlanıyor: 'Kalkrım kalktım. Hazırlanıcam hemen.' Gün buluşmayla doluyor - birlikte hava alıyorlar, fiyat pazarlıkları yapıyorlar.",
+      "quote": "Demet akbag sakalarken kendi şakalaniyo. Şahane. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -707,8 +592,8 @@
         "haziran",
         "anı"
       ],
-      "story": "19 Ağustos 2018, Pazar günü saat 17 sularında, otobüs molasında Erdoğan sigara içiyor. Çocuk yine kustu — başka bir yolcunun çocuğu, otobüste hasta olmuş. Yarim'in aklı bir önceki geziye gidiyor: *'Biz Eskişehirden dönerken bayram bitişinden sonra ki 2.mesai günü falandı.'*\n\nO geziyi (Ramazan Bayramı, 2018'in Haziran sonu) chat'te detayıyla görmüyoruz — ikisi de oradaymış, çoğu konuşma yüz yüzeydi. Ama Eskişehir, 2018 yazının iki sevgili için en az bir kere beraber gittiği bir şehir. Bu hatırlama tarzı — *'Biz dönerken'* — sevgili olduktan altı ay sonra ortaya çıkan bir hafıza dilidir: artık ortak hatıraların 'biz' kullanılan bir cümlesi var. Bahçemizin bu ay açan çiçeği: ortak hatıralarınızın eski olmaya başlaması.",
-      "quote": "Biz Eskişehirden dönerken bayram bitişinden sonra ki 2.mesai günü falandı. — Yarim",
+      "story": "19 Ağustos 2018, Pazar günü saat 17 sularında, otobüs molasında Erdoğan sigara içiyor. Çocuk yine kustu - başka bir yolcunun çocuğu, otobüste hasta olmuş. Yarim'in aklı bir önceki geziye gidiyor: 'Biz Eskişehirden dönerken bayram bitişinden sonra ki 2.mesai günü falandı.'",
+      "quote": "Biz Eskişehirden dönerken bayram bitişinden sonra ki 2.mesai günü falandı. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -739,8 +624,8 @@
         "özgüven",
         "şefkat"
       ],
-      "story": "24 Ağustos 2018, gece yarısı 00:10. Yarim aynaya bakıp ekrana yazıyor: *'Üst dudağım çok çirkin.'* Erdoğan tek satır cevap: *'Yav ben onu yerem.'*\n\nDört saat sonra, sabah 04:50'de Yarim ağrılı, hangi pozisyonda yatabileceğini düşünüyor: *'Belim içinde oturmam lazım. Üstüne uzanamam.'* Erdoğan yumuşatıyor: *'Uykuluysan olmaz aşk.'* Pratik bir bakım, romantik bir koruma. Bu küçük geçişler — birinin kendi bedenine eleştirel baktığı an, diğerinin o bedeni 'yerem' demesi — ilişkinin omuriliği. Bahçedeki en gizli toprağın derinliği: kendine güvensiz olduğun yerde sevgili olarak güvendiğin tek ses.",
-      "quote": "Yav ben onu yerem. — Erdoğan",
+      "story": "24 Ağustos 2018, gece yarısı 00:10. Yarim aynaya bakıp ekrana yazıyor: 'Üst dudağım çok çirkin.' Erdoğan tek satır cevap: 'Yav ben onu yerem.'",
+      "quote": "Yav ben onu yerem. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -774,8 +659,8 @@
         "şefkat",
         "mesafe"
       ],
-      "story": "26 Ağustos 2018 Pazar akşamı, Erdoğan annesinin yanından İstanbul'a dönmek için otobüse biniyor. 20:38'de yazıyor: *'Şimdi bindim. Annem ağlaya ağlaya bi hal oldu.'* Yarim üzülüyor: *'Çok kötü olmuş. Niçin ağlamış ki o kadar?'* Erdoğan kabul ediyor: *'Hep agliyo. Hep diyorum ağlama diye ama. Naparsin işte.'*\n\nGün sabah küçük bir kafa karışıklığıyla başlamıştı — Erdoğan gece 04:06'da uyandığında *'Seni çok seviyorum'* yazmamış olduğunu fark edip telefon açmış, Yarim de bunu ertesi sabah yakalamış: *'2'de yatıcam, 4'te seni seviyorum.'* Yarim aşağıdan dalga geçiyor, 'WhatsApp'a girip mi gördün' diye soruyor. Erdoğan'ın pozitif klasik kapanışı: *'Ya da başka biri yazmış olsa ona baksam ne fark eder ki 🙃.'*\n\nGün sonunda Yarim'in son sözü her şeyi özetliyor: *'Keşke böyle mesafeler sorun olmasa.'* Erdoğan'ın annesi şehrinden ayrılırken ağlıyor; Yarim de uzakta üzülüyor. Onları birbirine çeken sadece kendileri değil — ailelerin de gözü yaş bağı bu işin içinde.",
-      "quote": "Keşke böyle mesafeler sorun olmasa. — Yarim",
+      "story": "26 Ağustos 2018 Pazar akşamı, Erdoğan annesinin yanından İstanbul'a dönmek için otobüse biniyor. 20:38'de yazıyor: 'Şimdi bindim. Annem ağlaya ağlaya bi hal oldu.' Yarim üzülüyor: 'Çok kötü olmuş. Niçin ağlamış ki o kadar?' Erdoğan kabul ediyor: 'Hep agliyo.",
+      "quote": "Keşke böyle mesafeler sorun olmasa. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -818,8 +703,8 @@
         "eylül",
         "kayınvalide"
       ],
-      "story": "Eylül sonu 2018. Erdoğan sabah 11:28'de Yarim'e yazıyor: *'Sevgilim annemle konuştum dün. Merve'ye söyledim dedim, cenazeyi aricakti, saat geç olmuştu, annesigilin yanındaydı dedim bug...'* Sonra ekliyor: *'Sen ara, bi özlemiş de hem 🦄.'*\n\nÖğleden sonra 15:29'da Erdoğan'ın gözlemi geliyor: *'Konuşunca bile seviniyo. Ara ara aramanı bekliyo, sesini duymak istiyo, çünkü soruyo, selam söylüyo hep.'*\n\nBir ailenin sevgi vermesinin işareti, ailenin daha *biriktirme* aşamasındaki halidir: arar mıyım acaba, sesini duyabilir miyim, gelir mi bayrama? Erdoğan'ın annesi henüz Yarim için gelin değildir bu tarihte (nişanlanmaları için 3.5 yıl daha vardır), ama gelin gibi sevmektedir. Yarim'in ileride kayınvalidesi olacak bu kadın, onu *'mervecan'* gibi bir lakapla anan, doğum gününde 'doğmadın ki sen' şakası yapan, evdeki bahçeden bahsederek 'sen de göreceksin gelin' diyen biri. Bahçenin ağzı en sıcak olan tarafı — ailenin kabulü — bu yaz olgunlaşıyor.",
-      "quote": "Konuşunca bile seviniyo. Ara ara aramanı bekliyo. — Erdoğan, annesi için",
+      "story": "Eylül sonu 2018. Erdoğan sabah 11:28'de Yarim'e yazıyor: 'Sevgilim annemle konuştum dün. Merve'ye söyledim dedim, cenazeyi aricakti, saat geç olmuştu, annesigilin yanındaydı dedim bug...' Sonra ekliyor: 'Sen ara, bi özlemiş de hem 🦄.'",
+      "quote": "Konuşunca bile seviniyo. Ara ara aramanı bekliyo. - Erdoğan, annesi için",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -849,7 +734,7 @@
       "id": "2018-10-14-merve-23-dogum-gunu",
       "date": "2018-10-14",
       "title": "İyi ki doğdun minnak sevgilim",
-      "subtitle": "Merve'nin 23. doğum günü — ilk birlikte",
+      "subtitle": "Merve'nin 23. doğum günü - ilk birlikte",
       "category": "yildonumu",
       "tags": [
         "doğum-günü",
@@ -857,8 +742,8 @@
         "ilk-yıl",
         "anne-şakası"
       ],
-      "story": "14 Ekim 2018, gece yarısı 02:07. Erdoğan saatlerdir uyumamış, Yarim de evde abilerle ablalarla oturuyor — telefondan tek satır geliyor:\n\n*'İyi ki doğdun minnak sevgilim, benim hayatımda olduğun için çok mutluyum, nice birlikte yaşlara 🙃.'*\n\nMerve cevap veriyor: *'Nice nice birlikte musmutlu yaşlara aşkım 😚.'* Bir saniye sonra: *'Teşekkür ederim kckdkck.'* Erdoğan'ın takılması var arasında: *'Yarın olsun, merve bura uçsunnnn.'* Yarim: *'Zaman ileri aksıııın.'*\n\nErtesi gün öğlene 12:03 — Yarim: *'Annen aradı! Heyecan öksürdüm falan bide. Gülüyorum öksürüyorum. Çok mutlu oldum musmutlu 😊😊.'* Erdoğan'ın annesi klasik şakasını yapmış: aramadığı için gücenip Yarim'i fırçalamış. Yarim: *'Arayamazsın tabii daha doğmadın ki dedi kvkskv.'* Erdoğan: *'Annem hep öyle der doğum gününde bizi aramayinca 😄😄😄.'*\n\nİlk birlikte geçirilen Merve doğum günü işte böyle başladı: gece yarısı kısa bir mektup, sabah Erdoğan'ın annesinin '*sen daha doğmadın ki*' kahkahası, ve Yarim'in *'Geleceği de düşünüyoruz bak 😊'* satırı. Bahçenin ilk doğum günü çiçeği açtı.",
-      "quote": "İyi ki doğdun minnak sevgilim, benim hayatımda olduğun için çok mutluyum, nice birlikte yaşlara. — Erdoğan",
+      "story": "14 Ekim 2018, gece yarısı 02:07. Erdoğan saatlerdir uyumamış, Yarim de evde abilerle ablalarla oturuyor - telefondan tek satır geliyor:",
+      "quote": "İyi ki doğdun minnak sevgilim, benim hayatımda olduğun için çok mutluyum, nice birlikte yaşlara. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -903,8 +788,8 @@
         "kuçu",
         "banka"
       ],
-      "story": "1 Kasım 2018, kimlikteki doğum günü. Asıl kutlama 14 Ekim'de yapılmıştı; bu gün hayatın arka planında geçti. Sabah 10:50 — Yarim bir video atmış, Erdoğan: *'Ohaaa! Çok güzel! Yedikule nerde?'* Yarim cevap veriyor: *'Karşıda. Şu lisedekilerin gitti.'* Sonra eklemek zorunda: *'Ama artık gitmem lazım.'* Erdoğan soruyor: *'Nereye gitmen lazım?'*\n\nYarim'in cevabı tam üç kelime: *'Bu kuçuyu sevmeye.'*\n\nGün öyle gidiyor — Erdoğan akşama derin doku masajı pratiği yapacak Yarim'e, Oğuz oburluğa yenik düşmüş döner söylemiş. Pantolon fermuarı açılıyor (*'Bu pantolonun fermuarı açılıyo'*). Hayatın sıradan bir Perşembesi. Ama Yarim'in kimliğindeki doğum tarihi olduğu için, aslında bu sayfa silinmedi. İki tarihi olan biriyle birlikteyseniz, ikinci kez kutlamak için bahaneniz var.",
-      "quote": "Bu kuçuyu sevmeye. — Yarim",
+      "story": "1 Kasım 2018, kimlikteki doğum günü. Asıl kutlama 14 Ekim'de yapılmıştı; bu gün hayatın arka planında geçti. Sabah 10:50 - Yarim bir video atmış, Erdoğan: 'Ohaaa! Çok güzel! Yedikule nerde?' Yarim cevap veriyor: 'Karşıda. Şu lisedekilerin gitti.",
+      "quote": "Bu kuçuyu sevmeye. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -941,8 +826,8 @@
         "şirin",
         "ilk-yıl"
       ],
-      "story": "Yıldönümünün iki gün öncesi, 3 Kasım 2018 gece yarısı 01:25. Erdoğan iyi geceler diliyor, Yarim cevap veriyor — sözcükler bitince emoji defilesi başlıyor. Erdoğan üst üste gönderiyor: *'🦄🦄🦄 / 👻👻👻 / 🐣🐣🐣.'* Yarim cevabını yine üç emojiyle veriyor: *'💃🏽💃🏽💃🏽 / 😴✨.'*\n\nNe yazılıyor? Hiçbir şey, ya da her şey. *Sen benim tek boynuzlu atımsın. Sen benim hayalet ürküntümsün. Sen benim cıvıl cıvıl civcivimsin* — bunlar Türkçe'de söylenmiyor, küçük resimlerde söyleniyor. Emoji, ortak bir çiftin sözlüğünde özel bir bölüm: *kelime'nin yetmediği yerde sembol.* WhatsApp'ın görsel alfabesi, ikinizin elinde alaycı, sevecen, biraz acayip bir el yazmasına dönüşmüş.",
-      "quote": "🦄🦄🦄 / 👻👻👻 / 🐣🐣🐣 — Erdoğan",
+      "story": "Yıldönümünün iki gün öncesi, 3 Kasım 2018 gece yarısı 01:25. Erdoğan iyi geceler diliyor, Yarim cevap veriyor - sözcükler bitince emoji defilesi başlıyor. Erdoğan üst üste gönderiyor: '🦄🦄🦄 / 👻👻👻 / 🐣🐣🐣.' Yarim cevabını yine üç emojiyle veriyor: '💃🏽💃🏽💃🏽 / 😴✨.'",
+      "quote": "🦄🦄🦄 / 👻👻👻 / 🐣🐣🐣 - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -982,7 +867,7 @@
       "id": "2018-11-05-1-yildonumu",
       "date": "2018-11-05",
       "title": "Akşama yemeği bir yerde yiyelim mi",
-      "subtitle": "1. yıldönümü — Kadıköy'de bir restoran avı",
+      "subtitle": "1. yıldönümü - Kadıköy'de bir restoran avı",
       "category": "yildonumu",
       "tags": [
         "yıldönümü",
@@ -991,8 +876,8 @@
         "restoran",
         "anchor"
       ],
-      "story": "5 Kasım 2018 — beraber olmanızın ilk yılını dolduran gün. Erdoğan öğleden sonra 13:53'te yazıyor: *'Sevgilim, akşama yemeği bir yerde yiyelim mi? Çok sevimli bir iki yer baktım da.'*\n\nKadıköy çevresinde bir restoran avı başlıyor. Önce *Lâl Kadıköy Merkez* — Zomato linki geliyor, Yarim bakıp diyor: *'Lezzet olarak ortalamaymış, ama mekan çok tatlışmış.'* Sonra Erdoğan *Moda Sahil Restaurant* öneriyor — Yarim yorumları okuyup uyarıyor: *'Uzun zamandır İstanbul'da bu kadar kötü ve fahiş bir yere rastlamamıştık.'* Erdoğan: *'Ohaaa.'*\n\nYarim'in çerçeveyi koyan cümlesi: *'Çok para harcamayalım aşk, gerek yok.'* Bu, on bir farklı sebebe sahip bir cümle: hem ekonomik hem aşk dolu, hem 'mekanın markası bizi tanımlamaz' diyen, hem 'ben ucuz olanı aramaya razıyım, çünkü o yer biz olduğumuzda yeter' diyen bir cümle. \n\nAkşam Lâl'de buluştular muhtemelen. Gecenin sonunda, 20:50'de Yarim 14 fotoğrafı peş peşe gönderiyor — yemekten, mekanın atmosferinden, ortak gecenizin görüntüleri. WhatsApp'ta *'görüntü dahil edilmedi'* görüntü dahil edilmedi, dahil edilmedi... — ama gerçek bahçede kaldılar. Bir yıl olmuştu.",
-      "quote": "Çok para harcamayalım aşk, gerek yok. — Yarim",
+      "story": "5 Kasım 2018 - beraber olmanızın ilk yılını dolduran gün. Erdoğan öğleden sonra 13:53'te yazıyor: 'Sevgilim, akşama yemeği bir yerde yiyelim mi? Çok sevimli bir iki yer baktım da.'",
+      "quote": "Çok para harcamayalım aşk, gerek yok. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -1039,8 +924,8 @@
         "şefkat",
         "günlük-hayat"
       ],
-      "story": "5 Aralık 2018, öğleden sonra 13:03. Yarim'in maaş hesabında bir yanlışlık var — eksik gelmiş. Yarim sinirli: *'Bildiğin oturup her iş gününe sabah 8 akşam 17.30 yazıp, üstüne her güne imza atıyorum, sonra o tabloyu veriyorum. Gidip karta bakmışlar.'*\n\nErdoğan'ın cevabı tipik bir Erdoğan sahiplenmesi: *'Bana şu an vermen acil mi merve, sanki saçma sapan düşünme.'* Sonra: *'Adam sana sordu bi de bu yetiyo mu diye yani.'* Yarim'in *'Sana 700 vericem geriye 157 lira kalıyo'* diye paniklediği cümlede Erdoğan boyun eğmiyor: kendisinin acil ihtiyacı yok, asıl mesele Yarim'in kendi haklarının savunulması.\n\n538 mesajlık bu günün gece sonu sıcak: 23:46 — *'Bitanem, ben uyuyom. Seni herseyden çok seviyorum hayatımın anlamı 🙃. Tatlı mutlu gusel rüyalar 😚😚😚.'* Birinin maaşını başka birinin sahiplenmesi, bahçenin ortak toprağı bakımıdır. *Sen yetiyo mu* sorusuna gözünü kırpmadan *'sen yetiyorsun bana'* demek demektir.",
-      "quote": "Bana şu an vermen acil mi merve, sanki saçma sapan düşünme. — Erdoğan",
+      "story": "5 Aralık 2018, öğleden sonra 13:03. Yarim'in maaş hesabında bir yanlışlık var - eksik gelmiş. Yarim sinirli: 'Bildiğin oturup her iş gününe sabah 8 akşam 17.30 yazıp, üstüne her güne imza atıyorum, sonra o tabloyu veriyorum. Gidip karta bakmışlar.'",
+      "quote": "Bana şu an vermen acil mi merve, sanki saçma sapan düşünme. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1083,8 +968,8 @@
         "şefkat",
         "günlük-bakım"
       ],
-      "story": "31 Aralık 2018, sabah 07:47. Yarim daha işe gitmek için evden çıkıyor; Erdoğan'a kısa bir not bırakıyor:\n\n*'Aşkım sigaranı ve orada bulduğum beyaz çakmağı aldım.'*  \n*'Sana dönerken sigara alırım.'*  \n*'Giderken uğraşmayayım dedim geç kalıyorum diye, öpüyorum güzel yüzünün her zerresinden 😚♥️😚.'*\n\nErdoğan iki saat sonra uyanınca: *'Önemi yok bitanem, ben de çok öpüyorummmm 😍.'*\n\n2018'in son günü böyle başlıyor — sigarayı alıp çakmağı yerleştirip evden çıkan biri, dönüşte alacağı söz veren bir kadın, geç saatte uyanan ve sevdiğine 'önemi yok' diye gerinen bir adam. Bu yıl WhatsApp arşivinde tam **60,273 mesajlık** bir yıl olmuş — ortalama günde 165 mesaj. Yıl başlamadan WhatsApp da yoktu hayatınızda; bir yıl sonra her sabah ilk yazı, son yazıyı ona yazdığınız bir alışkanlık. 'Sigaranı aldım' demek artık 'iyi günler' demek anlamına geliyor.\n\nGece, yılın son saatlerinde Cem'lerdeydiniz. Yarim 19:57'de yarı şaka yarı sarhoş yazıyor: *'Maybe / Maybe not / Ofcourse / Who now / Gafam güzel.'* Erdoğan kısaca: *'Hadi bakam.'* Birinci yıl bitti.",
-      "quote": "Öpüyorum güzel yüzünün her zerresinden 😚♥️😚 — Yarim",
+      "story": "31 Aralık 2018, sabah 07:47. Yarim daha işe gitmek için evden çıkıyor; Erdoğan'a kısa bir not bırakıyor:",
+      "quote": "Öpüyorum güzel yüzünün her zerresinden 😚♥️😚 - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1123,7 +1008,7 @@
       "id": "2019-02-14-2-sevgililer-jedi-dogumu",
       "date": "2019-02-14",
       "title": "Senle vakit geçirmek istiyorum",
-      "subtitle": "İkinci Sevgililer Günü — başka bir yerde, küçük bir kedi doğuyor",
+      "subtitle": "İkinci Sevgililer Günü - başka bir yerde,...",
       "category": "yildonumu",
       "tags": [
         "sevgililer-günü",
@@ -1131,8 +1016,8 @@
         "jedi-doğum",
         "pınar"
       ],
-      "story": "14 Şubat 2019. Bu ikinci Sevgililer Günü. Aynı gün, dünyanın bir başka köşesinde — henüz kimsenin haberi olmadan — küçük bir tekir kedi doğuyor. Adı henüz konmamış. Sonradan o kedi *Jedi* olacak ve sizin ailenizin üçüncü üyesi haline gelecek. Bunun bilincinde olmadan yaşadığınız bir gün.\n\nÖğleyin Yarim'in arkadaşı Pınar mesaj atıyor: *'Bugün napıyosun?'* Erdoğan biraz tepkili: *'Pınar'ın sorusu da biraz nahoş yani. 14 Şubat'ta bugün napiyosun ayıp değil mi biraz.'* Yarim sakin: *'Aşk niye bu kadar tepkilisin ki?'* Erdoğan açıklıyor:\n\n*'Ne yaparsak yapalım, istersek boş duvara bakalım, yine de senle vakit geçirmek istiyorum, çünkü.'*\n\nGün Pınar'ın taşınması, Ömer'in geçişi gibi başka şeylerle dolacak. Akşam buluşacaklar (*'Geluyooom'*), Yarim'in gülüşü Erdoğan'ı yine teslim alacak (*'O gülüşü yerim beee'*). Boş bir duvara bile bakacak olsalar yine birlikte olmak isteyen iki kişi — ve uzaklarda bir yerde, henüz tanımadıkları bir kedi nefes alıyor.",
-      "quote": "Ne yaparsak yapalım, istersek boş duvara bakalım, yine de senle vakit geçirmek istiyorum. — Erdoğan",
+      "story": "14 Şubat 2019. Bu ikinci Sevgililer Günü. Aynı gün, dünyanın bir başka köşesinde - henüz kimsenin haberi olmadan - küçük bir tekir kedi doğuyor. Adı henüz konmamış. Sonradan o kedi Jedi olacak ve sizin ailenizin üçüncü üyesi haline gelecek.",
+      "quote": "Ne yaparsak yapalım, istersek boş duvara bakalım, yine de senle vakit geçirmek istiyorum. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -1171,8 +1056,8 @@
         "kuçu-istegi",
         "öncesi"
       ],
-      "story": "31 Mart 2019, Pazar sabahı 11:24. Yarim ekrana yazıyor:\n\n*'Sen istemiyo musun Kübralardaki pofuduğu?'*  \n*'Ve dediğin gibi her yer yavru kedi dolu ya.'*\n\nErdoğan dört dakika sonra cevap veriyor: *'İstiyorum aşk. Ama gördüğüm her kediyi istiyorum yani 😅.'* Yarim de bir başka ilanın peşinde: *'Bende casperın ilanına bakınıyorum. Bulamıyorum.'* Bir fotoğraf gönderiyor sonra — sokakta gördüğü bir yavru kedi muhtemelen.\n\nNe Yarim ne Erdoğan biliyor, ama o günün akşam saatlerinde hayatları değişecek. Kararı vermeden önceki bu son sabah, *'her yer yavru kedi dolu ya'* diyen iki insanın bir kedi kurtarmak için kapıya kadar gelmesi. Bahçenin üçüncü tohumu, henüz toprağa düşmedi — ama hafriyat hazırlıkları başlamış, çukur kazılmış.",
-      "quote": "Sen istemiyo musun Kübralardaki pofuduğu? — Yarim",
+      "story": "31 Mart 2019, Pazar sabahı 11:24. Yarim ekrana yazıyor:",
+      "quote": "Sen istemiyo musun Kübralardaki pofuduğu? - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1202,7 +1087,7 @@
       "id": "2019-03-31-jedi-geliyor",
       "date": "2019-03-31",
       "title": "Jedi geldi",
-      "subtitle": "ailenin üçüncü üyesi — bir tekir küçük",
+      "subtitle": "ailenin üçüncü üyesi - bir tekir küçük",
       "category": "jedi",
       "tags": [
         "jedi",
@@ -1211,8 +1096,8 @@
         "anchor",
         "kedi"
       ],
-      "story": "31 Mart 2019. Sabah Pofuduk muhabbeti, akşam kararın verildiği gece. Gün boyu konu kayboluyor: Mustafa Yusuf'un doğum günü pastası, Yiğit'in videosu, Hikmet'in mesajı, Pınar ve Ahmet'in ziyareti, akşam küçük bir gerginlik (*'Ben bu tavrını doğru bulmuyorum'*, *'fazlalık gibi hissetmeye başladım'*). Saat 23:01'de Yarim *'Okey'* diyor — gün barışıyla kapanıyor.\n\nVe gece yarısına geçişin sonrasında, **Jedi** kelimesi WhatsApp arşivinde **ilk kez** görünüyor. 23:01 Yarim'in son *'Okey'*'ini takip eden saatlerde, 6 haftalık küçük bir tekir kedi (14 Şubat 2019 doğumlu) Pınar ve Ahmet'in elinden ya da başka bir kanaldan gelip eve giriyor. Ertesi gün, 1 Nisan 2019 saat 14:29, Erdoğan bir IBAN paylaşıyor — *TR46 0006 2000 7420 0006 8999 64* — büyük olasılıkla Jedi için yapılan bir ödemenin koordinasyonu.\n\nBundan sonraki yedi yıl boyunca *jedi* kelimesi tam **491 kez** geçecek bu sohbette. Yarim onu *'jedikun, jedikım, kızımız, mongo, bok'* gibi yumuşak takma adlarla anacak. Erdoğan ona *'jedi a'* diye çağıracak. *'Sabah jedi yine deli gibiydi'*, *'Mama koydun mu jedi a'*, *'Jedi cosplay'*, *'Jedi geldi mik mik'* — bahçenin üçüncü ve en gürültülü kedi otu, bu gece toprağa düştü.",
-      "quote": "Jedi a — Erdoğan, kızlarına seslenirken (491 kez tekrarlayacağı seslenme)",
+      "story": "31 Mart 2019. Sabah Pofuduk muhabbeti, akşam kararın verildiği gece. Gün boyu konu kayboluyor: Mustafa Yusuf'un doğum günü pastası, Yiğit'in videosu, Hikmet'in mesajı, Pınar ve Ahmet'in ziyareti, akşam küçük bir gerginlik ('Ben bu tavrını doğru bulmuyorum', 'fazlalık gibi...",
+      "quote": "Jedi a - Erdoğan, kızlarına seslenirken (491 kez tekrarlayacağı seslenme)",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1246,7 +1131,7 @@
       "id": "2019-04-12-jedi-vet",
       "date": "2019-04-12",
       "title": "Cumartesi jedi'yı vete bıraktıktan sonra",
-      "subtitle": "ilk vet randevusu — sahip olmanın aciliyetleri",
+      "subtitle": "ilk vet randevusu - sahip olmanın aciliyetleri",
       "category": "jedi",
       "tags": [
         "jedi",
@@ -1254,8 +1139,8 @@
         "ilk-bakım",
         "sahiplenme"
       ],
-      "story": "12 Nisan 2019, Cuma. Jedi geleli sadece on iki gün olmuş. Yarim öğleden sonra 13:42'de kararı paylaşıyor: *'Cumartesi jedi'yı vete bıraktıktan sonra eve geçicem aşk.'*\n\nBu sıradan bir cümle gibi görünüyor — randevuya götüreceğim, sonra eve geçerim. Ama Jedi ile ilk on iki günün toplamı bu cümleye sığıyor: ilk vet ziyaretine yetecek kadar bağlanmışlar, kontrol için gerekli olan şeyleri öğrenmişler, sahiplenmenin tartışmasız parçası haline gelmişler. *'Jedi'yı vete bıraktıktan sonra'* — özne *biz değil ben bile değil*, doğrudan Jedi. *Onu bıraktıktan sonra.* Bir varlık, bir program, bir sorumluluk doğmuş.\n\nO Cumartesi (13 Nisan) Jedi gerçekten vete götürülüyor. Pazar (14 Nisan) Erdoğan'ın 25. doğum günü olacak. Yani Jedi'nin sağlığı, Erdoğan'ın yaşgününden bir gün önce kontrolden geçiyor — sırayla, sevgi gibi her şeyin bir takvimi var.",
-      "quote": "Cumartesi jedi'yı vete bıraktıktan sonra eve geçicem aşk. — Yarim",
+      "story": "12 Nisan 2019, Cuma. Jedi geleli sadece on iki gün olmuş. Yarim öğleden sonra 13:42'de kararı paylaşıyor: 'Cumartesi jedi'yı vete bıraktıktan sonra eve geçicem aşk.'",
+      "quote": "Cumartesi jedi'yı vete bıraktıktan sonra eve geçicem aşk. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1278,7 +1163,7 @@
       "id": "2019-04-14-erdogan-25-dogum-gunu",
       "date": "2019-04-14",
       "title": "Patatesli börek, acılı",
-      "subtitle": "Erdoğan'ın 25. doğum günü — ilk birlikte",
+      "subtitle": "Erdoğan'ın 25. doğum günü - ilk birlikte",
       "category": "yildonumu",
       "tags": [
         "doğum-günü",
@@ -1287,8 +1172,8 @@
         "ilk-yıl",
         "anchor"
       ],
-      "story": "14 Nisan 2019, Pazar sabahı 11:46. Yarim doğum günü dileğini gizleyerek soruyor: *'Bugün kimin doğum günüymüüüş? Ne yemek yapayım akşam? Ne istersin?'*\n\nErdoğan: *'Eneee. Aksama yemek mi yapcan? Her şeye okeyim senin elinden olunca 🙃.'* Yarim ısrar ediyor: *'Ama bi şey söylemen lazım aşkım.'* Cevap geliyor: *'Patatesli börek. Acılı falan.'* Plan tamam — Yarim 4'e doğru evde olacak, börek yapacak, Oğuz bulaşığı yıkayacak, Erdoğan süpürüp banyoya girecek. Doğum günleri, evdeki rutinin biraz daha tatlı bir versiyonu.\n\nHediye muhabbeti ardından geliyor — Yarim *Dead Cells* oyunu mu alsın, güneş gözlüğü mü? Erdoğan: *'Oyunu sal.'* Sonra Yarim onu hayretler içinde bırakıyor:\n\n*'Sen bitanesin.'*  \n*'Seni çok seviyorum bok böceğim benim.'*  \n*'İyi ki varsın.'*  \n*'İyi ki beraberiz.'*  \n*'Yaşattığın yaşacağımız her şey için teşekkür ederim.'*  \n*'Çok ama çok seviyorum çok çok.'*\n\nErdoğan kendini şaka tonuna sığınmaya çalışıyor: *'Yaşattığın hayatı sikem gibi bi giriş olmuş 🐥🐥🐥🐥. Ben de sana çok aşığım cooooook.'* İlk birlikte geçen Erdoğan doğum günü — hediye sade, yemek ev usulü, sözler hayatın anlamına dair. Bahçenin nisan çiçekleri.",
-      "quote": "Sen bitanesin. İyi ki varsın. İyi ki beraberiz. Yaşattığın yaşacağımız her şey için teşekkür ederim. — Yarim",
+      "story": "14 Nisan 2019, Pazar sabahı 11:46. Yarim doğum günü dileğini gizleyerek soruyor: 'Bugün kimin doğum günüymüüüş? Ne yemek yapayım akşam? Ne istersin?'",
+      "quote": "Sen bitanesin. İyi ki varsın. İyi ki beraberiz. Yaşattığın yaşacağımız her şey için teşekkür ederim. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1333,8 +1218,8 @@
         "hastane",
         "aile"
       ],
-      "story": "22 Nisan 2019. Sabah saatlerinde Yarim'in hayatında iki ayrı endişe paralel yürüyor. Bir taraftan biri (büyük ihtimalle bir aile büyüğü) anjiyoda; tansiyonu düşüyor, rengi atıyor, doktorlar odaya doluşuyor, Yarim odadan çıkarılıyor. *'Aşırı korktum. Ödüm koptu. 10 yıl gitti. 15-20.'*\n\nDiğer taraftan, Erdoğan evden Jedi'yi merak ediyor. Yarim hastaneden 12:36'da yazıyor: *'Hikmet vardı aşk, jediyla ilgili cevap veremedim o yüzden. Hâlâ basamıyo mu?'* Erdoğan'ın cevabı şefkatli ama gerçekçi: *'Koşarken belli olmuyo, hızlı diye galiba. Ama kalktığında uyandığında çok basmıyo aşk.'*\n\nBu, sahiplenmenin doğal hali: bir yandan kendi insanlarının sağlığı için titriyorsunuz, bir yandan da küçücük bir kedi yavrusunun patisi için. Jedi'nin pati problemi geçici çıkacak, anjiyodaki hasta da düzelecek. Ama o sabah Yarim'in nabzının iki ayrı yerde aynı anda atması — bu, *anne olmak* demektir. Bahçedeki her canlının nabzını kendi nabzı sanmak.",
-      "quote": "Hikmet vardı aşk, jediyla ilgili cevap veremedim o yüzden. Hâlâ basamıyo mu? — Yarim, hastaneden",
+      "story": "22 Nisan 2019. Sabah saatlerinde Yarim'in hayatında iki ayrı endişe paralel yürüyor. Bir taraftan biri (büyük ihtimalle bir aile büyüğü) anjiyoda; tansiyonu düşüyor, rengi atıyor, doktorlar odaya doluşuyor, Yarim odadan çıkarılıyor. 'Aşırı korktum. Ödüm koptu. 10 yıl gitti.",
+      "quote": "Hikmet vardı aşk, jediyla ilgili cevap veremedim o yüzden. Hâlâ basamıyo mu? - Yarim, hastaneden",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1367,7 +1252,7 @@
       "id": "2019-04-22-jedi-bastı-viraz",
       "date": "2019-04-22",
       "title": "Jedi Bastı VIRAZ",
-      "subtitle": "patilerin tutması — küçük bir zafer",
+      "subtitle": "patilerin tutması - küçük bir zafer",
       "category": "jedi",
       "tags": [
         "jedi",
@@ -1375,8 +1260,8 @@
         "tutma",
         "küçük-mucize"
       ],
-      "story": "Aynı gün akşam 19:54. Erdoğan tek satır yazıyor — ne giriş ne çıkış, sadece şu:\n\n***'Jedi Bastı VIRAZ'***\n\nO sabah patilerine sıkıntılı basan kedi, akşama doğru yere normal basabiliyor. *VIRAZ* (=Bravo, başardı) — internet jargonu olarak Türkçeye geçen, bir oyunda zafer kutlama refleksi. Jedi'nin küçücük adımları, virtuelle giriş yapmış bir oyuncuya verilen rozet. Her iyileşme kutlanır; her küçük zafer cümle başına BÜYÜK HARFLE yazılır.\n\nBu, Jedi'nin geldiği gün ile vetin verdiği güvenin arasındaki ilk *aile-sıcağı* an. Hasta düşmüş bir varlığın iyileşmesini bayrama dönüştüren bir cümle. *'Jedi Bastı VIRAZ.'* Sekiz yıl boyunca Jedi'ye dair yüzlerce küçük zafer mesajının, küçük endişe mesajının atası bu satır. *Sabah jedi yine deli gibiydi*, *bizim kız geri zekalı*, *jedikun yarrak gibi sarılıyo*, *jedi geldi mik mik* — hepsinin nüvesi bu üç kelimede.",
-      "quote": "Jedi Bastı VIRAZ — Erdoğan",
+      "story": "Aynı gün akşam 19:54. Erdoğan tek satır yazıyor - ne giriş ne çıkış, sadece şu:",
+      "quote": "Jedi Bastı VIRAZ - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -1405,8 +1290,8 @@
         "yavru-sosyalleşme",
         "yaz"
       ],
-      "story": "16 Temmuz 2019 sabah 09:52. Yarim merak ediyor: *'Dün Hera'yla jedi yükseldi bi ara. Ben kaçırdım orayı. Noldu orada?'* Erdoğan açıklıyor: hera ile jedi karşılaşmış, ses çıkmış, korkmuşlar, biri aşağı biri odaya kaçmış. Sonra Yarim hatırlıyor: *'Yok aşk, ondan önce. Cem WC'ye gitmeden önce. Jedi Cem'in kucağındaydı. Orada heyecanlandı Hera.'*\n\nErdoğan resmi tamamlıyor: *'Hera, Jedi'la oynamak istedi. Cem'in kucağında diye. Sonra Jedi kurtuldu. Jedi da geri bastı. Hera ses yaptı, Jedi korktu.'*\n\nÜç-dört aylık Jedi'nin sosyalleşme deneyimi: başka bir hayvanın varlığı, Cem'in kucağında geçirdiği güvenli koltuk, kendi sınırlarını ses çıkararak çekmesi. Aynı gün akşam başka bir konu: yeni bir yatak alıyor olabilirler — *'200 dedi buna, öyle çekip atayım dedim. Beğenmedik, bişey pahalı söyledi. Letgoya düscez.'* Yarim'in pratik tavsiyesi: *'Aceleci davranmayalım. Düşer zamanla zaten.'* Yaz Temmuz'unda hayatın iki sahnesi paralel akıyor — yavru kedilerin oyun gerginliği, yetişkinlerin yatak fiyatı.",
-      "quote": "Hera ses yaptı, Jedi korktu. — Erdoğan",
+      "story": "16 Temmuz 2019 sabah 09:52. Yarim merak ediyor: 'Dün Hera'yla jedi yükseldi bi ara. Ben kaçırdım orayı. Noldu orada?' Erdoğan açıklıyor: hera ile jedi karşılaşmış, ses çıkmış, korkmuşlar, biri aşağı biri odaya kaçmış. Sonra Yarim hatırlıyor: 'Yok aşk, ondan önce.",
+      "quote": "Hera ses yaptı, Jedi korktu. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1445,8 +1330,8 @@
         "kucağa-alma",
         "dahşet"
       ],
-      "story": "21 Ağustos 2019, sabah 10:44. Erdoğan'ın günün açılış cümlesi tek satır: *'Sabah jedi yine deli gibiydi.'* Yarim: *'Hava yine yağmurlu, PC'yi kaldırdın mı?'*\n\nErdoğan anlatıyor: *'Sakinlessin diye kucağa falan aldım da. Sakinlesmedi. Damlayan yerin önüne yattı, onu izledi malak. Salak çocuk baya keh keh dolandı.'* Yarim aynı içgüdüyü kabul ediyor: *'Bende hep kucağıma alsam sakinleşicek gibi düşüyorum, hâlâ öyle içim. Tedirgin oluyoruz, korumak istiyoruz.'*\n\nErdoğan'ın çözümü iki sevgi tarzı arasında bir orta yol bulan bir filozof gibi: *'Üstüne gitmeyelim hiç. Sadece gelirse sevelim. Dün mesela geldi gece. Ağzıma yüzüme sürtündü baya. Sonra da ortamızda yastığın üstüne yattı.'*\n\nYazın ortasında Jedi büyümüş, deli gibi koşan, sızdıran tavanı izleyen, gece ortalarına yatan bir kedi olmuş. Bu kart aslında dört aylık bir hayvanın 'birey' olma sürecinin notu — ve onunla nasıl baş edileceğine dair iki insanın el yordamıyla bulduğu reçete. Bahçenin şımarık çiçeği.",
-      "quote": "Damlayan yerin önüne yattı onu izledi malak. — Erdoğan",
+      "story": "21 Ağustos 2019, sabah 10:44. Erdoğan'ın günün açılış cümlesi tek satır: 'Sabah jedi yine deli gibiydi.' Yarim: 'Hava yine yağmurlu, PC'yi kaldırdın mı?'",
+      "quote": "Damlayan yerin önüne yattı onu izledi malak. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -1493,8 +1378,8 @@
         "tutumluluk",
         "yarim-zaferi"
       ],
-      "story": "Aynı günün akşamı. 18:56'da Yarim üstüne kapı açar gibi yazıyor: *'Daha eve gitmedim. Takıcıya girip kolye aldım kendime. Bi de zincir.'* Sonra zaferinin altını çiziyor:\n\n*'Ve sadece 17.5 tl harcadım 3 kolye alıp.'*  \n*'Daha fazlasını almadım, tuttum kendimi.'*\n\nErdoğan onaylıyor: *'İyi iyi. Bu ara tutumluluk zamanııı.'*\n\nKendi kendine konulan sınırların gururu — bu, küçük bir cümle ama içinde bir kişinin ekonomik niyet, hayat planı, Erdoğan'la 'biz' kuran taraf olma niyeti var. Birlikte ev kurma, ileride nişan-düğün, ev eşyası alımları için *biriktirmek* hâli, daha o yıllarda kendine evrilmiş. Yarim 17.5 TL'yi 3 kolyeyle değil, 3 kolyeyle 17.5 TL'ye sığdırmış olarak — 'gel git, çekti aldı, ne kadar harcadı kendimi merak ettim ama sonra rahatladım' tarzı bir o günün rüzgârı.",
-      "quote": "Sadece 17.5 tl harcadım 3 kolye alıp. Daha fazlasını almadım, tuttum kendimi. — Yarim",
+      "story": "Aynı günün akşamı. 18:56'da Yarim üstüne kapı açar gibi yazıyor: 'Daha eve gitmedim. Takıcıya girip kolye aldım kendime. Bi de zincir.' Sonra zaferinin altını çiziyor:",
+      "quote": "Sadece 17.5 tl harcadım 3 kolye alıp. Daha fazlasını almadım, tuttum kendimi. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1524,7 +1409,7 @@
       "id": "2019-10-14-merve-24-tekerleme",
       "date": "2019-10-14",
       "title": "Kız saçını kim gördü",
-      "subtitle": "Merve'nin 24. doğum günü — Erdoğan'ın annesinden tekerleme",
+      "subtitle": "Merve'nin 24. doğum günü - Erdoğan'ın...",
       "category": "yildonumu",
       "tags": [
         "doğum-günü",
@@ -1533,8 +1418,8 @@
         "tekerleme",
         "evlilik"
       ],
-      "story": "14 Ekim 2019, Merve'nin 24. doğum günü. Sabah 11:14, Yarim eski sanat müziğinden bir tekerleme ile yazıyor:\n\n*'Bugün ayın 14'ü.'*  \n*'Kız saçını kim gördü?'*  \n*'Ördüyse Erdoğan ördü.'*  \n*'Ay karanlık kim gördü.'*\n\nErdoğan'ın annesi (kayınvalidesi olacak kadın) Yarim'i aramış, doğum gününü kutlamış, sonra eski bir tekerleme şarkısından bu mısraları söylemiş. Erdoğan duyunca gülüyor: *'Ooo, kafiye de uydurmuş 😅. Hepi bortdeeeeey.'* Sonra şüpheleniyor: *'Yok be sevgilim, tekerleme uydurmuş olabilir.'*\n\nYarim açıklıyor: *'Yok aşk, yaz dinle, şarkı var öyle. Kendi yaşından dolayı yaa.'* Sonra ekliyor: *'Bi ara evliliğe geldi konu.'* Erdoğan dikkat kesiliyor: *'Nasi geldi?'* Yarim: *'Alttan sinyal çakıyor.'* Erdoğan: *'Aaaa.'* Yarim: *'Ama kem küm edebildim sadece.'*\n\nDoğum günü kutlaması, Erdoğan'ın annesinin Yarim'e söylediği tekerleme + 'ne zaman evleniyorsunuz' sorusunun yumuşak bir şekilde alttan ima edilmesi. Kayınvalide olacak kadının her doğum gününde sabah 11'de aramayı sürdürmesi, 'çocuğum' tarzı sözcüklerle çoktan kavuşmuş bir karşılama. Akşam Erdoğan eve dönüyor, *'Ben de açım, gelince bulurum bisiler'* — pasta zaten ön gün yenmiş. Yıllar geçtikçe doğum günleri kutlaması daha basit hale geliyor; çünkü 'beraber' her gün doğum günü gibi.",
-      "quote": "Kız saçını kim gördü / Ördüyse Erdoğan ördü / Ay karanlık kim gördü — Erdoğan'ın annesinden, Yarim'e",
+      "story": "14 Ekim 2019, Merve'nin 24. doğum günü. Sabah 11:14, Yarim eski sanat müziğinden bir tekerleme ile yazıyor:",
+      "quote": "Kız saçını kim gördü / Ördüyse Erdoğan ördü / Ay karanlık kim gördü - Erdoğan'ın annesinden, Yarim'e",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1578,8 +1463,8 @@
         "ilişki-jargonu",
         "yıldönümü-öncesi"
       ],
-      "story": "3 Kasım 2019, gece yarısından sonra 01:50. Yarim sitemli: *'Hiç yazma demedim ki. Bu kadarı da biraz ayıp oldu sanki.'* Erdoğan açıklıyor: *'Sen oradayken yazma demiştin ya. Ben de ondan **comando modu** dedim.'*\n\nYarim itiraz ediyor: *'Yazma demedim. Arama dedim.'* Erdoğan kendini açıklıyor: *'Yani **kamufle** oluyorum, yazmıyorum.'* Sonra panikliyor: *'En son yazdım demeyip yaz, ya bayılsam kalsam, hi… **Pertingen** olsam…'*\n\nİki yıl olduğu için artık bir ilişki sözlüğüne de sahipsiniz: *Comando Mode* (sevgilim aile içindeyken yazışmama tedbiri), *kamufle* (sözlü olmayan bir ilgi), *pertingen* (Erdoğan'ın 'pertolup' hâlinin neşeli adı). Bu kelimeler ne romantik ne formal — bu tam ortada bir bölge: tek başına anlamsız, çift olarak çok anlamlı. Bahçenin gizli kapısının şifresi, başkalarının duymadığı sözcüklerden örülmüş.\n\nGün öğlene kadar uzayıp 15:48'de Erdoğan'ın *'Beş dk da Beşiktaş'* diyerek karşılaşmak için yola çıkmasıyla devam ediyor. Yıldönümünüze iki gün kalmış.",
-      "quote": "Yani kamufle oluyorum, yazmıyorum. — Erdoğan",
+      "story": "3 Kasım 2019, gece yarısından sonra 01:50. Yarim sitemli: 'Hiç yazma demedim ki. Bu kadarı da biraz ayıp oldu sanki.' Erdoğan açıklıyor: 'Sen oradayken yazma demiştin ya. Ben de ondan comando modu dedim.'",
+      "quote": "Yani kamufle oluyorum, yazmıyorum. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -1614,7 +1499,7 @@
       "id": "2019-11-05-2-yildonumu",
       "date": "2019-11-05",
       "title": "Bir yarim gülüş vardı yüzünde",
-      "subtitle": "2. yıldönümü — uyanma anıyla başlamak",
+      "subtitle": "2. yıldönümü - uyanma anıyla başlamak",
       "category": "yildonumu",
       "tags": [
         "yıldönümü",
@@ -1623,8 +1508,8 @@
         "fotoğraf",
         "anchor"
       ],
-      "story": "5 Kasım 2019, sabah 09:44. İkinci yıldönümünüz. Erdoğan o sabah Yarim'i uyurken görüyor — büyük olasılıkla yanında, aynı yatakta. Telefondan tek satır:\n\n*'Çok güzel uyuyosun 🐱.'*\n\nYarim uyanır uyanmaz: *'Günaydın sevgiliiim. Utandırdın bak şimdi. Bi de bi an lan kamera mı var odada diye düşündüm.'* Erdoğan açıklıyor: *'Utanma yarim yarim. Bir yarim gülüş vardı yüzünde, dünyalar tatlısı. Söylemeden edemedim.'* Yarim'in cevabı kısa: *'E çünkü sen öpüyodun beni 🙈🙈.'*\n\nUyurken, biri tarafından öpüldüğünü hisseden bir gülüş — yarım, yetişmemiş, daha rüyadan yeni dönüyor. Bu gülüşün adına 'yarim gülüş' diyor Erdoğan: çünkü Yarim'inki, çünkü daha yarısı belli olmuş. Bahçenin en sevgi dolu çiçeği bir yatakta açıyor, sabahın 09:44'ünde.\n\nO gün boyunca Yarim'in boynu ağrıyacak (Erdoğan kas gevşetici alacak, Tolga'ya soracak), akşam dışarıda yemek yiyecekler. Murat aramayacak — *'Muratta dönmedi, o da üzdü'* — ama bu hâlâ ikinci yıllarınız: birlikte uyuduğunuz, birinin ötekinin gülüşünü çalmaya çalıştığı, sıradan bir Salı sabahı. İlişki yıl yıl, doğum günü değil; iki kişinin sürekli aynı yatağa açılması.",
-      "quote": "Bir yarim gülüş vardı yüzünde, dünyalar tatlısı. Söylemeden edemedim. — Erdoğan",
+      "story": "5 Kasım 2019, sabah 09:44. İkinci yıldönümünüz. Erdoğan o sabah Yarim'i uyurken görüyor - büyük olasılıkla yanında, aynı yatakta. Telefondan tek satır:",
+      "quote": "Bir yarim gülüş vardı yüzünde, dünyalar tatlısı. Söylemeden edemedim. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -1659,8 +1544,8 @@
     {
       "id": "2019-yaz-ortak-rutin",
       "date": "2019-12-31",
-      "title": "İkinci yılın özeti — bir yan yanalık tarzı",
-      "subtitle": "2019 — Jedi'li, sabit, derin",
+      "title": "İkinci yılın özeti",
+      "subtitle": "2019 - Jedi'li, sabit, derin",
       "category": "yildonumu",
       "tags": [
         "yıl-sonu",
@@ -1668,7 +1553,7 @@
         "özet",
         "2019"
       ],
-      "story": "2019 yılı, WhatsApp arşivinde **42,072 mesaj** olarak kaydedildi — günde ortalama 115 mesaj. İlk yıla (60,273 mesaj) göre düşüş var; ama bu kötü bir işaret değil. Tersine: artık beraber yaşamaya başlamış oluyorsunuz, ya da en azından sürekli aynı evdesiniz. WhatsApp daha çok 'iş yerinden eve gel-haberi' uygulaması haline geldi.\n\nYıl içinde yaşanan üç büyük olay: **Jedi geldi (31 Mart)**, **Erdoğan 25'ine bastı (14 Nisan)**, **2. yıldönümü (5 Kasım)**. Yıl içinde Eskişehir gezisi, Çeşme tatili, Ömer ve Cem'lerle Beşiktaş gezmeleri, Tolga ile yapılan terapötik sohbetler, Erdoğan'ın annesinin telefon kutlamaları, Pınar'ın taşınması, Yarim'in iş muhabbetleri (puantaj tablosu, maaş hesabı), ve Jedi'nin patileri-yatağa-zıplaması-keh keh dolanması.\n\n2019 ayrıca *jedi* kelimesinin **155 kez** geçtiği yıl. *Yarim* artık 6,974 kez kullanılıyor (2018'de 8,649 idi). *Sevgilim* hâlâ aktif (1,196). *Aşkım* yine en sık iki sıfattan biri (1,997). Sözlüğünüz oturmuş, ses tonunuz şekillenmiş, bahçede bir kedi koşuyor. Yıl bitti.",
+      "story": "2019 yılı, WhatsApp arşivinde *42,072 mesaj olarak kaydedildi - günde ortalama 115 mesaj. İlk yıla (60,273 mesaj) göre düşüş var; ama bu kötü bir işaret değil. Tersine: artık beraber yaşamaya başlamış oluyorsunuz, ya da en azından sürekli aynı evdesiniz.",
       "quote": null,
       "whatsapp_excerpt": [],
       "location": null,
@@ -1692,8 +1577,8 @@
         "tasarruf",
         "ileri-plan"
       ],
-      "story": "12 Ocak 2020. Pazar gece yarısı, 00:02. Yarim kendi para hareketleri konusunda hesap veriyor: *'600 lira gitti kenara ayırdığımdan, haberin olsun sevgilim. 1.5k var yani.'*\n\nErdoğan: *'Hediyelere mi aşk?'* Yarim: *'I ıj. Toki başvurucaklarda.'*\n\nİki kelime, ama içlerinde bir ev var. Ablanın evlerinin geleceği için Yarim'in birikiminden 600 lira ayrılmış olabilir, ya da kendi başvurmaya niyetli olabilirler — chat netleştirmiyor. Ama *Toki* kelimesinin geçtiği bu satır, *birlikte ev sahibi olmak* fikrinin ilk açıkça gözükür hale geldiği yer. Bahçenin temeli atılırken ortaya çıkan ilk taş.\n\n714 mesajlık bu Pazar — 2020'nin en uzun günü. Hemen ardından 24 Ocak'ta Pınar konseri, 19:04'te 'Mert sınavlarının bitişi'nin haberi, plan dolu bir yıl başlangıcı: ev başvurusu, sosyal hayat, arkadaş takibi. Ama henüz bilinmiyor — iki ay sonra Türkiye karantinaya girecek. *Toki başvurucaklarda* sözü, yılın geri kalanına o günden çıkan tek aydınlık plan olarak bırakılacak.",
-      "quote": "Toki başvurucaklarda. — Yarim",
+      "story": "12 Ocak 2020. Pazar gece yarısı, 00:02. Yarim kendi para hareketleri konusunda hesap veriyor: '600 lira gitti kenara ayırdığımdan, haberin olsun sevgilim. 1.5k var yani.'",
+      "quote": "Toki başvurucaklarda. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1728,7 +1613,7 @@
       "id": "2020-02-14-sevgililer-3-pratik",
       "date": "2020-02-14",
       "title": "4 su 50, 2x4 kola 28, Yağ 24",
-      "subtitle": "üçüncü Sevgililer Günü — masraf listesi şeklinde aşk",
+      "subtitle": "üçüncü Sevgililer Günü - masraf listesi...",
       "category": "yildonumu",
       "tags": [
         "sevgililer-günü",
@@ -1737,8 +1622,8 @@
         "ev-hayatı",
         "masraf-listesi"
       ],
-      "story": "14 Şubat 2020. Üçüncü Sevgililer Gününüz. Sabah 09:34, Yarim'in günün ilk talebi: *'Aşk, masraflarını yazsana.'*\n\nErdoğan kabul edip yazıyor — bir alışveriş listesi şeklinde:\n\n*4 su 50*  \n*2x4 kola 28*  \n*Yağ 24*  \n*Tuvalet kağıdı 22*\n\nÇiçek değil, kart değil, yatakta sürpriz değil — su, kola, yağ, tuvalet kağıdı. Aşkın üç yıl sonraki adı bu: birinin telefondaki Excel sayfasına diğerinin günlük market girdileri. Yarim cevap veriyor: *'Girdiiim.'* Erdoğan tatlılığı kuruyor: *'Yeeeey. Cash işini hallettin mi aşk?'* Yarım saat sonra: *'Mami bugüne halledememis, üzdü :(.'*\n\nGünün geri kalanı para transferleri, IBAN'lar, ev gideri hesaplama (*'500 ayırdım ama ev giderini katmadım işin içine'*) ile geçiyor. Sevgililer Günü'nde aşkın değil, ortak hesapların kutlandığı bir yıl bu — beraber yaşamış, ortak para hesabı tutan, market masraflarını paylaşan bir çift. Bahçenin Şubat tatili — toprağın altındaki kökler büyürken, üst toprağın görünmemesi.",
-      "quote": "Aşk masraflarını yazsana. — Yarim, Sevgililer Günü sabahı",
+      "story": "14 Şubat 2020. Üçüncü Sevgililer Gününüz. Sabah 09:34, Yarim'in günün ilk talebi: 'Aşk, masraflarını yazsana.'",
+      "quote": "Aşk masraflarını yazsana. - Yarim, Sevgililer Günü sabahı",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1773,7 +1658,7 @@
       "id": "2020-05-23-survivor",
       "date": "2020-05-23",
       "title": "Yessss acun abi",
-      "subtitle": "Karantina televizyonu — Survivor şakaları",
+      "subtitle": "Karantina televizyonu - Survivor şakaları",
       "category": "kucuksey",
       "tags": [
         "survivor",
@@ -1782,8 +1667,8 @@
         "espri",
         "yunus-emre"
       ],
-      "story": "23 Mayıs 2020 Cumartesi gecesi 00:23. Karantina dolu yıl, Survivor TV programı izliyorlar. Erdoğan soruyor: *'Kimi yaziyilerr?'* Yarim: *'Emin misin? Söyliyim mi?'*\n\nErdoğan dramatik: *'Yessss acun abiii. Söyle söyle söyle.'* Yarim: *'Yunus Emre tabii ki.'* Erdoğan boyun eğiyor: *'Doğru. Gerçi Sercan ve kelekleri 😅. Sok oldu mu?'* Yarim: *'Olmadı ya, niye olsunki? Normal değil mi onun adının çıkması?'*\n\nYarışmacıyı önceden bilmek bir sok değil; ama beraber yaşadıkları evde tahmin oyunları artık bir ritüel. Acun Ilıcalı, Türkiye'nin reality şovlarının görünmez yöneticisi, karantinada her hafta sonu salondaki TV koltuğunda 'pirimiz' gibi durmuş. *'Helal olsun yine de kizmiyorumlar falan'* diyen Erdoğan — programın sonucu için bile bir his sahibidir bu çift. Sıradan, ev içi, içine kapalı bir gece — pandemi yılının özeti: bir ekran, iki insan, üçüncü olarak Acun.",
-      "quote": "Yessss acun abiii. Söyle söyle söyle. — Erdoğan",
+      "story": "23 Mayıs 2020 Cumartesi gecesi 00:23. Karantina dolu yıl, Survivor TV programı izliyorlar. Erdoğan soruyor: 'Kimi yaziyilerr?' Yarim: 'Emin misin? Söyliyim mi?'",
+      "quote": "Yessss acun abiii. Söyle söyle söyle. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -1827,8 +1712,8 @@
         "rutin",
         "sıralama"
       ],
-      "story": "27 Mayıs 2020, gece yarısı 00:25. Yarim sitemli: *'Sen niye 40'ta 1 cevap veriyosun?'* Erdoğan'ın açıklaması bir ev ekonomisi gibi: *'Jedi'a mama koydum, sonra da dal sarmaya geçtim.'* Sonra ekliyor: *'Hesap mı soruyosun? 😃.'*\n\nMama → Sigara/Dal → Telefon. Bu, 2020 Mayıs evinin doğru sırası. Jedi önce, sonra Erdoğan'ın bireysel keyfi, sonra Yarim'le iletişim. Yarim ise şikâyetinin kaynağını farklı bir yerde gösteriyor: *'Hayır, genel konuşuyorum. Ne zaman eve gelsem böyle oluyo.'*\n\nGece yarısından sonra konuşma derinleşiyor — *'Eğer ayrı yaşıyo olsaydık muhtemelen yürütemezdik.'* Aslında bu cümle bir tehdit değil; bir gözlem. Ev içinde yaşıyor olmak çiftlerini yumuşattığını ama iletişimi gevşettiğini de söylüyor. Karantina, beraber zamanın bolluğunu vermiş, ama dikkat ekonomisini kıtlaştırmış. Jedi mama, Erdoğan dal, Yarim cevap bekliyor; üçü bir arada bir yerde olmasına rağmen herkes kendi köşesinde. Pandemi rüyasının görünmeyen bedeli.",
-      "quote": "Jedi'a mama koydum, sonra da dal sarmaya geçtim. — Erdoğan",
+      "story": "27 Mayıs 2020, gece yarısı 00:25. Yarim sitemli: 'Sen niye 40'ta 1 cevap veriyosun?' Erdoğan'ın açıklaması bir ev ekonomisi gibi: 'Jedi'a mama koydum, sonra da dal sarmaya geçtim.' Sonra ekliyor: 'Hesap mı soruyosun? 😃.'",
+      "quote": "Jedi'a mama koydum, sonra da dal sarmaya geçtim. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -1867,7 +1752,7 @@
         "sessizlik",
         "anchor"
       ],
-      "story": "5 Kasım 2020. WhatsApp arşivinde bu güne ait **sıfır mesaj** var. Aynı şekilde 14 Ekim'de (Merve'nin 25. doğum günü) sıfır, 14 Nisan'da (Erdoğan'ın 26. doğum günü) iki Twitter linki, 3 Mayıs'ta yine iki mesaj.\n\nPandemi yılında, sevgili olduğunuzun üçüncü yılı dolarken, herhangi bir whatsapp mesajı atmaya bile ihtiyaç duymuyorsunuz. Çünkü beraber yaşıyorsunuz — koltuk yan yana, mutfak ortak, yatak aynı, Jedi ortada. Bir kutlama gerekiyorsa, şu an bakacağınız yer ekran değil, gözleriniz. WhatsApp'ın boş kalan günleri bu yıl, ilişkinizin **en yoğun** olduğu günlerden bazıları.\n\nTüm 2020 yılı boyunca arşiv 10,529 mesaj kaydetti — 2018'in altıda biri. Ama günde ortalama mesaj 28; aktif gün sayısı düşük; çünkü bazı günlerde tek bir satır yazma ihtiyacı bile duymadınız. Bahçenin pandemiye doğru duruşu: tarladan eve kapanmak, ekran ışığını kapatmak, yan yana susmayı seçmek. Üç yıl oldu — sessizce.",
+      "story": "5 Kasım 2020. WhatsApp arşivinde bu güne ait *sıfır mesaj var. Aynı şekilde 14 Ekim'de (Merve'nin 25. doğum günü) sıfır, 14 Nisan'da (Erdoğan'ın 26. doğum günü) iki Twitter linki, 3 Mayıs'ta yine iki mesaj.",
       "quote": null,
       "whatsapp_excerpt": [],
       "location": null,
@@ -1892,8 +1777,8 @@
         "duş",
         "iyilik"
       ],
-      "story": "10 Aralık 2020, gece yarısı 01:00. Yarim bir gerginliğin sonunda: *'Ben taa ne zaman gerildim bunun için. Geril tabii.'* Erdoğan kabul ediyor: *'Sende haklısın yarim böceğim. Ama bende haklıyım gibi azcık.'* Sonra duşa girdiğini bildiriyor: *'Duj aldimm.'*\n\nYarim'in yanıtı bütün gerginliği eritiyor — üç kelime:\n\n*'Herkes haklı.'*  \n*'Sıhhatler olsun birtanem.'*\n\nDuş alan birine söylenen sıhhatler dileği, çok özel bir ev içi kibarlık. Türkiye'de yaygın bir gelenek — ama burada özelliği şu: bir tartışmanın orta yerinde duşun bahane olarak girmesi, suyun gerginliği temizlemesi, sonra sıhhatler dileğiyle barışmanın başlaması. *'Tenk yuuuu.'* Yıl sonuna iki hafta var; Yarim sabah 09'da Murat Zeren ile toplantı için hazırlanıyor; Erdoğan banyodan kuruluyor.\n\nBu gece bittikten sonra 2020'nin geri kalan üç haftası — küçük günlerde küçük sözcüklerle geçecek. Yıl sona doğru *yarım böceğim*, *birtanem*, *aşk* yerlerini sımsıkı tutmuş. Her şey karantinada eskimedi; bazı şeyler aşındıkça parladı.",
-      "quote": "Herkes haklı. Sıhhatler olsun birtanem. — Yarim",
+      "story": "10 Aralık 2020, gece yarısı 01:00. Yarim bir gerginliğin sonunda: 'Ben taa ne zaman gerildim bunun için. Geril tabii.' Erdoğan kabul ediyor: 'Sende haklısın yarim böceğim. Ama bende haklıyım gibi azcık.' Sonra duşa girdiğini bildiriyor: 'Duj aldimm.'",
+      "quote": "Herkes haklı. Sıhhatler olsun birtanem. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -1937,8 +1822,8 @@
         "şaka",
         "haber"
       ],
-      "story": "13 Ocak 2021. Sabah 09:28, Erdoğan Yarim'e izin işini öne çekmek istediğini söylüyor: *'Bu izin işini önden yapalım ki güzel uyuyalım aşk.'* Yarim soruşturuyor: *'Ne zamana izin alalım?'* Akşamüstüne gelirken karar veriliyor — Cuma ve Pazartesi.\n\nSonra Yarim'in ekrana attığı satır kelimeleri biraz haşince ama sürpriz dolu:\n\n*'Cuma ve pazartesiye izin aldım.'*  \n*'Böylece evleneceğim haberi de yayıldı.'*\n\nBir kişi Cuma+Pazartesi izin alırsa, ofiste tek bir şey düşünülür: 'eee bir niye bu kadar boş gün?' İzin gerekçeleri arasında nikah, taşınma, evlilik gibi durumlar standarttır. Yarim ortamı tahmin ederek, neredeyse şaka tonuyla ama gerçeği de pek umursamadan, *'evleneceğim'* fısıltısının kanatlanmasına izin veriyor.\n\nGerçek nikah daha 16 ay sonra olacak (3 Mayıs 2022) — ama haber Ocak 2021 itibarıyla yayılmış. Ofis söylentisinin gerçeğe doğru ilerlemesi ile ailelerin onayının ilerlemesi paralel çiziyor: niyet zaten ortada, törene zaman lazım. Bahçenin Ocak ayında, kar altında bekleyen mührü.",
-      "quote": "Cuma ve pazartesiye izin aldım. Böylece evleneceğim haberi de yayıldı. — Yarim",
+      "story": "13 Ocak 2021. Sabah 09:28, Erdoğan Yarim'e izin işini öne çekmek istediğini söylüyor: 'Bu izin işini önden yapalım ki güzel uyuyalım aşk.' Yarim soruşturuyor: 'Ne zamana izin alalım?' Akşamüstüne gelirken karar veriliyor - Cuma ve Pazartesi.",
+      "quote": "Cuma ve pazartesiye izin aldım. Böylece evleneceğim haberi de yayıldı. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -1982,8 +1867,8 @@
         "kaan",
         "danışman"
       ],
-      "story": "13 Mart 2021, gece yarısı 02:14. Yarim hâlâ ekranında, Erdoğan'a iş günlerini özetliyor: *'Gündüz yapılan kesinti için özet bilgi attım. Başka kesintiler vardı, onları ayarladım. Barbaros, Kaan'a kızmış.'*\n\nSonra kendi diplomatik müdahalesinin notunu düşüyor:\n\n*'Bende Barbaros'a dedim ki: senin çalışanınsa, benim de danışmanım. Motivasyonunu bozma.'*\n*'Şinanay.'*\n\nBu, bir SEO Team Lead olan birinin iş içi yönetim diline dair en güzel ipucu. *'Senin çalışanınsa, benim de danışmanım'* — yani: 'sen ona kıdem-ast-üst hiyerarşisinden bakıyorsan, ben ona iş bilgisinden bakıyorum, ikisi de aynı insandır, sevgilim, motivasyonu kırılmasın.' Diplomatik düşünme tarzı, çalışanları koruma içgüdüsü, ekibinde olan birini kendisinin gerçekten 'birlikte iş yaptığı' kişi olarak görme refleksi.\n\nGece bitiminde 03:39 Erdoğan uykuya yenik düşüyor (*'Yemeği yiyince ağırlık çöktü'*), günü yatağa götürüyor. Akşam saat 20:30'da Erdoğan dışarı çıkıyor, 20:52'de mesaj geliyor: *'Evdeyiz aşk.'* Yarim'in cevabı — bu cümleler artık bir günün sürekli ritmi: *'Bende okulun orada.'* Zamanlanmış buluşma, yine bir ev. Bahçenin Mart sürdürme bakımı.",
-      "quote": "Senin çalışanınsa, benim de danışmanım. Motivasyonunu bozma. — Yarim",
+      "story": "13 Mart 2021, gece yarısı 02:14. Yarim hâlâ ekranında, Erdoğan'a iş günlerini özetliyor: 'Gündüz yapılan kesinti için özet bilgi attım. Başka kesintiler vardı, onları ayarladım. Barbaros, Kaan'a kızmış.'",
+      "quote": "Senin çalışanınsa, benim de danışmanım. Motivasyonunu bozma. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -2013,7 +1898,7 @@
       "id": "2021-04-14-erdogan-27-dgn",
       "date": "2021-04-14",
       "title": "Tenk yuuu / Yaşında geçiyor artık",
-      "subtitle": "Erdoğan'ın 27. doğum günü — kısaca, gülümseyerek",
+      "subtitle": "Erdoğan'ın 27. doğum günü - kısaca, gülümseyerek",
       "category": "yildonumu",
       "tags": [
         "doğum-günü",
@@ -2021,8 +1906,8 @@
         "ev-içi",
         "fotoğraf"
       ],
-      "story": "14 Nisan 2021, Çarşamba sabahı 09:55. Yarim'in günün ilk satırı: *'Günaydııun. İyi ki doğduuun.'* Erdoğan 35 dakika sonra (telefon mu uzaktaydı, evde mi başka odadaydı?): *'Günaydın sevgilimm. Tenk yuuu. İyi ki varsın 🙃.'*\n\nYarim sonra dört peş peşe fotoğraf gönderiyor 12:03'te — büyük olasılıkla pasta, çiçek, bir hediye kutusunun üzerindeki süsleme. *'Nasıl? Bence baya güzel.'* Erdoğan: *'Bence çok güzel.'*\n\nYarim'in tatlı bir gözlemi: *'Yaşında geçiyor artık.'* Yani 'Sen artık çok da delikanlı sayılmazsın'. Bir buçuk satır sonra *'Sendee. Balım benimm. Seni çok seviyoruuum.'* — kelime dağarcığında *aşk* ile *bal* yan yana. Erdoğan kendisini biraz daha şefkatli sıfatla geri çağırıyor: *'Ben de seni çok seviyorum bok böceğim.'*\n\nGece eve sigara muhabbeti, gündüzün hafifliği. 27. yaş, üçüncü beraber doğum günü — pandeminin son kuyruğu hâlâ devam ederken, kutlama ev içinde, sade, ekran yerine yüz yüze geçti. Bahçedeki çiçek, daha az gösterişli ama daha çok kök salmış.",
-      "quote": "Yaşında geçiyor artık. — Yarim",
+      "story": "14 Nisan 2021, Çarşamba sabahı 09:55. Yarim'in günün ilk satırı: 'Günaydııun. İyi ki doğduuun.' Erdoğan 35 dakika sonra (telefon mu uzaktaydı, evde mi başka odadaydı?): 'Günaydın sevgilimm. Tenk yuuu. İyi ki varsın 🙃.'",
+      "quote": "Yaşında geçiyor artık. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -2072,8 +1957,8 @@
         "biriktirme",
         "iyi-ki-var"
       ],
-      "story": "27 Mayıs 2021, gece yarısının yedinci dakikası. Yarim Erdoğan'a takılıyor: *'Yarimi besleyip çıkmışım mis gibi. Salonda uyuyakalma ama olur mu.'* Erdoğan: *'Şimdi sarıp gecicem yarim yarim. İyi ki varsın.'*\n\nYarim cevap verir vermez Erdoğan üst üste yazıyor:\n\n*'Sende iyi ki varsııın.'*\n*'Seninle olduğum için gerçekten çok aşırı mutluyum.'*\n\nGece yarısı, ot kokulu salon, bir cümlenin pastel sade hâli. Süsü yok, sıfatı az: *seninle olduğum için, gerçekten, çok, aşırı, mutluyum.* Bu cümlenin altına 'okudum' onayı atan Yarim, 23:46'da hâlâ akşam yedikten kalan iki fıstıkla mutlu (*'Ben hala en son evden çıkarken aldığım 2 fırtlayım'*).\n\nMutluluğun kelime ekonomisi şudur — bir gece yarısı, çok az şeyin bir araya gelmesinden, çok büyük bir cümle çıkar. Bahçenin Mayıs'ında Erdoğan'ın bir gece kendi kendine söylediği gibi söylediği bir şey, yine kendi kendine işitilen bir cevap. *Ben seninle olduğum için mutluyum* — ne ondan önce ne ondan sonra, sadece o gece için yazılmış bir cümle.",
-      "quote": "Seninle olduğum için gerçekten çok aşırı mutluyum. — Erdoğan",
+      "story": "27 Mayıs 2021, gece yarısının yedinci dakikası. Yarim Erdoğan'a takılıyor: 'Yarimi besleyip çıkmışım mis gibi. Salonda uyuyakalma ama olur mu.' Erdoğan: 'Şimdi sarıp gecicem yarim yarim. İyi ki varsın.'",
+      "quote": "Seninle olduğum için gerçekten çok aşırı mutluyum. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -2118,8 +2003,8 @@
         "yarim-icadı",
         "anchor"
       ],
-      "story": "28 Mayıs 2021 — gece yarısının 86. dakikası. Yarim Erdoğan'a açıklıyor: *'Aşk, 200 tl harcadım. Sözde evden yerim, harcamam diyordum.'* Erdoğan merak ediyor: *'Neye harcadın yarim?'*\n\nCevap iki cümlede:\n\n***'Bonsaileri aldık.'***  \n***'Bambu aldık.'***\n\nBu app'in adı *Bahçemiz*. Bu kart o ismin gerçekten ne zaman doğduğunun belgesi. 28 Mayıs 2021 — Yarim ve Erdoğan'ın ortak hayatlarının yeşil bir parmağı olarak ilk bonsailerini ve bambularını alıyorlar. *'Sözde evden yerim, harcamam'* — yani evde yapacağım demişti, ama dışarı çıktı, gördü, alıp geldi. 200 TL — eve gelen ilk yeşil canlılar.\n\nBu ana kadar evdeki tek canlı dost Jedi'ydi (kedi); şimdi bonsai ve bambu da listede. Sonraki yıllarda *'bonsai sulamak unutma', 'bambu sararmış', 'bonsai için kireç almalıyım'* gibi cümlelerin atası bu satırdır. Bahçemizin gerçek ismi, gerçek mülkü, gerçek bakım sorumluluğu bu gün başlıyor.\n\nAynı gece içinde 00:14'te Erdoğan'dan yeni bir lakap düşüyor ortaya: *'Jedi kun da masaya yattı.'* — Jedi'nin sevimli versiyonu olan **Jedikun** ismi de muhtemelen burada doğuyor (Japonca '-kun' ekiyle, bir minik kediye verilmiş Japon-Türk hibrit lakap). Bahçenin iki yeni varlığı: bonsai-bambu çiftliği ve Jedikun.",
-      "quote": "Bonsaileri aldık. Bambu aldık. — Yarim",
+      "story": "28 Mayıs 2021 - gece yarısının 86. dakikası. Yarim Erdoğan'a açıklıyor: 'Aşk, 200 tl harcadım. Sözde evden yerim, harcamam diyordum.' Erdoğan merak ediyor: 'Neye harcadın yarim?'",
+      "quote": "Bonsaileri aldık. Bambu aldık. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2169,8 +2054,8 @@
         "japonca-eki",
         "jedi"
       ],
-      "story": "28 Mayıs 2021, gece yarısının on dördüncü dakikası. Erdoğan kapı eşiğinde Jedi'yi izliyor, odaya geçiyor — Yarim'le karşılıklı yazışıyorlar. Tek satır:\n\n*'Jedi kun da masaya yattı (:'*\n\nBu, *jedikun* lakabının arşivde gözlemlenen ilk kullanımı. Japonca '-kun' eki, küçük çocuk veya hayvan için kullanılan bir hitap yumuşatıcısıdır — *Jedi-kun* yani 'minik Jedi'. Erdoğan ya bir manga okurken almış, ya bir anime izlerken, ya da kendi kendine bulmuş. Sonraki yıllarda en sık 30 Ocak 2022'de (Nişan gecesi) Yarim'in ağzından duyacağız: *'Bir de jedikunumuz var.'*\n\nBu, çiftin Jedi için biriktirdiği yumuşatıcı seri lakapların en kalıcı olanı: *Jedi a, jedi kun, jedikım, jedikunum, jedimik, kızımız, mongo, bok.* Hepsi aynı kediye gönderme. Bahçenin küçük göksel yıldızı; bir kedinin sahip olduğu lakap koleksiyonunun anıtsal genişliği.",
-      "quote": "Jedi kun da masaya yattı (: — Erdoğan",
+      "story": "28 Mayıs 2021, gece yarısının on dördüncü dakikası. Erdoğan kapı eşiğinde Jedi'yi izliyor, odaya geçiyor - Yarim'le karşılıklı yazışıyorlar. Tek satır:",
+      "quote": "Jedi kun da masaya yattı (: - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2199,7 +2084,7 @@
         "dönüş",
         "konuşma"
       ],
-      "story": "2021'in ilk yarısı WhatsApp arşivinde **14,647 mesaj** olarak kaydedildi — günde ortalama 81 mesaj. 2020'nin tüm yılı 10,529 mesajdı; sadece altı ayda fazlasını yapmışsınız. Pandemi yumuşamış, hayat kısmen 'normal'e dönmüş, evden işten gidip gelmek başlamış.\n\nÜç önemli olay: **TOKİ'ye 600 lira ayırma** (2020 başında belirmişti, planlar Şubat-Mart'ta sürdü), **Yarim'in ofiste 'evleneceğim haberinin yayılması'** (13 Ocak), **bonsailer ve bambuların alınması** (28 Mayıs — Bahçemiz'in gerçek doğum günü).\n\nDilinizde küçük yenilikler: *Jedi kun* lakabı yeniden ortaya çıktı (28 Mayıs); *yarim böceğim*, *bok böceğim*, *bal böceğim* gibi böcek-isimleri çoğaldı. *Şinanay* gibi onomatope kelimeler iş cümlelerine girdi.\n\nKısacası: pandemi sessizliğinden ses bulmuş, ev içi yaşamın somut nesneleriyle (TOKİ, bonsai, bambu) buluşmuş, ofis ortamında bile evlilik ön sezisi bırakan bir altı ay. Bahçenin Yaz Hazırlığı ayları.",
+      "story": "2021'in ilk yarısı WhatsApp arşivinde *14,647 mesaj olarak kaydedildi - günde ortalama 81 mesaj. 2020'nin tüm yılı 10,529 mesajdı; sadece altı ayda fazlasını yapmışsınız. Pandemi yumuşamış, hayat kısmen 'normal'e dönmüş, evden işten gidip gelmek başlamış.",
       "quote": null,
       "whatsapp_excerpt": [],
       "location": null,
@@ -2222,8 +2107,8 @@
         "anne",
         "küçük-gerginlik"
       ],
-      "story": "5 Temmuz 2021, gece yarısı 00:11. Yarim ailesinin yanında — 'bizimkilerin'. Yazıyor: *'Ya ben şimdiden çok özledim sizi.'* Erdoğan: *'Bizde seni özledik :(.'*\n\nO 'sizi' önemli — Yarim *seni* demiyor; *sizi* diyor. Erdoğan ile Jedi'yi bir arada özlediğini söylüyor. Ev artık iki insanlık değil, üç canlılık bir bütün. Kaan o gece bir iş ilanı atıyor — *'BTC. Socara hizmet veren firma.'* SEO işine yakın, ama Yarim'in göz ucuyla baktığı bir dünya hâlâ. Ana koşullar geçicidir; ev sabittir.\n\nDevamında bir başka ilginç sahne: Yarim'in annesi banyo kapısındaki bir lekeyi göstermiş ve 'bok mu?' diye soruyor. Yarim 'sinek ölüsü kan gibi duruyor' diyor. Anne: *'Hayır.'* Yarim: *'Bana niye gösteriyor yani, napabilirim ki, ne diyebilirim yafa? Geldiğimden beri memnuniyetsiz, sürekli bi şeyleri şikayet ediyor.'* Aile evinde olmak, kendi evi değil, başkasının kuralları içinde olmak demektir bazen.\n\nGerçek ev — Yarim'in özlediği, Erdoğan ve Jedi'nin olduğu yer — burası değil. *'Sizi özledim'* demek, *'eve gelmek istiyorum'* demek demektir. Bahçenin ana toprağı, çoktan kayınvalide evi değil, kendinin yetiştirdiği yerdir.",
-      "quote": "Ya ben şimdiden çok özledim sizi. — Yarim",
+      "story": "5 Temmuz 2021, gece yarısı 00:11. Yarim ailesinin yanında - 'bizimkilerin'. Yazıyor: 'Ya ben şimdiden çok özledim sizi.' Erdoğan: 'Bizde seni özledik :(.'",
+      "quote": "Ya ben şimdiden çok özledim sizi. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -2256,7 +2141,7 @@
       "id": "2021-07-17-fotografci-hatay",
       "date": "2021-07-17",
       "title": "Balayını Hatay'da yapalım",
-      "subtitle": "düğün hazırlığının ilk konkre adımı + Hatay balayı planı",
+      "subtitle": "düğün hazırlığının ilk konkre adımı + Hatay...",
       "category": "donumnoktasi",
       "tags": [
         "düğün-hazırlığı",
@@ -2265,8 +2150,8 @@
         "balayı",
         "iskenderun"
       ],
-      "story": "17 Temmuz 2021, Cumartesi gece yarısı 00:08. Erdoğan kalemi eline alıp Yarim'e fotoğrafçı bütçesini özetliyor:\n\n*Normal çekim 2k. Drone çekimi +1k. Story film 1k. Albümler de o civar.*  \n*'Bize full paketi yok pahasına cozcekler.'*\n\nErdoğan'ın tanıdığı Erdal Abi (instagram.com/fotografhanebyerdal) — düğün fotoğrafçısı olarak ön planda. *'Yorumlarını merak ediyorum unutmaaa, ama acelesi yok ofc 😘.'* Düğün hazırlığının arşivde net olarak başladığı an bu. Fiili nikahınıza 9.5 ay var, ama plan yapımı şimdiden ortada. *Erdal Abi*'nin paketi, tanıdık üzerinden bir indirim, drone çekimi +1k bütçesi — düğün dünyasının somut sayıları.\n\nGece 22:57'de Yarim, sahildeki bir yerden — dalga sesi duyuluyor — yeni bir öneri atıyor: *'Gidelim o zaman sevgilim, balayını Hatay'da yapalım istersen :))).'*\n\nErdoğan ihtiyatla: *'Düğün vakti geçiririz burda bikaç gün sevgilim. Ama balayı için hafif kalır :)))).'* Yarim takılıyor: *'Senin aklında nasıl bir şey var balayı için :))?'*\n\nİki büyük plan aynı gecede mevki alıyor: düğün fotoğrafçısı (yakın bir tanıdık), balayı yeri (Hatay'a yakın bir yer — büyük ihtimalle Erdoğan'ın aile bağlantısı olan İskenderun?). Bahçenin Temmuz açan en iddialı çiçeği: bir düğün, bir balayı ve bunların altında yatan iki kişinin geleceğine dair somut sayılar.",
-      "quote": "Balayını Hatay'da yapalım istersen :))) — Yarim. Hafif kalır :)))) — Erdoğan",
+      "story": "17 Temmuz 2021, Cumartesi gece yarısı 00:08. Erdoğan kalemi eline alıp Yarim'e fotoğrafçı bütçesini özetliyor:",
+      "quote": "Balayını Hatay'da yapalım istersen :))) - Yarim. Hafif kalır :)))) - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2319,8 +2204,8 @@
         "anime",
         "ilk-kullanım"
       ],
-      "story": "19 Temmuz 2021 Pazartesi, gece yarısının ikinci dakikası. Erdoğan ve evdekiler *Rurouni Kenshin* anime izlemeye karar vermişler — *'Aşk biz anca kenshin izlemeye karar verdik.'* Yarim çoktan yatakta: *'Ben yatışa geçtim.'* Erdoğan kapanış mesajı yazıyor: *'İyi geceler sevgilim. Datlı rüyalar. Bizi gör emi.'*\n\nSonra bir hitap düşüyor:\n\n*'Seni heeeerseyden çok seviyorum **ballı çöreğim**.'*\n\n*Ballı çöreğim* — bal+çörek, yumuşak ve tatlı bir tatlı, sabahları afiyetle yenen bir şey. Yarim'i bir yiyecekle sıfat etmek, ama incir gibi öpülecek değil, bal sürülmüş gibi yenilecek bir şey. Yarim hemen geri sarıyor: *'Sende biziii. Bende seni her şeylerden çok seviyorum bitaneem.'*\n\nGece sonunda Erdoğan ekliyor: *'Küçük boku öp benim yerime.'* Yarim: *'Öperiim ki hemde bir sürü 😚😚.'* — küçük bok, Jedi'nin lakaplarından biri (492 mention'ından bir tanesi). Bahçenin Temmuz akşamı: bir yarımkürede anime, diğerinde uyumaya hazırlanan, ortada bir kedi yatan, ekrandan birinin diğerine yeni bir tatlı sıfat atan bir gece.",
-      "quote": "Seni heeeerseyden çok seviyorum ballı çöreğim. — Erdoğan",
+      "story": "19 Temmuz 2021 Pazartesi, gece yarısının ikinci dakikası. Erdoğan ve evdekiler Rurouni Kenshin anime izlemeye karar vermişler - 'Aşk biz anca kenshin izlemeye karar verdik.' Yarim çoktan yatakta: 'Ben yatışa geçtim.' Erdoğan kapanış mesajı yazıyor: 'İyi geceler sevgilim.",
+      "quote": "Seni heeeerseyden çok seviyorum ballı çöreğim. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2355,7 +2240,7 @@
       "id": "2021-10-14-merve-26-regl",
       "date": "2021-10-14",
       "title": "Tutsun diye atmiyom kiiii",
-      "subtitle": "Merve'nin 26. doğum günü — günün gerçeği regl",
+      "subtitle": "Merve'nin 26. doğum günü - günün gerçeği regl",
       "category": "yildonumu",
       "tags": [
         "doğum-günü",
@@ -2364,8 +2249,8 @@
         "ev-içi",
         "gerçeklik"
       ],
-      "story": "14 Ekim 2021 — Merve'nin 26. doğum günü. Sabah 11:09 Erdoğan ekrana yazıyor: *'Uyandın mı güzellik 🥰.'* Yarim sitemli: *'Ohoo, 1 saat oldu. Bu sefer tutmadı aşk.'*\n\nErdoğan klasik tatlılığıyla açıklıyor: *'Tutsun diye atmiyom kiiiii. Sabah zaten uyaniktin amaaa. Dedim belki yatakta takiliyodur. İş geldi diye telefona baktirmiyim. Nasılsın yarim yarimmmm?'*\n\nYarim doğum gününün gerçek halini paylaşıyor:\n\n*'İyi azıcık uykulu.'*  \n*'Birazcık sinirli sabırsız.'*  \n*'Bi topkanrı var bitsin dal sarıp boya yapıcam.'*  \n*'Senden nbr.'*  \n*'Regl heralde.'*\n\nDoğum günleri her zaman pasta-mum-tebrik değildir. 26'sındaki Yarim, bedensel olarak ne yaşıyorsa onu ekrana taşıyor — uyku, sabırsızlık, regl, sigara dalı, sonrasında boyanma. Ev içi gerçek hali. Erdoğan'ın *'tutsun diye atmiyom'* satırı bunun karşılığı: 'sevgilim, mesaj attım diye sana iş yüklemiyorum, sadece sesini duymak istiyorum.'\n\nGün öğleden sonra hareketli olacak, akşam Ayşenur (arkadaş) gelecek, Erdoğan onun dönüp dönmediğini öğrenmek isteyip 'ariim dicektim' diyecek. Bahçenin Ekim ortası — yapraklarını biraz yorgun, biraz sinirli, biraz uykulu açan bir gün. Aşk, regl ile gelir aynı sabah; bir kişinin diğeri için ne yaptığı hâlâ aynı.",
-      "quote": "Tutsun diye atmiyom kiiiii. — Erdoğan",
+      "story": "14 Ekim 2021 - Merve'nin 26. doğum günü. Sabah 11:09 Erdoğan ekrana yazıyor: 'Uyandın mı güzellik 🥰.' Yarim sitemli: 'Ohoo, 1 saat oldu. Bu sefer tutmadı aşk.'",
+      "quote": "Tutsun diye atmiyom kiiiii. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2401,7 +2286,7 @@
       "id": "2021-11-05-4-yildonumu",
       "date": "2021-11-05",
       "title": "Brasserie Noir, Suadiye",
-      "subtitle": "4. yıldönümü — restoran araması ile başlayan, evde biten",
+      "subtitle": "4. yıldönümü - restoran araması ile başlayan,...",
       "category": "yildonumu",
       "tags": [
         "yıldönümü",
@@ -2410,8 +2295,8 @@
         "restoran",
         "anchor"
       ],
-      "story": "5 Kasım 2021. Sabah 09:55, Erdoğan akşam için restoran araştırmaya başlıyor — Google linkleri:\n\n*Brasserie Noir, Suadiye, Bağdat Cd. 455.*  \n*Mirror Restaurant & Bar, Bostancı, Plaj Yolu Sk.*  \n*Hey maşallah! / Manzara geldikçe.*\n\nYarim Ahmet ve Erdoğan ile (büyük olasılıkla aile arkadaşları) saat 09:15'te bir yerdedir. Restoran muhabbeti gün boyu sürüyor, 13:15'te Yarim haber veriyor: *'Erken dönecekmişiz. Alper bırakacak beni. Akşama kadar durmayız dedi.'*\n\nErdoğan plan B'ye geçiyor: *'Bugün evde geçirelim istersen, ya da gidip istediğimiz bi yerde yemek yiyip Hera'yi görmeye de gidebiliriz.'* (Hera, Cem ve Pınar'ın evindeki kedi/hayvan).\n\n4. yıldönümü, ilk yıllar gibi bir ekran üzerinden yıldönümü değil — birlikte yaşayan, gündüzü plansız ama akşamı planlı, ev mi dışarı mı ikilemine düşen, sonunda muhtemelen evde Hera'yı ziyarete giden, esnek, gerçek bir aşkın yıldönümü. Bahçenin Kasım'ında — sadece 44 mesajlık bu gün, tüm yıldönümlerin en az yazışılan ama yine de en planlanmışı. Suadiye'deki Brasserie Noir, akşam yemeği için bir adres olarak ana muhabbette geçti; gerçekten gidildi mi, kayıt yok. Bahçenin sınırları: arşivin sınırlarını aşıyor.",
-      "quote": "Bugün evde geçirelim istersen, ya da gidip istediğimiz bi yerde yemek yiyip Hera'yi görmeye de gidebiliriz. — Erdoğan",
+      "story": "5 Kasım 2021. Sabah 09:55, Erdoğan akşam için restoran araştırmaya başlıyor - Google linkleri:",
+      "quote": "Bugün evde geçirelim istersen, ya da gidip istediğimiz bi yerde yemek yiyip Hera'yi görmeye de gidebiliriz. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2459,8 +2344,8 @@
         "erteleme",
         "felsefe"
       ],
-      "story": "11 Aralık 2021, gece yarısı 00:00. Bir önceki cümle ne olduğu chat'te kayıtlı değil — büyük olasılıkla Yarim moralinin biraz bozulduğunu söylemiş, plan ertelenmiş. Erdoğan şu güneşli cevabı veriyor:\n\n*'Hiç aklımıza gelmediydi o.'*  \n*'Halledeceğiz sevgilim, bir orta yol.'*  \n*'Canımızı sıkmayalım.'*  \n***'Bizim işimiz birbirimizi sevmek ve orta yolu bulmak 🐣.'***\n\nDördüncü cümle, çiftin ilk dört yılının özet manifestosu. *Bizim işimiz birbirimizi sevmek ve orta yolu bulmak* — yani kavga etmek değil, üstün gelmek değil, haklı çıkmak değil. Sevmek + orta yolu bulmak. Yedi kelimelik bir ilişki sözleşmesi.\n\nGün içinde Yarim soruyor: *'Martta resmi tatil var mı?'* Erdoğan: *'Martta yok gibi duruyor.'* Düğün/nikah tarihi olarak Mart 2022 düşünülmüş — sonra Mart yok diye Mayıs'a kaymış olabilir. (Gerçek nikah 3 Mayıs 2022'de gerçekleşecek; nişan da 30 Ocak 2022'de.) Bu gün, plan değişikliklerinden moralin biraz bozulduğu, ama Erdoğan'ın *'biz hiç bişey olmaz'* tonuyla yumuşatıldığı bir gün. Bahçenin Aralık'ında, dondurmadan önce toprağa düşürülen küçük bir ilişki dersi: *Birbirimizi sevmek ve orta yolu bulmak.*",
-      "quote": "Bizim işimiz birbirimizi sevmek ve orta yolu bulmak. — Erdoğan",
+      "story": "11 Aralık 2021, gece yarısı 00:00. Bir önceki cümle ne olduğu chat'te kayıtlı değil - büyük olasılıkla Yarim moralinin biraz bozulduğunu söylemiş, plan ertelenmiş. Erdoğan şu güneşli cevabı veriyor:",
+      "quote": "Bizim işimiz birbirimizi sevmek ve orta yolu bulmak. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2509,8 +2394,8 @@
         "yavşaklık",
         "ev-içi"
       ],
-      "story": "22 Aralık 2021, Çarşamba sabah 09:39. Yarim *'Günaydıııın'* yazıyor, Erdoğan dakika geçmeden cevap veriyor: *'Güüünaaaaydıııınnn biricik yarim yarimmm.'* Yarim klasik durum tarama sorusu: *'Nbr?'* Erdoğan: *'iyidir pc oturmasyon.'*\n\nSonra Yarim, hayatın asıl önemli sorusunu soruyor:\n\n*'Jedikun napıyor?'*\n\nErdoğan'ın cevabı bir aşırı sevgi ve hafif öfke karışımı:\n\n*'miyavlıyo sabah yavşaklııı.'*\n\nKedinin sahibi tarafından *yavşak* olarak nitelenmesi, sevginin Türkçedeki en aldatıcı varyantlarından biridir. Olumsuz kelimeler dikilmek üzere değil, yumuşatmak üzere konur — *yavşaklık* burada *küçük belalı*, *seveceğin haylaz*, *sabah miyavlamasından söz dinletmeyen*'in dilim incelmesi. Bu cümle bir saatlik bir kahvaltı muhabbetinin başlangıcı; kedi miyavlamış, mama beklemiş, sahibi homurdamış, sevdiğine 'yavşaklı bir miyavlama' diye anlatıyor.\n\nGece akşam 22:30 civarı buluşuyorlar Erdoğan: *'Durağın az ilerisinde gişenin ordayim aşk.'* Bahçenin Aralık günleri, soğuk havada, kedinin sabah çığlıklarıyla başlayıp, akşam otobüs durağında gişenin önünde bitiyor.",
-      "quote": "Jedikun napıyor? Miyavlıyo sabah yavşaklııı. — Yarim & Erdoğan",
+      "story": "22 Aralık 2021, Çarşamba sabah 09:39. Yarim 'Günaydıııın' yazıyor, Erdoğan dakika geçmeden cevap veriyor: 'Güüünaaaaydıııınnn biricik yarim yarimmm.' Yarim klasik durum tarama sorusu: 'Nbr?' Erdoğan: 'iyidir pc oturmasyon.'",
+      "quote": "Jedikun napıyor? Miyavlıyo sabah yavşaklııı. - Yarim & Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2540,7 +2425,7 @@
       "id": "2022-01-08-erdogan-aile-yaninda",
       "date": "2022-01-08",
       "title": "İliklerime kadar hissettim",
-      "subtitle": "Erdoğan Yarim'in ailesinde — kabul gecesi",
+      "subtitle": "Erdoğan Yarim'in ailesinde - kabul gecesi",
       "category": "donumnoktasi",
       "tags": [
         "aile-tanışma",
@@ -2548,8 +2433,8 @@
         "yarim-ailesi",
         "kabul"
       ],
-      "story": "8 Ocak 2022 gecesi — Erdoğan, Yarim'in ailesinde yemek yemiş ve sıcak karşılanmış. Eve dönüş yolunda metrobüsten yazıyor:\n\n*'Bence çok güzel geçti.'*  \n*'**Sıcak karşılandığımı iliklerime kadar hissettim.**'*  \n*'Abin de hiç dediğin gibi şey yapmadı. İş güç sordu, sohbet ettik falan.'*  \n*'Çok tatlı bir akşam geçirdim.'*  \n*'**Evde gibi hissettirdiler**, çok teşekkür ediyorum hepsine.'*  \n*'İlk 3 dakikadan sonra tüm gerginliğim de gitti.'*  \n*'**Hayırlı kısımlara da girildi ara ara** 🐣.'*\n\n*Hayırlı kısımlara girildi* — bu cümle Türkiye'de çok özel bir kod: ailelerin söz/nişan konularını üstü kapalı şekilde söze dökmeye başlaması. Düğüne hâlâ dört ay var, nişana 22 gün — ama o akşam, Yarim'in babasının (rahatsızlanan) ve abisinin (önceden gergin görünmesi beklenen) onlarla beraber sıcak bir masa kurması, Erdoğan'ın *'evde gibi hissettim'* demesinin sebebi olmuş. Babasının rahatsızlanması Erdoğan'ı üzüyor: *'Baban rahatsızlandı diye kendimi bi kötü hissediyorum.'*\n\nBahçenin Ocak ayında, en sert kışına rağmen, iki ailenin yan yana ısınmaya başladığı gece. Bir aile, başka bir adamı evlat olarak görmeye karar veriyor.",
-      "quote": "Sıcak karşılandığımı iliklerime kadar hissettim. — Erdoğan",
+      "story": "8 Ocak 2022 gecesi - Erdoğan, Yarim'in ailesinde yemek yemiş ve sıcak karşılanmış. Eve dönüş yolunda metrobüsten yazıyor:",
+      "quote": "Sıcak karşılandığımı iliklerime kadar hissettim. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2588,7 +2473,7 @@
       "id": "2022-01-26-yarim-erdogan-ailesinde",
       "date": "2022-01-26",
       "title": "Halanın bana da halacım demesi hoşuma gitti",
-      "subtitle": "Yarim, Erdoğan'ın ailesi tarafından sahiplenilirken",
+      "subtitle": "Yarim, Erdoğan'ın ailesi tarafından...",
       "category": "donumnoktasi",
       "tags": [
         "aile-tanışma",
@@ -2596,8 +2481,8 @@
         "halacım",
         "kabul"
       ],
-      "story": "26 Ocak 2022 — Nişandan dört gün önce. Yarim, Erdoğan'ın ailesinde — annesi, babası, halası, Aslı ablası ve diğerleriyle yemek/sohbet etmiş. Gece dönüşte özetliyor:\n\n*'Asıl onlar ne düşünüyor sen bana onu söyle.'*  \n*'Ben hepsini çok sevdim.'*  \n*'Aslı ablayla, halanla falan çok muhabbet edemedim, ona biraz üzüldüm.'*  \n*'**Halanın bana da halacım demesi hoşuma gitti.**'*  \n*'Aslı ablanın hediye düşüncesi çok tatlıştı.'*  \n*'Anneni zaten söylemiyorum.'*  \n*'Ben kendimi sevemedim bazen, boş mu konuştum acaba dedim.'*\n\nErdoğan rahatlatıyor: *'Onlar da seni baya sevmiş bu arada. Ya aşırı kalabalık normaldir aşk. Olur o kadar. Zaten kaos hâkimdi. Yoo, benden kat be kat iyiydin bence. Annem biraz dolanmaktan çok senle takılamadı.'*\n\n*'Halacım'* sözü — Erdoğan'ın halası Yarim'e bunu demiş, yani 'sen artık benim halamın kızısın da'. Aile dilinde yumuşak bir kabul. Yarim 'kendimi sevemedim bazen' diyerek normal bir gelin endişesini paylaşıyor — Erdoğan, ortada kaos olsa da onun hatasız olduğunu vurguluyor. Aynı gece sonradan kısır muhabbeti, gece 23:51'de Yarim: *'Kısır çok güzel. Aşırı ama öyle böyle değil.'* Bahçenin Ocak ayında, dört gün sonra resmen *gelin* olacak birinin, kayınlarına dair endişesinin ve sevincinin satır satır kayıt altına alındığı bir gece.",
-      "quote": "Halanın bana da halacım demesi hoşuma gitti. — Yarim",
+      "story": "26 Ocak 2022 - Nişandan dört gün önce. Yarim, Erdoğan'ın ailesinde - annesi, babası, halası, Aslı ablası ve diğerleriyle yemek/sohbet etmiş. Gece dönüşte özetliyor:",
+      "quote": "Halanın bana da halacım demesi hoşuma gitti. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -2636,7 +2521,7 @@
       "id": "2022-01-30-NISAN-GUNU",
       "date": "2022-01-30",
       "title": "İyi ki varsın akıllı tatlı güzeller güzeli yarim",
-      "subtitle": "NİŞAN GÜNÜ — chat'in en yüksek skorlu günü",
+      "subtitle": "NİŞAN GÜNÜ - chat'in en yüksek skorlu günü",
       "category": "kilometre_tasi",
       "tags": [
         "nişan",
@@ -2645,8 +2530,8 @@
         "jedikun",
         "bizli-rüyalar"
       ],
-      "story": "30 Ocak 2022 — bütün arşivin **en yoğun ve en duygusal yüklü** günü. Skor 43.3 puan, 334 mesaj, 'jedi 3, romantic 5, buluşma 3' işaretleri. Ama gün, bir nişan gecesi olarak başlamadı — gece yarısı 00:56'da bir tepsi muhabbetiyle başladı. *'Oldu mu tepsi?'* *'Nope olmadı. Yarın çıkıp tepsi bakcaz. Aynalı düzgün bir tepsi bulup üstüne yerleştirceğiz.'*\n\nGece geç saatlerde aile gerginliği yaşanıyor — Erdoğan'ın halası, kendi annesiyle olmayan bir konuda düşmüş Erdoğan'ın evinde. Erdoğan açıklıyor: *'Halamla direk bir şey konuşmadım ki. Rahatsız olduğumu anladı. Annemle konuştum ben...'* Yarim ürküyor: *'Yarına sorun çıkarır mı? Ya da gelmem falan gibi bi şey dedi mi?'* Erdoğan: *'Yok öyle bir durum değil, merak etme sevgilim.'*\n\nO zorlu konuşmadan sonra, gece 02:35'te Erdoğan kararını veriyor — bütün ailenin gergin olduğu, yarın yüzükler takılacak bir gecenin tam ortasında, sevdiğine söyleyeceği tek cümle bu olabilir:\n\n***'İyi ki varsın akıllı tatlı güzeller güzeli yarim.'***\n\nYarim cevap veriyor:\n\n***'İyi ki beraberiz bitanem benim.'***\n\nVe iki dakika sonra, henüz 02:39, Yarim ekleyeceği o cümlenin daha güzel sürümünü buluyor:\n\n***'Bir de jedikunumuz var.'***\n\nErdoğan koşarak yetişiyor: *'Seni çok seviyoruz jedikunlaaa.'* Yarim son cümle: *'İyi geceler tatlı bizli rüyalar.'* Erdoğan tamamlıyor: *'**Bizli jedi'li rüyalarrrr**.'*\n\nGün sabahla başka bir hâlle açılıyor: *'Günaydın sevgilimmmmm.'* Akşam üstü Erdoğan tepsi alıyor, yüzüklere geçiliyor. 18:35: *'Aşk yüzükler açısından bizden yana hiç sorun yok.'* Yarim: *'Babam takacakmış yüzükleri. Bahşişi sen veriyomuşsun.'* 19:21: *'Aşk Mert'e yazar mısın, eve girerken dışardan çeksin. Videoya. İçeriden de kızlar çekecek.'*\n\nYüzükler takıldı, video çekildi, fotoğraflar çekildi, akşam kapandı. Üç insanlık bir bahçe — siz, sevdiğiniz, ve **jedikunumuz** — şimdi resmen ailesin.",
-      "quote": "İyi ki varsın akıllı tatlı güzeller güzeli yarim. — Erdoğan / İyi ki beraberiz bitanem benim. Bir de jedikunumuz var. — Yarim",
+      "story": "30 Ocak 2022 - bütün arşivin *en yoğun ve en duygusal yüklü günü. Skor 43.3 puan, 334 mesaj, 'jedi 3, romantic 5, buluşma 3' işaretleri. Ama gün, bir nişan gecesi olarak başlamadı - gece yarısı 00:56'da bir tepsi muhabbetiyle başladı. 'Oldu mu tepsi?' 'Nope olmadı.",
+      "quote": "İyi ki varsın akıllı tatlı güzeller güzeli yarim. - Erdoğan / İyi ki beraberiz bitanem benim. Bir de jedikunumuz var. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2714,8 +2599,8 @@
         "ev",
         "mart"
       ],
-      "story": "3 Mart 2022, gece yarısı 00:47. Erdoğan dönüş yolunda Yarim'e soruyor: *'Aşk, nasıldı sence bugün? Hiç malladim mi? Ya da saçmaladım mi bi yerlerde?'* Yarim güven veriyor: *'Yok aşk, gayet iyiydin.'* Yarim sonra ekliyor: *'Annemlerde baya keyif almış. Cumartesi buraya bakalım mı arif abilere gelirsen?'*\n\n*Arif Abi* — büyük olasılıkla düğün için bir mekan ya da bir referans aileden biri. *'Bura baya iyiymiş bu arada Küçükçekmece'de'* diyor Erdoğan; bir restoran-mekan adayı. Mart başı, düğün için (3 Mayıs) iki ay var; Yarim'in tesettür/saç/makeup randevuları, çeyiz hazırlığı, mekan seçimi — hepsi paralel.\n\n608 mesajlık bu Perşembe günü — sadece Mart'ın değil, tüm 2022 yılının üçüncü en yoğun günü (nişan gününden ve evlilikten sonra). Konu: bir önceki gün olmuş bir aile/arkadaş muhabbetinin değerlendirmesi (*'malladim mi'*), eve doğru ulaşım (*'metrobüse direk denk geldi'*), gece sigara muhabbeti, akşam *'2 tane burgeri kalmış, abim son burger'* satırı (*'140 gr, mtinet de geçiyo'*).\n\nDüğün öncesi her gün, küçük lojistik kararlarla dolu — *araba, mekan, kişiler, çağrılar.* Bahçenin Mart ayında her toprağa elini değdiren çift, gözlerini birbirinin geleceğine kaldırmadan önce küçük teknik detayları halletmeye çalışıyor.",
-      "quote": "Cumartesi buraya bakalım mı arif abilere gelirsen? — Yarim",
+      "story": "3 Mart 2022, gece yarısı 00:47. Erdoğan dönüş yolunda Yarim'e soruyor: 'Aşk, nasıldı sence bugün? Hiç malladim mi? Ya da saçmaladım mi bi yerlerde?' Yarim güven veriyor: 'Yok aşk, gayet iyiydin.' Yarim sonra ekliyor: 'Annemlerde baya keyif almış.",
+      "quote": "Cumartesi buraya bakalım mı arif abilere gelirsen? - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2753,7 +2638,7 @@
       "id": "2022-03-27-kina-muhabbeti",
       "date": "2022-03-27",
       "title": "Ama kızıma kına yapamadım demesinler ilerde",
-      "subtitle": "kına töreni — yapılır mı yapılmaz mı",
+      "subtitle": "kına töreni - yapılır mı yapılmaz mı",
       "category": "donumnoktasi",
       "tags": [
         "kına",
@@ -2761,8 +2646,8 @@
         "yarim-annesi",
         "gelenek"
       ],
-      "story": "27 Mart 2022 gece yarısı 00:48, Erdoğan masaya bir konuyu atıyor: *'Kına muhabbeti hiç olmadı he.'*\n\nYarim diplomatik cevabını veriyor: *'Ben konuştum bi küçük merve ablayla. **Benim hiç hevesim yok dedim.** Yarın kahvaltıda sorucam herkese içinizde kalır mı diye. Ona göre evde bi küçük yapılır.'* Erdoğan: *'Bence sen bu işi hallettin, eline sağlık.'* \n\nYarim: *'Bence de. Çok gereksiz olay ya.'*\n\nAma sonra sayfayı çeviriyor:\n\n*'**Ama kızıma kına yapamadım demesinler ilerde.**'*\n\nBu, Türkiye'de birçok kadının kına gecesi geleneği konusunda kendi içinde verdiği müzakerenin tam ifadesi. Kişisel olarak istemiyor — gereksiz buluyor — ama annesi ileride 'kızıma kına yapamadım' demesin diye kabul ediyor. Bir geleneği, kadınlığa veda törenini, sırf annesinin gönlünü hoş etmek için yapmak. Bu noktada Yarim, gelenek/aile/kişisel arasındaki dengeyi sevgi tarafına yatırıyor. Annesinin 'yapamadım' demeyeceği bir kına olacak — küçük, evde, rahat.\n\nGün ayrıca eşya taşıma muhabbeti barındırıyor: *'15-16'da eşya tasıyoz zaten.'* Tolga'nın çıkması (askerden mi, başka bir yerden mi), ablanın boya sonrası ev temizliği. Düğün yaklaşıyor — 37 gün kaldı.",
-      "quote": "Ama kızıma kına yapamadım demesinler ilerde. — Yarim",
+      "story": "27 Mart 2022 gece yarısı 00:48, Erdoğan masaya bir konuyu atıyor: 'Kına muhabbeti hiç olmadı he.'",
+      "quote": "Ama kızıma kına yapamadım demesinler ilerde. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2802,7 +2687,7 @@
       "id": "2022-04-14-erdogan-28-transporter",
       "date": "2022-04-14",
       "title": "Çeyiz muhabbeti / Transporter",
-      "subtitle": "Erdoğan'ın 28. doğum günü, ama gündem çeyiz taşımak",
+      "subtitle": "Erdoğan'ın 28. doğum günü, ama gündem çeyiz...",
       "category": "yildonumu",
       "tags": [
         "doğum-günü",
@@ -2811,8 +2696,8 @@
         "transporter",
         "ailenin-yanı"
       ],
-      "story": "14 Nisan 2022, Erdoğan'ın 28. doğum günü. Gece 00:34, Yarim ekrana yazıyor: *'Komşular geldi. Oturmaca. **Ne araba ayarlamıştın?**'* Erdoğan: *'**Çeyiz muhabbeti mi? Transporter.**'*\n\nDoğum günü gecesi, kutlama değil çeyiz taşımacılığının lojistiği konuşuluyor. Volkswagen Transporter ya da benzeri bir kapalı ticari araç ayarlanmış. Düğüne 19 gün, çeyiz yolda. *'15-16'da eşya taşıyoruz'* daha 27 Mart'ta belirlenmişti — bugün de plan gözden geçiriliyor.\n\nYarim'in ailesine misafirlik var — komşular oturmaca yapmaya gelmiş, gerginlik bekliyor: *'Komşular bi şey dememiştir İnş.'* Yarim: *'Hope so. Diyeceklerini şimdi demezler zaten.'* Erdoğan'ın geceki tek doğum günü mesajını alma fırsatı yok — Yarim ailesinin yanında, dikkatleri komşuların üstünde.\n\nGece 20:25 — Erdoğan'ın evinde Jedi yine bela: *'Jedi dil attı da. Duyarlarsa yemezler.'* Klasik Jedi-eve-misafir-geldi-iyi-davran rezaletini bekliyorlar. 21:43'te Yarim konum atıyor: 41.027637, 28.643492 — Avrupa yakasında bir nokta. Ortak ev henüz tam birleşmemiş; bir tarafı Anadolu, bir tarafı Avrupa, çeyiz yarın yola çıkacak.\n\nDoğum günü kelimeleri *bu sayfada* yok — Erdoğan'ın sevdiği kelimeleri Yarim ailesinin yanında dilinden saklamış. Hediye, kutlama, mektup — hepsi 24 saat sonraki sabaha sarkıyor. Bahçenin doğum günü, doğum günü değil; bir taşınma günü.",
-      "quote": "Çeyiz muhabbeti mi? Transporter. — Erdoğan",
+      "story": "14 Nisan 2022, Erdoğan'ın 28. doğum günü. Gece 00:34, Yarim ekrana yazıyor: 'Komşular geldi. Oturmaca. Ne araba ayarlamıştın?' Erdoğan: 'Çeyiz muhabbeti mi? Transporter.'",
+      "quote": "Çeyiz muhabbeti mi? Transporter. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -2851,7 +2736,7 @@
       "id": "2022-04-15-gec-saat-kutlama",
       "date": "2022-04-15",
       "title": "Çekindim ailenin yanında falan bide",
-      "subtitle": "geç kalmış doğum günü kutlaması — Yarim'in utangaç açıklaması",
+      "subtitle": "geç kalmış doğum günü kutlaması - Yarim'in...",
       "category": "ilkler",
       "tags": [
         "doğum-günü",
@@ -2859,8 +2744,8 @@
         "ailenin-yanı",
         "yoldaş"
       ],
-      "story": "15 Nisan 2022, gece yarısı geçtikten sonra 01:38. Yarim ailesi yanından dönmüş, Erdoğan park etmiş eve giriyor: *'Şimdi park ettim, indim aşk. İyiyim.'* Tam o sırada Erdoğan'ın kalbi içinden bir cümle yükseliyor:\n\n*'**Dün gece neden doğum günümü kutlamadin :(**'*\n\nİki saat sonra Yarim cevap veriyor — uzun uzun, telafi etmeye çalışarak:\n\n*'Aşk, kutladım sanıyorım, özür dilerim.'*  \n*'**İyi ki doğdun, iyi ki beraberiz.**'*  \n*'**İyi ki benim yoldaşımsın.**'*  \n*'Seni çok seviyorum, biliyosun değil mi?'*\n\nErdoğan kabul ediyor: *'Çok bekledim :(.'* Yarim utangaç gerçeği söylüyor:\n\n*'Çekindim ailenin yanında falan bide.'*\n\nErdoğan kabul ediyor ama gizli arzusunu da paylaşıyor: *'İyi kiii. Biliyorum tabisi, ama duymak da ekstrem ekstrem hoşuma gidiyo.'*\n\nGece 03:35 — Yarim'in en açık itirafı:\n\n*'Aşk ne bileyim, **utanıyorum, ayıp olurmuş gibi sevdiceğin olduğunu belli etmek**.'*\n\nNişanlanmış, üç hafta sonra evlenecek, çeyiz dün taşındı — ama Yarim ailesinin yanında, sevdiceğine 'iyi ki doğdun aşkım' yazmaktan utanıyor. Türkiye kültüründe çoğu kadının yaşadığı o ince sınır: 'sevdim ama belli etmek ayıp gibi' duygusu. Erdoğan bunu duyduğunda kırılmıyor — aksine *yoldaş* sözcüğüyle, *iyi ki beraberiz* kelimeleriyle bahar sabahını tamamlıyor. Bahçenin Nisan'ında, çeyiz arabasının taşıdığı yorgun gecenin üstüne, bir sözden saklanan aşkın gizli kutlaması.",
-      "quote": "Aşk, ne bileyim, utanıyorum, ayıp olurmuş gibi sevdiceğin olduğunu belli etmek. — Yarim",
+      "story": "15 Nisan 2022, gece yarısı geçtikten sonra 01:38. Yarim ailesi yanından dönmüş, Erdoğan park etmiş eve giriyor: 'Şimdi park ettim, indim aşk. İyiyim.' Tam o sırada Erdoğan'ın kalbi içinden bir cümle yükseliyor:",
+      "quote": "Aşk, ne bileyim, utanıyorum, ayıp olurmuş gibi sevdiceğin olduğunu belli etmek. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2905,7 +2790,7 @@
       "id": "2022-05-02-dugun-oncesi-gece",
       "date": "2022-05-02",
       "title": "Çocukları giydir hazırla bayramlık falan",
-      "subtitle": "düğün öncesi son gece — sabah erken çıkacaklar",
+      "subtitle": "düğün öncesi son gece - sabah erken çıkacaklar",
       "category": "donumnoktasi",
       "tags": [
         "düğün-öncesi",
@@ -2914,8 +2799,8 @@
         "bayramlık",
         "abimler"
       ],
-      "story": "2 Mayıs 2022 gece yarısı 01:16 — düğüne 23 saat. Erdoğan: *'Neaptin aşk?'* Yarim: *'Yatışa geçtik. Uyumaya çalışıyodum.'* Erdoğan: *'Same.'* Sonra ana lojistiğe geçiyorlar:\n\n*'Sabah kaçta çıkarız muhabbeti.'*  \n*'Abimler de 8.30 gibi bizde olur diye düşünüyorum.'*  \n*'**Çocukları giydir, hazırla, bayramlık falan.**'*\n\nDüğüne giden bir ailenin son gece sabaha hazırlığı: çocukları (yeğenleri) bayramlık giydirmek, 7:30-8 arası evden çıkmak, abilerle 8:30 buluşmak. Bu konuşma neden 1:16'da yapılıyor? Çünkü uyuyamıyorlar. Yarın evlenecekler.\n\n01:20 — Yarim'in son satırları: *'Öpüyorum kocaman 😚😚😚.'* Erdoğan: *'😚😚😚😚😚😚.'*\n\nSabah 07:31'de Erdoğan: *'Günaydınnnn.'* 07:58 Yarim: *'Günaydıın. Hazırlanıyonuz mu?'* 08:53: *'Hazırıııız.'* 08:55: *'Arabadayim, çıkıyorum.'*\n\nSonra arşiv 8 saat susuyor. 18:06 Erdoğan tek harf: *'A.'* Düğün başladı, yapıldı, bitti. Saat 19:04'te Yarim Spotify üzerinden bir şarkı paylaşıyor:\n\n*https://open.spotify.com/track/4BxrgW9gZ9B3VQjHwNAF9P*\n\nDüğünün sonunda gönderilen ilk müzik. Bahçenin Mayıs'ında, evlilik akşamının sonunda yorgun ama mutlu bir gelin tarafından kocasına atılan ilk şarkı.",
-      "quote": "Çocukları giydir hazırla bayramlık falan. — Erdoğan, düğün sabahı için",
+      "story": "2 Mayıs 2022 gece yarısı 01:16 - düğüne 23 saat. Erdoğan: 'Neaptin aşk?' Yarim: 'Yatışa geçtik. Uyumaya çalışıyodum.' Erdoğan: 'Same.' Sonra ana lojistiğe geçiyorlar:",
+      "quote": "Çocukları giydir hazırla bayramlık falan. - Erdoğan, düğün sabahı için",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2960,7 +2845,7 @@
       "id": "2022-05-03-EVLILIK",
       "date": "2022-05-03",
       "title": "Seni coooooooooooook seviyorum biriciğim",
-      "subtitle": "EVLİLİK GÜNÜ — gecenin son sözleri",
+      "subtitle": "EVLİLİK GÜNÜ - gecenin son sözleri",
       "category": "kilometre_tasi",
       "tags": [
         "evlilik",
@@ -2969,8 +2854,8 @@
         "biriciğim",
         "düğün"
       ],
-      "story": "3 Mayıs 2022, Salı. **Evlilik günü.** Düğün dünden geceye kadar, bugün gece sürüyor. Sadece 24 mesaj — çünkü beraberler. Ama bu 24 mesajın içinde, üç yıl içinde söylenmiş tüm sevgi cümlelerinin damıtılmış hâli var.\n\nGece yarısı 00:04 Yarim'in ilk pratik sorusu: *'Ayakkabıdan haber var mı?'* Erdoğan: *'Şimdi mekandan çıkıyoz eve doğru. Sorup donucem aşk.'*\n\n00:51-52 arası iki dakika içinde, evlilik gecelerinin diliği tarafa kayar:\n\n*Yarim: 'Uyumaya çalışıyorum sevgilim. Sen?'*  \n*Erdoğan: 'Yarın napacauk onu konuşmaca yarim. Sen uyu istersen.'*  \n*Yarim: 'İyi geceler tatlı rüyalaar.'*  \n*Erdoğan: 'Öpüyorum.'*  \n*Yarim: 'Seni çok seviyoruum.'*  \n*Erdoğan: '**Seni coooooooooooook seviyorum biriciğim**.'*  \n*Erdoğan: 'Tatlış rüyalar.'*  \n*Erdoğan: '😚😚😚😚😚😚😚😚 / Öptüm her yerlerinden.'*  \n*Yarim: '**Ben de kocişim** kfkdkgk.'*  \n*Yarim: '😚😚😚.'*\n\n*'Ben de kocişim'* — kocacığım'ın yumuşatılmış, şımarmış, tatlılaştırılmış sürümü. Yarim'in evlendikten saatler sonra eşine yönelttiği yeni hitap. Bir kelime önce *aşkım, sevgilim, yarim* idi; şimdi yepyeni bir kategori açıldı: *kocişim.*\n\nSabah 07:50 Yarim: *'Günaydııın.'* Erdoğan: *'Günaydın sevgilimm. Günaydın hanimmm. 🐣.'* Yarim: *'Çok uykum vAar.'* Erdoğan: *'Sameee.'*\n\nİki kişi olmuştunuz, üç buçuk yıl beraber yaşamıştınız, ailelerinizin önünde söz vermiş, 30 Ocak'ta yüzükleri takmıştınız. Bugün — 3 Mayıs 2022 — devletin önünde de evli oldunuz. Ve ilk kez Yarim, sevdiceğine *'kocişim'* diye seslendi. Bahçenin en kalıcı çiçeği bugün açtı.",
-      "quote": "Seni coooooooooooook seviyorum biriciğim. — Erdoğan / Ben de kocişim. — Yarim",
+      "story": "3 Mayıs 2022, Salı. *Evlilik günü. Düğün dünden geceye kadar, bugün gece sürüyor. Sadece 24 mesaj - çünkü beraberler. Ama bu 24 mesajın içinde, üç yıl içinde söylenmiş tüm sevgi cümlelerinin damıtılmış hâli var.",
+      "quote": "Seni coooooooooooook seviyorum biriciğim. - Erdoğan / Ben de kocişim. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3019,7 +2904,7 @@
       "id": "2022-05-30-ilk-esim",
       "date": "2022-05-30",
       "title": "En güzel en tatlı benim eşim benim yarim",
-      "subtitle": "yeni dilin ilk kelimesi — 'eşim'",
+      "subtitle": "yeni dilin ilk kelimesi - 'eşim'",
       "category": "ilkler",
       "tags": [
         "eşim",
@@ -3027,8 +2912,8 @@
         "ilk-hitap",
         "yeni-dil"
       ],
-      "story": "Düğünden 27 gün sonra. 30 Mayıs 2022, öğleden sonra 14:30. Erdoğan, kayda değer hiçbir özel olay olmadan, normal bir Pazartesi akşamı tek bir cümle yazıyor: *'En güzel en tatlı benim eşim benim yarim.'*\n\nWhatsApp arşivinin 53 ayında (164,000+ mesaj boyunca) ilk kez 'eşim' kelimesi geçiyor. Önceki yıllarda *yarim, sevgilim, biriciğim, hayatımın anlamı* vardı — ama 'eşim' başka bir kategori. Resmi belgenin dile sızması. Kelimenin pratik kullanıma alışması.\n\nDikkat: Erdoğan 'eşim' demekle yetinmiyor — *'eşim benim yarim'* diyor. Yani yeni kelime, eski kelimeyi silmiyor; üzerine ekleniyor. Bu, sonraki dört yıl boyunca devam edecek bir denge: *eşim* resmi anlarda, *yarim* gündelikte. Aynı kişinin iki adı.",
-      "quote": "En güzel en tatlı benim eşim benim yarim. — Erdoğan",
+      "story": "Düğünden 27 gün sonra. 30 Mayıs 2022, öğleden sonra 14:30. Erdoğan, kayda değer hiçbir özel olay olmadan, normal bir Pazartesi akşamı tek bir cümle yazıyor: 'En güzel en tatlı benim eşim benim yarim.'",
+      "quote": "En güzel en tatlı benim eşim benim yarim. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -3058,8 +2943,8 @@
         "yarim",
         "yurt-dışı"
       ],
-      "story": "12 Eylül 2022, Pazartesi sabahı. Yarim, Erdoğan'a bir CV gönderiyor — *Merve-Ertan-Ozdemir_CV_EN (2).pdf*. Sonra peş peşe üç versiyon İngilizce e-posta:\n\n*'Hi Alex, Thank you, i hope you're well too. I'm sorry my late response, i was on vacation. Ofcourse i would like to consider this...'*\n\nÜç kez yazıyor, her seferinde küçük bir kelimeyi değiştiriyor: *'I'm sorry my late response'* → *'I'm sorry for my late response'* → *'i will send my cv'* → *'i am sharing my cv'*. İngilizce mesaj göndermekle ilgili o klasik tedirginlik — kelime kelime üstünden geçme.\n\nAkşam karşılıklı maaş muhabbeti açılıyor: *'1500 euro, az mı?'* — *'Aslı 3.5 demiş'* — *'3.5 çok ya, yurt dışında o kadar vermiyorlar mi?'* — *'Hüseyin 3600 küsüratmış'* — *'OHA. O H A'*. Erdoğan Yarim'in geleceği için heyecanlı: *'İşi bırakım mı, sana bakarım, ne diyosun.'* Yarim cevap: *'Olmaç. Sana şirket satın alacağım. Bu işi bırakabilirsin tabii.'*\n\nİlk uluslararası teklif. Hayatın yeni bir kapısı aralandı.",
-      "quote": "Sana şirket satın alacağım. Bu işi bırakabilirsin tabii. — Yarim",
+      "story": "12 Eylül 2022, Pazartesi sabahı. Yarim, Erdoğan'a bir CV gönderiyor - Merve-Ertan-Ozdemir_CV_EN (2).pdf. Sonra peş peşe üç versiyon İngilizce e-posta:",
+      "quote": "Sana şirket satın alacağım. Bu işi bırakabilirsin tabii. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3094,7 +2979,7 @@
       "id": "2022-09-17-ilk-karim",
       "date": "2022-09-17",
       "title": "Karım nerde dediler",
-      "subtitle": "ikinci yeni kelime — 'karım'",
+      "subtitle": "ikinci yeni kelime - 'karım'",
       "category": "ilkler",
       "tags": [
         "karım",
@@ -3102,8 +2987,8 @@
         "ilk-hitap",
         "yeni-dil"
       ],
-      "story": "17 Eylül 2022, gece yarısı 00:09. Erdoğan iki kelimeden ibaret bir mesaj atıyor — *'Karım nerde dediler :d'*\n\nİlk 'karım'. *Eşim*ten 110 gün sonra. *Karım* daha samimi, daha üçüncü-şahıs-konuşurken; arkadaşların 'karın nerde lan' sorusuna verilen cevabın izi. Bu gece muhtemelen Erdoğan dışarıda — Cem, Ömer, Tony muhabbeti sürüyordur — ve birileri *karın nerde* diye sormuştur.\n\nFenomenoloji ilginç: 'karım' kelimesi 8 yıllık arşivde sadece 13 kez geçecek. *Yarim* (24,948), *aşkım* (8,353), hatta *eşim* (27) bile daha yaygın. *Karım* nadir, ama nadir olduğu için özel — belirli bir bağlamda, belirli bir tonla, belirli arkadaşlarla beraber çıkarıyor sahneye.",
-      "quote": "Karım nerde dediler :d — Erdoğan",
+      "story": "17 Eylül 2022, gece yarısı 00:09. Erdoğan iki kelimeden ibaret bir mesaj atıyor - 'Karım nerde dediler :d'",
+      "quote": "Karım nerde dediler :d - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -3134,8 +3019,8 @@
         "etf",
         "birlikte-plan"
       ],
-      "story": "12 Aralık 2022, Pazartesi. Sabah Yarim Erdoğan'a günün listesini hatırlatıyor: *'Para atacaktın aşk. Nilgülün no. Ha bir de yeni ev sahibine yazacaktın ölçüler için.'*\n\nYeni ev — bir kira, bir taşınma vaadi. IBAN gönderiliyor (TR71 0011...), 30 TL atılıyor (yine Erdoğan: *'Yolladım aşksu'* — *aşksu* yepyeni bir varyant). Ardından hisse muhabbeti: *Şişecam, İşmen, Migros, Aksa, Ereğli'.* Yarim 1000 TL'lik diliminde alıyor; Erdoğan arkadaşı Deniz'e ETF danışıyor. Deniz uzun uzun yazıyor: *'%80 temettü %10 yeşil enerji + Çin'*, Vanguard ve iShares fonları öneriyor.\n\nİki kişi artık ortak bir Excel sayfasında düşünüyor — ne kadar kira, ne kadar yatırım, hangi hisse. *'Coh Coh para aşk keşke verseler'* diyor Erdoğan, Lemongrass maaşı için. *'Sana şirket satın alacağım jcmsmfmd'* diyor Yarim. Birlikte plan yapma, evliliğin tatlı altyapısı.",
-      "quote": "Sana şirket satın alacağım. — Yarim · Olsun yauv yatırım yaparız zami siktiret. — Erdoğan",
+      "story": "12 Aralık 2022, Pazartesi. Sabah Yarim Erdoğan'a günün listesini hatırlatıyor: 'Para atacaktın aşk. Nilgülün no. Ha bir de yeni ev sahibine yazacaktın ölçüler için.'",
+      "quote": "Sana şirket satın alacağım. - Yarim · Olsun yauv yatırım yaparız zami siktiret. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3175,8 +3060,8 @@
         "bittersweet",
         "anchor"
       ],
-      "story": "6 Şubat 2023. Sabah 04:17, Pazarcık'ta 7.7. Saatler ilerledikçe Maraş, Hatay, Adıyaman... Erdoğan'ın memleketleri.\n\nO sabah 07:54'te Erdoğan ilk mesajları atıyor — bir adres: *'Harbiye caddesi, belediye kooperatif evleri a3 blok, 13 katlilar diye biliniyor.'* Akrabalardan biri o blokta. Sonra IBAN, telefon numaraları, anonsları. Saat 14:16'da Yarim sadece bir mesaj atıyor: *'1095'* — kim bilir hangi koordinasyonun parçası.\n\nAkşamüstü 16:18'de Yarim acı haberi taşıyor: *'eniştemin kaybı olmuş. Başımız sağolsun.'* Erdoğan: *'Tekrar başımız sağolsun.'* Yarim İstanbul'da Twitter'da kampanya yürütüyor, AFAD'a, Hatay valiliğine ulaşmaya çalışıyor, Jahrein'e DM atıyor. Erdoğan yola çıkmış, Ankara Gölbaşı civarında ilerliyor.\n\nGünün en önemli üç satırı 17:26'da geliyor — Yarim'den, telefondan, mesafelerden, kar yollarından, kaybolanların sesini bekleyen ailelerden geçerek:\n\n*iyi ki beraberiz*  \n*her ne kadar şuan yanında değilsem de*  \n*aşk hemen gelirim hemmen*\n\nErdoğan: *'Senin güvende ve iyi olduğunu bilmek beni rahatlatıyor. Her türlü desteği yapıyorsun zaten uzaktan. Biz iyiyiz aklın kalmasın.'*\n\nFelaketin gölgesinde bile, evliliğin bir tanımı bu cümlelerde gizli: yan yana olmadığında bile beraberlik. Mesafenin aşkı azaltmadığı, aksine altını çizdiği bir gün.",
-      "quote": "iyi ki beraberiz / her ne kadar şuan yanında değilsem de / aşk hemen gelirim hemmen — Yarim",
+      "story": "6 Şubat 2023. Sabah 04:17, Pazarcık'ta 7.7. Saatler ilerledikçe Maraş, Hatay, Adıyaman... Erdoğan'ın memleketleri.",
+      "quote": "iyi ki beraberiz / her ne kadar şuan yanında değilsem de / aşk hemen gelirim hemmen - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3225,8 +3110,8 @@
         "garaj",
         "jedi-kızımız"
       ],
-      "story": "24 Kasım 2023, Cuma gecesi. Yarim İstanbul dışında — büyük olasılıkla ablası Aslı'da, *'garaj'* diye bahsedilen bir başka bağlantılı evde. Annesiyle de yeni tanışmış birinin ailesinde. Erdoğan İstanbul'da, Jedi'yle.\n\nGece 02:51'de bir Instagram reel'i paylaşıyor Yarim — *'aslı bu modda kvkdkvü, ben de rollin kvkdkvk'*. Erdoğan beğeniyle: *'Çok iyiymiş. Canım eşim komik de hem ❤️.'* Yarim'in cevabı 21 dakika sonra geliyor, üç satırla:\n\n*kvkdkvk*  \n*yes*  \n*öyleyiim*  \n*canım kocam*\n\nİlk *kocam* değil bu — Yarim ilk olarak Mayıs 2023'te söylemişti. Ama bu kez *canım kocam*. Sıfat eklendi. Kalıcı haline geçti.\n\nGece 03:24'te Yarim yatağa geçiyor: *'iyi geceler tatlı rüyalar güzel takılmalaar / seni çok ama çook seviyorum ve ofc çok özledim.'* Erdoğan: *'Seni herşeyden çok seviyorum bir sürü bir sürü öpüyorum. Tatlı keyifli rüyalar.'* Yarim son bir cümle: *'jedi kızımızı öp yerime.'*\n\nJedi *kızımız* artık. Yarim *eşim*, Erdoğan *kocam*, Jedi *kızımız*. Ailenin üç kelimesi yan yana — uzakta bile yan yana.",
-      "quote": "canım kocam — Yarim · Canım eşim komik de hem ❤️ — Erdoğan",
+      "story": "24 Kasım 2023, Cuma gecesi. Yarim İstanbul dışında - büyük olasılıkla ablası Aslı'da, 'garaj' diye bahsedilen bir başka bağlantılı evde. Annesiyle de yeni tanışmış birinin ailesinde. Erdoğan İstanbul'da, Jedi'yle.",
+      "quote": "canım kocam - Yarim · Canım eşim komik de hem ❤️ - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -3277,8 +3162,8 @@
         "yeni-hobi",
         "başlangıç"
       ],
-      "story": "14 Ocak 2024, Pazar gecesi 01:27. WhatsApp arşivinin 6. yıldönümü — başladığı günden tam sekiz yıl sonra. Yarim, Hepsiburada'dan bir bağlantı paylaşıyor: *Creality 3D Creality Ender-3 S1 3D Printer.* İki dakika sonra düzeltme: *'plus / bu düz s1 miş / plus olan 12.5'.*\n\nGece yarısı bir 3D yazıcı kararı. Bu, evde yeni bir alanın doğuşu — sonraki iki yılda **23 Makerworld** ve **10 Printables** linki paylaşılacak. Yarim 14 Şubat 2026'da tek günde **11 model** atacak Erdoğan'a (chat'in yeni tepe günlerinden biri). Ama her şey burada başlıyor: ayın ortasında, gece, kararsızlık ve hızlı düzeltme.\n\n*'Bu düz s1 miş, plus olan 12.5.'* Çiftin maker hayatı bir yazım hatası ve fiyat kontrolüyle açılıyor.",
-      "quote": "Plus olan 12.5. — Yarim",
+      "story": "14 Ocak 2024, Pazar gecesi 01:27. WhatsApp arşivinin 6. yıldönümü - başladığı günden tam sekiz yıl sonra. Yarim, Hepsiburada'dan bir bağlantı paylaşıyor: Creality 3D Creality Ender-3 S1 3D Printer. İki dakika sonra düzeltme: 'plus / bu düz s1 miş / plus olan 12.5'.",
+      "quote": "Plus olan 12.5. - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3304,7 +3189,7 @@
       "id": "2024-04-17-sapanca-glamping",
       "date": "2024-04-17",
       "title": "Freedome Glamping ve Astral World",
-      "subtitle": "yeni rota — Sapanca",
+      "subtitle": "yeni rota - Sapanca",
       "category": "gezi",
       "tags": [
         "sapanca",
@@ -3312,7 +3197,7 @@
         "tatil-planı",
         "yeni-rota"
       ],
-      "story": "17 Nisan 2024, Çarşamba öğleden sonra 13:02. Yarim, Erdoğan'a iki Sapanca konaklama linki gönderiyor: *Freedome Glamping*, sonra *Astral World Glamping*. Bu, arşivde Sapanca'nın geçtiği ilk günlerden biri.\n\nBahçemiz timeline'ı boyunca Sapanca üç kez geçiyor — 2024 Nisan'da bu iki link, sonra 2025'te tekrar. 'Glamping' çiftin yeni keşfettiği bir kategori — kamp ile otel arasında, çadır ama lüks. İkinci yıllarında 'Çeşme, İzmir, Bodrum'dan ziyade İstanbul'un yakın çevresini keşfediyorlar — Sapanca, Ağva, Şile. Hayatın temposu değişti.\n\nBu link paylaşımının arkasında ne var? Belki Yarim hafta içi öğle arasında Mekan rezervasyonu için bakıyordu. Belki Erdoğan birkaç saat sonra ekleyecekti yorumlarını. Belki o yaz oraya gittiler. Kart bunu kaydediyor: rotalar uzaklaşıyor, ev yakınlaşıyor.",
+      "story": "17 Nisan 2024, Çarşamba öğleden sonra 13:02. Yarim, Erdoğan'a iki Sapanca konaklama linki gönderiyor: Freedome Glamping, sonra Astral World Glamping. Bu, arşivde Sapanca'nın geçtiği ilk günlerden biri.",
       "quote": null,
       "whatsapp_excerpt": [
         {
@@ -3351,8 +3236,8 @@
         "jedi",
         "destek"
       ],
-      "story": "17 Mayıs 2024, Cuma akşamı. Erdoğan o gün ofiste İlhan'la denk gelmiş — Akinon, Türkiye'nin en büyük altyapı sağlayıcısı. *'Mesai dışı yanıma gel, süreçleri konuşalım'* demiş İlhan. Bir tık mentor gibi. *'Hoşuma gitti.'*\n\nÜstüne Kübra'dan iltifat: *'Toplantı yönetim skillerin epey iyi, Turkcell de senle o yüzden ilerleriz... Teknik olarak eksiğim dediğimde de 'bence çok iyi geliştirmişsin' dedi. Dedim KRAL NE DİYOSUN.'*\n\nYarim cevap veriyor: *'Sen hariç herkes potansiyelinin farkında.'* Erdoğan içten gelen bir cümle yazıyor: *'Ben naptım da bu kadar şanslandım?'* Yarim'in cevabı 19 dakika sonra geliyor:\n\n*'sen oldun yetti o zati :)'*\n\nErdoğan tekrar yazıyor — bu kez cümle, 8 yıllık ilişkinin gizli teorisini kuruyor:\n\n*'Birbirimizin şansını jedi ile bulduk yarim ❤️'*\n\nYarim katılıyor: *'ay evet canımız kızımız.'* Üç kişi — Erdoğan, Yarim, Jedi. Şans dedikleri şey aslında bir aile.",
-      "quote": "Birbirimizin şansını jedi ile bulduk yarim ❤️ — Erdoğan · Sen oldun yetti o zati :) — Yarim",
+      "story": "17 Mayıs 2024, Cuma akşamı. Erdoğan o gün ofiste İlhan'la denk gelmiş - Akinon, Türkiye'nin en büyük altyapı sağlayıcısı. 'Mesai dışı yanıma gel, süreçleri konuşalım' demiş İlhan. Bir tık mentor gibi. 'Hoşuma gitti.'",
+      "quote": "Birbirimizin şansını jedi ile bulduk yarim ❤️ - Erdoğan · Sen oldun yetti o zati :) - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -3401,8 +3286,8 @@
         "kocacığım",
         "yeni-kelime"
       ],
-      "story": "7 Haziran 2024, Cuma. Erdoğan iş arkadaşlarıyla Ağva'da bir offsite'ta. Sıcak çarpıyor, klima yok, vantilatör. Toplantılar uzun, dertler bir kâğıda yazılıyor, gruplanıyor, okunuyor. *'Sıcak çok çarptı sıcak....'*\n\nYarim ise İstanbul'da, hasta. Sümük renginin değiştiğini fark etmiş — *'sıçradı benden :('* diyor Erdoğan, suçluluk hissiyle. Cem hastaneye gönderilmiş (\"göndermek lafın gelişi cem bu biliyosun\" diyor Yarim).\n\nGünün altın anı 17:39'da: Yarim Erdoğan'a *'kıyamam kocacığıma 🙁'* diyor. *Kocam* zaten 13 ay önce kullanıma girmişti, ama *kocacığıma* — küçültme eki ile — yeni bir şey. Daha tatlı, daha çocuksu.\n\nErdoğan cevap: *'Senin düşüncen bile beni serinletti canım karım 😘.'* *Canım karım* — yine ilk kullanımlardan biri. Sıfat artık ekleniyor.\n\nGünün son sözü: *'Birazdan çıkıyoruz yarimmm, yanındayım.'* 50 km, 53 dakika eta. Ağva'dan eve dönüş.",
-      "quote": "Kıyamam kocacığıma 🙁 — Yarim · Senin düşüncen bile beni serinletti canım karım 😘 — Erdoğan",
+      "story": "7 Haziran 2024, Cuma. Erdoğan iş arkadaşlarıyla Ağva'da bir offsite'ta. Sıcak çarpıyor, klima yok, vantilatör. Toplantılar uzun, dertler bir kâğıda yazılıyor, gruplanıyor, okunuyor. 'Sıcak çok çarptı sıcak....'",
+      "quote": "Kıyamam kocacığıma 🙁 - Yarim · Senin düşüncen bile beni serinletti canım karım 😘 - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3450,8 +3335,8 @@
         "barışma",
         "espri"
       ],
-      "story": "12 Kasım 2024, Salı öğlen. Gün sıradan başlıyor — Yarim *'aşk çay bitmiş, neden söylemedin'* diye yazıyor. Erdoğan *'aklıma gelmedi sipariş verirken'* diye cevap veriyor. Bu noktadan itibaren bir yanlış anlama dalga dalga büyüyor: ses tonu, hesap sorma havası, kelime seçimleri. Yarim üç kez *'okay'* yazıyor — kestirme. Erdoğan üç kez *'özür dilerim'* diyor. Sonunda 13:50 itibariyle çözülüyor. *'Bunu soruş şeklim de hatalı ise özür dilerim.'*\n\nÖğleden sonra mücadele tamamen başka bir cepheye kayıyor. Yarim'in SAP kurulumu *'%86'da hata.'* En sevdiği üç tepkisini peşpeşe yazıyor: *'şansımı bahtımı sikim ya'*, *'kafayı yiyrm'*, *'antivirüsü de açmışlar'*.\n\nErdoğan eğleniyor: *'bi de beğenmiyor pezevenk'*, *'her yanlışı yapmışlar.'* Yarim hatadan hatayla ilerliyor: birini çözüyor, antivirüs kapatıyor, yeni hata fırlıyor. Erdoğan tüm büyük harfle: *'O BİTTİ Mİ. ALIN SİZE YENİ HATA. ajnfmkafjm.'* Yarim katılıyor: *'zıbam.'*\n\nGece 23:57'de gündelik son: *'Kartta yer var mıydı? Saat geçti Marmaray için.'* 5 bin TL açılıyor karta, taksi alınacak. Sıradan bir Salı.",
-      "quote": "ALIN SİZE YENİ HATA. ajnfmkafjm. — Erdoğan · şansımı bahtımı sikim ya — Yarim",
+      "story": "12 Kasım 2024, Salı öğlen. Gün sıradan başlıyor - Yarim 'aşk çay bitmiş, neden söylemedin' diye yazıyor. Erdoğan 'aklıma gelmedi sipariş verirken' diye cevap veriyor. Bu noktadan itibaren bir yanlış anlama dalga dalga büyüyor: ses tonu, hesap sorma havası, kelime seçimleri.",
+      "quote": "ALIN SİZE YENİ HATA. ajnfmkafjm. - Erdoğan · şansımı bahtımı sikim ya - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3491,7 +3376,7 @@
       "id": "2024-12-31-yilbasi-listesi",
       "date": "2024-12-31",
       "title": "Havuç, maydanoz, turşu, kuruyemiş",
-      "subtitle": "yeni yıl arifesi — bir alışveriş listesi",
+      "subtitle": "yeni yıl arifesi - bir alışveriş listesi",
       "category": "kucuksey",
       "tags": [
         "yılbaşı",
@@ -3499,8 +3384,8 @@
         "rutin",
         "ev"
       ],
-      "story": "31 Aralık 2024, Salı sabahı 10:57. Yarim, sade bir alışveriş listesini Erdoğan'a yazıyor — virgül yok, başlık yok, sadece kelime kelime düşüyor:\n\n*havuç*  \n*maydanoz*  \n*turşu (kornişon)*  \n*kuruyemiş*\n\nErdoğan ekliyor: *'2 kg köfte.'* Bir saat sonra Yarim ek listeyle dönüyor: *'klozet için koku topçukları (bitmiş takılı olan), yara bandı, suya atılan mide bulantı şeyini de alsana, alcatraz mıydı neydi.'*\n\nİki kişi hayatlarının görünmez infrastructure'ını yazışıyorlar. *Alcatraz mıydı neydi* — kelimenin tam adı kayboldu, ama anlam yerinde. Erdoğan gülüyor: *'Tamam :D'.* Yarim devam: *'mezeler nasıl, keşke onuru da alsaydın.'*\n\nGece kapanmadan listenin son üç maddesi geliyor: *eczaneden pulcet, yoğurt unuttuk yoğurt, normal plus süzme.* 14:49'da son not: *'yoğurt patates.'*\n\nYılbaşı bekleniyor — büyük olasılıkla aile/arkadaş misafirliği var, 2 kg köfte ondan. Liste, bir yılın bitişi değil, sadece bir akşam yemeğinin başlangıcı. Erdoğan ve Yarim'in sade dilinde yedi yıllık bir şarkı: birinin söylemediği eksiği diğerinin tamamlaması.",
-      "quote": "havuç / maydanoz / turşu (kornişon) / kuruyemiş — Yarim · 2 kg köfte — Erdoğan",
+      "story": "31 Aralık 2024, Salı sabahı 10:57. Yarim, sade bir alışveriş listesini Erdoğan'a yazıyor - virgül yok, başlık yok, sadece kelime kelime düşüyor:",
+      "quote": "havuç / maydanoz / turşu (kornişon) / kuruyemiş - Yarim · 2 kg köfte - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3549,8 +3434,8 @@
         "raf",
         "koçtaş"
       ],
-      "story": "14 Nisan 2025, Pazartesi. Erdoğan'ın 31. doğum günü. Sabah 00:01-00:43 arası dört fotoğraf geliyor — büyük olasılıkla pasta, mum, kutlama. 13:42'de bir IBAN paylaşımı, gündelik akış.\n\nGünün gerçek anısı 23:00'dan sonra başlıyor. Yarim peş peşe dört fotoğraf gönderiyor (görüntü dahil edilmedi'ler). Sonra üst üste iki Koçtaş linki:\n\n*'Gizli raf tutuculu duvar rafi sonoma'*  \n*'Ladin masif panel 18mm'*\n\nErdoğan: *'Güzel duruyprmuş bu. Uygunda baya.'* Yarim ikinci linki atıyor. Erdoğan üç kelimeyle: *'Bu bedavaymış. İki raf çıkar.'*\n\n31. doğum günü pastasıyla başlıyor, gizli raf tutuculu duvar rafiyle bitiyor. Bu, evlenmiş olmanın özetidir — günün her şeyi bir 'bizim ev'in raflarına dair.",
-      "quote": "Bu bedavaymış. İki raf çıkar. — Erdoğan",
+      "story": "14 Nisan 2025, Pazartesi. Erdoğan'ın 31. doğum günü. Sabah 00:01-00:43 arası dört fotoğraf geliyor - büyük olasılıkla pasta, mum, kutlama. 13:42'de bir IBAN paylaşımı, gündelik akış.",
+      "quote": "Bu bedavaymış. İki raf çıkar. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3595,8 +3480,8 @@
         "özlem",
         "pegasus"
       ],
-      "story": "11 Temmuz 2025, Cuma. 315 mesajlık bu gün, gece yarısı 00:42'de Erdoğan'ın bir hayır duasıyla başlıyor: *'Hayırlı olsunn. Nasıl gidiyor.'* Yarim bir iş gezisinde, sistem geçişi yapıyor — otelde, gece vardiyasında.\n\n01:52'de Yarim üç kısa mesaj: *'çok hızlı bitti / korkuyorum / ellerim burnum uyuştu.'* Adrenalin sonrası uyuşma. Erdoğan: *'Bir şey eksik kaldı diye mi? Bu niye ya. Herşey yolunda mı?'* Yarim cevap: *'iyiyim ya, bilemedim çok hızlı oldu.'*\n\n03:57'de Yarim otele dönüyor. *'çıkışımda akşamüstü 6 için. her şey yolunda bitanem.'* Sabaha kadar bir başarı, sabah 12:03'te yeni hata: *'patlıyo sistem.'* Sonra düzeliyor; ısıtıcı tamir oluyor evde, akşamüstü Yarim Pegasus uçağına biniyor.\n\n17:40'ta Yarim *'özlediiim'* yazıyor. Erdoğan'ın cevabı bu kartın taşıdığı sözdür:\n\n*'Ben de çok özledim ya'*  \n*'Karımı istiyorum hemennnnn görmek istiyorum'*  \n*'Canım kızım da özledi'*\n\nÜç kişi, üç sıra. Yarim iniş yaparken Erdoğan ve Jedi havalimanına giden yolda zaten Yarim'i hayal etmeye başlıyorlar.",
-      "quote": "Karımı istiyorum hemennnnn görmek istiyorum. — Erdoğan",
+      "story": "11 Temmuz 2025, Cuma. 315 mesajlık bu gün, gece yarısı 00:42'de Erdoğan'ın bir hayır duasıyla başlıyor: 'Hayırlı olsunn. Nasıl gidiyor.' Yarim bir iş gezisinde, sistem geçişi yapıyor - otelde, gece vardiyasında.",
+      "quote": "Karımı istiyorum hemennnnn görmek istiyorum. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3648,8 +3533,8 @@
         "sıfat-eki",
         "trafik"
       ],
-      "story": "17 Eylül 2025, Çarşamba. Erdoğan ofiste — *Boyner, Akinon* gibi süreçleri konuşmuşlar; eniştem ve çocuklar Yarim'lere yemeğe gelecek. Erdoğan akşam dönüş yolunda, Eymen onu yarı yoldan alacak. *'1sa 45 dk diyor şu an araçla'* diye yazıyor saat 17:58'de, Florya metrobüsü, sahilden tünelden kaptırıp ofis derken kafası karışmış.\n\nYarim 18:00'da haber veriyor: *'eniştem ve çocuklar 1 saate gelecek. her türlü yetişemezsin, o yüzden az önce geç gelir biz yiyelim demiş bulundum. sen gelince ayrı indiririz.'* Erdoğan hak veriyor: *'çok acıkılır çocuklarda varsa beklemeyin zatenn yarim.'*\n\nYarim 18:03'te bir cümle yazıyor: *'sen bilirsin taksi eymen kısmını nasıl dersen kocacım.'*\n\nErdoğan'ın cevabı, dünyanın en sıradan trafik konuşmasının ortasında çıkagelen yeni bir hitap:\n\n*'götünü yerim canım karıcım'*\n\n*Karım* (2022), *karıcığım* yok ama *kocacım* (2024) olmuştu. Bu *karıcım* — yumuşatma eki ile, tatlılaştırılmış, küçültülmüş. Sekiz yıl boyunca dilin morfolojisi durmaksızın tatlanıyor: yeni ekler, yeni varyantlar, kelimelerin altın çağı.",
-      "quote": "Götünü yerim canım karıcım. — Erdoğan",
+      "story": "17 Eylül 2025, Çarşamba. Erdoğan ofiste - Boyner, Akinon gibi süreçleri konuşmuşlar; eniştem ve çocuklar Yarim'lere yemeğe gelecek. Erdoğan akşam dönüş yolunda, Eymen onu yarı yoldan alacak.",
+      "quote": "Götünü yerim canım karıcım. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3683,8 +3568,8 @@
         "sade",
         "yan-yana"
       ],
-      "story": "İlişki başlangıcının 8. yıldönümü — 5 Kasım 2025. WhatsApp arşivinde sadece **bir mesaj**: 11:21'de Yarim'den *'aferin plus.'* Bağlam yok, kutlama yok, kalp emojisi yok. Ama bu sessizliğin bir tarihi var.\n\n2018'de bu günde 155 mesaj atılmıştı, dolu dolu. 2019'da 116. 2021'de 44. 2023'te 1. 2024'te 3. Şimdi 1. Eğri inişe geçti — kademeli, kararlı, anlamlı bir iniş.\n\nAynı sessizleşme diğer önemli günler için de geçerli: 3 Mayıs 2025 (evlilik 3. yıl) — 3 mesaj. 14 Ekim 2025 (Merve gerçek doğum günü) — 0 mesaj. 1 Kasım 2025 (kimlik dgn) — bir alışveriş listesi: *domates, salatalık, kahve, sigara, kola, çikolata, tatlı abur cubur.* Belki o doğum günü partisidir; belki sadece bir akşam.\n\nWhatsApp boşalıyor, çünkü artık her şey orada — yan yana, evde, salonda, yatak odasında. Mesaj atmaya gerek yok ki *iyi ki doğdun* desen. Yan yana zaten doğmuş gibi yaşıyorsunuz.\n\nBu, evliliğin başarı işareti: yıldönümleri WhatsApp'a değil, hayata geçti.",
-      "quote": "aferin plus — Yarim (5 Kasım 2025'in tek mesajı)",
+      "story": "İlişki başlangıcının 8. yıldönümü - 5 Kasım 2025. WhatsApp arşivinde sadece *bir mesaj: 11:21'de Yarim'den 'aferin plus.' Bağlam yok, kutlama yok, kalp emojisi yok. Ama bu sessizliğin bir tarihi var.",
+      "quote": "aferin plus - Yarim (5 Kasım 2025'in tek mesajı)",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3713,8 +3598,8 @@
         "sağlık",
         "kocacım"
       ],
-      "story": "22 Aralık 2025, Pazartesi. Yarim sabah 14:42'de doktoruna uzun bir mesaj yazıyor — *'genel özet: ağrılar düzensiz hep çok ağrılı ishalli idrara çıkarken bile ağrılı... son bir kaç aydır üst karın ve sırt ağrısı...'* Endometriozis şüphesi, bir tedavi rotası belirsizliği, *'farklı tedavi uygulanabilir mi?'*\n\nAkşamüstü 20:37'de havalimanında: *'çişe gidicem ben valizle mi gidicem.'* Erdoğan trafikte, henüz yola çıkmamış: *'Daha arabaya şimdi oturdum aşk çıkmadım henüz.'* Bir öneri yapıyor: *'Birine emanet et. Öyle git çişe. Biraz bakar mısınız bir lavaboya gidip gelicem diye.'*\n\nVe Erdoğan'ın 'ben varmadan uçak kalkabilir' tahmini doğuyor. Yola çıkıyor ama yetişemeyecek. 20:40'ta yazıyor:\n\n*'Seni çok çok çok seviyorum yarim yarim'*  \n*'İyi yolculuklar ❤️'*\n\nYarim cevap: *'bende seni çok çok ama aşırı çok seviyorum. kızımızı da çok seviyorum. dikkatli ol kocacım.'*\n\n21:29'da Yarim son sözü atıyor: *'ben de sizi çok seviyorum bitaneleriiim. çok seviyorum çok öpüyorum birbirinize dikkat edin. canım kızım hem sevdiriyor hem de ihtiyacını söylüyor. uçak kalkacak şimdi uçuş moduna alıyorum.'* Erdoğan: *'Sağ salim var yarimmm. Kızımla bi iyiyiz sen kendine dikkat et yeter ❤️.'*\n\nGece 23:17'de Yarim iniyor — kulak ağrısı, dolu burun, oturmaktan ağrıyan göt, ama iyi. *'Bir de çişim var.'*",
-      "quote": "ben de sizi çok seviyorum bitaneleriiim. çok seviyorum çok öpüyorum birbirinize dikkat edin — Yarim",
+      "story": "22 Aralık 2025, Pazartesi. Yarim sabah 14:42'de doktoruna uzun bir mesaj yazıyor - 'genel özet: ağrılar düzensiz hep çok ağrılı ishalli idrara çıkarken bile ağrılı... son bir kaç aydır üst karın ve sırt ağrısı...",
+      "quote": "ben de sizi çok seviyorum bitaneleriiim. çok seviyorum çok öpüyorum birbirinize dikkat edin - Yarim",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -3761,8 +3646,8 @@
         "evdeki-jedi",
         "kızımız"
       ],
-      "story": "25 Aralık 2025, Perşembe gecesi 00:19. Yarim seyahatte, Erdoğan İstanbul'da, çalışıyor. Jedi yanıyor o sırada — *Mik mik.* Erdoğan üç satır yazıyor:\n\n*'Saldım işi'*  \n*'Jedi geldi mik mik'*  \n*'Yeter bırak artık dedi'*  \n*'Aldım kızımı da salona geçtim'*\n\nYarim cevap: *'cağnım kızım. kurtarmış seni.'* Erdoğan ekliyor: *'Evet kafam da bitmişti. Sabaha kalan artık.'*\n\nJedi bu kart için anlamlı bir karaktere büyümüş. 2019 Mart'ında küçük bir yavru olarak gelmişti. 2022 nişan gecesinde *'Jedikun'* lakabını edinmişti. Şimdi 2025 Aralık'ta *kurtarıcı* — sahibinin ekrandan başını çevirten, salona alıp dinlendiren bir aracı. Birinin omzunu titreten, yeter dedirten yumuşak bir ses.\n\n01:18'de Erdoğan yatağa geçiyor. Son sözleri:\n\n*'Seni herşeyden çok çok çok seviyorum'*  \n*'Kızımız da seni çok seviyormuş ❤️'*\n\nNoel gecesi, başka bir şehirde olan eşine ve yanındaki kıza, biri için diğerinden konuşmak. Üçü de aynı evdeymiş gibi.",
-      "quote": "Saldım işi. Jedi geldi mik mik. Yeter bırak artık dedi. Aldım kızımı da salona geçtim. — Erdoğan",
+      "story": "25 Aralık 2025, Perşembe gecesi 00:19. Yarim seyahatte, Erdoğan İstanbul'da, çalışıyor. Jedi yanıyor o sırada - Mik mik. Erdoğan üç satır yazıyor:",
+      "quote": "Saldım işi. Jedi geldi mik mik. Yeter bırak artık dedi. Aldım kızımı da salona geçtim. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -3805,7 +3690,7 @@
         "fotoğraf",
         "kutlama"
       ],
-      "story": "1 Ocak 2026, Perşembe öğle vakti 12:02. Erdoğan, peş peşe **on beş** *'görüntü dahil edilmedi'* mesajı atıyor — bir saniye fasıllarla. Hangi fotoğraflar bunlar? Yılbaşı sofrası, Jedi'nin Yeni Yıl pozu, gece ışıkları, 23:59'dan 00:00'a geçişin saat görüntüleri, sabaha karşı yorgun kalkışın selfileri olabilir.\n\nWhatsApp'ta görüntüler arşivlenmedi — yıllar sonra bu klasör boştur — ama mesaj zincirinin yoğunluğu söylüyor: birinin diğerini hızla, dakikada 12 kareyle, görsel olarak yakalamak istemesi. Yarim'in görmediği sahneyi parça parça, üst üste. Sevdiklerine fotoğraf yollamanın klasik aceleciliği.\n\n2018'in 1 Ocak'ı henüz gelmemişti (chat 14 Ocak'ta başladı), ama 2019'dan bu yana her yılbaşı bu ekrana yazıldı. Sekiz yılbaşı, ortak bir defter. 2026, defterin son yılbaşısı kaydı — chat'in bittiği yıla giriş.",
+      "story": "1 Ocak 2026, Perşembe öğle vakti 12:02. Erdoğan, peş peşe *on beş 'görüntü dahil edilmedi'* mesajı atıyor - bir saniye fasıllarla. Hangi fotoğraflar bunlar?",
       "quote": null,
       "whatsapp_excerpt": [
         {
@@ -3835,8 +3720,8 @@
         "veteriner",
         "arkadaş-ailesi"
       ],
-      "story": "19 Ocak 2026, Pazartesi. Sabah 11:26'da Erdoğan kargo veriyor, sonra trafikte sıkışıyor. Yarim öğle saatlerinde alışveriş listesi atıyor: *krema, süt, un.* Sıradan bir günün başlangıcı.\n\nÖğleden sonra 17:23'te bir patlama:\n\n*'kitle yağ çıkmış'*  \n*'temizmiş'*\n\nYarim'in cevabı 0 saniye sonra: *'yeeey, yarabbi şükür.'* Erdoğan PDF gönderiyor: *KOPEK HERA CEM DAVUTOGLU TORAKS BT VRM Veteriner Radyoloji Merkezi.pdf.* Cem Davutoğlu'nun köpeği **Hera** için endişe duydukları toraks BT'si — kalpteki ufak bir şey, akciğerle ilgili 3 madde — aslında zararsız bir yağ kütlesiymiş.\n\nErdoğan'ın bir sonraki cümlesi WhatsApp arşivinin en güçlü ünlemlerinden biri: *'VAY AMK ÇOK SEVİNDİM.'*\n\nBu kart Erdoğan ve Yarim'in kendi Jedi'lerinden ötesini de seven bir aile olduğunu kaydediyor. Cem'in köpeğinin sağlığı kendi sağlıkları gibi. Pınar mesajları (2024 Aralık), Cem mesajları (2026 Ocak) — arşivde forwarded olarak görünen tek tük dış mesajlar bile, çevredeki dostlara olan bağlılığın küçük tanıkları.",
-      "quote": "VAY AMK ÇOK SEVİNDİM. — Erdoğan",
+      "story": "19 Ocak 2026, Pazartesi. Sabah 11:26'da Erdoğan kargo veriyor, sonra trafikte sıkışıyor. Yarim öğle saatlerinde alışveriş listesi atıyor: krema, süt, un. Sıradan bir günün başlangıcı.",
+      "quote": "VAY AMK ÇOK SEVİNDİM. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -3878,8 +3763,8 @@
         "birlikte-hobi",
         "model"
       ],
-      "story": "10 Şubat 2026, Salı gecesi. Önce Erdoğan iki Makerworld linki atıyor (20:38, 20:47). Saat 23:31'de Yarim cevap veriyor: *'Lion Low Poly Bust, 18 cm.'*\n\nErdoğan: *'güzel figür. hikoya mı?'* Yarim: *'yes. 15 mi olsa 18 mi?'* Bir saniye sonra Yarim önce 15 cm boyutunda render fotoğrafı atıyor, sonra ikinci bir fotoğraf. Erdoğan kararı veriyor: *'15 iyi duruyo. 18 çok mega olabilir.'*\n\nYarim ikinci bir model gönderiyor: *Lion on Stairs.* Erdoğan: *'uu, bu da güzelmiş he. havada durdum şahitlerim var.'*\n\nAma model bozuk olabilir mi? Yarim bir online STL onarım servisi atıyor: *https://www.formware.co/OnlineStlRepair*. *'bunu o siteye atmayı dener misin?'* Erdoğan deniyor — *'sıraya aldı. 11 kişi var.'* Yarim de paralelden deniyor — *'mal gibi en altta göstermiş.'*\n\nİki kişi gece yarısı, beraber, bir aslan modelinin yazılabilir olup olmadığını araştırıyor. 14 Ocak 2024'te alınan Creality Ender-3 S1, iki yıl sonra evin ortak hobisi olmuş. Sevgili olmaktan, evli olmaya, beraber bir 3D model ayarlamaya. Bahçenin yeni dalları.",
-      "quote": "havada durdum şahitlerim var. — Erdoğan",
+      "story": "10 Şubat 2026, Salı gecesi. Önce Erdoğan iki Makerworld linki atıyor (20:38, 20:47). Saat 23:31'de Yarim cevap veriyor: 'Lion Low Poly Bust, 18 cm.'",
+      "quote": "havada durdum şahitlerim var. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Yarim",
@@ -3914,7 +3799,7 @@
       "id": "2026-02-14-son-sevgililer-gunu",
       "date": "2026-02-14",
       "title": "On bir model, bir cilt rejimi",
-      "subtitle": "son Sevgililer Günü — sade, ev içi",
+      "subtitle": "son Sevgililer Günü - sade, ev içi",
       "category": "yildonumu",
       "tags": [
         "sevgililer-günü",
@@ -3923,7 +3808,7 @@
         "cilt-rejimi",
         "ev"
       ],
-      "story": "14 Şubat 2026, Cumartesi. Sevgililer Günü. WhatsApp arşivinin top 3 en yüksek skorlu günlerinden biri — 28.1 puanla. Ama mesaj sayısı sadece 12.\n\nGünün tek mesai: 18:38'de başlıyor. Yarim **on bir** Makerworld linki atıyor Erdoğan'a, art arda, dakikalarla:\n\n*makerworld/2245254*  \n*makerworld/1232545*  \n*makerworld/1335815*  \n*makerworld/2231121*  \n*makerworld/2138092*  \n*makerworld/1769908*  \n*makerworld/601833*  \n*makerworld/698950*  \n*makerworld/684549*  \n*makerworld/1014142*  \n*makerworld/432861*\n\n40 dakika boyunca, 19:18'e kadar. Erdoğan'a yorum yapma fırsatı bile bırakmıyor. *Hediye'nin yeni hâli: liste.* Sevgililer Günü için ne tatlı sözler, ne taze çiçekler — sadece 11 model. Birlikte basacakları, evde duracak küçük plastik objeler.\n\nGece 21:16'da Yarim bir tablo gönderiyor: *'1. Gece (Yenileme), 2. Gece (Dengeleme), 3. ve 4. Gece (Dinlenme) — Sabah: Su + Hyaluronic + Güneş Kremi, Akşam: Dalin + Glycolic Acid + Nemlendirici...'* Cilt bakım rejimi.\n\n2018'in ilk Sevgililer Günü gece 00:39'da *'uyu sevgilim benim, uyu güzelim, uyu herşeyim, uyu hayatımın anlamı'* sözleriyle kuruluyordu. 2026'nın son Sevgililer Günü 11 link, bir cilt programı, akşamüstü 'mutlu olduğunu' söylemeye gerek bile duymadan. Sevginin sürdüğü, ama jenerikten geçtiği bir gün. Nostaljik değil — sade.",
+      "story": "14 Şubat 2026, Cumartesi. Sevgililer Günü. WhatsApp arşivinin top 3 en yüksek skorlu günlerinden biri - 28.1 puanla. Ama mesaj sayısı sadece 12.",
       "quote": null,
       "whatsapp_excerpt": [
         {
@@ -3959,8 +3844,8 @@
         "ev",
         "rutin"
       ],
-      "story": "27 Nisan 2026, Pazartesi 15:27. Erdoğan, apartman yöneticisinden gelen bir uyarıyı Yarim'e iletiyor:\n\n*❗Dikkat❗*  \n*Değerli kat maliklerimiz kazan dairesinde pis su gider patlağı mevcuttur. Ekipler çalışma yapıyor, sizden ricamız kesinlikle wc-lavabo-Banyo kullanılmamalıdır.*\n\nDokuz dakika sonra Yarim, dünyanın en evrensel zamanlamasıyla cevap veriyor:\n\n*'e ben tuvaletteyim'*  \n*'yan tarafta tuvaleti çalıştırıyor duyuyorum'*  \n*'sıçtım bi de'*\n\nErdoğan: *'Hahahshs. Yapacak birşey yok o zaman. Yarasın.'*\n\nYarim: *'böyle mi bırakayım burayı? sifon çekmeyeyim mi?'* Erdoğan: *'Bırak şimdilik aşk.'* Yarim: *'oki. ama götümü yıkarım kusura bakmasınlar.'*\n\nBina yönetiminin formal ihtarına Yarim'in karikatürü cevabı, sekiz yıllık sohbetin son haftalarında bir anıt olarak duruyor: zamanlamanın trajedisi, espri, taviz vermeyen bir taraf (*ama götümü yıkarım kusura bakmasınlar*) ve karşısında her zaman gülecek bir Erdoğan: *'O kadar el mecbur.'*\n\nGece sonrası, çağrı: 17:14, *'eta?'* — *'call bitince geliyirim. max 10.'* Bir akşam evi.",
-      "quote": "böyle mi bırakayım burayı? sifon çekmeyeyim mi? — Yarim · O kadar el mecbur. — Erdoğan",
+      "story": "27 Nisan 2026, Pazartesi 15:27. Erdoğan, apartman yöneticisinden gelen bir uyarıyı Yarim'e iletiyor:",
+      "quote": "böyle mi bırakayım burayı? sifon çekmeyeyim mi? - Yarim · O kadar el mecbur. - Erdoğan",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -4006,8 +3891,8 @@
         "anchor",
         "kapanış"
       ],
-      "story": "30 Nisan 2026, Perşembe öğleden sonra 15:34. Erdoğan, Yarim'e bir mesaj yazıyor — bu mesaj, 8 yıl 3 ay 16 günlük WhatsApp arşivinin **son sözü** olacak:\n\n*'Göbek havuç maydanoz yeşil soğan.'*\n\nNoktalama yok. Bağlam belirsiz — bir akşam yemeği için bir alışveriş listesi olabilir, bir tarif fikri olabilir, bir yengeç sosu olabilir. *Göbek* (göbek marul muhtemelen), *havuç*, *maydanoz*, *yeşil soğan*. Dört sebze.\n\nDikkat çekici olan: arşiv burada bitmek için seçilmiş gibi.\n\n14 Ocak 2018 tarihli **ilk mesaj** Yarim'in *'Samsung en cicisi'*ydi — bağlamsız, dört kelimeden ibaret, küçük bir gözlem. Sekiz yıl üç ay sonra **son mesaj** Erdoğan'ın *'Göbek havuç maydanoz yeşil soğan'* — bağlamsız, dört kelimeden ibaret, küçük bir liste.\n\nİlk mesaj: bir cihaz hakkındaki bir gözlem. Son mesaj: bir akşamın hammaddesi. İkisi arasında 168,678 mesaj — kıskançlıklar, barışlar, *yarim'ler, aşkım'lar, eşim/karım/kocam'lar*; nişan gecesinin *'tatlış bizli rüyalar'ı*; düğün gecesinin *'Seni coooooooooooook seviyorum biriciğim'i*; depremin *'iyi ki beraberiz'i*; SAP kabusunun *'ALIN SİZE YENİ HATA'sı*; Jedi'nin gece yarısı *'mik mik'i.* Hepsi.\n\nVe sonunda dört sebze. Bahçenin filiz attığı topraktan bahçenin akşam yemeğine — *havuç, maydanoz, yeşil soğan.* Bahçe, kelimenin tam anlamıyla bir bahçe.",
-      "quote": "Göbek havuç maydanoz yeşil soğan. — Erdoğan (son mesaj)",
+      "story": "30 Nisan 2026, Perşembe öğleden sonra 15:34. Erdoğan, Yarim'e bir mesaj yazıyor - bu mesaj, 8 yıl 3 ay 16 günlük WhatsApp arşivinin *son sözü olacak:",
+      "quote": "Göbek havuç maydanoz yeşil soğan. - Erdoğan (son mesaj)",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",

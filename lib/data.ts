@@ -64,6 +64,18 @@ export async function getMemoryById(id: string): Promise<Memory | null> {
   return memories.find((m) => m.id === id) ?? null;
 }
 
+export async function getAdjacentMemories(
+  id: string,
+): Promise<{ prev: Memory | null; next: Memory | null }> {
+  const memories = await loadMemories();
+  const idx = memories.findIndex((m) => m.id === id);
+  if (idx === -1) return { prev: null, next: null };
+  return {
+    prev: idx > 0 ? memories[idx - 1] : null,
+    next: idx < memories.length - 1 ? memories[idx + 1] : null,
+  };
+}
+
 export async function getRelatedMemories(
   current: Memory,
   limit = 2,

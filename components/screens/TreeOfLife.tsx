@@ -480,13 +480,17 @@ export function TreeOfLife({
   width = "100%",
   height = "100%",
 }: TreeOfLifeProps) {
-  const seasonAlpha = level === "all" ? 0.65 : 1;
+  const seasonAlpha = level === "all" ? 0.55 : 1;
   const monthAlpha = level === "all" ? 0 : level === "year" ? 0.4 : 1;
   const eventScale =
-    level === "all" ? 0.85 : level === "year" ? 1.1 : level === "season" ? 1.4 : 1.7;
-  const eventLabelShow = level === "month" || level === "week";
+    level === "all" ? 1.6 : level === "year" ? 2.0 : level === "season" ? 2.4 : 2.8;
+  const eventLabelShow = level === "month" || level === "week" || level === "season";
   const showLeafMass = level === "all" || level === "year";
-  const showCreatures = level === "all" || level === "year" || level === "season";
+  const showCreatures = level === "all" || level === "year";
+
+  // Count memories per year for visual differentiation
+  const yearCounts = new Map<number, number>();
+  for (const ev of events) yearCounts.set(ev.year, (yearCounts.get(ev.year) ?? 0) + 1);
   const trunkColor = "#3F2D1E";
   const trunkDark = "#241710";
   const dominant = ALL_SEASON_TINTS[season] || ALL_SEASON_TINTS.spring;
@@ -662,7 +666,10 @@ export function TreeOfLife({
         const isFocused = focus.year === year;
         const dimmed = focus.year && focus.year !== year && level !== "all";
         const yearOpacity = dimmed ? 0.16 : 1;
-        const branchWidth = tip.len > 320 ? 22 : 18;
+        const memCount = yearCounts.get(year) ?? 0;
+        // Branch thickness scales with memory count
+        const baseWidth = tip.len > 320 ? 20 : 16;
+        const branchWidth = baseWidth + Math.min(12, Math.sqrt(memCount) * 2);
 
         const tipRng = seedRand(year);
         const nTwigs = 14;
@@ -732,34 +739,26 @@ export function TreeOfLife({
             ))}
 
             {showLeafMass &&
-              Array.from({ length: 36 }).map((_, i) => {
+              Array.from({ length: Math.min(20, 6 + memCount) }).map((_, i) => {
                 const rng = seedRand(year * 100 + i * 13);
                 const r = rng();
-                const tt = 0.25 + r * 0.7;
+                const tt = 0.35 + r * 0.55;
                 const pt = yearPointAt(year, tt);
-                const off = 25 + (rng() - 0.5) * 50;
+                const off = 22 + (rng() - 0.5) * 30;
                 const upDx = Math.cos((rng() - 0.5) * Math.PI) * off;
                 const upDy = -Math.abs(Math.sin((rng() - 0.5) * Math.PI)) * off - 10;
-                const lx = pt.x + upDx + tip.side * (rng() * 15);
+                const lx = pt.x + upDx + tip.side * (rng() * 12);
                 const ly = pt.y + upDy;
-                const useDominant = rng() > 0.15;
-                const palette = useDominant
-                  ? dominant
-                  : ALL_SEASON_TINTS[
-                      (["spring", "summer", "autumn", "winter"].filter((s) => s !== season)[
-                        Math.floor(rng() * 3)
-                      ] as Season) ?? season
-                    ];
                 return (
                   <LeafGlyph
                     key={`fl${year}${i}`}
                     x={lx}
                     y={ly}
-                    color={palette[3] || palette[0]}
-                    fill={palette[i % 3]}
-                    size={9 + rng() * 6}
+                    color={dominant[3] || dominant[0]}
+                    fill={dominant[i % 3]}
+                    size={7 + rng() * 4}
                     rot={rng() * 360 - 180}
-                    opacity={useDominant ? 0.88 : 0.65}
+                    opacity={0.55}
                   />
                 );
               })}
@@ -782,6 +781,32 @@ export function TreeOfLife({
                 >
                   {year}
                 </text>
+                {memCount > 0 && (
+                  <g transform={`translate(${tip.side > 0 ? 110 : -110} -16)`}>
+                    <rect
+                      x="-22"
+                      y="-14"
+                      width="44"
+                      height="22"
+                      rx="11"
+                      fill={isFocused ? "#D8624C" : "#fff"}
+                      stroke={isFocused ? "#D8624C" : "#3F2D1E"}
+                      strokeWidth="1.5"
+                      opacity={isFocused ? 1 : 0.95}
+                    />
+                    <text
+                      x="0"
+                      y="3"
+                      textAnchor="middle"
+                      fontFamily="Inter, sans-serif"
+                      fontSize="13"
+                      fontWeight="600"
+                      fill={isFocused ? "#fff" : "#3F2D1E"}
+                    >
+                      {memCount}
+                    </text>
+                  </g>
+                )}
                 <line
                   x1={tip.side > 0 ? 4 : -90}
                   x2={tip.side > 0 ? 90 : -4}
@@ -911,24 +936,11 @@ export function TreeOfLife({
       })}
 
       {showCreatures && (
-        <g style={{ pointerEvents: "none" }}>
-          <Owl x={yearTip(2019).x + 20} y={yearTip(2019).y - 22} scale={1.8} />
-          <Bird x={yearTip(2025).x + 5} y={yearTip(2025).y - 18} scale={1.7} />
-          <Bird x={yearTip(2024).x - 30} y={yearTip(2024).y - 16} scale={1.5} flip />
-          <Bird x={yearTip(2026).x + 35} y={yearTip(2026).y - 16} scale={1.4} />
-          <Bird x={350} y={70} scale={1.0} flip />
-          <Bird x={650} y={55} scale={1.1} />
-          <Bird x={500} y={28} scale={0.9} />
-          <TreeCat x={yearTip(2022).x + 20} y={yearTip(2022).y - 15} scale={1.6} />
-          <TreeCat x={yearTip(2023).x - 10} y={yearTip(2023).y - 15} scale={1.5} flip />
-          <Butterfly x={300} y={400} scale={1.6} />
-          <Butterfly x={750} y={500} scale={1.4} color1="#D8624C" color2="#F4B49E" />
-          <Butterfly x={200} y={900} scale={1.3} color1="#9C6F3D" color2="#D9B280" />
-          <Butterfly x={820} y={1200} scale={1.5} color1="#5E8F4A" color2="#9FC580" />
-          <Bee x={400} y={600} scale={1.5} />
-          <Bee x={650} y={1100} scale={1.3} />
-          <Ladybug x={485} y={1400} scale={1.6} />
-          <Ladybug x={520} y={1800} scale={1.4} />
+        <g style={{ pointerEvents: "none", opacity: 0.7 }}>
+          <Owl x={yearTip(2019).x + 20} y={yearTip(2019).y - 22} scale={1.6} />
+          <TreeCat x={yearTip(2022).x + 20} y={yearTip(2022).y - 15} scale={1.5} />
+          <Bird x={650} y={55} scale={1} />
+          <Butterfly x={200} y={1200} scale={1.2} />
         </g>
       )}
 

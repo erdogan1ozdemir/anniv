@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import type { Memory } from "@/types";
-import { JediSilhouette } from "@/components/svg/JediSilhouette";
 import { WalkingCat } from "@/components/svg/Cats";
 import { shortTurkishDate } from "@/lib/categories";
 
@@ -39,6 +39,8 @@ export function JediScreen({ memories }: JediScreenProps) {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          position: "relative",
+          zIndex: 5,
         }}
       >
         <Link href="/" style={{ color: "var(--primary)", fontSize: 14 }}>
@@ -75,70 +77,33 @@ export function JediScreen({ memories }: JediScreenProps) {
             strokeWidth="1.5"
             fill="none"
           />
-          <ellipse
-            cx="50"
-            cy="40"
-            rx="8"
-            ry="3"
-            fill="var(--primary)"
-            opacity="0.6"
-            transform="rotate(-30 50 40)"
-          />
-          <ellipse
-            cx="80"
-            cy="32"
-            rx="8"
-            ry="3"
-            fill="var(--primary)"
-            opacity="0.6"
-            transform="rotate(-15 80 32)"
-          />
-          <ellipse
-            cx="270"
-            cy="32"
-            rx="8"
-            ry="3"
-            fill="var(--primary)"
-            opacity="0.6"
-            transform="rotate(15 270 32)"
-          />
-          <ellipse
-            cx="300"
-            cy="40"
-            rx="8"
-            ry="3"
-            fill="var(--primary)"
-            opacity="0.6"
-            transform="rotate(30 300 40)"
-          />
+          <ellipse cx="50" cy="40" rx="8" ry="3" fill="var(--primary)" opacity="0.6" transform="rotate(-30 50 40)" />
+          <ellipse cx="80" cy="32" rx="8" ry="3" fill="var(--primary)" opacity="0.6" transform="rotate(-15 80 32)" />
+          <ellipse cx="270" cy="32" rx="8" ry="3" fill="var(--primary)" opacity="0.6" transform="rotate(15 270 32)" />
+          <ellipse cx="300" cy="40" rx="8" ry="3" fill="var(--primary)" opacity="0.6" transform="rotate(30 300 40)" />
         </svg>
 
         <div
           style={{
             margin: "20px auto 0",
-            width: 170,
-            height: 210,
+            width: 220,
+            height: 270,
             borderRadius: 16,
             background: "var(--surface-2)",
             border: "4px solid var(--surface-2)",
             boxShadow: "var(--shadow-lg)",
             position: "relative",
             overflow: "hidden",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "radial-gradient(circle at 50% 30%, #FFE9D6, var(--surface-3))",
-            }}
+          <Image
+            src="/img/jedi-portrait.png"
+            alt="Jedi"
+            fill
+            sizes="220px"
+            style={{ objectFit: "cover", objectPosition: "55% 45%" }}
+            priority
           />
-          <div style={{ position: "relative" }}>
-            <JediSilhouette size={150} />
-          </div>
         </div>
 
         <div style={{ textAlign: "center", marginTop: 20 }}>
@@ -276,8 +241,7 @@ export function JediScreen({ memories }: JediScreenProps) {
               top: 0,
               bottom: 0,
               width: 2,
-              background:
-                "linear-gradient(180deg, var(--accent), var(--primary), var(--gold))",
+              background: "linear-gradient(180deg, var(--accent), var(--primary), var(--gold))",
               borderRadius: 1,
             }}
           />

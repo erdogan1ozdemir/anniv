@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, type PanInfo } from "framer-motion";
+import { useRouter } from "next/navigation";
 import type { Memory } from "@/types";
 import { CATEGORY_META, formatTurkishDate, shortTurkishDate } from "@/lib/categories";
 
@@ -32,9 +33,20 @@ const CATEGORY_HERO_GRADIENT: Record<string, string> = {
 interface MemoryDetailProps {
   memory: Memory;
   related: Memory[];
+  prevId?: string | null;
+  nextId?: string | null;
 }
 
-export function MemoryDetail({ memory, related }: MemoryDetailProps) {
+export function MemoryDetail({ memory, related, prevId, nextId }: MemoryDetailProps) {
+  const router = useRouter();
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
+    const threshold = 90;
+    if (info.offset.x < -threshold && nextId) {
+      router.push(`/ani/${nextId}`);
+    } else if (info.offset.x > threshold && prevId) {
+      router.push(`/ani/${prevId}`);
+    }
+  };
   const meta = CATEGORY_META[memory.category];
   const moodTint = memory.mood ? MOOD_TINT[memory.mood] : undefined;
   const heroGradient =
@@ -48,7 +60,11 @@ export function MemoryDetail({ memory, related }: MemoryDetailProps) {
   const paragraphs = (memory.story ?? "").split(/\n+/).filter(Boolean);
 
   return (
-    <article
+    <motion.article
+      drag="x"
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.18}
+      onDragEnd={handleDragEnd}
       style={{
         position: "relative",
         minHeight: "100vh",
@@ -604,6 +620,62 @@ export function MemoryDetail({ memory, related }: MemoryDetailProps) {
           </div>
         </div>
       )}
-    </article>
+
+      <div
+        style={{
+          display: "flex",
+          gap: 8,
+          padding: "16px 22px 0",
+          marginTop: 16,
+        }}
+      >
+        {prevId ? (
+          <Link
+            href={`/ani/${prevId}`}
+            style={{
+              flex: 1,
+              padding: "12px 14px",
+              borderRadius: 12,
+              background: "var(--surface-2)",
+              border: "1px solid var(--border-soft)",
+              color: "var(--text-muted)",
+              fontSize: 12,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              gap: 8,
+            }}
+          >
+            <span style={{ fontSize: 18 }}>‹</span>
+            <span style={{ fontFamily: "var(--font-accent)", fontSize: 15 }}>önceki</span>
+          </Link>
+        ) : (
+          <div style={{ flex: 1 }} />
+        )}
+        {nextId ? (
+          <Link
+            href={`/ani/${nextId}`}
+            style={{
+              flex: 1,
+              padding: "12px 14px",
+              borderRadius: 12,
+              background: "var(--surface-2)",
+              border: "1px solid var(--border-soft)",
+              color: "var(--text-muted)",
+              fontSize: 12,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              gap: 8,
+            }}
+          >
+            <span style={{ fontFamily: "var(--font-accent)", fontSize: 15 }}>sonraki</span>
+            <span style={{ fontSize: 18 }}>›</span>
+          </Link>
+        ) : (
+          <div style={{ flex: 1 }} />
+        )}
+      </div>
+    </motion.article>
   );
 }

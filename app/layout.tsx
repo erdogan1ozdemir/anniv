@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter, Caveat } from "next/font/google";
+import { PageTransition } from "@/components/ui/PageTransition";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -34,8 +35,8 @@ export const viewport: Viewport = {
   themeColor: "#5A8B7E",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({
@@ -48,7 +49,7 @@ export default function RootLayout({
       <body
         className={`${cormorant.variable} ${inter.variable} ${caveat.variable}`}
       >
-        {children}
+        <PageTransition>{children}</PageTransition>
       </body>
     </html>
   );
