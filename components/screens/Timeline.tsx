@@ -72,11 +72,19 @@ export function Timeline({
       wheelLockRef.current = now;
       const idx = ZOOM_LEVELS.indexOf(level);
       if (e.deltaY > 0) {
-        // pinch out → zoom out (toward 'all')
+        // pinch out → broaden scope (in moment, stay; otherwise step level)
+        if (level === "moment") {
+          // Moment: progressively clear focus, stay in list view
+          if (focus.week) setFocus({ year: focus.year, season: focus.season, month: focus.month });
+          else if (focus.month != null) setFocus({ year: focus.year, season: focus.season });
+          else if (focus.season) setFocus({ year: focus.year });
+          else if (focus.year) setFocus({});
+          // else: at "all anlar", stay
+          return;
+        }
         const next = ZOOM_LEVELS[Math.max(0, idx - 1)];
         if (next !== level) goLevel(next);
       } else {
-        // pinch in → zoom in (toward 'moment')
         const next = ZOOM_LEVELS[Math.min(ZOOM_LEVELS.length - 1, idx + 1)];
         if (next !== level) goLevel(next);
       }
@@ -107,6 +115,25 @@ export function Timeline({
   };
 
   const onOpen = (ev: LifeEvent) => router.push(`/ani/${ev.id}`);
+
+  // In moment view, breadcrumb / scope-broaden adjusts focus only - stays in list view
+  const broadenScope = (target: ZoomLevel) => {
+    if (target === "all") setFocus({});
+    else if (target === "year") setFocus({ year: focus.year });
+    else if (target === "season")
+      setFocus({ year: focus.year, season: focus.season });
+    else if (target === "month")
+      setFocus({ year: focus.year, season: focus.season, month: focus.month });
+    else if (target === "week") setFocus({ ...focus });
+  };
+
+  const onCrumbSet = (target: ZoomLevel) => {
+    if (level === "moment") {
+      broadenScope(target);
+    } else {
+      goLevel(target);
+    }
+  };
 
   const vb = zoomViewBox(level === "moment" ? "week" : level, focus);
 
@@ -145,7 +172,7 @@ export function Timeline({
       }}
     >
       <TopBar isDark={isDark} onToggleDark={onToggleDark} />
-      <Breadcrumbs level={level} focus={focus} onSet={goLevel} />
+      <Breadcrumbs level={level} focus={focus} onSet={onCrumbSet} />
 
       {level !== "moment" ? (
         <div ref={treeRef} style={{ flex: 1, position: "relative", minHeight: 0 }}>
@@ -194,6 +221,7 @@ export function Timeline({
           events={focusedEvents.length ? focusedEvents : events}
           focus={focus}
           onOpen={onOpen}
+          onBroaden={broadenScope}
         />
       )}
     </div>
@@ -462,10 +490,12 @@ function MomentView({
   events,
   focus,
   onOpen,
+  onBroaden,
 }: {
   events: LifeEvent[];
   focus: ZoomFocus;
   onOpen: (ev: LifeEvent) => void;
+  onBroaden?: (target: ZoomLevel) => void;
 }) {
   const sorted = useMemo(
     () =>
@@ -476,6 +506,27 @@ function MomentView({
       }),
     [events],
   );
+
+  const scopeLabel = focus.week
+    ? `${focus.month != null ? MONTHS_TR_LONG[focus.month] : ""} · ${focus.week}. hafta`.trim()
+    : focus.month != null
+      ? `${MONTHS_TR_LONG[focus.month]} ${focus.year}`
+      : focus.season
+        ? `${SEASON_TR[focus.season]} ${focus.year}`
+        : focus.year
+          ? `${focus.year}`
+          : "Tüm zamanlar";
+
+  // Show "broaden" affordance if any focus is active
+  const canBroaden = Boolean(focus.year || focus.season || focus.month != null || focus.week);
+  const broadenTarget: ZoomLevel = focus.week
+    ? "month"
+    : focus.month != null
+      ? "season"
+      : focus.season
+        ? "year"
+        : "all";
+
   return (
     <div
       style={{
@@ -493,9 +544,7 @@ function MomentView({
           color: "var(--text-muted)",
         }}
       >
-        {focus.year && focus.month != null
-          ? `${MONTHS_TR_LONG[focus.month]} ${focus.year}`
-          : "tüm anlar"}
+        {scopeLabel}
       </div>
       <div
         style={{
@@ -509,6 +558,41 @@ function MomentView({
       >
         {sorted.length} an
       </div>
+
+      {canBroaden && onBroaden && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "0 24px 16px",
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => onBroaden(broadenTarget)}
+            style={{
+              padding: "8px 18px",
+              borderRadius: 999,
+              background: "rgba(255, 253, 246, 0.85)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(31,27,22,0.12)",
+              color: "var(--text-muted)",
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              fontWeight: 500,
+              letterSpacing: 0.4,
+              cursor: "pointer",
+              boxShadow: "var(--shadow-sm)",
+              display: "inline-flex",
+              gap: 8,
+              alignItems: "center",
+            }}
+          >
+            <span style={{ fontSize: 14 }}>↕</span>
+            Listede genişlet
+          </button>
+        </div>
+      )}
 
       <div style={{ position: "relative", padding: "0 24px 80px", minHeight: 400 }}>
         <svg
