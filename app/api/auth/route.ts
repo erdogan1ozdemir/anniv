@@ -4,8 +4,8 @@ const COOKIE_NAME = "bahce_session";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 yıl
 
 export async function POST(request: Request) {
-  const expected = process.env.BAHCE_PASSWORD ?? "yarim";
-  const sessionValue = process.env.BAHCE_SECRET ?? "yarim";
+  const expected = process.env.BAHCE_PASSWORD ?? "140219";
+  const sessionValue = process.env.BAHCE_SECRET ?? "bahcemiz-2026";
 
   let body: { password?: string } = {};
   try {

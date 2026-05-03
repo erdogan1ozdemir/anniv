@@ -32,7 +32,7 @@ export function middleware(request: NextRequest) {
   }
 
   const cookie = request.cookies.get("bahce_session")?.value;
-  const expected = process.env.BAHCE_SECRET ?? "yarim";
+  const expected = process.env.BAHCE_SECRET ?? "bahcemiz-2026";
 
   if (cookie === expected) {
     return NextResponse.next();
