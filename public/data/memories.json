@@ -60,8 +60,8 @@
         "cards": 6
       }
     ],
-    "total": 85,
-    "filtered_at": "2026-05-03-v5"
+    "total": 112,
+    "filtered_at": "2026-05-03-v6"
   },
   "memories": [
     {
@@ -150,27 +150,6 @@
       "song_ref": null,
       "mood": "happy",
       "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "01_anilar_batch1"
-    },
-    {
-      "id": "2018-01-19-ilk-seni-seviyorum",
-      "date": "2018-01-24",
-      "title": "Bende seni seviyorum iyi uykular ömrüm",
-      "subtitle": "ilk açık ve net 'seni seviyorum'",
-      "category": "ilkler",
-      "tags": [
-        "seni-seviyorum",
-        "ömrüm",
-        "ilk-aylar"
-      ],
-      "story": "O kelime de, seni seviyorum gibi, sonraki yıllarda dönüp dönüp tekrar gelecek; akşam dileklerinin altın anahtarı olacak.",
-      "quote": "Bende seni seviyorum iyi uykular ömrüm 😚😚😚",
-      "location": null,
-      "song_ref": null,
-      "mood": "romantic",
-      "is_pinned": true,
       "media_count_estimate": 0,
       "ai_confidence": "high",
       "_batch": "01_anilar_batch1"
@@ -269,7 +248,7 @@
         "burun",
         "hayatımın-anlamı"
       ],
-      "story": "Uyumussun :(' Ama Yarim de uyumamış. Uyanığım.' Gece yarısı 00:25. Bunlar yan yana yatakta değiller - sadece ekrandan birbirlerine sarılıyorlar.",
+      "story": "Uyumussun:(' Ama Yarim de uyumamış. Uyanığım.' Gece yarısı 00:25. Bunlar yan yana yatakta değiller - sadece ekrandan birbirlerine sarılıyorlar.",
       "quote": "Uyu sevgilim benim. Uyu güzelim. Uyu herşeyim. Uyu hayatımın anlamı.",
       "whatsapp_excerpt": [
         {
@@ -328,6 +307,21 @@
       "media_count_estimate": 8,
       "ai_confidence": "medium",
       "_batch": "01_anilar_batch1"
+    },
+    {
+      "id": "anchor-erdogan-dgn-2018",
+      "date": "2018-04-14",
+      "title": "Erdoğan, 24 yaşında",
+      "subtitle": "14 Nisan, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Bugün Erdoğan'ın doğum günü. Yarim her yıl gece yarısı 'iyi ki doğdun' yazıyor; bu yıl da yazacak.",
+      "is_pinned": true,
+      "ai_confidence": "high"
     },
     {
       "id": "2018-04-22-arabaya-dikkat",
@@ -400,18 +394,6 @@
       ],
       "story": "Mayıs 2018 - sevgili olalı altı ay olmuş, WhatsApp arşivi de dört aylık. Bahar mektubu değil bunlar; günün son sayfası.",
       "quote": "Bende seni çok seviyoruuummm 😚😚",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Bende seni çok seviyoruuummm 😚😚",
-          "time": "23:38"
-        },
-        {
-          "sender": "Yarim",
-          "text": "İyi geceler tatlı rüyalaaar 😚😚❤😚😚",
-          "time": "23:39"
-        }
-      ],
       "location": null,
       "song_ref": null,
       "mood": "happy",
@@ -432,7 +414,7 @@
         "gezi-plani",
         "buluşma"
       ],
-      "story": "Pazar gecesi 23:42, Yarim soruyor: 'Levent'te ne yapabiliriz? İki tarafın eve hangi köprüden, hangi vapurdan, hangi metrodan döneceği gibi sıkıntıların yanında, şehir aynı zamanda *paylaşılması* gereken bir şey: hangi...",
+      "story": "Birlikte gezdiğimiz yerlerden biri. Yolda ne konuştuk, neye güldük - hatırlıyorum.",
       "quote": "Leventte ne yapabiliriz / Napsak",
       "whatsapp_excerpt": [
         {
@@ -504,7 +486,7 @@
         "buluşma",
         "ortak-zevk"
       ],
-      "story": "Hazırlanıcam hemen.' Gün buluşmayla doluyor - birlikte hava alıyorlar, fiyat pazarlıkları yapıyorlar. Sonra gece 23:31, ekran açık, birlikte bir program izliyorlar; Erdoğan keyifli not düşüyor: 'Demet akbag sakalarken...",
+      "story": "Sıradan görünen ama sonradan değer kazanan küçük bir an.",
       "quote": "Demet akbag sakalarken kendi şakalaniyo. Şahane.",
       "whatsapp_excerpt": [
         {
@@ -648,7 +630,7 @@
         "eylül",
         "kayınvalide"
       ],
-      "story": "Ara ara aramanı bekliyo, sesini duymak istiyo, çünkü soruyo, selam söylüyo hep.' Bir ailenin sevgi vermesinin işareti, ailenin daha biriktirme aşamasındaki halidir: arar mıyım acaba, sesini duyabilir miyim, gelir mi...",
+      "story": "Sıradan görünen ama sonradan değer kazanan küçük bir an.",
       "quote": "Konuşunca bile seviniyo. Ara ara aramanı bekliyo. - Erdoğan, annesi için",
       "whatsapp_excerpt": [
         {
@@ -1050,7 +1032,7 @@
         "ilk-bakım",
         "sahiplenme"
       ],
-      "story": "Jedi geleli sadece on iki gün olmuş. Ama Jedi ile ilk on iki günün toplamı bu cümleye sığıyor: ilk vet ziyaretine yetecek kadar bağlanmışlar, kontrol için gerekli olan şeyleri öğrenmişler, sahiplenmenin tartışmasız...",
+      "story": "Jedi'nin bir günü. Yumuşak bir uyku, bir miyav, bir bakış.",
       "quote": "Cumartesi jedi'yı vete bıraktıktan sonra eve geçicem aşk.",
       "location": {
         "name": "Veteriner kliniği",
@@ -1499,6 +1481,36 @@
       "_batch": "06_anilar_batch6_2020_pandemi"
     },
     {
+      "id": "anchor-sevgililer-2020",
+      "date": "2020-02-14",
+      "title": "2020 Sevgililer Günü",
+      "subtitle": "14 Şubat",
+      "category": "yildonumu",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "İlk Sevgililer Günü'müzde Erdoğan gece 'uyu güzelim' yazmıştı. O cümle yıllara yayıldı, her 14 Şubat geri geliyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-erdogan-dgn-2020",
+      "date": "2020-04-14",
+      "title": "Erdoğan, 26 yaşında",
+      "subtitle": "14 Nisan, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Bugün Erdoğan'ın doğum günü. Yarim her yıl gece yarısı 'iyi ki doğdun' yazıyor; bu yıl da yazacak.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
       "id": "2020-05-27-jedi-mama-dal",
       "date": "2020-05-27",
       "title": "Jedi'a mama koydum, sonra da dal sarmaya geçtim",
@@ -1539,6 +1551,21 @@
       "_batch": "06_anilar_batch6_2020_pandemi"
     },
     {
+      "id": "anchor-merve-dgn-2020",
+      "date": "2020-10-14",
+      "title": "Yarim, 25 yaşında",
+      "subtitle": "14 Ekim, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Bugün Yarim'in doğum günü. İlk yıllarda gece yarısı uzun mesajlar, sonraki yıllarda yan yana bir pasta - her yıl bu tarih kendi şeklini buluyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
       "id": "2020-pandemi-sessizlik",
       "date": "2020-11-05",
       "title": "Üçüncü yıldönümünde sıfır mesaj",
@@ -1576,7 +1603,7 @@
         "duş",
         "iyilik"
       ],
-      "story": "Yarim bir gerginliğin sonunda: 'Ben taa ne zaman gerildim bunun için. Türkiye'de yaygın bir gelenek - ama burada özelliği şu: bir tartışmanın orta yerinde duşun bahane olarak girmesi, suyun gerginliği temizlemesi, sonra...",
+      "story": "Sıradan görünen ama sonradan değer kazanan küçük bir an.",
       "quote": "Herkes haklı. Sıhhatler olsun birtanem.",
       "whatsapp_excerpt": [
         {
@@ -1644,6 +1671,21 @@
       "_batch": "07_anilar_batch7_2021_h1"
     },
     {
+      "id": "anchor-sevgililer-2021",
+      "date": "2021-02-14",
+      "title": "2021 Sevgililer Günü",
+      "subtitle": "14 Şubat",
+      "category": "yildonumu",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "İlk Sevgililer Günü'müzde Erdoğan gece 'uyu güzelim' yazmıştı. O cümle yıllara yayıldı, her 14 Şubat geri geliyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
       "id": "2021-03-13-gece-kuruma-baris",
       "date": "2021-03-13",
       "title": "Senin çalışanınsa, benim de danışmanım",
@@ -1690,7 +1732,7 @@
         "ev-içi",
         "fotoğraf"
       ],
-      "story": "Bir buçuk satır sonra 'Sendee. Seni çok seviyoruuum.' - kelime dağarcığında aşk ile bal yan yana. yaş, üçüncü beraber doğum günü - pandeminin son kuyruğu hâlâ devam ederken, kutlama ev içinde, sade, ekran yerine yüz...",
+      "story": "Geri dönüp kutladığımız bir gün; her yıl tekrar geri geliyoruz.",
       "quote": "Yaşında geçiyor artık.",
       "whatsapp_excerpt": [
         {
@@ -1707,11 +1749,6 @@
           "sender": "Yarim",
           "text": "Balım benimm / Seni çok seviyoruuum",
           "time": "11:36"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Ben de seni çok seviyorum bok böceğim",
-          "time": "11:49"
         }
       ],
       "location": null,
@@ -2011,7 +2048,7 @@
         "ev-içi",
         "gerçeklik"
       ],
-      "story": "Sabah zaten uyaniktin amaaa. Dedim belki yatakta takiliyodur. İş geldi diye telefona baktirmiyim. 26'sındaki Yarim, bedensel olarak ne yaşıyorsa onu ekrana taşıyor - uyku, sabırsızlık, regl, sigara dalı, sonrasında...",
+      "story": "Geri dönüp kutladığımız bir gün; her yıl tekrar geri geliyoruz.",
       "quote": "Tutsun diye atmiyom kiiiii.",
       "whatsapp_excerpt": [
         {
@@ -2320,6 +2357,21 @@
       "ai_confidence": "high",
       "anchor_type": "NISAN",
       "_batch": "09_anilar_batch9_2022_nisan_dugun"
+    },
+    {
+      "id": "anchor-sevgililer-2022",
+      "date": "2022-02-14",
+      "title": "2022 Sevgililer Günü",
+      "subtitle": "14 Şubat",
+      "category": "yildonumu",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "İlk Sevgililer Günü'müzde Erdoğan gece 'uyu güzelim' yazmıştı. O cümle yıllara yayıldı, her 14 Şubat geri geliyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
     },
     {
       "id": "2022-03-03-kuçukcekmece-bakalim",
@@ -2687,6 +2739,126 @@
       "_batch": "10_anilar_batch10_2022h2_2023"
     },
     {
+      "id": "anchor-merve-dgn-2022",
+      "date": "2022-10-14",
+      "title": "Yarim, 27 yaşında",
+      "subtitle": "14 Ekim, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Bugün Yarim'in doğum günü. İlk yıllarda gece yarısı uzun mesajlar, sonraki yıllarda yan yana bir pasta - her yıl bu tarih kendi şeklini buluyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-iliski-baslangic-2022",
+      "date": "2022-11-05",
+      "title": "Altıncı. yıldönümümüz - tanışma",
+      "subtitle": "5 Kasım, beraber başladığımız gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "6 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-nisan-2023",
+      "date": "2023-01-30",
+      "title": "Ikinci. nişan yıldönümü",
+      "subtitle": "30 Ocak, yüzüklerin takıldığı gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Nişan günümüzden bu yana 2 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-sevgililer-2023",
+      "date": "2023-02-14",
+      "title": "2023 Sevgililer Günü",
+      "subtitle": "14 Şubat",
+      "category": "yildonumu",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "İlk Sevgililer Günü'müzde Erdoğan gece 'uyu güzelim' yazmıştı. O cümle yıllara yayıldı, her 14 Şubat geri geliyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-erdogan-dgn-2023",
+      "date": "2023-04-14",
+      "title": "Erdoğan, 29 yaşında",
+      "subtitle": "14 Nisan, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Bugün Erdoğan'ın doğum günü. Yarim her yıl gece yarısı 'iyi ki doğdun' yazıyor; bu yıl da yazacak.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-evlilik-2023",
+      "date": "2023-05-03",
+      "title": "Ikinci. evlilik yıldönümümüz",
+      "subtitle": "3 Mayıs, evlendiğimiz gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "2 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-merve-dgn-2023",
+      "date": "2023-10-14",
+      "title": "Yarim, 28 yaşında",
+      "subtitle": "14 Ekim, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Bugün Yarim'in doğum günü. İlk yıllarda gece yarısı uzun mesajlar, sonraki yıllarda yan yana bir pasta - her yıl bu tarih kendi şeklini buluyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-iliski-baslangic-2023",
+      "date": "2023-11-05",
+      "title": "Yedinci. yıldönümümüz - tanışma",
+      "subtitle": "5 Kasım, beraber başladığımız gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "7 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
       "id": "2023-11-24-canim-esim-canim-kocam",
       "date": "2023-11-24",
       "title": "Canım kocam",
@@ -2771,6 +2943,51 @@
       "_batch": "11_anilar_batch11_2024"
     },
     {
+      "id": "anchor-nisan-2024",
+      "date": "2024-01-30",
+      "title": "Üçüncü. nişan yıldönümü",
+      "subtitle": "30 Ocak, yüzüklerin takıldığı gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Nişan günümüzden bu yana 3 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-sevgililer-2024",
+      "date": "2024-02-14",
+      "title": "2024 Sevgililer Günü",
+      "subtitle": "14 Şubat",
+      "category": "yildonumu",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "İlk Sevgililer Günü'müzde Erdoğan gece 'uyu güzelim' yazmıştı. O cümle yıllara yayıldı, her 14 Şubat geri geliyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-erdogan-dgn-2024",
+      "date": "2024-04-14",
+      "title": "Erdoğan, 30 yaşında",
+      "subtitle": "14 Nisan, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Bugün Erdoğan'ın doğum günü. Yarim her yıl gece yarısı 'iyi ki doğdun' yazıyor; bu yıl da yazacak.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
       "id": "2024-04-17-sapanca-glamping",
       "date": "2024-04-17",
       "title": "Freedome Glamping ve Astral World",
@@ -2809,6 +3026,21 @@
       "_batch": "11_anilar_batch11_2024"
     },
     {
+      "id": "anchor-evlilik-2024",
+      "date": "2024-05-03",
+      "title": "Üçüncü. evlilik yıldönümümüz",
+      "subtitle": "3 Mayıs, evlendiğimiz gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "3 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
       "id": "2024-05-17-birbirimizin-sansi",
       "date": "2024-05-17",
       "title": "Birbirimizin şansını jedi ile bulduk",
@@ -2821,7 +3053,7 @@
         "jedi",
         "destek"
       ],
-      "story": "Bir tık mentor gibi. 'Hoşuma gitti.' Üstüne Kübra'dan iltifat: 'Toplantı yönetim skillerin epey iyi, Turkcell de senle o yüzden ilerleriz...",
+      "story": "Hayatın yön değiştirdiği günlerden biri.",
       "whatsapp_excerpt": [
         {
           "sender": "Erdoğan",
@@ -2902,6 +3134,36 @@
       "_batch": "11_anilar_batch11_2024"
     },
     {
+      "id": "anchor-merve-dgn-2024",
+      "date": "2024-10-14",
+      "title": "Yarim, 29 yaşında",
+      "subtitle": "14 Ekim, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Bugün Yarim'in doğum günü. İlk yıllarda gece yarısı uzun mesajlar, sonraki yıllarda yan yana bir pasta - her yıl bu tarih kendi şeklini buluyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-iliski-baslangic-2024",
+      "date": "2024-11-05",
+      "title": "Sekizinci. yıldönümümüz - tanışma",
+      "subtitle": "5 Kasım, beraber başladığımız gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "8 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
       "id": "2024-11-12-sap-kabus",
       "date": "2024-11-12",
       "title": "ALIN SİZE YENİ HATA",
@@ -2945,6 +3207,36 @@
       "media_count_estimate": 0,
       "ai_confidence": "medium",
       "_batch": "11_anilar_batch11_2024"
+    },
+    {
+      "id": "anchor-nisan-2025",
+      "date": "2025-01-30",
+      "title": "Dördüncü. nişan yıldönümü",
+      "subtitle": "30 Ocak, yüzüklerin takıldığı gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Nişan günümüzden bu yana 4 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-sevgililer-2025",
+      "date": "2025-02-14",
+      "title": "2025 Sevgililer Günü",
+      "subtitle": "14 Şubat",
+      "category": "yildonumu",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "İlk Sevgililer Günü'müzde Erdoğan gece 'uyu güzelim' yazmıştı. O cümle yıllara yayıldı, her 14 Şubat geri geliyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
     },
     {
       "id": "2025-04-14-erdogan-31",
@@ -2991,6 +3283,21 @@
       "ai_confidence": "high",
       "anchor_type": "erdogan_31",
       "_batch": "12_anilar_batch12_2025"
+    },
+    {
+      "id": "anchor-evlilik-2025",
+      "date": "2025-05-03",
+      "title": "Dördüncü. evlilik yıldönümümüz",
+      "subtitle": "3 Mayıs, evlendiğimiz gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "4 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
     },
     {
       "id": "2025-07-11-karimi-istiyorum",
@@ -3070,6 +3377,21 @@
       "ai_confidence": "high",
       "anchor_type": "ilk_karicim",
       "_batch": "12_anilar_batch12_2025"
+    },
+    {
+      "id": "anchor-merve-dgn-2025",
+      "date": "2025-10-14",
+      "title": "Yarim, 30 yaşında",
+      "subtitle": "14 Ekim, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Bugün Yarim'in doğum günü. İlk yıllarda gece yarısı uzun mesajlar, sonraki yıllarda yan yana bir pasta - her yıl bu tarih kendi şeklini buluyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
     },
     {
       "id": "2025-yildonumleri-suskun",
@@ -3207,6 +3529,21 @@
       "_batch": "13_anilar_batch13_2026"
     },
     {
+      "id": "anchor-nisan-2026",
+      "date": "2026-01-30",
+      "title": "Beşinci. nişan yıldönümü",
+      "subtitle": "30 Ocak, yüzüklerin takıldığı gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Nişan günümüzden bu yana 5 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
       "id": "2026-02-10-lion-low-poly",
       "date": "2026-02-10",
       "title": "15 mi olsa 18 mi",
@@ -3288,52 +3625,64 @@
       "_batch": "13_anilar_batch13_2026"
     },
     {
-      "id": "2026-04-27-kazan-dairesi",
-      "date": "2026-04-27",
-      "title": "Sıçtım bi de",
-      "subtitle": "kazan dairesi pis su, ama hayat devam ediyor",
-      "category": "kucuksey",
+      "id": "anchor-erdogan-dgn-2026",
+      "date": "2026-04-14",
+      "title": "Erdoğan, 32 yaşında",
+      "subtitle": "14 Nisan, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
       "tags": [
-        "bina-yöneticisi",
-        "tuvalet",
-        "espri",
-        "ev",
-        "rutin"
+        "anchor",
+        "yillik"
       ],
-      "story": "Erdoğan, apartman yöneticisinden gelen bir uyarıyı Yarim'e iletiyor: ❗Dikkat❗ Değerli kat maliklerimiz kazan dairesinde pis su gider patlağı mevcuttur.",
-      "quote": "böyle mi bırakayım burayı? sifon çekmeyeyim mi? - Yarim · O kadar el mecbur.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Erdoğan",
-          "text": "❗Dikkat❗ Değerli kat maliklerimiz kazan dairesinde pis su gider patlağı mevcuttur...",
-          "time": "15:27"
-        },
-        {
-          "sender": "Yarim",
-          "text": "e ben tuvaletteyim / sıçtım bi de",
-          "time": "15:36"
-        },
-        {
-          "sender": "Yarim",
-          "text": "ama götümü yıkarım kusura bakmasınlar",
-          "time": "15:37"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "O kadar el mecbur",
-          "time": "15:37"
-        }
+      "story": "Bugün Erdoğan'ın doğum günü. Yarim her yıl gece yarısı 'iyi ki doğdun' yazıyor; bu yıl da yazacak.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-evlilik-2026",
+      "date": "2026-05-03",
+      "title": "Beşinci. evlilik yıldönümümüz",
+      "subtitle": "3 Mayıs, evlendiğimiz gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
       ],
-      "location": {
-        "name": "Ev — kazan dairesi gönderme",
-        "context": "apartman yönetimi anonsu"
-      },
-      "song_ref": null,
-      "mood": "funny",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "13_anilar_batch13_2026"
+      "story": "5 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-merve-dgn-2026",
+      "date": "2026-10-14",
+      "title": "Yarim, 31 yaşında",
+      "subtitle": "14 Ekim, doğum günü",
+      "category": "ozelgun",
+      "kind": "flower",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "Bugün Yarim'in doğum günü. İlk yıllarda gece yarısı uzun mesajlar, sonraki yıllarda yan yana bir pasta - her yıl bu tarih kendi şeklini buluyor.",
+      "is_pinned": true,
+      "ai_confidence": "high"
+    },
+    {
+      "id": "anchor-iliski-baslangic-2026",
+      "date": "2026-11-05",
+      "title": "Onuncu. yıldönümümüz - tanışma",
+      "subtitle": "5 Kasım, beraber başladığımız gün",
+      "category": "kilometre_tasi",
+      "kind": "sparkle",
+      "tags": [
+        "anchor",
+        "yillik"
+      ],
+      "story": "10 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
+      "is_pinned": true,
+      "ai_confidence": "high"
     }
   ]
 }

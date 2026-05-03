@@ -563,52 +563,85 @@ export function MemoryDetail({
       )}
 
       {related.length > 0 && (
-        <div style={{ padding: "20px 22px 0" }}>
+        <div style={{ padding: "24px 22px 0" }}>
           <div
             style={{
               fontSize: 10,
               letterSpacing: 2,
               textTransform: "uppercase",
               color: "var(--primary)",
-              marginBottom: 10,
+              marginBottom: 12,
               fontWeight: 600,
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
             }}
           >
-            belki bu da hoşuna gider
+            <span>İlgini çekebilir</span>
+            <span style={{ flex: 1, height: 1, background: "var(--border-soft)" }} />
           </div>
           <div
             className="scroll-soft"
             style={{
               display: "flex",
-              gap: 8,
+              gap: 10,
               overflowX: "auto",
               padding: "4px 0 16px",
             }}
           >
-            {related.map((item) => (
+            {related.map((item) => {
+              const itemMeta = CATEGORY_META[item.category];
+              return (
               <Link
                 key={item.id}
                 href={`/ani/${item.id}`}
                 style={{
-                  flex: "0 0 180px",
-                  background: "var(--surface-2)",
-                  border: "1px solid var(--border-soft)",
-                  borderRadius: 12,
-                  padding: 8,
+                  flex: "0 0 200px",
+                  background: "rgba(255,253,246,0.92)",
+                  border: "1px solid rgba(31,27,22,0.06)",
+                  borderRadius: 14,
+                  padding: 12,
                   display: "flex",
                   flexDirection: "column",
-                  gap: 6,
+                  gap: 8,
+                  boxShadow: "0 4px 14px -8px rgba(15,17,13,0.12)",
                 }}
               >
                 <div
                   style={{
-                    height: 80,
-                    borderRadius: 8,
+                    height: 84,
+                    borderRadius: 10,
                     background:
                       CATEGORY_HERO_GRADIENT[item.category] ??
                       "linear-gradient(135deg, #5A8B7E, #E8826B)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 32,
+                    color: "rgba(255,255,255,0.95)",
+                    position: "relative",
                   }}
-                />
+                >
+                  {itemMeta?.emoji ?? "·"}
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: 6,
+                      right: 8,
+                      fontSize: 9,
+                      color: "rgba(255,255,255,0.85)",
+                      letterSpacing: 1,
+                      textTransform: "uppercase",
+                      fontWeight: 600,
+                      background: "rgba(31,27,22,0.32)",
+                      padding: "2px 6px",
+                      borderRadius: 999,
+                      backdropFilter: "blur(6px)",
+                    }}
+                  >
+                    {item.date.slice(0, 4)}
+                  </div>
+                </div>
                 <div
                   style={{
                     fontFamily: "var(--font-heading)",
@@ -630,7 +663,8 @@ export function MemoryDetail({
                   {shortTurkishDate(item.date)}
                 </div>
               </Link>
-            ))}
+            );
+          })}
           </div>
         </div>
       )}
@@ -650,75 +684,92 @@ export function MemoryDetail({
               gap: 8,
             }}
           >
-            <span>aynı koleksiyonda</span>
+            <span>{meta?.label ?? "Koleksiyon"} koleksiyonundan</span>
             <span style={{ flex: 1, height: 1, background: "var(--border-soft)" }} />
             <span style={{ color: "var(--accent)" }}>{sameCategory.length}</span>
           </div>
           <div
-            className="scroll-soft"
             style={{
               display: "flex",
+              flexDirection: "column",
               gap: 8,
-              overflowX: "auto",
               padding: "4px 0 16px",
             }}
           >
-            {sameCategory.map((item) => (
-              <Link
-                key={item.id}
-                href={`/ani/${item.id}`}
-                style={{
-                  flex: "0 0 150px",
-                  background: "var(--surface-2)",
-                  border: "1px solid var(--border-soft)",
-                  borderRadius: 12,
-                  padding: 10,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 6,
-                }}
-              >
-                <div
+            {sameCategory.map((item, idx) => {
+              const itemMeta = CATEGORY_META[item.category];
+              return (
+                <Link
+                  key={item.id}
+                  href={`/ani/${item.id}`}
                   style={{
-                    height: 70,
-                    borderRadius: 8,
-                    background:
-                      CATEGORY_HERO_GRADIENT[item.category] ??
-                      "linear-gradient(135deg, #5A8B7E, #E8826B)",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
-                    color: "rgba(255,255,255,0.85)",
-                    fontSize: 11,
-                    fontWeight: 600,
-                    letterSpacing: 1.5,
-                    textTransform: "uppercase",
+                    gap: 12,
+                    padding: "12px 14px",
+                    background: "rgba(255,253,246,0.92)",
+                    border: "1px solid rgba(31,27,22,0.06)",
+                    borderRadius: 12,
+                    boxShadow: "0 2px 8px -4px rgba(15,17,13,0.06)",
                   }}
                 >
-                  {item.date.slice(0, 4)}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-heading)",
-                    fontSize: 13,
-                    color: "var(--text)",
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {item.title}
-                </div>
-                <div
-                  style={{
-                    fontSize: 10,
-                    color: "var(--accent)",
-                    letterSpacing: 1,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {shortTurkishDate(item.date)}
-                </div>
-              </Link>
-            ))}
+                  <div
+                    style={{
+                      width: 42,
+                      height: 42,
+                      borderRadius: "50%",
+                      background: "var(--surface-2)",
+                      border: `1.5px solid ${itemMeta ? "var(--accent)" : "var(--border)"}`,
+                      display: "grid",
+                      placeItems: "center",
+                      fontSize: 18,
+                      flexShrink: 0,
+                      boxShadow: "0 1px 4px rgba(15,17,13,0.06)",
+                    }}
+                  >
+                    {itemMeta?.emoji ?? "·"}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-heading)",
+                        fontSize: 15,
+                        color: "var(--text)",
+                        lineHeight: 1.2,
+                        fontWeight: 500,
+                      }}
+                    >
+                      {item.title}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 10,
+                        color: "var(--accent)",
+                        letterSpacing: 1,
+                        textTransform: "uppercase",
+                        marginTop: 3,
+                        fontWeight: 600,
+                      }}
+                    >
+                      {shortTurkishDate(item.date)}
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontStyle: "italic",
+                      fontSize: 22,
+                      color: "var(--accent)",
+                      opacity: 0.55,
+                      flexShrink: 0,
+                      fontWeight: 500,
+                    }}
+                  >
+                    {String(idx + 1).padStart(2, "0")}
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </section>
       )}

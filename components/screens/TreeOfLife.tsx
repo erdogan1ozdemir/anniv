@@ -137,7 +137,9 @@ interface EventGlyphProps {
 // Nordic token: solid circular disk with category emoji, kind-color ring, pinned glow
 function EventGlyph({ ev, x, y, scale = 1, opacity = 1, onClick }: EventGlyphProps) {
   const style = KIND_STYLE[ev.kind];
-  const radius = 13 * scale;
+  // Pinned tokens are 25% larger to stand out at every zoom level
+  const radius = (ev.pinned ? 16.5 : 13) * scale;
+  const ringColor = ev.pinned ? "#C66E3D" : style.color;
   const handle = (e: React.MouseEvent | React.KeyboardEvent) => {
     e.stopPropagation();
     onClick?.(ev);
@@ -147,31 +149,47 @@ function EventGlyph({ ev, x, y, scale = 1, opacity = 1, onClick }: EventGlyphPro
       style={{
         cursor: onClick ? "pointer" : "default",
         opacity,
-        transition: "opacity 240ms",
+        transition: "opacity 240ms, transform 240ms",
       }}
       onClick={handle as React.MouseEventHandler}
     >
       {ev.pinned && (
-        <circle cx={x} cy={y} r={radius + 8} fill={style.color} opacity="0.18">
-          <animate
-            attributeName="r"
-            values={`${radius + 6};${radius + 14};${radius + 6}`}
-            dur="2.4s"
-            repeatCount="indefinite"
+        <>
+          {/* Outer pulsing halo for important events */}
+          <circle cx={x} cy={y} r={radius + 10} fill="#C66E3D" opacity="0.14">
+            <animate
+              attributeName="r"
+              values={`${radius + 8};${radius + 18};${radius + 8}`}
+              dur="2.6s"
+              repeatCount="indefinite"
+            />
+            <animate attributeName="opacity" values="0.22;0;0.22" dur="2.6s" repeatCount="indefinite" />
+          </circle>
+          {/* Static ochre frame */}
+          <circle
+            cx={x}
+            cy={y}
+            r={radius + 4}
+            fill="none"
+            stroke="#C66E3D"
+            strokeWidth={2 * scale}
+            opacity="0.9"
           />
-          <animate attributeName="opacity" values="0.22;0;0.22" dur="2.4s" repeatCount="indefinite" />
-        </circle>
+        </>
       )}
       {/* Drop shadow base */}
-      <circle cx={x} cy={y + radius * 0.18} r={radius} fill="#1F1B16" opacity="0.16" />
+      <circle cx={x} cy={y + radius * 0.18} r={radius} fill="#1F1B16" opacity="0.18" />
       {/* Token disc */}
-      <circle cx={x} cy={y} r={radius} fill="#FBF6EA" stroke={style.color} strokeWidth={1.6 * scale} />
+      <circle
+        cx={x}
+        cy={y}
+        r={radius}
+        fill={ev.pinned ? "#FFF8E7" : "#FBF6EA"}
+        stroke={ringColor}
+        strokeWidth={(ev.pinned ? 2.2 : 1.6) * scale}
+      />
       {/* Kind dot bottom-right */}
-      <circle cx={x + radius * 0.72} cy={y + radius * 0.72} r={radius * 0.28} fill={style.color} />
-      {/* Pinned ring */}
-      {ev.pinned && (
-        <circle cx={x} cy={y} r={radius + 2} fill="none" stroke={style.color} strokeWidth={1.4 * scale} opacity="0.85" />
-      )}
+      <circle cx={x + radius * 0.72} cy={y + radius * 0.72} r={radius * 0.28} fill={ringColor} />
       <text
         x={x}
         y={y + radius * 0.4}
@@ -181,6 +199,16 @@ function EventGlyph({ ev, x, y, scale = 1, opacity = 1, onClick }: EventGlyphPro
       >
         {ev.cat || "·"}
       </text>
+      {/* Tap-affordance dot top-right (cursor hint) */}
+      {onClick && (
+        <circle
+          cx={x + radius * 0.72}
+          cy={y - radius * 0.72}
+          r={radius * 0.18}
+          fill={ringColor}
+          opacity="0.55"
+        />
+      )}
     </g>
   );
 }
