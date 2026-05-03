@@ -134,54 +134,57 @@ interface EventGlyphProps {
   onClick?: (ev: LifeEvent) => void;
 }
 
+// Nordic token: solid circular disk with category emoji, kind-color ring, pinned glow
 function EventGlyph({ ev, x, y, scale = 1, opacity = 1, onClick }: EventGlyphProps) {
   const style = KIND_STYLE[ev.kind];
-  const rot = ((ev.id.charCodeAt(0) + ev.day * 7) % 60) - 30;
-  const base = { x, y, color: style.color, fill: style.fill, opacity };
-  let glyph: React.ReactNode;
-  switch (ev.kind) {
-    case "leaf":
-      glyph = <LeafGlyph {...base} size={14 * scale} rot={rot} />;
-      break;
-    case "flower":
-      glyph = <FlowerGlyph {...base} size={13 * scale} />;
-      break;
-    case "fruit":
-      glyph = <FruitGlyph {...base} size={14 * scale} />;
-      break;
-    case "dryleaf":
-      glyph = <DryLeafGlyph {...base} size={13 * scale} rot={rot} />;
-      break;
-    case "bud":
-      glyph = <BudGlyph {...base} size={10 * scale} />;
-      break;
-    case "sparkle":
-      glyph = <SparkleGlyph {...base} size={20 * scale} />;
-      break;
-  }
+  const radius = 13 * scale;
+  const handle = (e: React.MouseEvent | React.KeyboardEvent) => {
+    e.stopPropagation();
+    onClick?.(ev);
+  };
   return (
     <g
-      style={{ cursor: "pointer" }}
-      onClick={(e) => {
-        e.stopPropagation();
-        onClick?.(ev);
+      style={{
+        cursor: onClick ? "pointer" : "default",
+        opacity,
+        transition: "opacity 240ms",
       }}
+      onClick={handle as React.MouseEventHandler}
     >
       {ev.pinned && (
-        <circle cx={x} cy={y} r={18 * scale} fill={style.color} opacity="0.18">
+        <circle cx={x} cy={y} r={radius + 8} fill={style.color} opacity="0.18">
           <animate
             attributeName="r"
-            values={`${18 * scale};${26 * scale};${18 * scale}`}
+            values={`${radius + 6};${radius + 14};${radius + 6}`}
             dur="2.4s"
             repeatCount="indefinite"
           />
           <animate attributeName="opacity" values="0.22;0;0.22" dur="2.4s" repeatCount="indefinite" />
         </circle>
       )}
-      {glyph}
+      {/* Drop shadow base */}
+      <circle cx={x} cy={y + radius * 0.18} r={radius} fill="#1F1B16" opacity="0.16" />
+      {/* Token disc */}
+      <circle cx={x} cy={y} r={radius} fill="#FBF6EA" stroke={style.color} strokeWidth={1.6 * scale} />
+      {/* Kind dot bottom-right */}
+      <circle cx={x + radius * 0.72} cy={y + radius * 0.72} r={radius * 0.28} fill={style.color} />
+      {/* Pinned ring */}
+      {ev.pinned && (
+        <circle cx={x} cy={y} r={radius + 2} fill="none" stroke={style.color} strokeWidth={1.4 * scale} opacity="0.85" />
+      )}
+      <text
+        x={x}
+        y={y + radius * 0.4}
+        textAnchor="middle"
+        fontSize={radius * 1.1}
+        style={{ pointerEvents: "none", userSelect: "none" }}
+      >
+        {ev.cat || "·"}
+      </text>
     </g>
   );
 }
+
 
 // ===================================================================
 // CREATURES
@@ -357,8 +360,8 @@ function Owl({ x, y, scale = 1, opacity = 1 }: { x: number; y: number; scale?: n
 // TRUNK
 // ===================================================================
 function OrganicTrunk() {
-  const trunkColor = "#3F2D1E";
-  const trunkDark = "#241710";
+  const trunkColor = "#2C2620";
+  const trunkDark = "#15110D";
   const leftEdge = `M 405 ${GROUND_Y - 10} C 395 2050, 425 1900, 432 1750 C 442 1600, 418 1450, 446 1300 C 458 1150, 438 1000, 462 850 C 476 700, 460 550, 478 400 C 484 280, 488 180, 490 110`;
   const rightEdge = `L 510 110 C 514 180, 516 280, 524 400 C 540 550, 528 700, 542 850 C 558 1000, 544 1150, 556 1300 C 568 1450, 590 1600, 580 1750 C 588 1900, 605 2050, 595 ${GROUND_Y - 10} Z`;
   return (
@@ -401,7 +404,7 @@ function OrganicTrunk() {
 }
 
 function FillerBranches() {
-  const trunkColor = "#3F2D1E";
+  const trunkColor = "#2C2620";
   const fillers = Array.from({ length: 28 }).map((_, i) => {
     const rng = seedRand(i * 31 + 7);
     const y = 250 + rng() * 1900;
@@ -489,14 +492,14 @@ export function TreeOfLife({
   const showLeafMass = level === "all";
   // Hide creatures once user zooms in, they overlap event glyphs
   const showCreatures = level === "all";
-  // Hide event-name labels at "season" - too crowded, only month+week show labels
-  const showCatEmoji = level === "season" || level === "month" || level === "week";
+  // Year labels show category emoji is no longer needed (now in token)
+  const showCatEmojiAbove = false;
 
   // Count memories per year for visual differentiation
   const yearCounts = new Map<number, number>();
   for (const ev of events) yearCounts.set(ev.year, (yearCounts.get(ev.year) ?? 0) + 1);
-  const trunkColor = "#3F2D1E";
-  const trunkDark = "#241710";
+  const trunkColor = "#2C2620";
+  const trunkDark = "#15110D";
   const dominant = ALL_SEASON_TINTS[season] || ALL_SEASON_TINTS.spring;
   const minorTint = season === "winter" ? "#7B7969" : season === "autumn" ? "#9C5B2F" : "#5E8F4A";
 
@@ -510,10 +513,10 @@ export function TreeOfLife({
     >
       <defs>
         <linearGradient id="trunkGradV3" x1="50%" y1="100%" x2="50%" y2="0%">
-          <stop offset="0%" stopColor="#1F1408" />
-          <stop offset="20%" stopColor="#3F2D1E" />
-          <stop offset="60%" stopColor="#4A3624" />
-          <stop offset="100%" stopColor="#5C4733" />
+          <stop offset="0%" stopColor="#0C0A08" />
+          <stop offset="22%" stopColor="#1A1612" />
+          <stop offset="60%" stopColor="#2C2620" />
+          <stop offset="100%" stopColor="#3A332C" />
         </linearGradient>
         <linearGradient id="trunkShadeV3" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="rgba(0,0,0,0.55)" />
@@ -786,57 +789,72 @@ export function TreeOfLife({
 
             {(level === "all" || level === "year") && (
               <g
-                transform={`translate(${tip.x + tip.side * 24} ${tip.y - 60})`}
-                style={{ pointerEvents: "none" }}
+                transform={`translate(${tip.x + tip.side * 24} ${tip.y - 70})`}
+                style={{ cursor: onSelectYear ? "pointer" : "default" }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectYear?.(year);
+                }}
               >
+                {/* Tap-target pill background — visible affordance */}
+                <rect
+                  x={tip.side > 0 ? -8 : -148}
+                  y="-44"
+                  width="156"
+                  height="56"
+                  rx="28"
+                  fill={isFocused ? "#1F1B16" : "rgba(251,246,234,0.92)"}
+                  stroke={isFocused ? "#C66E3D" : "#2C2620"}
+                  strokeWidth={isFocused ? 1.8 : 1.2}
+                  opacity={isFocused ? 1 : 0.96}
+                  style={{ filter: "drop-shadow(0 2px 6px rgba(15,17,13,0.12))" }}
+                />
                 <text
-                  x="0"
-                  y="0"
+                  x={tip.side > 0 ? 16 : -136}
+                  y="-2"
                   fontFamily="Cormorant Garamond, Georgia, serif"
-                  fontSize={level === "all" ? 56 : 84}
-                  fontStyle="italic"
-                  fill={isFocused ? "#D8624C" : "#3F2D1E"}
-                  textAnchor={tip.side > 0 ? "start" : "end"}
+                  fontSize="38"
+                  fill={isFocused ? "#FBF6EA" : "#1F1B16"}
+                  textAnchor="start"
                   fontWeight="500"
-                  opacity="0.92"
+                  letterSpacing="-1"
                 >
                   {year}
                 </text>
                 {memCount > 0 && (
-                  <g transform={`translate(${tip.side > 0 ? 110 : -110} -16)`}>
-                    <rect
-                      x="-22"
-                      y="-14"
-                      width="44"
-                      height="22"
-                      rx="11"
-                      fill={isFocused ? "#D8624C" : "#fff"}
-                      stroke={isFocused ? "#D8624C" : "#3F2D1E"}
-                      strokeWidth="1.5"
-                      opacity={isFocused ? 1 : 0.95}
+                  <g transform={`translate(${tip.side > 0 ? 110 : -30} -16)`}>
+                    <circle
+                      r="14"
+                      fill={isFocused ? "#C66E3D" : "#1F1B16"}
                     />
                     <text
-                      x="0"
-                      y="3"
+                      y="4"
                       textAnchor="middle"
                       fontFamily="Inter, sans-serif"
-                      fontSize="13"
+                      fontSize="11"
                       fontWeight="600"
-                      fill={isFocused ? "#fff" : "#3F2D1E"}
+                      fill="#FBF6EA"
+                      letterSpacing="0.4"
                     >
                       {memCount}
                     </text>
                   </g>
                 )}
-                <line
-                  x1={tip.side > 0 ? 4 : -90}
-                  x2={tip.side > 0 ? 90 : -4}
-                  y1="14"
-                  y2="14"
-                  stroke={isFocused ? "#D8624C" : "#3F2D1E"}
-                  strokeWidth="1.5"
-                  opacity="0.4"
-                />
+                {/* Tap arrow hint */}
+                {onSelectYear && !isFocused && (
+                  <text
+                    x={tip.side > 0 ? 138 : -10}
+                    y="-2"
+                    textAnchor="middle"
+                    fontFamily="Inter, sans-serif"
+                    fontSize="14"
+                    fontWeight="600"
+                    fill="#2C2620"
+                    opacity="0.55"
+                  >
+                    ›
+                  </text>
+                )}
               </g>
             )}
 
@@ -958,7 +976,7 @@ export function TreeOfLife({
                 return (
                   <g key={ev.id} style={{ transition: "opacity 400ms ease" }}>
                     <EventGlyph ev={ev} x={pos.x} y={pos.y} scale={eventScale} onClick={onSelectEvent} />
-                    {showCatEmoji && ev.cat && (
+                    {showCatEmojiAbove && ev.cat && (
                       <text
                         x={pos.x}
                         y={pos.y - 18 * eventScale}
