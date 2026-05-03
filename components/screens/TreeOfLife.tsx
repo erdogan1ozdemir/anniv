@@ -483,10 +483,14 @@ export function TreeOfLife({
   const seasonAlpha = level === "all" ? 0.55 : 1;
   const monthAlpha = level === "all" ? 0 : level === "year" ? 0.4 : 1;
   const eventScale =
-    level === "all" ? 1.6 : level === "year" ? 2.0 : level === "season" ? 2.4 : 2.8;
-  const eventLabelShow = level === "month" || level === "week" || level === "season";
-  const showLeafMass = level === "all" || level === "year";
-  const showCreatures = level === "all" || level === "year";
+    level === "all" ? 1.4 : level === "year" ? 1.7 : level === "season" ? 2.0 : 2.4;
+  const eventLabelShow = level === "month" || level === "week";
+  // Show decorative leaf scatter only at "all" zoom, hide entirely once focused
+  const showLeafMass = level === "all";
+  // Hide creatures once user zooms in, they overlap event glyphs
+  const showCreatures = level === "all";
+  // Hide event-name labels at "season" - too crowded, only month+week show labels
+  const showCatEmoji = level === "season" || level === "month" || level === "week";
 
   // Count memories per year for visual differentiation
   const yearCounts = new Map<number, number>();
@@ -665,6 +669,11 @@ export function TreeOfLife({
         const path = yearPath(year);
         const isFocused = focus.year === year;
         const dimmed = focus.year && focus.year !== year && level !== "all";
+        // At year+ zoom levels, completely skip rendering non-focus years
+        // to prevent ghosting / overlap with focused branch
+        if (dimmed && (level === "season" || level === "month" || level === "week")) {
+          return null;
+        }
         const yearOpacity = dimmed ? 0.16 : 1;
         const memCount = yearCounts.get(year) ?? 0;
         // Branch thickness scales with memory count
@@ -902,23 +911,54 @@ export function TreeOfLife({
               );
             })}
 
-            {events
-              .filter((ev) => ev.year === year)
-              .map((ev) => {
-                const pos = eventPos(ev);
-                const eDimmed =
-                  (focus.season &&
-                    monthSeason(ev.month) !== focus.season &&
-                    (level === "season" || level === "month" || level === "week")) ||
-                  (focus.month != null &&
-                    ev.month !== focus.month &&
-                    (level === "month" || level === "week"));
-                const eOpacity = eDimmed ? 0.18 : 1;
-                const showCatEmoji = level === "season" || level === "month" || level === "week";
+            {(() => {
+              // Filter events by current focus to avoid overlap and clutter.
+              const filtered = events.filter((ev) => {
+                if (ev.year !== year) return false;
+                if (
+                  focus.season &&
+                  monthSeason(ev.month) !== focus.season &&
+                  (level === "season" || level === "month" || level === "week")
+                ) {
+                  return false;
+                }
+                if (
+                  focus.month != null &&
+                  ev.month !== focus.month &&
+                  (level === "month" || level === "week")
+                ) {
+                  return false;
+                }
+                return true;
+              });
+
+              // Spread events deterministically along an arc above the year branch
+              // to prevent overlap when zoomed in. At "all" zoom keep eventPos jitter.
+              const useSpread = level !== "all";
+              return filtered.map((ev, i) => {
+                let pos = eventPos(ev);
+                if (useSpread && filtered.length > 0) {
+                  // Spread along year branch in a wider arc
+                  const t = (i + 0.5) / filtered.length;
+                  const branchT = 0.32 + t * 0.62;
+                  const pt = yearPointAt(year, branchT);
+                  // Push perpendicular outward from branch
+                  const len = Math.sqrt(pt.dx * pt.dx + pt.dy * pt.dy) || 1;
+                  const nx = -pt.dy / len;
+                  const ny = pt.dx / len;
+                  // Stagger row to break linearity
+                  const rowOffset = i % 2 === 0 ? 0 : 18;
+                  const baseDist = level === "year" ? 38 : 46;
+                  const dist = baseDist + rowOffset;
+                  pos = {
+                    x: pt.x + nx * dist * tip.side,
+                    y: pt.y + ny * dist - 8,
+                  };
+                }
                 return (
-                  <g key={ev.id} opacity={eOpacity} style={{ transition: "opacity 400ms ease" }}>
+                  <g key={ev.id} style={{ transition: "opacity 400ms ease" }}>
                     <EventGlyph ev={ev} x={pos.x} y={pos.y} scale={eventScale} onClick={onSelectEvent} />
-                    {showCatEmoji && !eDimmed && ev.cat && (
+                    {showCatEmoji && ev.cat && (
                       <text
                         x={pos.x}
                         y={pos.y - 18 * eventScale}
@@ -929,7 +969,7 @@ export function TreeOfLife({
                         {ev.cat}
                       </text>
                     )}
-                    {eventLabelShow && !eDimmed && (
+                    {eventLabelShow && (
                       <g transform={`translate(${pos.x + tip.side * 22} ${pos.y - 6})`}>
                         <rect
                           x={tip.side > 0 ? 0 : -100}
@@ -954,7 +994,8 @@ export function TreeOfLife({
                     )}
                   </g>
                 );
-              })}
+              });
+            })()}
           </g>
         );
       })}
