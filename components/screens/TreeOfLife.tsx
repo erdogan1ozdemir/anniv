@@ -695,6 +695,7 @@ export function TreeOfLife({
           <g
             key={year}
             opacity={yearOpacity}
+            className="tree-year-branch"
             style={{
               transition: "opacity 600ms ease",
               cursor: onSelectYear ? "pointer" : "default",
@@ -717,6 +718,17 @@ export function TreeOfLife({
               strokeWidth="2.5"
               fill="none"
               strokeLinecap="round"
+            />
+            {/* Hover glow accent layer */}
+            <path
+              d={path}
+              stroke="var(--accent)"
+              strokeWidth={branchWidth + 4}
+              fill="none"
+              strokeLinecap="round"
+              className="tree-year-glow"
+              opacity={isFocused ? 0.35 : 0}
+              style={{ transition: "opacity 240ms ease", filter: "blur(2px)" }}
             />
 
             {tipTwigs.map((t, i) => (

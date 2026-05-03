@@ -34,11 +34,18 @@ const CATEGORY_HERO_GRADIENT: Record<string, string> = {
 interface MemoryDetailProps {
   memory: Memory;
   related: Memory[];
+  sameCategory?: Memory[];
   prevId?: string | null;
   nextId?: string | null;
 }
 
-export function MemoryDetail({ memory, related, prevId, nextId }: MemoryDetailProps) {
+export function MemoryDetail({
+  memory,
+  related,
+  sameCategory = [],
+  prevId,
+  nextId,
+}: MemoryDetailProps) {
   const router = useRouter();
   const handleDragEnd = (_: unknown, info: PanInfo) => {
     const threshold = 90;
@@ -626,6 +633,94 @@ export function MemoryDetail({ memory, related, prevId, nextId }: MemoryDetailPr
             ))}
           </div>
         </div>
+      )}
+
+      {sameCategory.length > 0 && (
+        <section style={{ padding: "8px 22px 0" }}>
+          <div
+            style={{
+              fontSize: 10,
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "var(--primary)",
+              marginBottom: 10,
+              fontWeight: 600,
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+            }}
+          >
+            <span>aynı koleksiyonda</span>
+            <span style={{ flex: 1, height: 1, background: "var(--border-soft)" }} />
+            <span style={{ color: "var(--accent)" }}>{sameCategory.length}</span>
+          </div>
+          <div
+            className="scroll-soft"
+            style={{
+              display: "flex",
+              gap: 8,
+              overflowX: "auto",
+              padding: "4px 0 16px",
+            }}
+          >
+            {sameCategory.map((item) => (
+              <Link
+                key={item.id}
+                href={`/ani/${item.id}`}
+                style={{
+                  flex: "0 0 150px",
+                  background: "var(--surface-2)",
+                  border: "1px solid var(--border-soft)",
+                  borderRadius: 12,
+                  padding: 10,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 6,
+                }}
+              >
+                <div
+                  style={{
+                    height: 70,
+                    borderRadius: 8,
+                    background:
+                      CATEGORY_HERO_GRADIENT[item.category] ??
+                      "linear-gradient(135deg, #5A8B7E, #E8826B)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "rgba(255,255,255,0.85)",
+                    fontSize: 11,
+                    fontWeight: 600,
+                    letterSpacing: 1.5,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {item.date.slice(0, 4)}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontSize: 13,
+                    color: "var(--text)",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {item.title}
+                </div>
+                <div
+                  style={{
+                    fontSize: 10,
+                    color: "var(--accent)",
+                    letterSpacing: 1,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {shortTurkishDate(item.date)}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       )}
 
       <div

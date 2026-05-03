@@ -1,14 +1,16 @@
+import { Suspense } from "react";
+import Image from "next/image";
 import { LoginForm } from "@/components/screens/LoginForm";
 import { Sprig } from "@/components/svg/Botanic";
-import { JediPortrait } from "@/components/svg/JediSilhouette";
-import { Suspense } from "react";
+import { WalkingCat } from "@/components/svg/Cats";
 
 export default function LoginPage() {
   return (
     <main
       style={{
         minHeight: "100vh",
-        background: `radial-gradient(120% 80% at 50% 30%, var(--surface-2) 0%, var(--surface) 50%, var(--surface-3) 100%)`,
+        background:
+          "radial-gradient(120% 80% at 50% 30%, var(--surface-2) 0%, var(--surface) 50%, var(--surface-3) 100%)",
         position: "relative",
         overflow: "hidden",
         display: "flex",
@@ -32,6 +34,7 @@ export default function LoginPage() {
           left: "50%",
           transform: "translateX(-50%)",
           animation: "breathe 6s ease-in-out infinite",
+          pointerEvents: "none",
         }}
       />
 
@@ -42,6 +45,7 @@ export default function LoginPage() {
           left: -10,
           color: "var(--primary)",
           animation: "sway 9s ease-in-out infinite",
+          pointerEvents: "none",
         }}
       >
         <Sprig size={86} opacity={0.28} />
@@ -54,6 +58,7 @@ export default function LoginPage() {
           color: "var(--primary)",
           animation: "sway 11s ease-in-out infinite reverse",
           transform: "scaleX(-1)",
+          pointerEvents: "none",
         }}
       >
         <Sprig size={92} opacity={0.24} />
@@ -106,12 +111,45 @@ export default function LoginPage() {
             pointerEvents: "none",
           }}
         />
-        <JediPortrait size={200} />
+        <div
+          style={{
+            position: "relative",
+            width: 220,
+            height: 220,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle at 35% 30%, var(--surface-2), var(--surface-3))",
+            boxShadow: "var(--shadow-lg), inset 0 -10px 28px rgba(0,0,0,0.06)",
+            overflow: "hidden",
+            border: "3px solid var(--surface-2)",
+            outline: "1px solid var(--border)",
+          }}
+        >
+          <Image
+            src="/img/jedi-portrait.png"
+            alt="Jedi"
+            fill
+            sizes="220px"
+            style={{
+              objectFit: "cover",
+              objectPosition: "55% 45%",
+            }}
+            priority
+          />
+        </div>
       </div>
 
       <Suspense fallback={null}>
         <LoginForm />
       </Suspense>
+
+      <WalkingCat
+        duration={28}
+        size={48}
+        color="var(--primary-deep)"
+        opacity={0.32}
+        bottom={28}
+      />
     </main>
   );
 }

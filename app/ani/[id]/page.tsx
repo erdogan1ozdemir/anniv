@@ -3,6 +3,7 @@ import { MemoryDetail } from "@/components/screens/MemoryDetail";
 import { BottomNav } from "@/components/ui/BottomNav";
 import {
   getAdjacentMemories,
+  getMemoriesByCategory,
   getMemoryById,
   getRelatedMemories,
   loadMemories,
@@ -21,15 +22,18 @@ export default async function MemoryPage({
   const { id } = await params;
   const memory = await getMemoryById(id);
   if (!memory) notFound();
-  const [related, neighbors] = await Promise.all([
+  const [related, sameCategory, neighbors] = await Promise.all([
     getRelatedMemories(memory, 3),
+    getMemoriesByCategory(memory.category),
     getAdjacentMemories(id),
   ]);
+  const sameCatList = sameCategory.filter((m) => m.id !== id).slice(0, 6);
   return (
     <>
       <MemoryDetail
         memory={memory}
         related={related}
+        sameCategory={sameCatList}
         prevId={neighbors.prev?.id ?? null}
         nextId={neighbors.next?.id ?? null}
       />

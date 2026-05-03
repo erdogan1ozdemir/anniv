@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { TreeOfLife } from "./TreeOfLife";
 import {
@@ -56,6 +56,34 @@ export function Timeline({
     setFocus(f);
     setLevel(newLevel);
   };
+
+  // Pinch / ctrl+wheel zoom on tree container - cycle through zoom levels
+  const treeRef = useRef<HTMLDivElement | null>(null);
+  const wheelLockRef = useRef<number>(0);
+  useEffect(() => {
+    const node = treeRef.current;
+    if (!node) return;
+    const onWheel = (e: WheelEvent) => {
+      // Only react to pinch (ctrl+wheel). Regular scroll still scrolls the page.
+      if (!e.ctrlKey) return;
+      e.preventDefault();
+      const now = Date.now();
+      if (now - wheelLockRef.current < 350) return; // throttle
+      wheelLockRef.current = now;
+      const idx = ZOOM_LEVELS.indexOf(level);
+      if (e.deltaY > 0) {
+        // pinch out → zoom out (toward 'all')
+        const next = ZOOM_LEVELS[Math.max(0, idx - 1)];
+        if (next !== level) goLevel(next);
+      } else {
+        // pinch in → zoom in (toward 'moment')
+        const next = ZOOM_LEVELS[Math.min(ZOOM_LEVELS.length - 1, idx + 1)];
+        if (next !== level) goLevel(next);
+      }
+    };
+    node.addEventListener("wheel", onWheel, { passive: false });
+    return () => node.removeEventListener("wheel", onWheel);
+  }, [level, focus]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const setYear = (year: number) => {
     setFocus((f) => ({ ...f, year, season: f.season ?? monthSeason(NOW.month) }));
@@ -120,7 +148,7 @@ export function Timeline({
       <Breadcrumbs level={level} focus={focus} onSet={goLevel} />
 
       {level !== "moment" ? (
-        <div style={{ flex: 1, position: "relative", minHeight: 0 }}>
+        <div ref={treeRef} style={{ flex: 1, position: "relative", minHeight: 0 }}>
           <ZoomSlider level={level} onSet={goLevel} />
           {level === "week" && (
             <button
