@@ -556,7 +556,6 @@ export function TreeOfLife({
         </filter>
       </defs>
 
-      <ellipse cx={TRUNK_X} cy="650" rx="900" ry="640" fill="url(#canopyHaloV3)" />
       <ellipse cx={TRUNK_X} cy={GROUND_Y + 40} rx="500" ry="60" fill="url(#groundShadowV3)" />
 
       {/* Roots */}
@@ -640,32 +639,7 @@ export function TreeOfLife({
         />
       </g>
 
-      {showLeafMass && (
-        <g opacity="0.9" style={{ filter: "url(#leafBlurV3)" }}>
-          <ellipse cx="500" cy="40" rx="320" ry="140" fill="url(#leafCloudV3a)" />
-          <ellipse cx="320" cy="60" rx="200" ry="110" fill="url(#leafCloudV3b)" />
-          <ellipse cx="680" cy="60" rx="200" ry="110" fill="url(#leafCloudV3b)" />
-          <ellipse cx="200" cy="100" rx="140" ry="80" fill="url(#leafCloudMix)" />
-          <ellipse cx="800" cy="100" rx="140" ry="80" fill="url(#leafCloudMix)" />
-          <ellipse cx="500" cy="120" rx="180" ry="60" fill="url(#leafCloudV3a)" opacity="0.6" />
-          {YEARS.map((y) => {
-            const tip = yearTip(y);
-            return (
-              <g key={`mass${y}`}>
-                <ellipse cx={tip.x} cy={tip.y} rx="140" ry="95" fill="url(#leafCloudV3a)" opacity="0.75" />
-                <ellipse
-                  cx={tip.x + tip.side * 40}
-                  cy={tip.y - 35}
-                  rx="95"
-                  ry="65"
-                  fill="url(#leafCloudV3b)"
-                  opacity="0.65"
-                />
-              </g>
-            );
-          })}
-        </g>
-      )}
+      {/* Removed canopy halo + leaf-mass clouds for cleaner Nordic backdrop */}
 
       {YEARS.map((year) => {
         const tip = yearTip(year);

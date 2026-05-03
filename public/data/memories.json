@@ -60,8 +60,8 @@
         "cards": 6
       }
     ],
-    "total": 91,
-    "filtered_at": "2026-05-03-v4"
+    "total": 85,
+    "filtered_at": "2026-05-03-v5"
   },
   "memories": [
     {
@@ -1499,91 +1499,6 @@
       "_batch": "06_anilar_batch6_2020_pandemi"
     },
     {
-      "id": "2020-02-14-sevgililer-3-pratik",
-      "date": "2020-02-14",
-      "title": "4 su 50, 2x4 kola 28, Yağ 24",
-      "subtitle": "üçüncü Sevgililer Günü - masraf listesi...",
-      "category": "yildonumu",
-      "tags": [
-        "sevgililer-günü",
-        "3.yıl",
-        "pratik",
-        "ev-hayatı",
-        "masraf-listesi"
-      ],
-      "story": "Üçüncü Sevgililer Gününüz. Aşkın üç yıl sonraki adı bu: birinin telefondaki Excel sayfasına diğerinin günlük market girdileri.",
-      "quote": "Aşk masraflarını yazsana. - Yarim, Sevgililer Günü sabahı",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Aşk masraflarını yazsana",
-          "time": "09:34"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "4 su 50 / 2x4 kola 28 / Yağ 24 / Tuvalet kağıdı 22",
-          "time": "09:45"
-        },
-        {
-          "sender": "Yarim",
-          "text": "500 ayırdım ama ev giderini katmadım işin içine",
-          "time": "11:07"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "nostalgic",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "06_anilar_batch6_2020_pandemi"
-    },
-    {
-      "id": "2020-05-23-survivor",
-      "date": "2020-05-23",
-      "title": "Yessss acun abi",
-      "subtitle": "Karantina televizyonu - Survivor şakaları",
-      "category": "kucuksey",
-      "tags": [
-        "survivor",
-        "karantina",
-        "tv",
-        "espri",
-        "yunus-emre"
-      ],
-      "story": "Karantina dolu yıl, Survivor TV programı izliyorlar. Erdoğan soruyor: 'Kimi yaziyilerr?' Yarim: 'Emin misin? Gerçi Sercan ve kelekleri 😅.",
-      "quote": "Yessss acun abiii. Söyle söyle söyle.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Erdoğan",
-          "text": "Kimi yaziyilerr",
-          "time": "00:23"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Yessss acun abiii / Söyle söyle söyle",
-          "time": "00:43"
-        },
-        {
-          "sender": "Yarim",
-          "text": "Yunus emre tabii ki",
-          "time": "00:52"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Doğru gerçi Sercan ve kelekleri",
-          "time": "00:52"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "funny",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "medium",
-      "_batch": "06_anilar_batch6_2020_pandemi"
-    },
-    {
       "id": "2020-05-27-jedi-mama-dal",
       "date": "2020-05-27",
       "title": "Jedi'a mama koydum, sonra da dal sarmaya geçtim",
@@ -2772,42 +2687,6 @@
       "_batch": "10_anilar_batch10_2022h2_2023"
     },
     {
-      "id": "2022-12-12-yatirim-planlama",
-      "date": "2022-12-12",
-      "title": "Sana şirket satın alacağım",
-      "subtitle": "ev sahibine ölçü, IBAN'a 30, hisseye 1000",
-      "category": "kucuksey",
-      "tags": [
-        "finans",
-        "yatırım",
-        "ev",
-        "deniz",
-        "etf",
-        "birlikte-plan"
-      ],
-      "story": "Ha bir de yeni ev sahibine yazacaktın ölçüler için.' Yeni ev - bir kira, bir taşınma vaadi. IBAN gönderiliyor (TR71 0011...), 30 TL atılıyor (yine Erdoğan: 'Yolladım aşksu' - aşksu yepyeni bir varyant).",
-      "quote": "Sana şirket satın alacağım. - Yarim · Olsun yauv yatırım yaparız zami siktiret.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Erdoğan",
-          "text": "yolladım aşksu",
-          "time": "12:33"
-        },
-        {
-          "sender": "Yarim",
-          "text": "şişecam, işmen, migros, aksa, eregl / bunları basıyorum / 1er tl den",
-          "time": "13:30"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 1,
-      "ai_confidence": "medium",
-      "_batch": "10_anilar_batch10_2022h2_2023"
-    },
-    {
       "id": "2023-11-24-canim-esim-canim-kocam",
       "date": "2023-11-24",
       "title": "Canım kocam",
@@ -3065,50 +2944,6 @@
       "is_pinned": false,
       "media_count_estimate": 0,
       "ai_confidence": "medium",
-      "_batch": "11_anilar_batch11_2024"
-    },
-    {
-      "id": "2024-12-31-yilbasi-listesi",
-      "date": "2024-12-31",
-      "title": "Havuç, maydanoz, turşu, kuruyemiş",
-      "subtitle": "yeni yıl arifesi - bir alışveriş listesi",
-      "category": "kucuksey",
-      "tags": [
-        "yılbaşı",
-        "alışveriş-listesi",
-        "rutin",
-        "ev"
-      ],
-      "story": "Alcatraz mıydı neydi - kelimenin tam adı kayboldu, ama anlam yerinde. Erdoğan gülüyor: 'Tamam :D'. 14:49'da son not: 'yoğurt patates.",
-      "quote": "havuç / maydanoz / turşu (kornişon) / kuruyemiş - Yarim · 2 kg köfte",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "havuç / maydanoz / turşu (kornişon) / kuruyemiş",
-          "time": "10:57"
-        },
-        {
-          "sender": "Yarim",
-          "text": "alcatraz mıydı neydi",
-          "time": "12:00"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Yazsana aşk bizimkine. Yürümeden öğrenelim. Araba yok elim dolu olcak",
-          "time": "12:01"
-        },
-        {
-          "sender": "Yarim",
-          "text": "yoğurt patates",
-          "time": "14:49"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
       "_batch": "11_anilar_batch11_2024"
     },
     {
@@ -3372,49 +3207,6 @@
       "_batch": "13_anilar_batch13_2026"
     },
     {
-      "id": "2026-01-19-hera-temizmis",
-      "date": "2026-01-19",
-      "title": "VAY AMK ÇOK SEVİNDİM",
-      "subtitle": "bir köpek için iyi haber",
-      "category": "kucuksey",
-      "tags": [
-        "cem-davutoğlu",
-        "hera",
-        "köpek",
-        "veteriner",
-        "arkadaş-ailesi"
-      ],
-      "story": "Sabah 11:26'da Erdoğan kargo veriyor, sonra trafikte sıkışıyor. Yarim öğle saatlerinde alışveriş listesi atıyor: krema, süt, un. Sıradan bir günün başlangıcı.",
-      "quote": "VAY AMK ÇOK SEVİNDİM.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Erdoğan",
-          "text": "kitle yağ çıkmış / temizmiş",
-          "time": "17:23"
-        },
-        {
-          "sender": "Yarim",
-          "text": "yeeey / yarabbi şükür",
-          "time": "17:23"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "VAY AMK ÇOK SEVİNDİM",
-          "time": "17:20"
-        }
-      ],
-      "location": {
-        "name": "VRM Veteriner Radyoloji Merkezi",
-        "context": "Hera'nın toraks BT'si"
-      },
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 1,
-      "ai_confidence": "high",
-      "_batch": "13_anilar_batch13_2026"
-    },
-    {
       "id": "2026-02-10-lion-low-poly",
       "date": "2026-02-10",
       "title": "15 mi olsa 18 mi",
@@ -3541,29 +3333,6 @@
       "is_pinned": false,
       "media_count_estimate": 0,
       "ai_confidence": "high",
-      "_batch": "13_anilar_batch13_2026"
-    },
-    {
-      "id": "2026-04-30-son-soz",
-      "date": "2026-04-30",
-      "title": "Göbek havuç maydanoz yeşil soğan",
-      "subtitle": "arşivin son sözü",
-      "category": "kilometre_tasi",
-      "tags": [
-        "son-mesaj",
-        "alışveriş-listesi",
-        "anchor",
-        "kapanış"
-      ],
-      "story": "Bağlam belirsiz - bir akşam yemeği için bir alışveriş listesi olabilir, bir tarif fikri olabilir, bir yengeç sosu olabilir. Göbek (göbek marul muhtemelen), havuç, maydanoz, yeşil soğan.",
-      "quote": "Göbek havuç maydanoz yeşil soğan. - Erdoğan (son mesaj)",
-      "location": null,
-      "song_ref": null,
-      "mood": "nostalgic",
-      "is_pinned": true,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "anchor_type": "son_mesaj",
       "_batch": "13_anilar_batch13_2026"
     }
   ]

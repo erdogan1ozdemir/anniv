@@ -121,14 +121,14 @@ export function Timeline({
     return true;
   });
 
+  // Smooth top-to-bottom gradient backgrounds — no radial halos
   const bgs: Record<ZoomLevel, string> = {
-    all: "radial-gradient(120% 70% at 50% 60%, var(--surface-2) 0%, var(--surface) 60%, var(--surface-3) 100%)",
-    year: "radial-gradient(100% 60% at 50% 40%, var(--surface-2) 0%, var(--surface) 100%)",
-    season: "linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%)",
-    month: "linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%)",
-    week: "linear-gradient(180deg, var(--surface-2) 0%, var(--surface-3) 100%)",
-    moment:
-      "linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 60%, var(--surface-3) 100%)",
+    all: "linear-gradient(180deg, #F4F0E1 0%, #ECE5D2 38%, #DBD3BD 100%)",
+    year: "linear-gradient(180deg, #F4F0E1 0%, #E8E1CC 100%)",
+    season: "linear-gradient(180deg, #F2EDDE 0%, #E5DCC5 100%)",
+    month: "linear-gradient(180deg, #F4F0E1 0%, #E0D7BE 100%)",
+    week: "linear-gradient(180deg, #F4F0E1 0%, #DBD3BD 100%)",
+    moment: "linear-gradient(180deg, #F4F0E1 0%, #E8E1CC 60%, #DBD3BD 100%)",
   };
 
   return (

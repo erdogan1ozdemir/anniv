@@ -5,12 +5,15 @@ import { usePathname } from "next/navigation";
 
 const items = [
   { href: "/", icon: "🌿", label: "bahçe", id: "tree" },
+  { href: "/koleksiyonlar", icon: "📚", label: "koleksiyon", id: "collections" },
   { href: "/harita", icon: "🗺", label: "harita", id: "map" },
   { href: "/jedi", icon: "🐈", label: "jedi", id: "jedi" },
 ];
 
 function activeFor(pathname: string): string {
   if (pathname === "/") return "tree";
+  if (pathname.startsWith("/koleksiyonlar") || pathname.startsWith("/kategoriler"))
+    return "collections";
   if (pathname.startsWith("/harita")) return "map";
   if (pathname.startsWith("/jedi")) return "jedi";
   if (pathname.startsWith("/ani")) return "tree";
@@ -30,11 +33,11 @@ export function BottomNav() {
         zIndex: 50,
         display: "flex",
         justifyContent: "space-around",
-        padding: "10px 12px calc(env(safe-area-inset-bottom) + 14px)",
-        background: "color-mix(in srgb, var(--surface-2) 88%, transparent)",
-        backdropFilter: "blur(18px)",
-        WebkitBackdropFilter: "blur(18px)",
-        borderTop: "1px solid var(--border-soft)",
+        padding: "10px 8px calc(env(safe-area-inset-bottom) + 14px)",
+        background: "rgba(244, 240, 225, 0.78)",
+        backdropFilter: "blur(22px) saturate(1.6)",
+        WebkitBackdropFilter: "blur(22px) saturate(1.6)",
+        borderTop: "1px solid rgba(31, 27, 22, 0.08)",
       }}
     >
       {items.map((item) => {
@@ -50,8 +53,9 @@ export function BottomNav() {
               gap: 2,
               color: isActive ? "var(--accent)" : "var(--text-muted)",
               transition: "color 200ms",
-              padding: "4px 16px",
+              padding: "4px 10px",
               borderRadius: 12,
+              flex: 1,
             }}
           >
             <span
@@ -70,6 +74,7 @@ export function BottomNav() {
                 letterSpacing: 1.5,
                 textTransform: "uppercase",
                 fontFamily: "var(--font-body)",
+                whiteSpace: "nowrap",
               }}
             >
               {item.label}
