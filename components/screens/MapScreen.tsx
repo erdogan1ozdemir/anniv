@@ -4,6 +4,10 @@ import Link from "next/link";
 import { Compass } from "@/components/svg/Botanic";
 import type { LocationEntry } from "@/types";
 
+// Feature flag: locations map is hidden for now (will be developed later).
+// Set to true to re-enable the full "Birlikte gittiğimiz yerler" experience.
+const SHOW_LOCATIONS_MAP = false;
+
 const PLACE_ICONS: Record<string, string> = {
   kapadokya: "🎈",
   goreme: "🎈",
@@ -42,6 +46,126 @@ interface MapScreenProps {
 }
 
 export function MapScreen({ locations }: MapScreenProps) {
+  if (!SHOW_LOCATIONS_MAP) {
+    return <MapPlaceholder />;
+  }
+  return <FullMap locations={locations} />;
+}
+
+function MapPlaceholder() {
+  return (
+    <div
+      style={{
+        width: "100%",
+        minHeight: "100vh",
+        position: "relative",
+        background:
+          "linear-gradient(180deg, #F4F0E1 0%, #ECE5D2 50%, #DBD3BD 100%)",
+        paddingBottom: 96,
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <header
+        style={{
+          padding: "16px 22px 0",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Link href="/" style={{ color: "#1F1B16", fontSize: 14, opacity: 0.8 }}>
+          ‹ bahçe
+        </Link>
+      </header>
+
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "0 24px",
+          textAlign: "center",
+        }}
+      >
+        <div
+          style={{
+            color: "#7C6E55",
+            opacity: 0.6,
+            animation: "breathe 8s ease-in-out infinite",
+            marginBottom: 24,
+          }}
+        >
+          <Compass size={72} />
+        </div>
+
+        <div
+          style={{
+            fontSize: 11,
+            letterSpacing: 2.4,
+            textTransform: "uppercase",
+            color: "#A38B5F",
+            fontWeight: 600,
+            marginBottom: 14,
+          }}
+        >
+          yakında
+        </div>
+
+        <h1
+          style={{
+            fontFamily: "var(--font-heading)",
+            fontStyle: "italic",
+            fontSize: 38,
+            lineHeight: 1.1,
+            color: "#1F1B16",
+            fontWeight: 500,
+            letterSpacing: -0.5,
+            marginBottom: 14,
+            maxWidth: 320,
+          }}
+        >
+          gittiğimiz yerler
+        </h1>
+
+        <p
+          style={{
+            fontFamily: "var(--font-accent)",
+            fontSize: 19,
+            lineHeight: 1.4,
+            color: "#5A4F3E",
+            opacity: 0.85,
+            maxWidth: 300,
+            marginBottom: 28,
+          }}
+        >
+          haritamız hâlâ çiziliyor… birlikte adım attığımız her köşeyi yakında
+          burada toplayacağız.
+        </p>
+
+        <Link
+          href="/"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 14,
+            color: "#1F1B16",
+            background: "rgba(255, 253, 246, 0.85)",
+            border: "1px solid rgba(31, 27, 22, 0.12)",
+            borderRadius: 999,
+            padding: "10px 20px",
+            backdropFilter: "blur(10px)",
+            boxShadow: "0 2px 12px -6px rgba(15, 17, 13, 0.12)",
+          }}
+        >
+          bahçeye dön
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function FullMap({ locations }: MapScreenProps) {
   const places = (locations ?? [])
     .filter(
       (loc) => (loc.frequency ?? 0) > 4 || (loc.associated_memories ?? []).length > 0,
@@ -264,26 +388,6 @@ export function MapScreen({ locations }: MapScreenProps) {
             </div>
           );
         })}
-
-        <div
-          style={{
-            position: "absolute",
-            bottom: 8,
-            right: 8,
-            textAlign: "center",
-          }}
-        >
-          <div style={{ fontSize: 24 }}>🐈</div>
-          <div
-            style={{
-              fontFamily: "var(--font-accent)",
-              color: "var(--accent)",
-              fontSize: 11,
-            }}
-          >
-            jedi&apos;in kalesi
-          </div>
-        </div>
       </div>
 
       {places.length > 0 && (
