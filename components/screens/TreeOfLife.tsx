@@ -137,8 +137,8 @@ interface EventGlyphProps {
 // Nordic token: solid circular disk with category emoji, kind-color ring, pinned glow
 function EventGlyph({ ev, x, y, scale = 1, opacity = 1, onClick }: EventGlyphProps) {
   const style = KIND_STYLE[ev.kind];
-  // Pinned tokens are 25% larger to stand out at every zoom level
-  const radius = (ev.pinned ? 16.5 : 13) * scale;
+  // Pinned tokens are 30% larger to stand out at every zoom level
+  const radius = (ev.pinned ? 14 : 11) * scale;
   const ringColor = ev.pinned ? "#C66E3D" : style.color;
   const handle = (e: React.MouseEvent | React.KeyboardEvent) => {
     e.stopPropagation();
@@ -194,7 +194,7 @@ function EventGlyph({ ev, x, y, scale = 1, opacity = 1, onClick }: EventGlyphPro
         x={x}
         y={y + radius * 0.4}
         textAnchor="middle"
-        fontSize={radius * 1.1}
+        fontSize={radius * 1.25}
         style={{ pointerEvents: "none", userSelect: "none" }}
       >
         {ev.cat || "·"}
@@ -513,8 +513,18 @@ export function TreeOfLife({
 }: TreeOfLifeProps) {
   const seasonAlpha = level === "all" ? 0.55 : 1;
   const monthAlpha = level === "all" ? 0 : level === "year" ? 0.4 : 1;
+  // Aggressive zoom-aware sizing: small dots at "all" (overview),
+  // grows dramatically as user zooms in (each memory becomes legible)
   const eventScale =
-    level === "all" ? 1.4 : level === "year" ? 1.7 : level === "season" ? 2.0 : 2.4;
+    level === "all"
+      ? 0.95
+      : level === "year"
+        ? 1.85
+        : level === "season"
+          ? 2.65
+          : level === "month"
+            ? 3.4
+            : 4.2; // week
   const eventLabelShow = level === "month" || level === "week";
   // Show decorative leaf scatter only at "all" zoom, hide entirely once focused
   const showLeafMass = level === "all";
@@ -958,21 +968,33 @@ export function TreeOfLife({
               return filtered.map((ev, i) => {
                 let pos = eventPos(ev);
                 if (useSpread && filtered.length > 0) {
-                  // Spread along year branch in a wider arc
-                  const t = (i + 0.5) / filtered.length;
-                  const branchT = 0.32 + t * 0.62;
+                  // Spread along year branch in a wider arc with multi-row stagger
+                  const total = filtered.length;
+                  // Row config: 6 events per row max, then push perpendicular further
+                  const eventsPerRow = level === "year" ? 6 : 4;
+                  const row = Math.floor(i / eventsPerRow);
+                  const inRow = i % eventsPerRow;
+                  const rowSize = Math.min(eventsPerRow, total - row * eventsPerRow);
+                  // Distribute evenly within this row
+                  const t = (inRow + 0.5) / rowSize;
+                  const branchT = 0.18 + t * 0.78;
                   const pt = yearPointAt(year, branchT);
-                  // Push perpendicular outward from branch
                   const len = Math.sqrt(pt.dx * pt.dx + pt.dy * pt.dy) || 1;
                   const nx = -pt.dy / len;
                   const ny = pt.dx / len;
-                  // Stagger row to break linearity
-                  const rowOffset = i % 2 === 0 ? 0 : 18;
-                  const baseDist = level === "year" ? 38 : 46;
-                  const dist = baseDist + rowOffset;
+                  const baseDist =
+                    level === "year"
+                      ? 44
+                      : level === "season"
+                        ? 56
+                        : 70;
+                  // Each subsequent row pushes further perpendicular
+                  const rowDist = baseDist + row * (level === "year" ? 36 : 48);
+                  // Vertical jitter within row to break linear feel
+                  const jitter = inRow % 2 === 0 ? -6 : 8;
                   pos = {
-                    x: pt.x + nx * dist * tip.side,
-                    y: pt.y + ny * dist - 8,
+                    x: pt.x + nx * rowDist * tip.side,
+                    y: pt.y + ny * rowDist + jitter,
                   };
                 }
                 return (
