@@ -28,6 +28,9 @@ import { OrganicTrunk } from "@/components/tree/Trunk";
 import { DriftParticles } from "@/components/tree/DriftParticles";
 import { Plant } from "@/components/tree/Plant";
 import { InterYearFillers } from "@/components/tree/InterYearFillers";
+import { PhantomBranches } from "@/components/tree/PhantomBranches";
+import { GnarledBranch } from "@/components/tree/GnarledBranch";
+import { LeafyTwig } from "@/components/tree/LeafyTwig";
 import { RootCapillaries } from "@/components/tree/RootCapillaries";
 import { EventGlyph, FoliageBurst } from "@/components/tree/Tokens";
 import { r1 } from "@/components/tree/utils";
@@ -611,6 +614,7 @@ export function TreeOfLife({
       <OrganicTrunk />
       {showCanopyFill && (
         <>
+          <PhantomBranches />
           <InterYearFillers />
           <DriftParticles />
         </>
@@ -706,115 +710,88 @@ export function TreeOfLife({
               opacity={isFocused ? 0.32 : 0}
               style={{ transition: "opacity 240ms ease", filter: "blur(2px)" }}
             />
-            {/* Year branch — 8 tapering segments, chunky bark brown */}
-            {branchPoints.slice(0, -1).map((p1, i) => {
-              const p2 = branchPoints[i + 1];
-              // Width tapers from base (full) to tip (~30%)
-              const tapered = branchBaseWidth * (1 - (i / N_SEG) * 0.7);
-              return (
-                <line
-                  key={`seg-${i}`}
-                  x1={r1(p1.x)}
-                  y1={r1(p1.y)}
-                  x2={r1(p2.x)}
-                  y2={r1(p2.y)}
-                  stroke={branchColor}
-                  strokeWidth={r1(tapered)}
-                  strokeLinecap="round"
-                  opacity="0.95"
-                />
-              );
-            })}
-            {/* Knot bulges at every segment junction (gnarly look) */}
-            {branchPoints.slice(1, -1).map((pt, ki) => {
-              const tapered = branchBaseWidth * (1 - ((ki + 1) / N_SEG) * 0.7);
-              const knotR = tapered * 0.7;
-              return (
-                <ellipse
-                  key={`knot-${ki}`}
-                  cx={r1(pt.x)}
-                  cy={r1(pt.y)}
-                  rx={r1(knotR * 1.4)}
-                  ry={r1(knotR * 0.85)}
-                  fill={branchColor}
-                  opacity="0.95"
-                />
-              );
-            })}
-            {/* Highlight stripe along the branch top edge */}
-            {branchPoints.slice(0, -1).map((p1, i) => {
-              const p2 = branchPoints[i + 1];
-              const tapered = branchBaseWidth * (1 - (i / N_SEG) * 0.7);
-              return (
-                <line
-                  key={`hl-${i}`}
-                  x1={r1(p1.x)}
-                  y1={r1(p1.y - tapered * 0.22)}
-                  x2={r1(p2.x)}
-                  y2={r1(p2.y - tapered * 0.22)}
-                  stroke="rgba(255,235,200,0.22)"
-                  strokeWidth={r1(Math.max(0.8, tapered * 0.28))}
-                  strokeLinecap="round"
-                />
-              );
-            })}
+            {/* Year branch — 8-segment gnarled multi-stroke (main +
+                 highlight + shadow + knots), chunky bark brown */}
+            <GnarledBranch
+              points={branchPoints}
+              baseWidth={branchBaseWidth}
+              tipFraction={0.32}
+              color={branchColor}
+            />
 
             {showLeafMass && (
               <>
-                {/* ── Above-branch offshoots — small upward twigs ── */}
+                {/* ── Above-branch offshoots — multi-segment gnarled
+                     twigs with realistic leafy stems at the tip ── */}
                 {[0.18, 0.32, 0.46, 0.6, 0.74, 0.86].map((t, oi) => {
                   const pt = yearPointAt(year, t);
                   const angle = Math.PI / 2 + tip.side * 0.25;
                   const len = 30 + (oi % 2) * 10;
+                  // Multi-segment: kink at midpoint for organic look
+                  const midKink = (oi % 2 === 0 ? -1 : 1) * 4;
+                  const midX = r1(pt.x + Math.cos(angle) * len * 0.55 + midKink);
+                  const midY = r1(pt.y - Math.sin(angle) * len * 0.55);
                   const tx = r1(pt.x + Math.cos(angle) * len);
                   const ty = r1(pt.y - Math.sin(angle) * len);
-                  // Tiny bud cluster at the offshoot tip — gives each
-                  // twig its own foliage at year+ zoom.
                   const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
-                  const c1 = palette[(year + oi) % palette.length];
-                  const c2 = palette[(year + oi + 2) % palette.length];
+                  const berryC = palette[(year + oi) % palette.length];
                   return (
                     <g key={`above-${oi}`}>
-                      <line
-                        x1={r1(pt.x)}
-                        y1={r1(pt.y)}
-                        x2={tx}
-                        y2={ty}
-                        stroke={branchColor}
-                        strokeWidth={5}
-                        strokeLinecap="round"
-                        opacity="0.92"
+                      <GnarledBranch
+                        points={[
+                          { x: pt.x, y: pt.y },
+                          { x: midX, y: midY },
+                          { x: tx, y: ty },
+                        ]}
+                        baseWidth={4.5}
+                        tipFraction={0.45}
+                        color={branchColor}
                       />
-                      <circle cx={tx} cy={ty} r="3.6" fill={c1} opacity="0.85" />
-                      <circle cx={tx + 4} cy={ty + 1} r="2.4" fill={c2} opacity="0.85" />
-                      <circle cx={tx - 3} cy={ty - 2} r="2.6" fill={c1} opacity="0.7" />
+                      <LeafyTwig
+                        x={tx}
+                        y={ty}
+                        angle={angle}
+                        length={20}
+                        seed={year * 19 + oi * 7}
+                        nLeaves={4}
+                        berryColor={berryC}
+                      />
                     </g>
                   );
                 })}
-                {/* ── Below-branch offshoots — drooping downward twigs ── */}
+                {/* ── Below-branch offshoots — drooping multi-segment ── */}
                 {[0.25, 0.42, 0.58, 0.72, 0.84].map((t, oi) => {
                   const pt = yearPointAt(year, t);
                   const angle = -Math.PI / 2 + tip.side * 0.18;
                   const len = 24 + (oi % 2) * 12;
+                  const midKink = (oi % 2 === 0 ? 1 : -1) * 5;
+                  const midX = r1(pt.x + Math.cos(angle) * len * 0.5 + midKink);
+                  const midY = r1(pt.y - Math.sin(angle) * len * 0.5);
                   const tx = r1(pt.x + Math.cos(angle) * len);
                   const ty = r1(pt.y - Math.sin(angle) * len);
                   const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
-                  const c1 = palette[(year + oi + 1) % palette.length];
-                  const c2 = palette[(year + oi + 3) % palette.length];
+                  const berryC = palette[(year + oi + 1) % palette.length];
                   return (
                     <g key={`below-${oi}`}>
-                      <line
-                        x1={r1(pt.x)}
-                        y1={r1(pt.y)}
-                        x2={tx}
-                        y2={ty}
-                        stroke={branchColor}
-                        strokeWidth={4}
-                        strokeLinecap="round"
-                        opacity="0.85"
+                      <GnarledBranch
+                        points={[
+                          { x: pt.x, y: pt.y },
+                          { x: midX, y: midY },
+                          { x: tx, y: ty },
+                        ]}
+                        baseWidth={3.8}
+                        tipFraction={0.45}
+                        color={branchColor}
                       />
-                      <circle cx={tx} cy={ty} r="3.2" fill={c1} opacity="0.82" />
-                      <circle cx={tx + 3} cy={ty + 2} r="2.2" fill={c2} opacity="0.78" />
+                      <LeafyTwig
+                        x={tx}
+                        y={ty}
+                        angle={angle}
+                        length={16}
+                        seed={year * 23 + oi * 11 + 41}
+                        nLeaves={3}
+                        berryColor={berryC}
+                      />
                     </g>
                   );
                 })}
