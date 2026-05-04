@@ -27,6 +27,8 @@ import {
 import { OrganicTrunk } from "@/components/tree/Trunk";
 import { DriftParticles } from "@/components/tree/DriftParticles";
 import { Plant } from "@/components/tree/Plant";
+import { InterYearFillers } from "@/components/tree/InterYearFillers";
+import { RootCapillaries } from "@/components/tree/RootCapillaries";
 import { EventGlyph, FoliageBurst } from "@/components/tree/Tokens";
 import { r1 } from "@/components/tree/utils";
 
@@ -370,7 +372,7 @@ export function TreeOfLife({
   // Count memories per year for visual differentiation
   const yearCounts = new Map<number, number>();
   for (const ev of events) yearCounts.set(ev.year, (yearCounts.get(ev.year) ?? 0) + 1);
-  const trunkColor = "#6B8054";
+  const trunkColor = "#3A2E22";
   const trunkDark = "#15110D";
   const dominant = ALL_SEASON_TINTS[season] || ALL_SEASON_TINTS.spring;
   const minorTint = season === "winter" ? "#7B7969" : season === "autumn" ? "#9C5B2F" : "#5E8F4A";
@@ -472,18 +474,21 @@ export function TreeOfLife({
         </g>
       )}
 
-      {/* Roots — main trunks + side branches + capillaries */}
-      <g opacity="0.85">
+      {/* Fine capillary roots interleaved between the main strokes */}
+      <RootCapillaries />
+
+      {/* Roots — chunky main trunks + side branches + capillaries */}
+      <g opacity="0.95">
         {[
-          { dx: -440, dy: 60, w: 3.5, branches: 2 },
-          { dx: -320, dy: 78, w: 3, branches: 2 },
-          { dx: -200, dy: 90, w: 2.6, branches: 1 },
-          { dx: -90, dy: 96, w: 2.2, branches: 1 },
-          { dx: 90, dy: 96, w: 2.2, branches: 1 },
-          { dx: 200, dy: 90, w: 2.6, branches: 1 },
-          { dx: 320, dy: 78, w: 3, branches: 2 },
-          { dx: 440, dy: 60, w: 3.5, branches: 2 },
-          { dx: 0, dy: 102, w: 1.8, branches: 1 },
+          { dx: -440, dy: 60, w: 14, branches: 2 },
+          { dx: -320, dy: 78, w: 12, branches: 2 },
+          { dx: -200, dy: 90, w: 10, branches: 1 },
+          { dx: -90, dy: 96, w: 7, branches: 1 },
+          { dx: 90, dy: 96, w: 7, branches: 1 },
+          { dx: 200, dy: 90, w: 10, branches: 1 },
+          { dx: 320, dy: 78, w: 12, branches: 2 },
+          { dx: 440, dy: 60, w: 14, branches: 2 },
+          { dx: 0, dy: 102, w: 5, branches: 1 },
         ].map((r, i) => {
           const startX = TRUNK_X;
           const startY = GROUND_Y - 30;
@@ -598,7 +603,12 @@ export function TreeOfLife({
       </g>
 
       <OrganicTrunk />
-      {showLeafMass && <DriftParticles />}
+      {showLeafMass && (
+        <>
+          <InterYearFillers />
+          <DriftParticles />
+        </>
+      )}
 
       <g>
         <path
@@ -680,6 +690,22 @@ export function TreeOfLife({
               strokeLinecap="round"
               opacity="0.95"
             />
+            {/* Gnarly knot bulges along the branch */}
+            {[0.25, 0.55, 0.8].map((t, ki) => {
+              const pt = yearPointAt(year, t);
+              const knotR = branchWidth * 0.7 + (ki === 1 ? 0.4 : 0);
+              return (
+                <ellipse
+                  key={`knot-${ki}`}
+                  cx={r1(pt.x)}
+                  cy={r1(pt.y)}
+                  rx={knotR * 1.3}
+                  ry={knotR * 0.85}
+                  fill={stemColor}
+                  opacity="0.92"
+                />
+              );
+            })}
             {/* Hover glow accent layer */}
             <path
               d={path}
@@ -693,19 +719,62 @@ export function TreeOfLife({
             />
 
             {showLeafMass && (
-              <Plant
-                year={year}
-                rootX={tip.x}
-                rootY={tip.y}
-                baseAngle={Math.PI / 2 + tip.side * 0.18}
-                baseLength={plantBaseLength}
-                depth={3}
-                forkAngle={0.45}
-                lengthShrink={0.68}
-                widthShrink={0.78}
-                stemColor={stemColor}
-                budScale={1.1}
-              />
+              <>
+                {/* Tip plant — biggest, anchored at the year-branch tip */}
+                <Plant
+                  year={year}
+                  rootX={tip.x}
+                  rootY={tip.y}
+                  baseAngle={Math.PI / 2 + tip.side * 0.18}
+                  baseLength={plantBaseLength}
+                  depth={3}
+                  forkAngle={0.45}
+                  lengthShrink={0.68}
+                  widthShrink={0.78}
+                  stemColor="#6B8054"
+                  budScale={1.1}
+                />
+                {/* Mid-branch plant 1 — at 65% along the year branch */}
+                {(() => {
+                  const mid = yearPointAt(year, 0.65);
+                  return (
+                    <Plant
+                      year={year}
+                      rootX={r1(mid.x)}
+                      rootY={r1(mid.y)}
+                      baseAngle={Math.PI / 2 + tip.side * 0.32}
+                      baseLength={plantBaseLength * 0.6}
+                      depth={3}
+                      forkAngle={0.5}
+                      lengthShrink={0.66}
+                      widthShrink={0.78}
+                      stemColor="#6B8054"
+                      budScale={0.85}
+                      seed={year * 211 + 5}
+                    />
+                  );
+                })()}
+                {/* Mid-branch plant 2 — at 35% along the year branch */}
+                {(() => {
+                  const mid = yearPointAt(year, 0.35);
+                  return (
+                    <Plant
+                      year={year}
+                      rootX={r1(mid.x)}
+                      rootY={r1(mid.y)}
+                      baseAngle={Math.PI / 2 + tip.side * 0.45}
+                      baseLength={plantBaseLength * 0.45}
+                      depth={2}
+                      forkAngle={0.55}
+                      lengthShrink={0.62}
+                      widthShrink={0.75}
+                      stemColor="#6B8054"
+                      budScale={0.7}
+                      seed={year * 419 + 11}
+                    />
+                  );
+                })()}
+              </>
             )}
 
             {(level === "all" || level === "year") && (
