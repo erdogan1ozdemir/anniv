@@ -863,63 +863,129 @@ export function TreeOfLife({
         </g>
       )}
 
-      {/* Roots */}
+      {/* Roots — main trunks + side branches + capillaries */}
       <g opacity="0.95">
         {[
-          { dx: -420, dy: 60, w: 14 },
-          { dx: -300, dy: 75, w: 12 },
-          { dx: -180, dy: 85, w: 10 },
-          { dx: -80, dy: 92, w: 7 },
-          { dx: 80, dy: 92, w: 7 },
-          { dx: 180, dy: 85, w: 10 },
-          { dx: 300, dy: 75, w: 12 },
-          { dx: 420, dy: 60, w: 14 },
-          { dx: 0, dy: 98, w: 5 },
-        ].map((r, i) => (
-          <g key={i}>
-            {/* Outer shadow / depth */}
-            <path
-              d={`M ${TRUNK_X} ${GROUND_Y - 30} C ${TRUNK_X + r.dx * 0.3} ${GROUND_Y - 5}, ${TRUNK_X + r.dx * 0.7} ${GROUND_Y + r.dy * 0.5}, ${TRUNK_X + r.dx} ${GROUND_Y + r.dy}`}
-              stroke="#0C0A08"
-              strokeWidth={r.w + 2}
-              fill="none"
-              strokeLinecap="round"
-              opacity="0.45"
-            />
-            {/* Main root */}
-            <path
-              d={`M ${TRUNK_X} ${GROUND_Y - 30} C ${TRUNK_X + r.dx * 0.3} ${GROUND_Y - 5}, ${TRUNK_X + r.dx * 0.7} ${GROUND_Y + r.dy * 0.5}, ${TRUNK_X + r.dx} ${GROUND_Y + r.dy}`}
-              stroke={trunkColor}
-              strokeWidth={r.w}
-              fill="none"
-              strokeLinecap="round"
-            />
-            {/* Highlight on top edge */}
-            <path
-              d={`M ${TRUNK_X} ${GROUND_Y - 30} C ${TRUNK_X + r.dx * 0.3} ${GROUND_Y - 5}, ${TRUNK_X + r.dx * 0.7} ${GROUND_Y + r.dy * 0.5}, ${TRUNK_X + r.dx} ${GROUND_Y + r.dy}`}
-              stroke="rgba(255,235,200,0.18)"
-              strokeWidth={Math.max(1, r.w * 0.3)}
-              fill="none"
-              strokeLinecap="round"
-              transform={`translate(0, -${Math.max(1, r.w * 0.25)})`}
-            />
-            {showLeafMass &&
-              Array.from({ length: 3 }).map((_, j) => {
-                const gx = TRUNK_X + r.dx + (j - 1) * 6;
-                const gy = GROUND_Y + r.dy + 18;
+          { dx: -440, dy: 60, w: 14, branches: 2 },
+          { dx: -320, dy: 78, w: 12, branches: 2 },
+          { dx: -200, dy: 90, w: 10, branches: 1 },
+          { dx: -90, dy: 96, w: 7, branches: 1 },
+          { dx: 90, dy: 96, w: 7, branches: 1 },
+          { dx: 200, dy: 90, w: 10, branches: 1 },
+          { dx: 320, dy: 78, w: 12, branches: 2 },
+          { dx: 440, dy: 60, w: 14, branches: 2 },
+          { dx: 0, dy: 102, w: 5, branches: 1 },
+        ].map((r, i) => {
+          const startX = TRUNK_X;
+          const startY = GROUND_Y - 30;
+          const endX = TRUNK_X + r.dx;
+          const endY = GROUND_Y + r.dy;
+          const cp1x = TRUNK_X + r.dx * 0.3;
+          const cp1y = GROUND_Y - 5;
+          const cp2x = TRUNK_X + r.dx * 0.7;
+          const cp2y = GROUND_Y + r.dy * 0.5;
+          const d = `M ${startX} ${startY} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${endX} ${endY}`;
+          const sideRng = seedRand(i * 211 + 17);
+          // Branch points along the root
+          const branchOffshoots = Array.from({ length: r.branches }).map(
+            (_, b) => {
+              // Place branch at 45-78% along root
+              const t = 0.5 + b * 0.22 + sideRng() * 0.12;
+              const u = 1 - t;
+              const px = r1(
+                u * u * u * startX +
+                  3 * u * u * t * cp1x +
+                  3 * u * t * t * cp2x +
+                  t * t * t * endX,
+              );
+              const py = r1(
+                u * u * u * startY +
+                  3 * u * u * t * cp1y +
+                  3 * u * t * t * cp2y +
+                  t * t * t * endY,
+              );
+              const sign = r.dx >= 0 ? 1 : -1;
+              const offDx = (40 + sideRng() * 50) * sign;
+              const offDy = 26 + sideRng() * 18;
+              const tx = r1(px + offDx);
+              const ty = r1(py + offDy);
+              const w = Math.max(1.5, r.w * 0.42);
+              return { px, py, tx, ty, w };
+            },
+          );
+          return (
+            <g key={i}>
+              {/* Outer shadow */}
+              <path
+                d={d}
+                stroke="#0C0A08"
+                strokeWidth={r.w + 2}
+                fill="none"
+                strokeLinecap="round"
+                opacity="0.45"
+              />
+              {/* Main root */}
+              <path
+                d={d}
+                stroke={trunkColor}
+                strokeWidth={r.w}
+                fill="none"
+                strokeLinecap="round"
+              />
+              {/* Highlight */}
+              <path
+                d={d}
+                stroke="rgba(255,235,200,0.18)"
+                strokeWidth={Math.max(1, r.w * 0.3)}
+                fill="none"
+                strokeLinecap="round"
+                transform={`translate(0, -${Math.max(1, r.w * 0.25)})`}
+              />
+              {/* Side branches */}
+              {branchOffshoots.map((o, b) => {
+                const cpx = (o.px + o.tx) / 2 + (r.dx >= 0 ? 6 : -6);
+                const cpy = (o.py + o.ty) / 2 + 4;
+                const branchD = `M ${o.px} ${o.py} Q ${cpx} ${cpy}, ${o.tx} ${o.ty}`;
                 return (
-                  <path
-                    key={j}
-                    d={`M ${gx} ${gy} Q ${gx - 1} ${gy - 5}, ${gx - 2} ${gy - 9}`}
-                    stroke={minorTint}
-                    strokeWidth="0.6"
-                    fill="none"
-                    opacity="0.7"
-                  />
+                  <g key={b}>
+                    <path
+                      d={branchD}
+                      stroke={trunkColor}
+                      strokeWidth={o.w}
+                      fill="none"
+                      strokeLinecap="round"
+                      opacity="0.92"
+                    />
+                    {/* Tiny capillary off the branch */}
+                    <path
+                      d={`M ${o.tx} ${o.ty} Q ${o.tx + (r.dx >= 0 ? 8 : -8)} ${o.ty + 8}, ${o.tx + (r.dx >= 0 ? 16 : -16)} ${o.ty + 14}`}
+                      stroke={trunkColor}
+                      strokeWidth={Math.max(0.8, o.w * 0.55)}
+                      fill="none"
+                      strokeLinecap="round"
+                      opacity="0.78"
+                    />
+                  </g>
                 );
               })}
-          </g>
-        ))}
+              {showLeafMass &&
+                Array.from({ length: 3 }).map((_, j) => {
+                  const gx = TRUNK_X + r.dx + (j - 1) * 6;
+                  const gy = GROUND_Y + r.dy + 18;
+                  return (
+                    <path
+                      key={j}
+                      d={`M ${gx} ${gy} Q ${gx - 1} ${gy - 5}, ${gx - 2} ${gy - 9}`}
+                      stroke={minorTint}
+                      strokeWidth="0.6"
+                      fill="none"
+                      opacity="0.7"
+                    />
+                  );
+                })}
+            </g>
+          );
+        })}
       </g>
 
       <OrganicTrunk />
