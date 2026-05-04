@@ -640,6 +640,48 @@ export function TreeOfLife({
 
       <ellipse cx={TRUNK_X} cy={GROUND_Y + 40} rx="500" ry="60" fill="url(#groundShadowV3)" />
 
+      {/* Soft horizon line — anchors the tree visually */}
+      {showLeafMass && (
+        <g aria-hidden>
+          <path
+            d={`M 20 ${GROUND_Y + 6} Q 250 ${GROUND_Y + 2}, 500 ${GROUND_Y + 4} T 980 ${GROUND_Y + 6}`}
+            stroke="#6B5740"
+            strokeWidth="1.4"
+            fill="none"
+            opacity="0.32"
+          />
+          {/* Sparse grass tufts */}
+          {Array.from({ length: 22 }).map((_, i) => {
+            const rng = seedRand(i * 73 + 11);
+            const cx = 30 + rng() * 940;
+            // Skip the area immediately around the trunk + roots
+            if (Math.abs(cx - TRUNK_X) < 60) return null;
+            const y0 = GROUND_Y + 4 + (rng() - 0.5) * 4;
+            const len = 5 + rng() * 6;
+            const lean = (rng() - 0.5) * 3;
+            return (
+              <g key={`grass-${i}`} opacity={0.45 + rng() * 0.25}>
+                <path
+                  d={`M ${cx} ${y0} Q ${cx + lean * 0.5} ${y0 - len * 0.6}, ${cx + lean} ${y0 - len}`}
+                  stroke="#5E8F4A"
+                  strokeWidth="0.9"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+                <path
+                  d={`M ${cx + 2} ${y0} Q ${cx + 2 + lean * 0.4} ${y0 - len * 0.5}, ${cx + 2 + lean * 0.8} ${y0 - len * 0.8}`}
+                  stroke="#7A9F4A"
+                  strokeWidth="0.7"
+                  fill="none"
+                  strokeLinecap="round"
+                  opacity="0.85"
+                />
+              </g>
+            );
+          })}
+        </g>
+      )}
+
       {/* Roots */}
       <g opacity="0.95">
         {[
@@ -654,12 +696,31 @@ export function TreeOfLife({
           { dx: 0, dy: 98, w: 5 },
         ].map((r, i) => (
           <g key={i}>
+            {/* Outer shadow / depth */}
+            <path
+              d={`M ${TRUNK_X} ${GROUND_Y - 30} C ${TRUNK_X + r.dx * 0.3} ${GROUND_Y - 5}, ${TRUNK_X + r.dx * 0.7} ${GROUND_Y + r.dy * 0.5}, ${TRUNK_X + r.dx} ${GROUND_Y + r.dy}`}
+              stroke="#0C0A08"
+              strokeWidth={r.w + 2}
+              fill="none"
+              strokeLinecap="round"
+              opacity="0.45"
+            />
+            {/* Main root */}
             <path
               d={`M ${TRUNK_X} ${GROUND_Y - 30} C ${TRUNK_X + r.dx * 0.3} ${GROUND_Y - 5}, ${TRUNK_X + r.dx * 0.7} ${GROUND_Y + r.dy * 0.5}, ${TRUNK_X + r.dx} ${GROUND_Y + r.dy}`}
               stroke={trunkColor}
               strokeWidth={r.w}
               fill="none"
               strokeLinecap="round"
+            />
+            {/* Highlight on top edge */}
+            <path
+              d={`M ${TRUNK_X} ${GROUND_Y - 30} C ${TRUNK_X + r.dx * 0.3} ${GROUND_Y - 5}, ${TRUNK_X + r.dx * 0.7} ${GROUND_Y + r.dy * 0.5}, ${TRUNK_X + r.dx} ${GROUND_Y + r.dy}`}
+              stroke="rgba(255,235,200,0.18)"
+              strokeWidth={Math.max(1, r.w * 0.3)}
+              fill="none"
+              strokeLinecap="round"
+              transform={`translate(0, -${Math.max(1, r.w * 0.25)})`}
             />
             {showLeafMass &&
               Array.from({ length: 3 }).map((_, j) => {
