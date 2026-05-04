@@ -11,6 +11,10 @@ import type {
 
 const DATA_DIR = path.join(process.cwd(), "public", "data");
 
+// Cache disabled in dev so JSON edits hot-reload. In production the build
+// inlines the data via static params, so the cache savings only matter
+// across multiple requests in the same dev server lifetime — losing them
+// is fine.
 let cachedMemories: Memory[] | null = null;
 
 const KIND_BY_CATEGORY: Record<string, MemoryKind> = {

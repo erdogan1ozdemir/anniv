@@ -1,10 +1,10 @@
 {
   "metadata": {
     "title": "Bahçemiz — Master Anı Kartları",
-    "description": "8 yıl 3 ay 16 günlük WhatsApp arşivinden çıkartılmış tüm anı kartları tek dosyada, kronolojik sıralı.",
-    "total_cards": 95,
+    "description": "Bahçemiz — birlikte büyüttüğümüz anılar, ZQWQZ'den bugüne.",
+    "total_cards": 113,
     "date_range": "2017-11-05 → 2026-04-30",
-    "data_source": "_chat.txt (168,678 mesaj)",
+    "data_source": "kendi anılarımız",
     "generated": "2026-05-02",
     "batches": [
       {
@@ -64,6 +64,29 @@
     "filtered_at": "2026-05-03-v6"
   },
   "memories": [
+    {
+      "id": "2017-09-23-zqwqz-tanisma",
+      "date": "2017-09-23",
+      "title": "ZQWQZ'de duvarına ilk yazım",
+      "subtitle": "her şeyin başladığı an",
+      "category": "kilometre_tasi",
+      "tags": [
+        "zqwqz",
+        "tanışma",
+        "ilk"
+      ],
+      "story": "Bir sosyal dizi izleme platformuydu ZQWQZ. Ben senin duvarına ilk yazdığımda 23 Eylül 2017'ydi — \"hoşgeldin\" dedim. O kelimenin nereye varacağını ikimiz de bilmiyorduk.",
+      "quote": null,
+      "whatsapp_excerpt": [],
+      "location": null,
+      "song_ref": null,
+      "mood": "nostalgic",
+      "is_pinned": true,
+      "media_count_estimate": 0,
+      "ai_confidence": 1.0,
+      "anchor_type": "tanisma",
+      "_batch": "manual"
+    },
     {
       "id": "2017-11-05-iliski-baslangici",
       "date": "2017-11-05",
