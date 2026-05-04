@@ -616,24 +616,28 @@ export function TreeOfLife({
                 color={branchColor}
               />
             ))}
-            {/* Side-twigs at each junction (between sub-branches) */}
+            {/* Side-twigs at each junction (between sub-branches) — these
+                 are the "ara dallar" the user calls out. Their base
+                 width matches the year sub-branch they fork from
+                 (=parent width × 0.85), so they read as proper
+                 sub-branches rather than wispy tips. They taper down
+                 by the same defined ratio (0.72) per generation. */}
             {subBranches.slice(0, -1).map((sub) => {
               const j = sub.p1;
-              // Alternate above + below for visual rhythm
               const above = sub.s % 2 === 0;
               const angle =
                 (above ? Math.PI / 2 : -Math.PI / 2) + tip.side * 0.22;
-              const len = 28 + (sub.s % 2) * 6;
-              const midX = r1(j.x + Math.cos(angle) * len * 0.5 + tip.side * 3);
+              const len = 46 + (sub.s % 2) * 10;
+              const midX = r1(j.x + Math.cos(angle) * len * 0.5 + tip.side * 4);
               const midY = r1(j.y - Math.sin(angle) * len * 0.5);
               const tx = r1(j.x + Math.cos(angle) * len);
               const ty = r1(j.y - Math.sin(angle) * len);
-              const w = sub.width * 0.55;
+              // Sub-branch as chunky as the parent year sub-branch
+              const w = sub.width * 0.85;
               const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
               const berryC = palette[(year + sub.s) % palette.length];
               return (
                 <g key={`jSide-${sub.s}`}>
-                  {/* Stem from year branch to junction-canopy base */}
                   <GnarledBranch
                     points={[
                       { x: j.x, y: j.y },
@@ -641,21 +645,20 @@ export function TreeOfLife({
                       { x: tx, y: ty },
                     ]}
                     baseWidth={w}
-                    tipFraction={0.6}
+                    tipFraction={0.78}
                     color={branchColor}
                   />
-                  {/* Recursive fractal mini-canopy at this junction's tip */}
                   {showLeafMass && (
                     <FractalBranch
                       rootX={tx}
                       rootY={ty}
                       baseAngle={angle}
-                      baseLength={16}
-                      baseWidth={w * 0.55}
-                      depth={2}
-                      forkAngle={0.55}
-                      lengthShrink={0.62}
-                      widthShrink={0.6}
+                      baseLength={26}
+                      baseWidth={w * 0.78}
+                      depth={3}
+                      forkAngle={0.5}
+                      lengthShrink={0.66}
+                      widthShrink={0.72}
                       branchFactor={2}
                       seed={year * 47 + sub.s * 13}
                       color={branchColor}

@@ -335,7 +335,8 @@ export function Timeline({
               season={season}
             />
           </div>
-          {(level === "all" || level === "year") && <Legend />}
+          {/* Legend removed per user request — kept the function below
+              in case we want to bring it back behind a toggle. */}
         </div>
       ) : (
         <MomentView
