@@ -468,6 +468,124 @@ function OrganicTrunk() {
 }
 
 // ===================================================================
+// RAINBOW FOLIAGE — decorative dense cloud at each year's branch tip
+// ===================================================================
+// Renders independently of memory count so even sparse years still
+// feel "full". Color palette cycles per year so each branch has its
+// own dominant hue (red year, green year, blue year, etc).
+const FOLIAGE_PALETTES: string[][] = [
+  ["#E8826B", "#F2C5D1", "#D17A95", "#A82E2E"], // warm pink/coral
+  ["#9FC5BD", "#5A8B7E", "#2D3D3A", "#7FA847"], // teal/forest
+  ["#C8E07A", "#7FA847", "#5E8F4A", "#E8D9B0"], // green/lime
+  ["#E8D9B0", "#C9A876", "#A89376", "#6B5740"], // honey/sand
+  ["#F2C5D1", "#E8826B", "#C8E07A", "#9FC5BD"], // mixed pastel
+  ["#D17A95", "#A82E2E", "#E8826B", "#F2C5D1"], // berry
+  ["#9FC5BD", "#7FA847", "#E8D9B0", "#C9A876"], // sage/honey
+  ["#C8E07A", "#9FC5BD", "#F2C5D1", "#E8826B"], // spring riot
+  ["#5A8B7E", "#9FC5BD", "#E8D9B0", "#C8E07A"], // ocean+meadow
+  ["#E8826B", "#F2C5D1", "#9FC5BD", "#C8E07A"], // sunset+sky
+];
+
+function RainbowFoliage({
+  year,
+  tipX,
+  tipY,
+  side,
+}: {
+  year: number;
+  tipX: number;
+  tipY: number;
+  side: 1 | -1;
+}) {
+  const palette = FOLIAGE_PALETTES[(year - 2017) % FOLIAGE_PALETTES.length];
+  const rng = seedRand(year * 911 + 13);
+  // Cluster center sits past the branch tip, fanning further out
+  const cx = tipX + side * 30;
+  const cy = tipY - 26;
+  const N_PETALS = 36;
+  return (
+    <g pointerEvents="none">
+      {/* Soft watercolor blooms behind */}
+      <circle cx={cx} cy={cy} r={88} fill={palette[0]} opacity="0.10" />
+      <circle
+        cx={cx + side * 26}
+        cy={cy + 14}
+        r={62}
+        fill={palette[1]}
+        opacity="0.10"
+      />
+      <circle
+        cx={cx - side * 18}
+        cy={cy - 22}
+        r={48}
+        fill={palette[2]}
+        opacity="0.09"
+      />
+      {/* Petals + sparkles */}
+      {Array.from({ length: N_PETALS }).map((_, i) => {
+        const a = rng() * Math.PI * 2;
+        // Bias the cluster slightly to the tip-side so it leans outward
+        const dist = 10 + rng() * 78;
+        const px = cx + Math.cos(a) * dist + side * (rng() * 8);
+        const py = cy + Math.sin(a) * dist * 0.92 - rng() * 14;
+        const sz = 4 + rng() * 7;
+        const color = palette[i % palette.length];
+        const op = 0.45 + rng() * 0.45;
+        const rot = (rng() - 0.5) * 90;
+        const shape = i % 4;
+        if (shape === 0) {
+          // 4-pointed sparkle
+          const inner = sz * 0.32;
+          return (
+            <g
+              key={`p${i}`}
+              transform={`translate(${px} ${py}) rotate(${rot})`}
+              opacity={op}
+            >
+              <path
+                d={`M 0 ${-sz} L ${inner} 0 L 0 ${sz} L ${-inner} 0 Z`}
+                fill={color}
+              />
+              <path
+                d={`M ${-sz} 0 L 0 ${inner} L ${sz} 0 L 0 ${-inner} Z`}
+                fill={color}
+                opacity="0.7"
+              />
+            </g>
+          );
+        }
+        if (shape === 1) {
+          // Tiny round bead
+          return (
+            <circle
+              key={`p${i}`}
+              cx={px}
+              cy={py}
+              r={sz * 0.55}
+              fill={color}
+              opacity={op}
+            />
+          );
+        }
+        // Petal (rotated ellipse)
+        return (
+          <ellipse
+            key={`p${i}`}
+            cx={px}
+            cy={py}
+            rx={sz * 0.55}
+            ry={sz}
+            fill={color}
+            opacity={op}
+            transform={`rotate(${rot} ${px} ${py})`}
+          />
+        );
+      })}
+    </g>
+  );
+}
+
+// ===================================================================
 // FOLIAGE BURST — colored dots/stars at "all" zoom, replacing tokens
 // ===================================================================
 function FoliageBurst({
@@ -837,30 +955,14 @@ export function TreeOfLife({
               style={{ transition: "opacity 240ms ease", filter: "blur(2px)" }}
             />
 
-            {showLeafMass &&
-              Array.from({ length: Math.min(20, 6 + memCount) }).map((_, i) => {
-                const rng = seedRand(year * 100 + i * 13);
-                const r = rng();
-                const tt = 0.35 + r * 0.55;
-                const pt = yearPointAt(year, tt);
-                const off = 22 + (rng() - 0.5) * 30;
-                const upDx = Math.cos((rng() - 0.5) * Math.PI) * off;
-                const upDy = -Math.abs(Math.sin((rng() - 0.5) * Math.PI)) * off - 10;
-                const lx = pt.x + upDx + tip.side * (rng() * 12);
-                const ly = pt.y + upDy;
-                return (
-                  <LeafGlyph
-                    key={`fl${year}${i}`}
-                    x={lx}
-                    y={ly}
-                    color={dominant[3] || dominant[0]}
-                    fill={dominant[i % 3]}
-                    size={7 + rng() * 4}
-                    rot={rng() * 360 - 180}
-                    opacity={0.55}
-                  />
-                );
-              })}
+            {showLeafMass && (
+              <RainbowFoliage
+                year={year}
+                tipX={tip.x}
+                tipY={tip.y}
+                side={tip.side}
+              />
+            )}
 
             {(level === "all" || level === "year") && (
               <g
