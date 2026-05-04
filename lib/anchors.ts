@@ -46,7 +46,7 @@ export const ANCHORS: AnchorDate[] = [
     label: "Erdoğan'ın doğum günü",
     emoji: "🎂",
     hue: { from: "#C8E07A", to: "#7A9F4A" },
-    date: "2017-10-14", // first one shared together (born 1994-10-14)
+    date: "2018-04-14", // first one shared together (born 1994-04-14, met Sep 2017)
     recurrence: "yearly",
     countNoun: "doğum günü",
   },
@@ -55,7 +55,7 @@ export const ANCHORS: AnchorDate[] = [
     label: "Merve'nin doğum günü",
     emoji: "🎂",
     hue: { from: "#E8D9B0", to: "#E8826B" },
-    date: "2018-04-14", // first one shared together (born around 1995-04-14)
+    date: "2017-10-14", // first one shared together (gerçek 14.10.1995, kimlik 01.11)
     recurrence: "yearly",
     countNoun: "doğum günü",
   },
@@ -78,10 +78,19 @@ export const ANCHORS: AnchorDate[] = [
     countNoun: "yılbaşı",
   },
   {
+    id: "jedi-dogum",
+    label: "Jedi'nin doğum günü",
+    emoji: "🎂",
+    hue: { from: "#A89376", to: "#6B5740" },
+    date: "2019-02-14",
+    recurrence: "yearly",
+    countNoun: "doğum günü",
+  },
+  {
     id: "jedi-katildi",
     label: "Jedi ailemize katıldı",
     emoji: "🐈",
-    hue: { from: "#A89376", to: "#6B5740" },
+    hue: { from: "#C9A876", to: "#6B5740" },
     date: "2019-03-31",
     recurrence: "yearly",
     countNoun: "yıldönümü",
@@ -92,7 +101,7 @@ export const ANCHORS: AnchorDate[] = [
     label: "Nişan",
     emoji: "💍",
     hue: { from: "#E8D9B0", to: "#C9A876" },
-    date: "2021-01-30",
+    date: "2022-01-30",
     recurrence: "yearly",
     countNoun: "nişan günü",
   },
@@ -101,7 +110,7 @@ export const ANCHORS: AnchorDate[] = [
     label: "Evlilik",
     emoji: "👰‍♀️",
     hue: { from: "#E8826B", to: "#A82E2E" },
-    date: "2021-05-03",
+    date: "2022-05-03",
     recurrence: "yearly",
     countNoun: "evlilik yılı",
   },

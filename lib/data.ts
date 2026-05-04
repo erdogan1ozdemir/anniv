@@ -11,10 +11,10 @@ import type {
 
 const DATA_DIR = path.join(process.cwd(), "public", "data");
 
-// Cache disabled in dev so JSON edits hot-reload. In production the build
-// inlines the data via static params, so the cache savings only matter
-// across multiple requests in the same dev server lifetime — losing them
-// is fine.
+// Cache only outside dev — in dev the module reload (when this file is
+// touched) is the cache invalidation signal. Production build inlines
+// the data anyway so the cache only matters across requests.
+const ENABLE_CACHE = process.env.NODE_ENV === "production";
 let cachedMemories: Memory[] | null = null;
 
 const KIND_BY_CATEGORY: Record<string, MemoryKind> = {
@@ -53,7 +53,7 @@ function inferKind(memory: Memory): MemoryKind {
 }
 
 export async function loadMemories(): Promise<Memory[]> {
-  if (cachedMemories) return cachedMemories;
+  if (ENABLE_CACHE && cachedMemories) return cachedMemories;
   const file = path.join(DATA_DIR, "memories.json");
   const raw = await fs.readFile(file, "utf-8");
   const payload = JSON.parse(raw) as MemoriesPayload;

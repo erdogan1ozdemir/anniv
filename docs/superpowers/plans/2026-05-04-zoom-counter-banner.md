@@ -1014,6 +1014,46 @@ Expected: clean push, all commits land.
 
 ---
 
+## Phase 9 — Date corrections from user input (2026-05-04)
+
+User clarified the actual important dates:
+- İlişki: 05.11.2017 ✓ (already correct)
+- Jedi DOĞUM: 14.02.2019 (joined ~April 2019, kept date 31.03.2019 for Jedi-katıldı)
+- Nişan: 30.01.**2022** (was wrongly 2021)
+- Evlilik: 03.05.**2022** (was wrongly 2021)
+- Erdoğan dgn: 14.04.1994 → first shared 14.04.**2018** (was wrongly 2017-10-14, swapped with Merve)
+- Merve dgn (gerçek): 14.10.1995 → first shared 14.10.**2017** (was wrongly 2018-04-14)
+- Merve kimlik dgn: 01.11.1995 — informational, not added to Sayaç
+
+### Task 9.1: Fix lib/anchors.ts dates
+### Task 9.2: Fix Jedi birth ISO in JediScreen
+### Task 9.3: Fix anchor-memory titles in memories.json
+The yearly anchor memories were generated assuming 2021 origin for nişan/evlilik. With 2022 origin:
+- anchor-{evlilik,nisan}-2023 → "Birinci. ... yıldönümü"
+- anchor-{evlilik,nisan}-2024 → "Ikinci."
+- anchor-{evlilik,nisan}-2025 → "Üçüncü."
+- anchor-{evlilik,nisan}-2026 → "Dördüncü."
+
+---
+
+## Phase 10 — Swipe gesture on the tree (left/right shifts focus)
+
+User: "bahçe görünümünde mesela mevsim ya da aylardaykan ekranı sağa sola kaydırdığımda bir sonraki aya ya da mevsime geçecek".
+
+### Task 10.1: Add prev/next helpers in Timeline
+- `nextYear(focus.year)` returns next year in YEARS array, wrapping
+- `nextSeason(focus.season)` cycles through SEASON_ORDER
+- `nextMonth(focus.year, focus.month)` returns {year, month} with year-rollover
+- `nextWeek(focus.week)` 1-5 cycle (or use month rollover)
+
+### Task 10.2: Wrap tree container with motion.div drag="x"
+- threshold 70px (tighter than MemoryDetail's 90 because the tree is taller)
+- dragElastic 0.14 for soft rubber-band feedback
+- onDragEnd dispatches the appropriate level-shift action
+- Swipe disabled at "all" level (no focus to shift) and at "moment" (already has its own list-scroll)
+
+---
+
 ## Self-Review checklist
 
 After implementation, before pushing:
