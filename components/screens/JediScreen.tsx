@@ -10,7 +10,24 @@ interface JediScreenProps {
   memories: Memory[];
 }
 
+// Jedi joined the family on 2019-03-31 (per memory archive).
+// Using the join-date as age proxy until a real birth date surfaces.
+const JEDI_BIRTH_ISO = "2019-03-31";
+
+function computeJediYears(today: Date): number {
+  const birth = new Date(JEDI_BIRTH_ISO + "T00:00:00");
+  let years = today.getFullYear() - birth.getFullYear();
+  const beforeBday =
+    today.getMonth() < birth.getMonth() ||
+    (today.getMonth() === birth.getMonth() &&
+      today.getDate() < birth.getDate());
+  if (beforeBday) years -= 1;
+  return Math.max(0, years);
+}
+
 export function JediScreen({ memories }: JediScreenProps) {
+  const today = new Date();
+  const yearsOld = computeJediYears(today);
   return (
     <div
       style={{
@@ -138,7 +155,7 @@ export function JediScreen({ memories }: JediScreenProps) {
         }}
       >
         {[
-          { n: "5", l: "yaş", c: "var(--accent)" },
+          { n: String(yearsOld), l: "yaş", c: "var(--accent)" },
           { n: "5.2", l: "kg", c: "var(--primary)" },
           { n: String(memories.length), l: "anı", c: "#A89376" },
           { n: "∞", l: "miyav", c: "var(--accent)" },
