@@ -587,21 +587,21 @@ function RainbowFoliage({
         fill={palette[2]}
         opacity="0.09"
       />
-      {/* Petals + sparkles */}
+      {/* Petals + sparkles + leaves + hearts + buds + flowers */}
       {Array.from({ length: N_PETALS }).map((_, i) => {
         const a = rng() * Math.PI * 2;
-        // Bias the cluster slightly to the tip-side so it leans outward
         const dist = 10 + rng() * 78;
         const px = r1(cx + Math.cos(a) * dist + side * (rng() * 8));
         const py = r1(cy + Math.sin(a) * dist * 0.92 - rng() * 14);
         const sz = r1(4 + rng() * 7);
         const color = palette[i % palette.length];
-        const op = r3(0.45 + rng() * 0.45);
-        const rot = r1((rng() - 0.5) * 90);
-        const shape = i % 4;
+        const accent = palette[(i + 2) % palette.length];
+        const op = r3(0.5 + rng() * 0.4);
+        const rot = r1((rng() - 0.5) * 110);
+        const shape = i % 7;
         if (shape === 0) {
           // 4-pointed sparkle
-          const inner = sz * 0.32;
+          const inner = r1(sz * 0.32);
           return (
             <g
               key={`p${i}`}
@@ -627,19 +627,107 @@ function RainbowFoliage({
               key={`p${i}`}
               cx={px}
               cy={py}
-              r={sz * 0.55}
+              r={r1(sz * 0.55)}
               fill={color}
               opacity={op}
             />
           );
         }
-        // Petal (rotated ellipse)
+        if (shape === 2) {
+          // Heart shape
+          const s = r1(sz * 0.85);
+          return (
+            <g
+              key={`p${i}`}
+              transform={`translate(${px} ${py}) rotate(${rot})`}
+              opacity={op}
+            >
+              <path
+                d={`M 0 ${r1(s * 0.6)} C ${-s} ${r1(-s * 0.2)}, ${-s} ${-s}, 0 ${r1(-s * 0.4)} C ${s} ${-s}, ${s} ${r1(-s * 0.2)}, 0 ${r1(s * 0.6)} Z`}
+                fill={color}
+              />
+            </g>
+          );
+        }
+        if (shape === 3) {
+          // 5-petal flower
+          const s = r1(sz * 0.65);
+          return (
+            <g
+              key={`p${i}`}
+              transform={`translate(${px} ${py}) rotate(${rot})`}
+              opacity={op}
+            >
+              {[0, 72, 144, 216, 288].map((angDeg) => (
+                <ellipse
+                  key={angDeg}
+                  cx="0"
+                  cy={r1(-s * 0.7)}
+                  rx={r1(s * 0.45)}
+                  ry={s}
+                  fill={color}
+                  transform={`rotate(${angDeg})`}
+                />
+              ))}
+              <circle r={r1(s * 0.35)} fill={accent} />
+            </g>
+          );
+        }
+        if (shape === 4) {
+          // Bud / teardrop
+          const s = r1(sz * 0.95);
+          return (
+            <g
+              key={`p${i}`}
+              transform={`translate(${px} ${py}) rotate(${rot})`}
+              opacity={op}
+            >
+              <path
+                d={`M 0 ${-s} Q ${r1(-s * 0.55)} ${r1(-s * 0.3)}, ${r1(-s * 0.45)} ${r1(s * 0.4)} Q 0 ${s}, ${r1(s * 0.45)} ${r1(s * 0.4)} Q ${r1(s * 0.55)} ${r1(-s * 0.3)}, 0 ${-s} Z`}
+                fill={color}
+              />
+              <path
+                d={`M 0 ${r1(-s * 0.6)} Q ${r1(-s * 0.18)} ${r1(s * 0.1)}, 0 ${r1(s * 0.6)}`}
+                stroke={accent}
+                strokeWidth="0.5"
+                fill="none"
+                opacity="0.6"
+              />
+            </g>
+          );
+        }
+        if (shape === 5) {
+          // Leaf (oval with vein)
+          const s = r1(sz * 1.05);
+          return (
+            <g
+              key={`p${i}`}
+              transform={`translate(${px} ${py}) rotate(${rot})`}
+              opacity={op}
+            >
+              <path
+                d={`M 0 ${-s} C ${r1(s * 0.55)} ${r1(-s * 0.3)}, ${r1(s * 0.55)} ${r1(s * 0.3)}, 0 ${s} C ${r1(-s * 0.55)} ${r1(s * 0.3)}, ${r1(-s * 0.55)} ${r1(-s * 0.3)}, 0 ${-s} Z`}
+                fill={color}
+              />
+              <line
+                x1="0"
+                y1={r1(-s * 0.85)}
+                x2="0"
+                y2={r1(s * 0.85)}
+                stroke={accent}
+                strokeWidth="0.5"
+                opacity="0.55"
+              />
+            </g>
+          );
+        }
+        // shape === 6: ellipse petal (default)
         return (
           <ellipse
             key={`p${i}`}
             cx={px}
             cy={py}
-            rx={sz * 0.55}
+            rx={r1(sz * 0.55)}
             ry={sz}
             fill={color}
             opacity={op}
