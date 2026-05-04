@@ -26,10 +26,7 @@ import {
 } from "@/lib/tree-data";
 import { OrganicTrunk } from "@/components/tree/Trunk";
 import { DriftParticles } from "@/components/tree/DriftParticles";
-import { SecondaryBranches } from "@/components/tree/Branches";
-import { RainbowFoliage } from "@/components/tree/Foliage";
-import { MidBranchLeaves } from "@/components/tree/MidBranchLeaves";
-import { RootCapillaries } from "@/components/tree/RootCapillaries";
+import { Plant } from "@/components/tree/Plant";
 import { EventGlyph, FoliageBurst } from "@/components/tree/Tokens";
 import { r1 } from "@/components/tree/utils";
 
@@ -373,7 +370,7 @@ export function TreeOfLife({
   // Count memories per year for visual differentiation
   const yearCounts = new Map<number, number>();
   for (const ev of events) yearCounts.set(ev.year, (yearCounts.get(ev.year) ?? 0) + 1);
-  const trunkColor = "#2C2620";
+  const trunkColor = "#6B8054";
   const trunkDark = "#15110D";
   const dominant = ALL_SEASON_TINTS[season] || ALL_SEASON_TINTS.spring;
   const minorTint = season === "winter" ? "#7B7969" : season === "autumn" ? "#9C5B2F" : "#5E8F4A";
@@ -475,21 +472,18 @@ export function TreeOfLife({
         </g>
       )}
 
-      {/* Fine capillary roots interleaved between the main strokes */}
-      <RootCapillaries />
-
       {/* Roots — main trunks + side branches + capillaries */}
-      <g opacity="0.95">
+      <g opacity="0.85">
         {[
-          { dx: -440, dy: 60, w: 14, branches: 2 },
-          { dx: -320, dy: 78, w: 12, branches: 2 },
-          { dx: -200, dy: 90, w: 10, branches: 1 },
-          { dx: -90, dy: 96, w: 7, branches: 1 },
-          { dx: 90, dy: 96, w: 7, branches: 1 },
-          { dx: 200, dy: 90, w: 10, branches: 1 },
-          { dx: 320, dy: 78, w: 12, branches: 2 },
-          { dx: 440, dy: 60, w: 14, branches: 2 },
-          { dx: 0, dy: 102, w: 5, branches: 1 },
+          { dx: -440, dy: 60, w: 3.5, branches: 2 },
+          { dx: -320, dy: 78, w: 3, branches: 2 },
+          { dx: -200, dy: 90, w: 2.6, branches: 1 },
+          { dx: -90, dy: 96, w: 2.2, branches: 1 },
+          { dx: 90, dy: 96, w: 2.2, branches: 1 },
+          { dx: 200, dy: 90, w: 2.6, branches: 1 },
+          { dx: 320, dy: 78, w: 3, branches: 2 },
+          { dx: 440, dy: 60, w: 3.5, branches: 2 },
+          { dx: 0, dy: 102, w: 1.8, branches: 1 },
         ].map((r, i) => {
           const startX = TRUNK_X;
           const startY = GROUND_Y - 30;
@@ -658,9 +652,13 @@ export function TreeOfLife({
         }
         const yearOpacity = dimmed ? 0.16 : 1;
         const memCount = yearCounts.get(year) ?? 0;
-        // Branch thickness scales with memory count
-        const baseWidth = tip.len > 320 ? 20 : 16;
-        const branchWidth = baseWidth + Math.min(12, Math.sqrt(memCount) * 2);
+        // Slim, delicate stem — wax-flower aesthetic. Thicker for years
+        // with more memories so they still read as "denser" plants.
+        const branchWidth = 2.2 + Math.min(2, Math.sqrt(memCount) * 0.4);
+        const stemColor = "#6B8054"; // sage olive — visible on bone-cream
+        // Length the L-system plant grows from the year branch tip.
+        // Older years (low on trunk) get shorter plants, recent years longer.
+        const plantBaseLength = 38 + Math.min(28, memCount * 1.4);
 
         return (
           <g
@@ -673,50 +671,41 @@ export function TreeOfLife({
             }}
             onClick={() => onSelectYear?.(year)}
           >
-            <path d={path} stroke={trunkColor} strokeWidth={branchWidth} fill="none" strokeLinecap="round" />
+            {/* Slim year stem — replaces the carved-Nordic thick branch */}
             <path
               d={path}
-              stroke="rgba(0,0,0,0.4)"
-              strokeWidth={branchWidth * 0.8}
+              stroke={stemColor}
+              strokeWidth={branchWidth}
               fill="none"
               strokeLinecap="round"
-              opacity="0.4"
-              style={{ filter: "url(#branchSoftV3)" }}
-            />
-            <path
-              d={path}
-              stroke="rgba(255,235,200,0.18)"
-              strokeWidth="2.5"
-              fill="none"
-              strokeLinecap="round"
+              opacity="0.95"
             />
             {/* Hover glow accent layer */}
             <path
               d={path}
               stroke="var(--accent)"
-              strokeWidth={branchWidth + 4}
+              strokeWidth={branchWidth + 6}
               fill="none"
               strokeLinecap="round"
               className="tree-year-glow"
-              opacity={isFocused ? 0.35 : 0}
+              opacity={isFocused ? 0.32 : 0}
               style={{ transition: "opacity 240ms ease", filter: "blur(2px)" }}
             />
 
             {showLeafMass && (
-              <>
-                <SecondaryBranches
-                  year={year}
-                  side={tip.side}
-                  trunkColor={trunkColor}
-                />
-                <MidBranchLeaves year={year} side={tip.side} />
-                <RainbowFoliage
-                  year={year}
-                  tipX={tip.x}
-                  tipY={tip.y}
-                  side={tip.side}
-                />
-              </>
+              <Plant
+                year={year}
+                rootX={tip.x}
+                rootY={tip.y}
+                baseAngle={Math.PI / 2 + tip.side * 0.18}
+                baseLength={plantBaseLength}
+                depth={3}
+                forkAngle={0.45}
+                lengthShrink={0.68}
+                widthShrink={0.78}
+                stemColor={stemColor}
+                budScale={1.1}
+              />
             )}
 
             {(level === "all" || level === "year") && (
