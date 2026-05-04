@@ -4,7 +4,12 @@ import Link from "next/link";
 import { motion, type PanInfo } from "framer-motion";
 import { useRouter } from "next/navigation";
 import type { Memory } from "@/types";
-import { CATEGORY_META, formatTurkishDate, shortTurkishDate } from "@/lib/categories";
+import {
+  CATEGORY_META,
+  formatRelativeSince,
+  formatTurkishDate,
+  shortTurkishDate,
+} from "@/lib/categories";
 import { CategoryHero } from "@/components/svg/CategoryIcons";
 
 const MOOD_TINT: Record<string, string> = {
@@ -64,6 +69,17 @@ export function MemoryDetail({
   const dayName = !Number.isNaN(day.valueOf())
     ? ["pazar", "pzt", "sal", "çar", "prş", "cum", "cmt"][day.getDay()]
     : "";
+
+  const RELATIONSHIP_START = "2017-11-05";
+  const MEETING_DATE = "2017-09-23";
+  const sinceMeeting =
+    memory.date > MEETING_DATE
+      ? formatRelativeSince(MEETING_DATE, memory.date)
+      : "";
+  const sinceRelationship =
+    memory.date > RELATIONSHIP_START
+      ? formatRelativeSince(RELATIONSHIP_START, memory.date)
+      : "";
 
   const paragraphs = (memory.story ?? "").split(/\n+/).filter(Boolean);
 
@@ -206,6 +222,43 @@ export function MemoryDetail({
             </>
           )}
         </div>
+
+        {(sinceMeeting || sinceRelationship) && (
+          <div
+            style={{
+              display: "inline-flex",
+              flexDirection: "column",
+              gap: 2,
+              padding: "8px 12px",
+              background: "rgba(255, 253, 246, 0.55)",
+              borderRadius: 12,
+              border: "1px solid rgba(31, 27, 22, 0.08)",
+              fontFamily: "var(--font-accent)",
+              fontSize: 14,
+              color: "#5A4F3E",
+              marginBottom: 12,
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+            }}
+          >
+            {sinceMeeting && (
+              <span>
+                tanışmamızdan{" "}
+                <em style={{ color: "#1F1B16", fontStyle: "italic" }}>
+                  {sinceMeeting}
+                </em>
+              </span>
+            )}
+            {sinceRelationship && (
+              <span>
+                ilişkimizden{" "}
+                <em style={{ color: "#1F1B16", fontStyle: "italic" }}>
+                  {sinceRelationship}
+                </em>
+              </span>
+            )}
+          </div>
+        )}
 
         <h1
           style={{

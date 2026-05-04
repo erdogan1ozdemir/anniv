@@ -1,12 +1,17 @@
 // Important "anchor" dates the Sayaç screen counts and that the
 // memory-detail banner uses for relative phrasing.
+//
+// Dates here mark the FIRST time the event was shared together
+// (or for one-shot events, the event itself). Yearly counts include
+// the original — so e.g. Tanışma 2017-09-23 produces 9 occurrences
+// by 2026-05-04 (one for each year 2017..2025).
 
 export interface AnchorDate {
   id: string;
   label: string;
   emoji: string;
   hue: { from: string; to: string };
-  /** ISO yyyy-mm-dd of the original event. Year is ignored for "yearly" recurrence. */
+  /** ISO yyyy-mm-dd of the FIRST occurrence shared together. */
   date: string;
   recurrence: "yearly" | "once";
   /** Genitive Turkish phrasing for the count line — defaults to "yıldönümü". */
@@ -37,6 +42,24 @@ export const ANCHORS: AnchorDate[] = [
     memoryId: "2017-11-05-iliski-baslangici",
   },
   {
+    id: "erdogan-dogum",
+    label: "Erdoğan'ın doğum günü",
+    emoji: "🎂",
+    hue: { from: "#C8E07A", to: "#7A9F4A" },
+    date: "2017-10-14", // first one shared together (born 1994-10-14)
+    recurrence: "yearly",
+    countNoun: "doğum günü",
+  },
+  {
+    id: "merve-dogum",
+    label: "Merve'nin doğum günü",
+    emoji: "🎂",
+    hue: { from: "#E8D9B0", to: "#E8826B" },
+    date: "2018-04-14", // first one shared together (born around 1995-04-14)
+    recurrence: "yearly",
+    countNoun: "doğum günü",
+  },
+  {
     id: "sevgililer",
     label: "Sevgililer Günü",
     emoji: "💝",
@@ -59,29 +82,29 @@ export const ANCHORS: AnchorDate[] = [
     label: "Jedi ailemize katıldı",
     emoji: "🐈",
     hue: { from: "#A89376", to: "#6B5740" },
-    date: "2021-01-30",
+    date: "2019-03-31",
     recurrence: "yearly",
     countNoun: "yıldönümü",
+    memoryId: "2019-03-31-jedi-geliyor",
   },
-  // Doğum günleri — kullanıcıdan tarih bekleniyor, geldiğinde aşağıya eklenecek.
-  // {
-  //   id: "merve-dogum",
-  //   label: "Merve'nin doğum günü",
-  //   emoji: "🎂",
-  //   hue: { from: "#E8D9B0", to: "#E8826B" },
-  //   date: "YYYY-MM-DD",
-  //   recurrence: "yearly",
-  //   countNoun: "doğum günü",
-  // },
-  // {
-  //   id: "erdogan-dogum",
-  //   label: "Erdoğan'ın doğum günü",
-  //   emoji: "🎂",
-  //   hue: { from: "#C8E07A", to: "#7A9F4A" },
-  //   date: "YYYY-MM-DD",
-  //   recurrence: "yearly",
-  //   countNoun: "doğum günü",
-  // },
+  {
+    id: "nisan",
+    label: "Nişan",
+    emoji: "💍",
+    hue: { from: "#E8D9B0", to: "#C9A876" },
+    date: "2021-01-30",
+    recurrence: "yearly",
+    countNoun: "nişan günü",
+  },
+  {
+    id: "evlilik",
+    label: "Evlilik",
+    emoji: "👰‍♀️",
+    hue: { from: "#E8826B", to: "#A82E2E" },
+    date: "2021-05-03",
+    recurrence: "yearly",
+    countNoun: "evlilik yılı",
+  },
 ];
 
 export interface AnchorCount {
