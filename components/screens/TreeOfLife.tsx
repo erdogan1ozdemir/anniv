@@ -513,18 +513,21 @@ export function TreeOfLife({
 }: TreeOfLifeProps) {
   const seasonAlpha = level === "all" ? 0.55 : 1;
   const monthAlpha = level === "all" ? 0 : level === "year" ? 0.4 : 1;
-  // Aggressive zoom-aware sizing: small dots at "all" (overview),
-  // grows dramatically as user zooms in (each memory becomes legible)
+  // Apparent on-screen size stays roughly constant: the viewBox does the
+  // zoom, the token scales mildly to compensate. Tokens SHRINK as you zoom
+  // in so they read as discrete glyphs instead of overpowering the branch
+  // they sit on. Year-level keeps generous tap targets; deeper zooms taper
+  // because viewBox is small enough that even a 0.7x token reads clearly.
   const eventScale =
     level === "all"
-      ? 0.95
+      ? 1.2
       : level === "year"
-        ? 1.85
+        ? 1.4
         : level === "season"
-          ? 2.65
+          ? 1.0
           : level === "month"
-            ? 3.4
-            : 4.2; // week
+            ? 0.8
+            : 0.7; // week / moment
   const eventLabelShow = level === "month" || level === "week";
   // Show decorative leaf scatter only at "all" zoom, hide entirely once focused
   const showLeafMass = level === "all";
