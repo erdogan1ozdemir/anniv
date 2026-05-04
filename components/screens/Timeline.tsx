@@ -9,7 +9,9 @@ import {
   MONTHS_TR_SHORT,
   NOW,
   SEASON_MONTHS,
+  SEASON_ORDER,
   SEASON_TR,
+  YEARS,
   monthSeason,
   zoomViewBox,
   type EventKind,
@@ -61,6 +63,7 @@ export function Timeline({
   // Pinch / ctrl+wheel zoom on tree container - cycle through zoom levels
   const treeRef = useRef<HTMLDivElement | null>(null);
   const wheelLockRef = useRef<number>(0);
+  const swipeStartRef = useRef<{ x: number; y: number; t: number } | null>(null);
   useEffect(() => {
     const node = treeRef.current;
     if (!node) return;
@@ -116,6 +119,113 @@ export function Timeline({
   };
 
   const onOpen = (ev: LifeEvent) => router.push(`/ani/${ev.id}`);
+
+  // Swipe left/right shifts focus along the current zoom level.
+  const SWIPE_THRESHOLD = 70;
+  const shiftFocus = (dir: 1 | -1) => {
+    if (level === "year" && focus.year != null) {
+      const idx = YEARS.indexOf(focus.year);
+      const newIdx = idx + dir;
+      if (newIdx >= 0 && newIdx < YEARS.length) setYear(YEARS[newIdx]);
+      return;
+    }
+    if (level === "season" && focus.year != null && focus.season) {
+      const sIdx = SEASON_ORDER.indexOf(focus.season);
+      const newSIdx = sIdx + dir;
+      if (newSIdx >= 0 && newSIdx < SEASON_ORDER.length) {
+        setSeason(focus.year, SEASON_ORDER[newSIdx]);
+      } else {
+        const yIdx = YEARS.indexOf(focus.year);
+        const newYIdx = yIdx + dir;
+        if (newYIdx < 0 || newYIdx >= YEARS.length) return;
+        const wrapSeason =
+          dir === 1
+            ? SEASON_ORDER[0]
+            : SEASON_ORDER[SEASON_ORDER.length - 1];
+        setSeason(YEARS[newYIdx], wrapSeason);
+      }
+      return;
+    }
+    if (level === "month" && focus.year != null && focus.month != null) {
+      let newY = focus.year;
+      let newM = focus.month + dir;
+      if (newM < 0) {
+        newM = 11;
+        newY -= 1;
+      } else if (newM > 11) {
+        newM = 0;
+        newY += 1;
+      }
+      if (YEARS.includes(newY)) setMonth(newY, newM);
+      return;
+    }
+    if (level === "week" && focus.year != null && focus.month != null) {
+      const w = focus.week ?? 1;
+      let newW = w + dir;
+      if (newW >= 1 && newW <= 5) {
+        setFocus((f) => ({ ...f, week: newW }));
+        return;
+      }
+      // Roll over to neighbouring month, snap week to 1 or 4
+      let newY = focus.year;
+      let newM = focus.month + dir;
+      if (newM < 0) {
+        newM = 11;
+        newY -= 1;
+      } else if (newM > 11) {
+        newM = 0;
+        newY += 1;
+      }
+      if (!YEARS.includes(newY)) return;
+      setFocus((f) => ({
+        ...f,
+        year: newY,
+        season: monthSeason(newM),
+        month: newM,
+        week: dir === 1 ? 1 : 4,
+      }));
+    }
+  };
+  const swipeEnabled =
+    level === "year" ||
+    level === "season" ||
+    level === "month" ||
+    level === "week";
+
+  // Native pointer-based swipe detector. Belt & suspenders alongside the
+  // framer-motion drag — guarantees the gesture works on platforms where
+  // framer's pan recogniser doesn't activate.
+  useEffect(() => {
+    const node = treeRef.current;
+    if (!node || !swipeEnabled) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      swipeStartRef.current = { x: e.clientX, y: e.clientY, t: Date.now() };
+    };
+    const onPointerUp = (e: PointerEvent) => {
+      const start = swipeStartRef.current;
+      swipeStartRef.current = null;
+      if (!start) return;
+      const dx = e.clientX - start.x;
+      const dy = e.clientY - start.y;
+      const dt = Date.now() - start.t;
+      // Reject long holds (likely a long-press, not a swipe)
+      if (dt > 1200) return;
+      // Reject vertical-dominant motion (let page scroll)
+      if (Math.abs(dy) > Math.abs(dx) * 0.7) return;
+      if (Math.abs(dx) < SWIPE_THRESHOLD) return;
+      shiftFocus(dx < 0 ? 1 : -1);
+    };
+    node.addEventListener("pointerdown", onPointerDown);
+    node.addEventListener("pointerup", onPointerUp);
+    node.addEventListener("pointercancel", () => {
+      swipeStartRef.current = null;
+    });
+    return () => {
+      node.removeEventListener("pointerdown", onPointerDown);
+      node.removeEventListener("pointerup", onPointerUp);
+    };
+  }, [level, focus, swipeEnabled]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // In moment view, breadcrumb / scope-broaden adjusts focus only - stays in list view
   const broadenScope = (target: ZoomLevel) => {
@@ -176,7 +286,15 @@ export function Timeline({
       <Breadcrumbs level={level} focus={focus} onSet={onCrumbSet} />
 
       {level !== "moment" ? (
-        <div ref={treeRef} style={{ flex: 1, position: "relative", minHeight: 0 }}>
+        <div
+          ref={treeRef}
+          style={{
+            flex: 1,
+            position: "relative",
+            minHeight: 0,
+            touchAction: swipeEnabled ? "pan-y" : "auto",
+          }}
+        >
           <ZoomSlider level={level} onSet={goLevel} />
           {level === "week" && (
             <button
