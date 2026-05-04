@@ -9,6 +9,28 @@ function todayLocal(): Date {
   return d;
 }
 
+const TR_MONTHS_SHORT = [
+  "Oca",
+  "Şub",
+  "Mar",
+  "Nis",
+  "May",
+  "Haz",
+  "Tem",
+  "Ağu",
+  "Eyl",
+  "Eki",
+  "Kas",
+  "Ara",
+];
+
+/** Format an ISO date as "14 Nis 1994". */
+function formatDateBadge(iso: string): string {
+  const d = new Date(iso + "T00:00:00");
+  if (Number.isNaN(d.valueOf())) return "";
+  return `${d.getDate()} ${TR_MONTHS_SHORT[d.getMonth()]} ${d.getFullYear()}`;
+}
+
 export function CounterScreen() {
   const today = todayLocal();
   const cards = ANCHORS.map((a) => ({
@@ -113,6 +135,27 @@ export function CounterScreen() {
                   pointerEvents: "none",
                 }}
               />
+              {/* Date badge — shows the original date (or first-shared
+                  date) in the top-right corner. */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: 12,
+                  right: 14,
+                  background: "rgba(15, 17, 13, 0.55)",
+                  color: "#FBF6EA",
+                  padding: "3px 9px",
+                  borderRadius: 999,
+                  fontSize: 10,
+                  letterSpacing: 1.2,
+                  textTransform: "uppercase",
+                  fontWeight: 600,
+                  backdropFilter: "blur(4px)",
+                  border: "1px solid rgba(255,255,255,0.16)",
+                }}
+              >
+                {formatDateBadge(anchor.originDate ?? anchor.date)}
+              </div>
               {/* Dark scrim ensures bone-cream text reads against light gradients */}
               <div
                 aria-hidden

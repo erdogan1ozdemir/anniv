@@ -612,9 +612,30 @@ export function TreeOfLife({
               transform={`translate(0, -${Math.max(1, branchBaseWidth * 0.18)})`}
             />
 
-            {/* Canopy at the year-branch tip — small fan of curved
-                 forks with bud terminals. Replaces the previous
-                 multi-component Plant/FractalBranch stack. */}
+            {/* Mid-branch canopies — small fans emerging at 3 points
+                 along the year curve so the branch reads as fully
+                 leafed, not just at the tip. depth=1 keeps these
+                 lighter; only the tip canopy gets sub-forks. */}
+            {showLeafMass &&
+              [0.32, 0.55, 0.78].map((t, mi) => {
+                const pt = yearPointAt(year, t);
+                // Direction perpendicular to year curve (mostly up)
+                const angle = Math.PI / 2 + tip.side * (0.12 + mi * 0.04);
+                return (
+                  <Canopy
+                    key={`mid-${mi}`}
+                    year={year + mi * 17}
+                    rootX={r1(pt.x)}
+                    rootY={r1(pt.y)}
+                    baseAngle={angle}
+                    memCount={Math.max(2, memCount - 4)}
+                    stemColor={branchColor}
+                    depth={1}
+                    scale={0.55 + mi * 0.06}
+                  />
+                );
+              })}
+            {/* Tip canopy — full depth, biggest. */}
             {showLeafMass && (
               <Canopy
                 year={year}
@@ -623,6 +644,7 @@ export function TreeOfLife({
                 baseAngle={Math.PI / 2 + tip.side * 0.18}
                 memCount={memCount}
                 stemColor={branchColor}
+                depth={2}
               />
             )}
 

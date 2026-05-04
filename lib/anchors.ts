@@ -13,6 +13,11 @@ export interface AnchorDate {
   hue: { from: string; to: string };
   /** ISO yyyy-mm-dd of the FIRST occurrence shared together. */
   date: string;
+  /** ISO yyyy-mm-dd of the ORIGINAL event when distinct from `date`.
+   * Used by the Sayaç card date badge — for birthdays this is the
+   * actual birth year (e.g., Erdoğan: date=2018-04-14 (first shared)
+   * but originDate=1994-04-14 (real birth)). */
+  originDate?: string;
   recurrence: "yearly" | "once";
   /** Genitive Turkish phrasing for the count line — defaults to "yıldönümü". */
   countNoun?: string;
@@ -46,7 +51,8 @@ export const ANCHORS: AnchorDate[] = [
     label: "Erdoğan'ın doğum günü",
     emoji: "🎂",
     hue: { from: "#C8E07A", to: "#7A9F4A" },
-    date: "2018-04-14", // first one shared together (born 1994-04-14, met Sep 2017)
+    date: "2018-04-14", // first one shared together
+    originDate: "1994-04-14", // actual birth
     recurrence: "yearly",
     countNoun: "doğum günü",
   },
@@ -55,7 +61,8 @@ export const ANCHORS: AnchorDate[] = [
     label: "Merve'nin doğum günü",
     emoji: "🎂",
     hue: { from: "#E8D9B0", to: "#E8826B" },
-    date: "2017-10-14", // first one shared together (gerçek 14.10.1995, kimlik 01.11)
+    date: "2017-10-14", // first one shared together
+    originDate: "1995-10-14", // actual birth (gerçek; kimlik 01.11)
     recurrence: "yearly",
     countNoun: "doğum günü",
   },

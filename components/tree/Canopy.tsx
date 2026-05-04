@@ -19,6 +19,11 @@ interface CanopyProps {
   baseAngle?: number;
   memCount?: number;
   stemColor?: string;
+  /** Depth: 2 = full (main + sub + sub-sub), 1 = main forks only.
+   * Mid-branch canopies use depth=1 to keep element count down. */
+  depth?: 1 | 2;
+  /** Overall scale for mid-branch usage (smaller). */
+  scale?: number;
 }
 
 // Quadratic Bezier evaluation
@@ -140,11 +145,13 @@ export function Canopy({
   baseAngle = Math.PI / 2,
   memCount = 0,
   stemColor = "#3A2E22",
+  depth = 2,
+  scale = 1,
 }: CanopyProps) {
   const palette = paletteForYear(year);
   // Number of main forks (kat 1): 5-8 based on memory load
   const nMain = Math.min(8, 5 + Math.floor(memCount / 6));
-  const baseLen = 30 + Math.min(22, memCount * 0.95);
+  const baseLen = (30 + Math.min(22, memCount * 0.95)) * scale;
   // Fan width — 165° spread
   const fanWidth = Math.PI * 0.92;
   const startA = baseAngle - fanWidth / 2;
@@ -197,8 +204,8 @@ export function Canopy({
                 />
               );
             })}
-            {/* Sub-forks (kat 2) — 2 children */}
-            {subPositions.map((t, si) => {
+            {/* Sub-forks (kat 2) — 2 children, only at depth >= 2 */}
+            {depth >= 2 && subPositions.map((t, si) => {
               const subStart = bezier(t, rootX, rootY, ctrlX, ctrlY, endX, endY);
               // Sub-fork angle: stay within parent's territory
               const subOffset = (si === 0 ? -1 : 1) * territory * 0.34;
