@@ -362,9 +362,15 @@ export function TreeOfLife({
             ? 0.55
             : 0.45; // week / moment
   const eventLabelShow = level === "month" || level === "week";
-  // Show decorative leaf scatter only at "all" zoom, hide entirely once focused
-  const showLeafMass = level === "all";
-  // Hide creatures once user zooms in, they overlap event glyphs
+  // Render full foliage decoration at every zoom level (except the
+  // moment list view which has its own UI). Each zoom keeps the visual
+  // density of the all-zoom view, just framed on a smaller area.
+  const showLeafMass = level !== "moment";
+  // Inter-year fillers + drift particles only at all-zoom — they
+  // depend on absolute trunk coords that fall outside year+ viewBoxes.
+  const showCanopyFill = level === "all";
+  // Creatures (owl, cat, etc) only at all-zoom — they'd overlap tokens
+  // when the user has zoomed in to read.
   const showCreatures = level === "all";
   // Year labels show category emoji is no longer needed (now in token)
   const showCatEmojiAbove = false;
@@ -432,8 +438,8 @@ export function TreeOfLife({
 
       <ellipse cx={TRUNK_X} cy={GROUND_Y + 40} rx="500" ry="60" fill="url(#groundShadowV3)" />
 
-      {/* Soft horizon line — anchors the tree visually */}
-      {showLeafMass && (
+      {/* Soft horizon line — anchors the tree visually (only at all-zoom) */}
+      {showCanopyFill && (
         <g aria-hidden>
           <path
             d={`M 20 ${GROUND_Y + 6} Q 250 ${GROUND_Y + 2}, 500 ${GROUND_Y + 4} T 980 ${GROUND_Y + 6}`}
@@ -582,7 +588,7 @@ export function TreeOfLife({
                   </g>
                 );
               })}
-              {showLeafMass &&
+              {showCanopyFill &&
                 Array.from({ length: 3 }).map((_, j) => {
                   const gx = TRUNK_X + r.dx + (j - 1) * 6;
                   const gy = GROUND_Y + r.dy + 18;
@@ -603,7 +609,7 @@ export function TreeOfLife({
       </g>
 
       <OrganicTrunk />
-      {showLeafMass && (
+      {showCanopyFill && (
         <>
           <InterYearFillers />
           <DriftParticles />
@@ -762,18 +768,27 @@ export function TreeOfLife({
                   const len = 30 + (oi % 2) * 10;
                   const tx = r1(pt.x + Math.cos(angle) * len);
                   const ty = r1(pt.y - Math.sin(angle) * len);
+                  // Tiny bud cluster at the offshoot tip — gives each
+                  // twig its own foliage at year+ zoom.
+                  const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
+                  const c1 = palette[(year + oi) % palette.length];
+                  const c2 = palette[(year + oi + 2) % palette.length];
                   return (
-                    <line
-                      key={`above-${oi}`}
-                      x1={r1(pt.x)}
-                      y1={r1(pt.y)}
-                      x2={tx}
-                      y2={ty}
-                      stroke={branchColor}
-                      strokeWidth={5}
-                      strokeLinecap="round"
-                      opacity="0.92"
-                    />
+                    <g key={`above-${oi}`}>
+                      <line
+                        x1={r1(pt.x)}
+                        y1={r1(pt.y)}
+                        x2={tx}
+                        y2={ty}
+                        stroke={branchColor}
+                        strokeWidth={5}
+                        strokeLinecap="round"
+                        opacity="0.92"
+                      />
+                      <circle cx={tx} cy={ty} r="3.6" fill={c1} opacity="0.85" />
+                      <circle cx={tx + 4} cy={ty + 1} r="2.4" fill={c2} opacity="0.85" />
+                      <circle cx={tx - 3} cy={ty - 2} r="2.6" fill={c1} opacity="0.7" />
+                    </g>
                   );
                 })}
                 {/* ── Below-branch offshoots — drooping downward twigs ── */}
@@ -783,18 +798,24 @@ export function TreeOfLife({
                   const len = 24 + (oi % 2) * 12;
                   const tx = r1(pt.x + Math.cos(angle) * len);
                   const ty = r1(pt.y - Math.sin(angle) * len);
+                  const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
+                  const c1 = palette[(year + oi + 1) % palette.length];
+                  const c2 = palette[(year + oi + 3) % palette.length];
                   return (
-                    <line
-                      key={`below-${oi}`}
-                      x1={r1(pt.x)}
-                      y1={r1(pt.y)}
-                      x2={tx}
-                      y2={ty}
-                      stroke={branchColor}
-                      strokeWidth={4}
-                      strokeLinecap="round"
-                      opacity="0.85"
-                    />
+                    <g key={`below-${oi}`}>
+                      <line
+                        x1={r1(pt.x)}
+                        y1={r1(pt.y)}
+                        x2={tx}
+                        y2={ty}
+                        stroke={branchColor}
+                        strokeWidth={4}
+                        strokeLinecap="round"
+                        opacity="0.85"
+                      />
+                      <circle cx={tx} cy={ty} r="3.2" fill={c1} opacity="0.82" />
+                      <circle cx={tx + 3} cy={ty + 2} r="2.2" fill={c2} opacity="0.78" />
+                    </g>
                   );
                 })}
 
@@ -893,34 +914,96 @@ export function TreeOfLife({
               </>
             )}
 
-            {/* ── Season twigs — 4 little branches per year (one per
-                 season) visible as you zoom in past 'all' so each
-                 season has its own visible budak. ── */}
-            {(level === "year" || level === "season") &&
-              [0.28, 0.5, 0.7, 0.88].map((t, si) => {
+            {/* ── Season + month sub-twigs — finer detail on focused
+                 branch as the user zooms in. Each season gets its own
+                 budak with a small Plant; at month/week zoom we add
+                 even smaller leaves at sub-positions. ── */}
+            {(level === "year" || level === "season" || level === "month" || level === "week") &&
+              [0.22, 0.35, 0.48, 0.62, 0.76, 0.88].map((t, si) => {
                 const pt = yearPointAt(year, t);
-                const angle = Math.PI / 2 + tip.side * (0.35 + si * 0.04);
-                const len = 22 + (si % 2) * 6;
+                const above = si % 2 === 0;
+                const angle = (above ? Math.PI / 2 : -Math.PI / 2) + tip.side * (0.3 + (si % 3) * 0.04);
+                const len = 18 + (si % 3) * 8;
                 const tx = r1(pt.x + Math.cos(angle) * len);
                 const ty = r1(pt.y - Math.sin(angle) * len);
+                const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD", "#E8D9B0", "#D17A95"];
+                const c1 = palette[(si + year) % palette.length];
+                const c2 = palette[(si + year + 2) % palette.length];
+                const c3 = palette[(si + year + 4) % palette.length];
                 return (
-                  <g key={`season-twig-${si}`}>
+                  <g key={`subtwig-${si}`}>
                     <line
                       x1={r1(pt.x)}
                       y1={r1(pt.y)}
                       x2={tx}
                       y2={ty}
                       stroke={branchColor}
-                      strokeWidth="1.6"
+                      strokeWidth="1.8"
                       strokeLinecap="round"
-                      opacity="0.78"
+                      opacity="0.85"
                     />
-                    {/* tiny bud cluster at the season-twig tip */}
-                    <circle cx={tx} cy={ty} r="2.4" fill="#E8826B" opacity="0.7" />
-                    <circle cx={tx + 3} cy={ty - 1} r="1.8" fill="#F2C5D1" opacity="0.7" />
+                    {/* Bud cluster at sub-twig tip */}
+                    <circle cx={tx} cy={ty} r="2.8" fill={c1} opacity="0.85" />
+                    <circle cx={tx + 3.5} cy={ty + 1} r="2.2" fill={c2} opacity="0.85" />
+                    <circle cx={tx - 3} cy={ty - 1.5} r="2" fill={c3} opacity="0.75" />
+                    {/* Small oval leaf along the twig */}
+                    <ellipse
+                      cx={r1((pt.x + tx) / 2)}
+                      cy={r1((pt.y + ty) / 2)}
+                      rx="2"
+                      ry="3.6"
+                      fill="#7FA847"
+                      opacity="0.7"
+                      transform={`rotate(${r1((angle * 180) / Math.PI - 90)} ${r1((pt.x + tx) / 2)} ${r1((pt.y + ty) / 2)})`}
+                    />
                   </g>
                 );
               })}
+
+            {/* ── Month-twig leaves — extra fine foliage along each
+                 month-tip when zoomed deep. ── */}
+            {(level === "month" || level === "week") &&
+              focus.month != null &&
+              focus.year === year && (
+                <g pointerEvents="none">
+                  {Array.from({ length: 8 }).map((_, mi) => {
+                    const mt = monthTip(year, focus.month!);
+                    const ratio = 0.3 + (mi / 8) * 0.7;
+                    const u = 1 - ratio;
+                    const cpx = (mt.baseX + mt.tipX) / 2;
+                    const cpy = (mt.baseY + mt.tipY) / 2 - 6;
+                    const px = r1(
+                      u * u * mt.baseX + 2 * u * ratio * cpx + ratio * ratio * mt.tipX,
+                    );
+                    const py = r1(
+                      u * u * mt.baseY + 2 * u * ratio * cpy + ratio * ratio * mt.tipY,
+                    );
+                    const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
+                    const color = palette[(mi + year) % palette.length];
+                    const offSide = mi % 2 === 0 ? -1 : 1;
+                    return (
+                      <g key={`mtw-${mi}`}>
+                        <ellipse
+                          cx={r1(px + offSide * 4)}
+                          cy={r1(py - 3)}
+                          rx="1.6"
+                          ry="3"
+                          fill="#7FA847"
+                          opacity="0.7"
+                          transform={`rotate(${offSide * 35} ${r1(px + offSide * 4)} ${r1(py - 3)})`}
+                        />
+                        <circle
+                          cx={r1(px + offSide * 6)}
+                          cy={r1(py - 5)}
+                          r="1.6"
+                          fill={color}
+                          opacity="0.88"
+                        />
+                      </g>
+                    );
+                  })}
+                </g>
+              )}
 
             {(level === "all" || level === "year") && (
               <g
