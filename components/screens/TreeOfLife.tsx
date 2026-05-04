@@ -26,6 +26,7 @@ import {
 } from "@/lib/tree-data";
 import { OrganicTrunk } from "@/components/tree/Trunk";
 import { Canopy } from "@/components/tree/Canopy";
+import { SimpleTwig } from "@/components/tree/SimpleTwig";
 import { EventGlyph, FoliageBurst } from "@/components/tree/Tokens";
 import { r1 } from "@/components/tree/utils";
 
@@ -612,40 +613,81 @@ export function TreeOfLife({
               transform={`translate(0, -${Math.max(1, branchBaseWidth * 0.18)})`}
             />
 
-            {/* Mid-branch canopies — small fans emerging at 3 points
-                 along the year curve so the branch reads as fully
-                 leafed, not just at the tip. depth=1 keeps these
-                 lighter; only the tip canopy gets sub-forks. */}
-            {showLeafMass &&
-              [0.32, 0.55, 0.78].map((t, mi) => {
-                const pt = yearPointAt(year, t);
-                // Direction perpendicular to year curve (mostly up)
-                const angle = Math.PI / 2 + tip.side * (0.12 + mi * 0.04);
-                return (
-                  <Canopy
-                    key={`mid-${mi}`}
-                    year={year + mi * 17}
-                    rootX={r1(pt.x)}
-                    rootY={r1(pt.y)}
-                    baseAngle={angle}
-                    memCount={Math.max(2, memCount - 4)}
-                    stemColor={branchColor}
-                    depth={1}
-                    scale={0.55 + mi * 0.06}
-                  />
-                );
-              })}
-            {/* Tip canopy — full depth, biggest. */}
             {showLeafMass && (
-              <Canopy
-                year={year}
-                rootX={tip.x}
-                rootY={tip.y}
-                baseAngle={Math.PI / 2 + tip.side * 0.18}
-                memCount={memCount}
-                stemColor={branchColor}
-                depth={2}
-              />
+              <>
+                {/* ── Above-branch twigs (kat 2): 5 small twigs
+                     sprouting upward from year curve, scattered along
+                     its length. Densely fills the area above the year
+                     branch where the user marked. ── */}
+                {[0.18, 0.32, 0.48, 0.62, 0.78].map((t, ti) => {
+                  const pt = yearPointAt(year, t);
+                  const angle =
+                    Math.PI / 2 +
+                    tip.side * (0.18 + ((ti * 0.06) % 0.18));
+                  return (
+                    <SimpleTwig
+                      key={`above-${ti}`}
+                      rootX={pt.x}
+                      rootY={pt.y}
+                      angle={angle}
+                      length={18 + (ti % 2) * 8}
+                      year={year}
+                      seed={year * 31 + ti * 7}
+                      stemColor={branchColor}
+                    />
+                  );
+                })}
+                {/* ── Below-branch twigs (kat 2 alt): 4 drooping twigs
+                     keeping the underside from feeling empty. ── */}
+                {[0.25, 0.42, 0.58, 0.74].map((t, ti) => {
+                  const pt = yearPointAt(year, t);
+                  const angle =
+                    -Math.PI / 2 +
+                    tip.side * (0.18 + ((ti * 0.05) % 0.15));
+                  return (
+                    <SimpleTwig
+                      key={`below-${ti}`}
+                      rootX={pt.x}
+                      rootY={pt.y}
+                      angle={angle}
+                      length={14 + (ti % 2) * 8}
+                      year={year}
+                      seed={year * 41 + ti * 11}
+                      stemColor={branchColor}
+                    />
+                  );
+                })}
+                {/* ── Mid-canopy bursts (kat 3): 2 deeper canopies at
+                     prominent points along year curve. ── */}
+                {[0.4, 0.7].map((t, mi) => {
+                  const pt = yearPointAt(year, t);
+                  const angle =
+                    Math.PI / 2 + tip.side * (0.14 + mi * 0.06);
+                  return (
+                    <Canopy
+                      key={`mid-${mi}`}
+                      year={year + mi * 17}
+                      rootX={r1(pt.x)}
+                      rootY={r1(pt.y)}
+                      baseAngle={angle}
+                      memCount={Math.max(2, memCount - 4)}
+                      stemColor={branchColor}
+                      depth={1}
+                      scale={0.55 + mi * 0.08}
+                    />
+                  );
+                })}
+                {/* ── Tip canopy: full depth, the biggest cluster ── */}
+                <Canopy
+                  year={year}
+                  rootX={tip.x}
+                  rootY={tip.y}
+                  baseAngle={Math.PI / 2 + tip.side * 0.18}
+                  memCount={memCount}
+                  stemColor={branchColor}
+                  depth={2}
+                />
+              </>
             )}
 
             {(level === "all" || level === "year") && (
