@@ -662,13 +662,21 @@ export function TreeOfLife({
         }
         const yearOpacity = dimmed ? 0.16 : 1;
         const memCount = yearCounts.get(year) ?? 0;
-        // Slim, delicate stem — wax-flower aesthetic. Thicker for years
-        // with more memories so they still read as "denser" plants.
-        const branchWidth = 2.2 + Math.min(2, Math.sqrt(memCount) * 0.4);
-        const stemColor = "#6B8054"; // sage olive — visible on bone-cream
-        // Length the L-system plant grows from the year branch tip.
-        // Older years (low on trunk) get shorter plants, recent years longer.
-        const plantBaseLength = 38 + Math.min(28, memCount * 1.4);
+        // Chunky brown gnarly year branch — same family as the trunk.
+        // Width tapers from base to tip across the multi-segment render.
+        // Sized in viewBox units (svg is 1000x2400) so values feel large
+        // but render at sensible on-screen weights at the default zoom.
+        const branchBaseWidth = 22 + Math.min(8, Math.sqrt(memCount) * 1.2);
+        const branchColor = "#3A2E22"; // bark brown
+        const plantBaseLength = 36 + Math.min(28, memCount * 1.4);
+        // Number of segments the year branch is split into for tapering.
+        // 8 segments → "uc uca eklenmiş gittikçe küçülen" feel.
+        const N_SEG = 8;
+
+        // Pre-compute geometry along the branch curve
+        const branchPoints = Array.from({ length: N_SEG + 1 }).map((_, i) =>
+          yearPointAt(year, i / N_SEG),
+        );
 
         return (
           <g
@@ -681,46 +689,116 @@ export function TreeOfLife({
             }}
             onClick={() => onSelectYear?.(year)}
           >
-            {/* Slim year stem — replaces the carved-Nordic thick branch */}
-            <path
-              d={path}
-              stroke={stemColor}
-              strokeWidth={branchWidth}
-              fill="none"
-              strokeLinecap="round"
-              opacity="0.95"
-            />
-            {/* Gnarly knot bulges along the branch */}
-            {[0.25, 0.55, 0.8].map((t, ki) => {
-              const pt = yearPointAt(year, t);
-              const knotR = branchWidth * 0.7 + (ki === 1 ? 0.4 : 0);
-              return (
-                <ellipse
-                  key={`knot-${ki}`}
-                  cx={r1(pt.x)}
-                  cy={r1(pt.y)}
-                  rx={knotR * 1.3}
-                  ry={knotR * 0.85}
-                  fill={stemColor}
-                  opacity="0.92"
-                />
-              );
-            })}
-            {/* Hover glow accent layer */}
+            {/* Hover glow accent layer (drawn first, behind branch) */}
             <path
               d={path}
               stroke="var(--accent)"
-              strokeWidth={branchWidth + 6}
+              strokeWidth={branchBaseWidth + 8}
               fill="none"
               strokeLinecap="round"
               className="tree-year-glow"
               opacity={isFocused ? 0.32 : 0}
               style={{ transition: "opacity 240ms ease", filter: "blur(2px)" }}
             />
+            {/* Year branch — 8 tapering segments, chunky bark brown */}
+            {branchPoints.slice(0, -1).map((p1, i) => {
+              const p2 = branchPoints[i + 1];
+              // Width tapers from base (full) to tip (~30%)
+              const tapered = branchBaseWidth * (1 - (i / N_SEG) * 0.7);
+              return (
+                <line
+                  key={`seg-${i}`}
+                  x1={r1(p1.x)}
+                  y1={r1(p1.y)}
+                  x2={r1(p2.x)}
+                  y2={r1(p2.y)}
+                  stroke={branchColor}
+                  strokeWidth={r1(tapered)}
+                  strokeLinecap="round"
+                  opacity="0.95"
+                />
+              );
+            })}
+            {/* Knot bulges at every segment junction (gnarly look) */}
+            {branchPoints.slice(1, -1).map((pt, ki) => {
+              const tapered = branchBaseWidth * (1 - ((ki + 1) / N_SEG) * 0.7);
+              const knotR = tapered * 0.7;
+              return (
+                <ellipse
+                  key={`knot-${ki}`}
+                  cx={r1(pt.x)}
+                  cy={r1(pt.y)}
+                  rx={r1(knotR * 1.4)}
+                  ry={r1(knotR * 0.85)}
+                  fill={branchColor}
+                  opacity="0.95"
+                />
+              );
+            })}
+            {/* Highlight stripe along the branch top edge */}
+            {branchPoints.slice(0, -1).map((p1, i) => {
+              const p2 = branchPoints[i + 1];
+              const tapered = branchBaseWidth * (1 - (i / N_SEG) * 0.7);
+              return (
+                <line
+                  key={`hl-${i}`}
+                  x1={r1(p1.x)}
+                  y1={r1(p1.y - tapered * 0.22)}
+                  x2={r1(p2.x)}
+                  y2={r1(p2.y - tapered * 0.22)}
+                  stroke="rgba(255,235,200,0.22)"
+                  strokeWidth={r1(Math.max(0.8, tapered * 0.28))}
+                  strokeLinecap="round"
+                />
+              );
+            })}
 
             {showLeafMass && (
               <>
-                {/* Tip plant — biggest, anchored at the year-branch tip */}
+                {/* ── Above-branch offshoots — small upward twigs ── */}
+                {[0.18, 0.32, 0.46, 0.6, 0.74, 0.86].map((t, oi) => {
+                  const pt = yearPointAt(year, t);
+                  const angle = Math.PI / 2 + tip.side * 0.25;
+                  const len = 30 + (oi % 2) * 10;
+                  const tx = r1(pt.x + Math.cos(angle) * len);
+                  const ty = r1(pt.y - Math.sin(angle) * len);
+                  return (
+                    <line
+                      key={`above-${oi}`}
+                      x1={r1(pt.x)}
+                      y1={r1(pt.y)}
+                      x2={tx}
+                      y2={ty}
+                      stroke={branchColor}
+                      strokeWidth={5}
+                      strokeLinecap="round"
+                      opacity="0.92"
+                    />
+                  );
+                })}
+                {/* ── Below-branch offshoots — drooping downward twigs ── */}
+                {[0.25, 0.42, 0.58, 0.72, 0.84].map((t, oi) => {
+                  const pt = yearPointAt(year, t);
+                  const angle = -Math.PI / 2 + tip.side * 0.18;
+                  const len = 24 + (oi % 2) * 12;
+                  const tx = r1(pt.x + Math.cos(angle) * len);
+                  const ty = r1(pt.y - Math.sin(angle) * len);
+                  return (
+                    <line
+                      key={`below-${oi}`}
+                      x1={r1(pt.x)}
+                      y1={r1(pt.y)}
+                      x2={tx}
+                      y2={ty}
+                      stroke={branchColor}
+                      strokeWidth={4}
+                      strokeLinecap="round"
+                      opacity="0.85"
+                    />
+                  );
+                })}
+
+                {/* ── Tip plant — biggest, points outward ── */}
                 <Plant
                   year={year}
                   rootX={tip.x}
@@ -734,9 +812,9 @@ export function TreeOfLife({
                   stemColor="#6B8054"
                   budScale={1.1}
                 />
-                {/* Mid-branch plant 1 — at 65% along the year branch */}
+                {/* ── Above mid-plants ── */}
                 {(() => {
-                  const mid = yearPointAt(year, 0.65);
+                  const mid = yearPointAt(year, 0.7);
                   return (
                     <Plant
                       year={year}
@@ -754,28 +832,95 @@ export function TreeOfLife({
                     />
                   );
                 })()}
-                {/* Mid-branch plant 2 — at 35% along the year branch */}
                 {(() => {
-                  const mid = yearPointAt(year, 0.35);
+                  const mid = yearPointAt(year, 0.4);
                   return (
                     <Plant
                       year={year}
                       rootX={r1(mid.x)}
                       rootY={r1(mid.y)}
                       baseAngle={Math.PI / 2 + tip.side * 0.45}
-                      baseLength={plantBaseLength * 0.45}
+                      baseLength={plantBaseLength * 0.5}
+                      depth={3}
+                      forkAngle={0.5}
+                      lengthShrink={0.62}
+                      widthShrink={0.75}
+                      stemColor="#6B8054"
+                      budScale={0.78}
+                      seed={year * 419 + 11}
+                    />
+                  );
+                })()}
+                {/* ── Below mid-plants — hanging downward ── */}
+                {(() => {
+                  const mid = yearPointAt(year, 0.55);
+                  return (
+                    <Plant
+                      year={year}
+                      rootX={r1(mid.x)}
+                      rootY={r1(mid.y)}
+                      baseAngle={-Math.PI / 2 + tip.side * 0.22}
+                      baseLength={plantBaseLength * 0.55}
+                      depth={3}
+                      forkAngle={0.48}
+                      lengthShrink={0.65}
+                      widthShrink={0.78}
+                      stemColor="#6B8054"
+                      budScale={0.78}
+                      seed={year * 631 + 17}
+                    />
+                  );
+                })()}
+                {(() => {
+                  const mid = yearPointAt(year, 0.3);
+                  return (
+                    <Plant
+                      year={year}
+                      rootX={r1(mid.x)}
+                      rootY={r1(mid.y)}
+                      baseAngle={-Math.PI / 2 + tip.side * 0.32}
+                      baseLength={plantBaseLength * 0.42}
                       depth={2}
                       forkAngle={0.55}
                       lengthShrink={0.62}
                       widthShrink={0.75}
                       stemColor="#6B8054"
                       budScale={0.7}
-                      seed={year * 419 + 11}
+                      seed={year * 829 + 23}
                     />
                   );
                 })()}
               </>
             )}
+
+            {/* ── Season twigs — 4 little branches per year (one per
+                 season) visible as you zoom in past 'all' so each
+                 season has its own visible budak. ── */}
+            {(level === "year" || level === "season") &&
+              [0.28, 0.5, 0.7, 0.88].map((t, si) => {
+                const pt = yearPointAt(year, t);
+                const angle = Math.PI / 2 + tip.side * (0.35 + si * 0.04);
+                const len = 22 + (si % 2) * 6;
+                const tx = r1(pt.x + Math.cos(angle) * len);
+                const ty = r1(pt.y - Math.sin(angle) * len);
+                return (
+                  <g key={`season-twig-${si}`}>
+                    <line
+                      x1={r1(pt.x)}
+                      y1={r1(pt.y)}
+                      x2={tx}
+                      y2={ty}
+                      stroke={branchColor}
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      opacity="0.78"
+                    />
+                    {/* tiny bud cluster at the season-twig tip */}
+                    <circle cx={tx} cy={ty} r="2.4" fill="#E8826B" opacity="0.7" />
+                    <circle cx={tx + 3} cy={ty - 1} r="1.8" fill="#F2C5D1" opacity="0.7" />
+                  </g>
+                );
+              })}
 
             {(level === "all" || level === "year") && (
               <g
