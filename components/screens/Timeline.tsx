@@ -45,6 +45,7 @@ export function Timeline({
   const router = useRouter();
   const [level, setLevel] = useState<ZoomLevel>("all");
   const [focus, setFocus] = useState<ZoomFocus>({});
+  const [preview, setPreview] = useState<LifeEvent | null>(null);
 
   const goLevel = (newLevel: ZoomLevel) => {
     let f: ZoomFocus = { ...focus };
@@ -211,6 +212,7 @@ export function Timeline({
               onSelectSeason={setSeason}
               onSelectMonth={setMonth}
               onSelectEvent={onOpen}
+              onPreviewEvent={(ev) => setPreview(ev)}
               season={season}
             />
           </div>
@@ -224,6 +226,150 @@ export function Timeline({
           onBroaden={broadenScope}
         />
       )}
+      {preview && (
+        <PreviewOverlay
+          ev={preview}
+          onClose={() => setPreview(null)}
+          onOpen={(id) => {
+            setPreview(null);
+            router.push(`/ani/${id}`);
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+function PreviewOverlay({
+  ev,
+  onClose,
+  onOpen,
+}: {
+  ev: LifeEvent;
+  onClose: () => void;
+  onOpen: (id: string) => void;
+}) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+  const style = KIND_STYLE[ev.kind];
+  return (
+    <div
+      role="presentation"
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 60,
+        background: "rgba(15, 17, 13, 0.42)",
+        backdropFilter: "blur(3px)",
+        WebkitBackdropFilter: "blur(3px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 24,
+      }}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${ev.t} önizleme`}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "rgba(255, 253, 246, 0.97)",
+          borderRadius: 22,
+          padding: "22px 22px 18px",
+          maxWidth: 340,
+          width: "100%",
+          boxShadow: "0 22px 60px -22px rgba(15,17,13,0.55)",
+          border: "1px solid rgba(31,27,22,0.08)",
+          textAlign: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 64,
+            height: 64,
+            margin: "0 auto 14px",
+            borderRadius: "50%",
+            background: ev.pinned ? "#FFF8E7" : "#FBF6EA",
+            border: `2.4px solid ${ev.pinned ? "#C66E3D" : style.color}`,
+            display: "grid",
+            placeItems: "center",
+            fontSize: 32,
+            boxShadow: "0 4px 16px -8px rgba(15,17,13,0.22)",
+          }}
+        >
+          {ev.cat || "·"}
+        </div>
+        <div
+          style={{
+            fontSize: 10,
+            letterSpacing: 1.8,
+            textTransform: "uppercase",
+            color: "#A38B5F",
+            fontWeight: 600,
+            marginBottom: 8,
+          }}
+        >
+          {ev.d ?? ""} · {ev.year}
+        </div>
+        <div
+          style={{
+            fontFamily: "var(--font-heading)",
+            fontStyle: "italic",
+            fontSize: 22,
+            lineHeight: 1.18,
+            color: "#1F1B16",
+            marginBottom: 18,
+            fontWeight: 500,
+            letterSpacing: -0.3,
+          }}
+        >
+          {ev.t}
+        </div>
+        <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+          <button
+            onClick={onClose}
+            style={{
+              padding: "10px 16px",
+              borderRadius: 999,
+              border: "1px solid rgba(31,27,22,0.18)",
+              background: "transparent",
+              color: "#1F1B16",
+              fontSize: 12,
+              letterSpacing: 1.2,
+              textTransform: "uppercase",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            kapat
+          </button>
+          <button
+            onClick={() => onOpen(ev.id)}
+            style={{
+              padding: "10px 18px",
+              borderRadius: 999,
+              border: "none",
+              background: "#1F1B16",
+              color: "#FBF6EA",
+              fontSize: 12,
+              letterSpacing: 1.2,
+              textTransform: "uppercase",
+              fontWeight: 600,
+              cursor: "pointer",
+              flex: 1,
+            }}
+          >
+            anıyı aç →
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

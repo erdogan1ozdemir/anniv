@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+import type React from "react";
 import {
   GROUND_Y,
   KIND_STYLE,
@@ -132,26 +134,60 @@ interface EventGlyphProps {
   scale?: number;
   opacity?: number;
   onClick?: (ev: LifeEvent) => void;
+  onPreview?: (ev: LifeEvent, anchor: { x: number; y: number }) => void;
 }
 
 // Nordic token: solid circular disk with category emoji, kind-color ring, pinned glow
-function EventGlyph({ ev, x, y, scale = 1, opacity = 1, onClick }: EventGlyphProps) {
+function EventGlyph({
+  ev,
+  x,
+  y,
+  scale = 1,
+  opacity = 1,
+  onClick,
+  onPreview,
+}: EventGlyphProps) {
   const style = KIND_STYLE[ev.kind];
   // Pinned tokens are 30% larger to stand out at every zoom level
   const radius = (ev.pinned ? 14 : 11) * scale;
   const ringColor = ev.pinned ? "#C66E3D" : style.color;
-  const handle = (e: React.MouseEvent | React.KeyboardEvent) => {
-    e.stopPropagation();
-    onClick?.(ev);
+  const holdTimer = useRef<number | null>(null);
+  const heldRef = useRef(false);
+
+  const cancelHold = () => {
+    if (holdTimer.current !== null) {
+      window.clearTimeout(holdTimer.current);
+      holdTimer.current = null;
+    }
   };
+  const onPointerDown = (e: React.PointerEvent) => {
+    e.stopPropagation();
+    heldRef.current = false;
+    if (onPreview) {
+      holdTimer.current = window.setTimeout(() => {
+        heldRef.current = true;
+        onPreview(ev, { x, y });
+      }, 320);
+    }
+  };
+  const onPointerUp = (e: React.PointerEvent) => {
+    e.stopPropagation();
+    cancelHold();
+    if (!heldRef.current) onClick?.(ev);
+  };
+
   return (
     <g
       style={{
         cursor: onClick ? "pointer" : "default",
         opacity,
         transition: "opacity 240ms, transform 240ms",
+        touchAction: "manipulation",
       }}
-      onClick={handle as React.MouseEventHandler}
+      onPointerDown={onPointerDown}
+      onPointerUp={onPointerUp}
+      onPointerLeave={cancelHold}
+      onPointerCancel={cancelHold}
     >
       {ev.pinned && (
         <>
@@ -493,6 +529,10 @@ interface TreeOfLifeProps {
   onSelectSeason?: (year: number, season: Season) => void;
   onSelectMonth?: (year: number, month: number) => void;
   onSelectEvent?: (ev: LifeEvent) => void;
+  onPreviewEvent?: (
+    ev: LifeEvent,
+    anchor: { x: number; y: number },
+  ) => void;
   season?: Season;
   width?: string;
   height?: string;
@@ -507,6 +547,7 @@ export function TreeOfLife({
   onSelectSeason,
   onSelectMonth,
   onSelectEvent,
+  onPreviewEvent,
   season = "spring",
   width = "100%",
   height = "100%",
@@ -1002,7 +1043,14 @@ export function TreeOfLife({
                 }
                 return (
                   <g key={ev.id} style={{ transition: "opacity 400ms ease" }}>
-                    <EventGlyph ev={ev} x={pos.x} y={pos.y} scale={eventScale} onClick={onSelectEvent} />
+                    <EventGlyph
+                      ev={ev}
+                      x={pos.x}
+                      y={pos.y}
+                      scale={eventScale}
+                      onClick={onSelectEvent}
+                      onPreview={onPreviewEvent}
+                    />
                     {showCatEmojiAbove && ev.cat && (
                       <text
                         x={pos.x}
