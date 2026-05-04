@@ -468,6 +468,84 @@ function OrganicTrunk() {
 }
 
 // ===================================================================
+// DRIFT PARTICLES — sparse colored specks floating between branches
+// ===================================================================
+// Adds the "alive, full canopy" feel from the rainbow tree reference
+// without tying anything to memory data. Pure decoration.
+function DriftParticles() {
+  // Round to 1 decimal so SSR + client agree on Math.cos / sin output
+  const round1 = (n: number) => Math.round(n * 10) / 10;
+  const palette = [
+    "#E8826B",
+    "#F2C5D1",
+    "#9FC5BD",
+    "#C8E07A",
+    "#E8D9B0",
+    "#D17A95",
+    "#5A8B7E",
+    "#7FA847",
+  ];
+  const N = 130;
+  return (
+    <g pointerEvents="none">
+      {Array.from({ length: N }).map((_, i) => {
+        const rng = seedRand(i * 419 + 31);
+        // Spread across canopy area, upper-biased (canopy lives 100-1900)
+        const x = round1(60 + rng() * 880);
+        const verticalBias = rng();
+        // Pull more particles toward upper half via squared bias
+        const y = round1(140 + verticalBias * verticalBias * 1980);
+        const size = round1(2.2 + rng() * 4.5);
+        const color = palette[i % palette.length];
+        const op = round1(0.32 + rng() * 0.45);
+        const variant = i % 5;
+        if (variant === 0) {
+          // 4-point sparkle
+          const s = size;
+          return (
+            <g
+              key={`d${i}`}
+              transform={`translate(${x} ${y})`}
+              opacity={op}
+            >
+              <path
+                d={`M 0 ${-s} L ${round1(s * 0.3)} 0 L 0 ${s} L ${round1(-s * 0.3)} 0 Z`}
+                fill={color}
+              />
+              <path
+                d={`M ${-s} 0 L 0 ${round1(s * 0.3)} L ${s} 0 L 0 ${round1(-s * 0.3)} Z`}
+                fill={color}
+                opacity="0.65"
+              />
+            </g>
+          );
+        }
+        if (variant === 1) {
+          // Soft halo dot
+          return (
+            <g key={`d${i}`} opacity={op}>
+              <circle cx={x} cy={y} r={round1(size * 1.6)} fill={color} opacity="0.32" />
+              <circle cx={x} cy={y} r={size} fill={color} />
+            </g>
+          );
+        }
+        // Plain bead (most common)
+        return (
+          <circle
+            key={`d${i}`}
+            cx={x}
+            cy={y}
+            r={size}
+            fill={color}
+            opacity={op}
+          />
+        );
+      })}
+    </g>
+  );
+}
+
+// ===================================================================
 // SECONDARY BRANCHES — small organic offshoots from each year branch
 // ===================================================================
 // Adds visual richness without the chaos of the previous random
@@ -1077,6 +1155,7 @@ export function TreeOfLife({
       </g>
 
       <OrganicTrunk />
+      {showLeafMass && <DriftParticles />}
 
       <g>
         <path
