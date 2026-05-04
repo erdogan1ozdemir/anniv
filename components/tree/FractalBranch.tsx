@@ -1,20 +1,26 @@
-// Recursive fractal branch generator — each call produces a single
-// stroke, then spawns 2-3 thinner children at fork angles. After N
-// levels the tree fills out a canopy-like silhouette.
+// Curved fractal branch generator. Two structural rules pulled from
+// the reference Tree-of-Life silhouettes the user shared:
 //
-// The geometry is precomputed in a flat array so we can rotate the
-// rendering through GnarledBranch / plain lines / leafy tips depending
-// on the call site.
+//   1. EVERY BRANCH IS A QUADRATIC BEZIER, not a straight line. Each
+//      stem is sampled at 7 points along the curve so the renderer
+//      draws a smooth bow rather than a stick.
+//   2. CHILD BRANCHES EMERGE AT MULTIPLE POINTS ALONG THE PARENT
+//      CURVE (~42%, ~70%, ~95%) — not only at the parent's tip. This
+//      is what 'aralardan da alt dal çıkacak' looks like in real
+//      trees: side branches all along, not bunched at the end.
+//   3. Children bias UPWARD via lerp toward PI/2 (phototropism)
+//      regardless of parent direction, so the canopy reads as
+//      gravity-defying like a real tree.
 
 import { GnarledBranch } from "./GnarledBranch";
 import { r1 } from "./utils";
 import { seedRand } from "@/lib/tree-data";
 
 export interface FractalSegment {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
+  /** 7 sample points along the Bezier — adjacent points form line
+   * segments inside GnarledBranch, so dense sampling reads as a
+   * smooth curve. */
+  points: Array<{ x: number; y: number }>;
   width: number;
   depth: number;
   /** True if this is a TERMINAL — no children below it. */
@@ -32,16 +38,54 @@ export interface FractalBranchOptions {
   baseWidth: number;
   /** Recursion depth (3-5). */
   depth: number;
-  /** Fork angle in radians (typical 0.35-0.55). */
+  /** Fork angle in radians (typical 0.4-0.6). */
   forkAngle?: number;
-  /** Each generation length × this. Lower = compact, higher = spread. */
+  /** Each generation length × this. */
   lengthShrink?: number;
   /** Each generation width × this. */
   widthShrink?: number;
   /** Random seed — same seed = same fractal. */
   seed?: number;
-  /** How many forks per junction (2 = binary, 3 = ternary). */
+  /** Branch factor: 2 = binary, 3 = ternary forks at each emergence. */
   branchFactor?: 2 | 3;
+  /** Strength of upward gravity bias on children (0..0.6). */
+  upBias?: number;
+  /** Curve amplitude — perpendicular bend as fraction of length. */
+  curveAmount?: number;
+}
+
+const N_SAMPLES = 6;
+
+function bezier(
+  t: number,
+  x1: number,
+  y1: number,
+  cx: number,
+  cy: number,
+  x2: number,
+  y2: number,
+): { x: number; y: number } {
+  const u = 1 - t;
+  return {
+    x: u * u * x1 + 2 * u * t * cx + t * t * x2,
+    y: u * u * y1 + 2 * u * t * cy + t * t * y2,
+  };
+}
+
+function bezierTangent(
+  t: number,
+  x1: number,
+  y1: number,
+  cx: number,
+  cy: number,
+  x2: number,
+  y2: number,
+): number {
+  const u = 1 - t;
+  const dx = 2 * u * (cx - x1) + 2 * t * (x2 - cx);
+  const dy = 2 * u * (cy - y1) + 2 * t * (y2 - cy);
+  // SVG y grows downward; convert to math angle (y-up).
+  return Math.atan2(-dy, dx);
 }
 
 export function generateFractal({
@@ -51,14 +95,17 @@ export function generateFractal({
   baseLength,
   baseWidth,
   depth,
-  forkAngle = 0.45,
-  lengthShrink = 0.7,
-  widthShrink = 0.62,
+  forkAngle = 0.5,
+  lengthShrink = 0.72,
+  widthShrink = 0.7,
   seed = 1,
-  branchFactor = 3,
+  branchFactor = 2,
+  upBias = 0.32,
+  curveAmount = 0.16,
 }: FractalBranchOptions): FractalSegment[] {
   const segments: FractalSegment[] = [];
   const rng = seedRand(seed);
+  const UP = Math.PI / 2;
 
   function recurse(
     x: number,
@@ -69,59 +116,66 @@ export function generateFractal({
     d: number,
   ): void {
     if (d <= 0 || length < 2) return;
-    const ex = r1(x + Math.cos(angle) * length);
-    const ey = r1(y - Math.sin(angle) * length);
+    // Endpoint of the curve in the requested direction
+    const endX = x + Math.cos(angle) * length;
+    const endY = y - Math.sin(angle) * length;
+    // Perpendicular vector (rotated 90° from forward)
+    const perpX = -Math.sin(angle);
+    const perpY = -Math.cos(angle);
+    // Random bend left or right of forward
+    const bend = (rng() - 0.5) * curveAmount * length * 2;
+    const cx = (x + endX) / 2 + perpX * bend;
+    const cy = (y + endY) / 2 + perpY * bend;
+    // Sample N_SAMPLES + 1 points along the curve
+    const points = Array.from({ length: N_SAMPLES + 1 }).map((_, i) => {
+      const t = i / N_SAMPLES;
+      const p = bezier(t, x, y, cx, cy, endX, endY);
+      return { x: r1(p.x), y: r1(p.y) };
+    });
     segments.push({
-      x1: r1(x),
-      y1: r1(y),
-      x2: ex,
-      y2: ey,
+      points,
       width: r1(width),
       depth: d,
       terminal: d === 1,
     });
-    if (d === 1) return; // do not subdivide further
-    // Continue main axis with subtle bias so the tree is not perfectly
-    // symmetric.
-    const mainBias = (rng() - 0.5) * 0.18;
-    recurse(
-      ex,
-      ey,
-      angle + mainBias,
-      length * (lengthShrink + 0.05),
-      width * widthShrink * 1.05,
-      d - 1,
-    );
-    // Fork into 2 (or 3) children
-    const turnL = forkAngle + (rng() - 0.5) * 0.18;
-    const turnR = forkAngle + (rng() - 0.5) * 0.18;
-    recurse(
-      ex,
-      ey,
-      angle + turnL,
-      length * lengthShrink,
-      width * widthShrink,
-      d - 1,
-    );
-    recurse(
-      ex,
-      ey,
-      angle - turnR,
-      length * lengthShrink,
-      width * widthShrink,
-      d - 1,
-    );
-    if (branchFactor === 3) {
-      // A subtler middle-bias side fork for thicker canopy
-      const turnM = forkAngle * 0.45 * (rng() < 0.5 ? -1 : 1);
+    if (d === 1) return;
+    // Children emerge at multiple t-positions along the parent curve.
+    // Earlier emergences (smaller t) get longer children — they have
+    // more room to grow before reaching their natural bound.
+    const emergeTs = d >= 3 ? [0.42, 0.7, 0.95] : [0.55, 0.95];
+    for (let ei = 0; ei < emergeTs.length; ei++) {
+      const t = emergeTs[ei];
+      const ep = bezier(t, x, y, cx, cy, endX, endY);
+      const tangent = bezierTangent(t, x, y, cx, cy, endX, endY);
+      const lengthFactor = 0.85 + (1 - t) * 0.25;
+      const childLen = length * lengthShrink * lengthFactor;
+      const childW = width * widthShrink;
+      // Phototropism: pull child angle toward UP regardless of parent
+      // direction. Lerp tangent → UP by upBias.
+      const targetAngle = (1 - upBias) * tangent + upBias * UP;
+      const turn = forkAngle + (rng() - 0.5) * 0.18;
+      // Primary child to one side
+      const sideMul = ei % 2 === 0 ? 1 : -1;
       recurse(
-        ex,
-        ey,
-        angle + turnM,
-        length * lengthShrink * 0.85,
-        width * widthShrink * 0.85,
+        ep.x,
+        ep.y,
+        targetAngle + sideMul * turn,
+        childLen,
+        childW,
         d - 1,
       );
+      // Secondary child for ternary fork — skip at the near-tip
+      // emergence (~95%) to avoid crowding at the parent's end.
+      if (branchFactor === 3 && t < 0.92 && d > 2) {
+        recurse(
+          ep.x,
+          ep.y,
+          targetAngle - sideMul * turn * 0.85,
+          childLen * 0.88,
+          childW * 0.92,
+          d - 1,
+        );
+      }
     }
   }
 
@@ -130,9 +184,10 @@ export function generateFractal({
 }
 
 // ─────────────────────────────────────────────────────────────────────
-// FractalBranch — render the precomputed segments as gnarled bark with
-// per-segment width tapering. Optionally drop a 2-bud cluster at each
-// terminal so the tips read as having a tiny growth point.
+// FractalBranch — render the precomputed curved segments as gnarled
+// bark with per-segment width tapering. Each segment is one curved
+// stroke (7 points) drawn through GnarledBranch so it inherits the
+// same multi-stroke + shadow + highlight rendering.
 // ─────────────────────────────────────────────────────────────────────
 
 interface FractalBranchProps extends FractalBranchOptions {
@@ -152,35 +207,30 @@ export function FractalBranch({
   const segments = generateFractal(opts);
   return (
     <g pointerEvents="none">
-      {/* Render each segment as a tiny GnarledBranch (2 points so just
-          the main + highlight + shadow strokes — no junction knots) */}
       {segments.map((s, i) => (
         <GnarledBranch
           key={`fr-${i}`}
-          points={[
-            { x: s.x1, y: s.y1 },
-            { x: s.x2, y: s.y2 },
-          ]}
+          points={s.points}
           baseWidth={s.width}
-          tipFraction={0.78}
+          tipFraction={0.85}
           color={color}
           showKnots={false}
-          detailOpacity={Math.min(1, 0.35 + (s.depth / opts.depth) * 0.6)}
+          detailOpacity={Math.min(1, 0.4 + (s.depth / opts.depth) * 0.55)}
         />
       ))}
-      {/* Terminal buds — tiny berries at the very tip of each leaf-end */}
       {budTips &&
         segments
           .filter((s) => s.terminal)
           .map((s, i) => {
+            const tip = s.points[s.points.length - 1];
             const c = budPalette[i % 2];
             return (
               <g key={`fr-bud-${i}`}>
-                <circle cx={s.x2} cy={s.y2} r="2.2" fill={c} opacity="0.92" />
+                <circle cx={tip.x} cy={tip.y} r="2.4" fill={c} opacity="0.92" />
                 <circle
-                  cx={r1(s.x2 - 0.6)}
-                  cy={r1(s.y2 - 0.6)}
-                  r="0.7"
+                  cx={r1(tip.x - 0.7)}
+                  cy={r1(tip.y - 0.7)}
+                  r="0.8"
                   fill="#FBF6EA"
                   opacity="0.7"
                 />
