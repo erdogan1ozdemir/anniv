@@ -117,7 +117,7 @@ export function MemoryDetail({
             gap: 4,
           }}
         >
-          ‹ bahçeye dön
+          ‹ ağaca dön
         </Link>
         <div
           style={{

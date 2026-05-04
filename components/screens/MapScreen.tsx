@@ -74,7 +74,7 @@ function MapPlaceholder() {
         }}
       >
         <Link href="/" style={{ color: "#1F1B16", fontSize: 14, opacity: 0.8 }}>
-          ‹ bahçe
+          ‹ ağaç
         </Link>
       </header>
 
@@ -158,7 +158,7 @@ function MapPlaceholder() {
             boxShadow: "0 2px 12px -6px rgba(15, 17, 13, 0.12)",
           }}
         >
-          bahçeye dön
+          ağaca dön
         </Link>
       </div>
     </div>
@@ -185,7 +185,7 @@ function FullMap({ locations }: MapScreenProps) {
     >
       <header style={{ padding: "16px 22px 0", display: "flex", justifyContent: "space-between" }}>
         <Link href="/" style={{ color: "var(--primary)", fontSize: 14 }}>
-          ‹ bahçe
+          ‹ ağaç
         </Link>
       </header>
 

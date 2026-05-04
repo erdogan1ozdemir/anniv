@@ -105,7 +105,7 @@ export default function NotFound() {
             letterSpacing: 0.4,
           }}
         >
-          bahçeye dön →
+          ağaca dön →
         </Link>
       </motion.div>
     </main>

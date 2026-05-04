@@ -50,7 +50,7 @@ export function RandomReveal({ memory }: { memory: Memory }) {
             gap: 4,
           }}
         >
-          ‹ bahçe
+          ‹ ağaç
         </Link>
         <div style={{ marginTop: 18, textAlign: "center" }}>
           <p

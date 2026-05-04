@@ -616,56 +616,89 @@ export function TreeOfLife({
                 color={branchColor}
               />
             ))}
-            {/* Side-twigs at each junction (between sub-branches) — these
-                 are the "ara dallar" the user calls out. Their base
-                 width matches the year sub-branch they fork from
-                 (=parent width × 0.85), so they read as proper
-                 sub-branches rather than wispy tips. They taper down
-                 by the same defined ratio (0.72) per generation. */}
+            {/* Junction Y-forks — at each junction between year
+                 sub-branches, spawn THREE side-branches diverging at
+                 distinct angles (above + below + diagonal-forward).
+                 Each fork is itself a recursive FractalBranch so the
+                 silhouette reads as a tree, not a wand with feathers. */}
             {subBranches.slice(0, -1).map((sub) => {
               const j = sub.p1;
-              const above = sub.s % 2 === 0;
-              const angle =
-                (above ? Math.PI / 2 : -Math.PI / 2) + tip.side * 0.22;
-              const len = 46 + (sub.s % 2) * 10;
-              const midX = r1(j.x + Math.cos(angle) * len * 0.5 + tip.side * 4);
-              const midY = r1(j.y - Math.sin(angle) * len * 0.5);
-              const tx = r1(j.x + Math.cos(angle) * len);
-              const ty = r1(j.y - Math.sin(angle) * len);
-              // Sub-branch as chunky as the parent year sub-branch
-              const w = sub.width * 0.85;
+              // Outward direction along the year curve at this point
+              const ahead = sub.p1.x - sub.p0.x;
+              const aheadY = sub.p1.y - sub.p0.y;
+              const baseAhead = Math.atan2(-aheadY, ahead);
+              // Three siblings at -60° / +20° / +90° relative to baseAhead
+              // (= up-and-back, slightly-forward, down-and-back). Wider
+              // angles so they don't overlap.
+              const forks = [
+                {
+                  k: "up",
+                  angle: baseAhead + 0.95,
+                  lenMul: 1.0,
+                  widthMul: 0.88,
+                },
+                {
+                  k: "fwd",
+                  angle: baseAhead + 0.32 * tip.side,
+                  lenMul: 0.85,
+                  widthMul: 0.78,
+                },
+                {
+                  k: "dn",
+                  angle: baseAhead - 0.95,
+                  lenMul: 0.92,
+                  widthMul: 0.82,
+                },
+              ];
               const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
-              const berryC = palette[(year + sub.s) % palette.length];
               return (
-                <g key={`jSide-${sub.s}`}>
-                  <GnarledBranch
-                    points={[
-                      { x: j.x, y: j.y },
-                      { x: midX, y: midY },
-                      { x: tx, y: ty },
-                    ]}
-                    baseWidth={w}
-                    tipFraction={0.78}
-                    color={branchColor}
-                  />
-                  {showLeafMass && (
-                    <FractalBranch
-                      rootX={tx}
-                      rootY={ty}
-                      baseAngle={angle}
-                      baseLength={26}
-                      baseWidth={w * 0.78}
-                      depth={3}
-                      forkAngle={0.5}
-                      lengthShrink={0.66}
-                      widthShrink={0.72}
-                      branchFactor={2}
-                      seed={year * 47 + sub.s * 13}
-                      color={branchColor}
-                      budTips
-                      budPalette={[berryC, "#F2C5D1"]}
-                    />
-                  )}
+                <g key={`jFork-${sub.s}`}>
+                  {forks.map((f, fi) => {
+                    const len = 56 * f.lenMul + (sub.s % 2) * 8;
+                    const w = sub.width * f.widthMul;
+                    const tx = r1(j.x + Math.cos(f.angle) * len);
+                    const ty = r1(j.y - Math.sin(f.angle) * len);
+                    // Slight midpoint kink for organic feel
+                    const midX = r1(
+                      j.x + Math.cos(f.angle) * len * 0.55 + (fi === 1 ? 0 : tip.side * 4),
+                    );
+                    const midY = r1(j.y - Math.sin(f.angle) * len * 0.55);
+                    const berryC = palette[(year + sub.s + fi) % palette.length];
+                    return (
+                      <g key={`${f.k}-${fi}`}>
+                        {/* Y-fork stem from junction outward */}
+                        <GnarledBranch
+                          points={[
+                            { x: j.x, y: j.y },
+                            { x: midX, y: midY },
+                            { x: tx, y: ty },
+                          ]}
+                          baseWidth={w}
+                          tipFraction={0.72}
+                          color={branchColor}
+                        />
+                        {/* Recursive fractal canopy at this fork's tip */}
+                        {showLeafMass && (
+                          <FractalBranch
+                            rootX={tx}
+                            rootY={ty}
+                            baseAngle={f.angle}
+                            baseLength={28 * f.lenMul}
+                            baseWidth={w * 0.72}
+                            depth={3}
+                            forkAngle={0.6}
+                            lengthShrink={0.7}
+                            widthShrink={0.72}
+                            branchFactor={2}
+                            seed={year * 47 + sub.s * 13 + fi * 7}
+                            color={branchColor}
+                            budTips
+                            budPalette={[berryC, "#F2C5D1"]}
+                          />
+                        )}
+                      </g>
+                    );
+                  })}
                 </g>
               );
             })}

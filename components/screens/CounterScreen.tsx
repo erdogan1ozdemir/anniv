@@ -36,7 +36,7 @@ export function CounterScreen() {
           href="/"
           style={{ color: "#1F1B16", fontSize: 14, opacity: 0.8 }}
         >
-          ‹ bahçe
+          ‹ ağaç
         </Link>
       </header>
 

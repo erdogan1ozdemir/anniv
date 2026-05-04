@@ -50,7 +50,7 @@ export default async function TodayPage() {
             gap: 4,
           }}
         >
-          ‹ bahçe
+          ‹ ağaç
         </Link>
         <div style={{ marginTop: 18, textAlign: "center" }}>
           <p

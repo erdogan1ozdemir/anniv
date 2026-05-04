@@ -85,7 +85,7 @@ export default function LoginPage() {
           letterSpacing: -0.3,
         }}
       >
-        bahçesi
+        hayat ağacı
       </div>
 
       <div style={{ marginBottom: 56, position: "relative" }}>

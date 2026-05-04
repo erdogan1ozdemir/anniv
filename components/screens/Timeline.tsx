@@ -511,7 +511,7 @@ function PreviewOverlay({
 
 function FocusCount({ count, level }: { count: number; level: ZoomLevel }) {
   const scopeLabel: Record<ZoomLevel, string> = {
-    all: "tüm bahçede",
+    all: "hayat ağacımızda",
     year: "bu yılda",
     season: "bu mevsimde",
     month: "bu ayda",
@@ -598,7 +598,7 @@ function TopBar({
             letterSpacing: 0.5,
           }}
         >
-          bahçesi
+          hayat ağacı
         </div>
       </div>
       <div style={{ display: "flex", gap: 8 }}>

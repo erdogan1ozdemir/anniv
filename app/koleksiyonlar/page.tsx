@@ -33,7 +33,7 @@ export default async function CollectionsPage() {
             gap: 4,
           }}
         >
-          ‹ bahçe
+          ‹ ağaç
         </Link>
         <h1
           style={{

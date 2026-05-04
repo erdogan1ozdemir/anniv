@@ -38,7 +38,7 @@ export default async function CategoriesPage() {
             gap: 4,
           }}
         >
-          ‹ bahçe
+          ‹ ağaç
         </Link>
         <h1
           style={{

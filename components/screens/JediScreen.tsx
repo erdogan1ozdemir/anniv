@@ -60,7 +60,7 @@ export function JediScreen({ memories }: JediScreenProps) {
         }}
       >
         <Link href="/" style={{ color: "var(--primary)", fontSize: 14 }}>
-          ‹ bahçe
+          ‹ ağaç
         </Link>
         <span
           style={{
