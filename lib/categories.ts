@@ -69,3 +69,35 @@ export function shortTurkishDate(iso: string): string {
   ];
   return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 }
+
+/**
+ * Returns a Turkish phrase like "5 yıl 3 ay sonra" / "8 ay sonra" / "12 gün sonra"
+ * describing how much later `target` happened relative to `from`.
+ * Used for the "since" banner above each memory.
+ */
+export function formatRelativeSince(from: string, target: string): string {
+  const a = new Date(from + "T00:00:00");
+  const b = new Date(target + "T00:00:00");
+  if (Number.isNaN(a.valueOf()) || Number.isNaN(b.valueOf())) return "";
+  const sign = b.getTime() < a.getTime() ? -1 : 1;
+  const earlier = sign === 1 ? a : b;
+  const later = sign === 1 ? b : a;
+  let years = later.getFullYear() - earlier.getFullYear();
+  let months = later.getMonth() - earlier.getMonth();
+  let days = later.getDate() - earlier.getDate();
+  if (days < 0) {
+    months -= 1;
+    days += 30;
+  }
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+  const parts: string[] = [];
+  if (years > 0) parts.push(`${years} yıl`);
+  if (months > 0) parts.push(`${months} ay`);
+  if (years === 0 && months === 0) parts.push(`${days} gün`);
+  if (parts.length === 0) parts.push("aynı gün");
+  const joined = parts.join(" ");
+  return sign === -1 ? `${joined} önce` : `${joined} sonra`;
+}
