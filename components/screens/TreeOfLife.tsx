@@ -25,15 +25,7 @@ import {
   type ZoomLevel,
 } from "@/lib/tree-data";
 import { OrganicTrunk } from "@/components/tree/Trunk";
-import { DriftParticles } from "@/components/tree/DriftParticles";
-import { Plant } from "@/components/tree/Plant";
-import { InterYearFillers } from "@/components/tree/InterYearFillers";
-import { PhantomBranches } from "@/components/tree/PhantomBranches";
-import { GnarledBranch } from "@/components/tree/GnarledBranch";
-import { LeafyTwig } from "@/components/tree/LeafyTwig";
-import { FractalBranch } from "@/components/tree/FractalBranch";
-import { RootCapillaries } from "@/components/tree/RootCapillaries";
-import { RootSystem } from "@/components/tree/RootSystem";
+import { Canopy } from "@/components/tree/Canopy";
 import { EventGlyph, FoliageBurst } from "@/components/tree/Tokens";
 import { r1 } from "@/components/tree/utils";
 
@@ -370,18 +362,12 @@ export function TreeOfLife({
   // Render full foliage decoration at every zoom level (except the
   // moment list view which has its own UI). Each zoom keeps the visual
   // density of the all-zoom view, just framed on a smaller area.
+  // Decorative canopy at year tips renders at every zoom except moment
+  // (moment is the list view). Keeps the visual density consistent
+  // across all/year/season/month/week.
   const showLeafMass = level !== "moment";
-  // At month/week the viewBox is small (~220x170 / 180x140) — the
-  // dense offshoot foliage starts to overlap and clutter. Drop the
-  // bulky decorative offshoots in favour of just tokens + the
-  // focused month-tip leaves at deep zoom.
-  const showOffshoots = level === "all" || level === "year" || level === "season";
-  // Junction Y-forks (3 forks per junction) read as overlapping mass
-  // at month/week zoom because the focused branch fills the small
-  // viewBox vertically. Restrict to year+ levels.
-  const showJunctionForks = level === "all" || level === "year";
-  // Inter-year fillers + drift particles only at all-zoom — they
-  // depend on absolute trunk coords that fall outside year+ viewBoxes.
+  // Horizon line + soft ground only at all-zoom (absolute coords
+  // fall outside the year+ viewBoxes).
   const showCanopyFill = level === "all";
   // Creatures (owl, cat, etc) only at all-zoom — they'd overlap tokens
   // when the user has zoomed in to read.
@@ -452,62 +438,70 @@ export function TreeOfLife({
 
       <ellipse cx={TRUNK_X} cy={GROUND_Y + 40} rx="500" ry="60" fill="url(#groundShadowV3)" />
 
-      {/* Soft horizon line — anchors the tree visually (only at all-zoom) */}
+      {/* Simple horizon line at ground */}
       {showCanopyFill && (
-        <g aria-hidden>
-          <path
-            d={`M 20 ${GROUND_Y + 6} Q 250 ${GROUND_Y + 2}, 500 ${GROUND_Y + 4} T 980 ${GROUND_Y + 6}`}
-            stroke="#6B5740"
-            strokeWidth="1.4"
-            fill="none"
-            opacity="0.32"
-          />
-          {/* Sparse grass tufts */}
-          {Array.from({ length: 22 }).map((_, i) => {
-            const rng = seedRand(i * 73 + 11);
-            const cx = 30 + rng() * 940;
-            // Skip the area immediately around the trunk + roots
-            if (Math.abs(cx - TRUNK_X) < 60) return null;
-            const y0 = GROUND_Y + 4 + (rng() - 0.5) * 4;
-            const len = 5 + rng() * 6;
-            const lean = (rng() - 0.5) * 3;
-            return (
-              <g key={`grass-${i}`} opacity={0.45 + rng() * 0.25}>
-                <path
-                  d={`M ${cx} ${y0} Q ${cx + lean * 0.5} ${y0 - len * 0.6}, ${cx + lean} ${y0 - len}`}
-                  stroke="#5E8F4A"
-                  strokeWidth="0.9"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-                <path
-                  d={`M ${cx + 2} ${y0} Q ${cx + 2 + lean * 0.4} ${y0 - len * 0.5}, ${cx + 2 + lean * 0.8} ${y0 - len * 0.8}`}
-                  stroke="#7A9F4A"
-                  strokeWidth="0.7"
-                  fill="none"
-                  strokeLinecap="round"
-                  opacity="0.85"
-                />
-              </g>
-            );
-          })}
-        </g>
+        <path
+          d={`M 60 ${GROUND_Y + 6} Q 500 ${GROUND_Y + 2}, 940 ${GROUND_Y + 6}`}
+          stroke="#6B5740"
+          strokeWidth="1.2"
+          fill="none"
+          opacity="0.28"
+        />
       )}
 
-      {/* Fine capillary roots interleaved between the main strokes */}
-      <RootCapillaries />
-
-      {/* Multi-layer root system — main + side branches + capillaries */}
-      <RootSystem showGrassTufts={showCanopyFill} />
+      {/* Simple root fan — 9 strokes radiating from trunk base */}
+      <g pointerEvents="none">
+        {[
+          { dx: -440, dy: 60, w: 9 },
+          { dx: -320, dy: 78, w: 8 },
+          { dx: -200, dy: 90, w: 7 },
+          { dx: -90, dy: 96, w: 5 },
+          { dx: 90, dy: 96, w: 5 },
+          { dx: 200, dy: 90, w: 7 },
+          { dx: 320, dy: 78, w: 8 },
+          { dx: 440, dy: 60, w: 9 },
+          { dx: 0, dy: 102, w: 4 },
+        ].map((r, i) => {
+          const startX = TRUNK_X;
+          const startY = GROUND_Y - 24;
+          const endX = TRUNK_X + r.dx;
+          const endY = GROUND_Y + r.dy;
+          const cp1x = TRUNK_X + r.dx * 0.3;
+          const cp1y = GROUND_Y - 4;
+          const cp2x = TRUNK_X + r.dx * 0.7;
+          const cp2y = GROUND_Y + r.dy * 0.5;
+          const d = `M ${startX} ${startY} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${endX} ${endY}`;
+          return (
+            <g key={`root-${i}`}>
+              <path
+                d={d}
+                stroke="#1F1612"
+                strokeWidth={r.w + 2}
+                fill="none"
+                strokeLinecap="round"
+                opacity="0.4"
+              />
+              <path
+                d={d}
+                stroke="#3A2E22"
+                strokeWidth={r.w}
+                fill="none"
+                strokeLinecap="round"
+              />
+              <path
+                d={d}
+                stroke="rgba(255,235,200,0.18)"
+                strokeWidth={Math.max(1, r.w * 0.3)}
+                fill="none"
+                strokeLinecap="round"
+                transform={`translate(0, -${Math.max(0.8, r.w * 0.22)})`}
+              />
+            </g>
+          );
+        })}
+      </g>
 
       <OrganicTrunk />
-      {showCanopyFill && (
-        <>
-          <PhantomBranches />
-          <InterYearFillers />
-          <DriftParticles />
-        </>
-      )}
 
       <g>
         <path
@@ -561,36 +555,11 @@ export function TreeOfLife({
         }
         const yearOpacity = dimmed ? 0.16 : 1;
         const memCount = yearCounts.get(year) ?? 0;
-        // Chunky brown gnarly year branch. Now rendered as 4 distinct
-        // sub-branches end-to-end (büyükten küçüğe azalan yapı), each
-        // a GnarledBranch with stepping width, joined by knots.
-        // Older years (lower on trunk) thicker, newer years thinner —
-        // matches a real tree where the trunk thickens with age.
+        // Older years (lower on trunk) thicker, newer years thinner.
         const ageBoost = (2026 - year) * 0.7;
         const branchBaseWidth =
-          18 + ageBoost + Math.min(10, Math.sqrt(memCount) * 1.5);
-        const branchColor = "#3A2E22"; // bark brown
-        // Plant length also asymmetric — years with more memories grow
-        // more substantial canopies.
-        const plantBaseLength = 32 + Math.min(34, memCount * 1.6);
-        // Sub-branches per year — 4 distinct chunks end-to-end.
-        const N_SUB = 4;
-        // Each sub-branch is a small multi-point gnarled segment.
-        const subBranches = Array.from({ length: N_SUB }).map((_, s) => {
-          const t0 = s / N_SUB;
-          const tMid = (s + 0.5) / N_SUB;
-          const t1 = (s + 1) / N_SUB;
-          return {
-            s,
-            t0,
-            t1,
-            p0: yearPointAt(year, t0),
-            pMid: yearPointAt(year, tMid),
-            p1: yearPointAt(year, t1),
-            // Width steps down ~28% each sub-branch
-            width: branchBaseWidth * Math.pow(0.72, s),
-          };
-        });
+          16 + ageBoost + Math.min(8, Math.sqrt(memCount) * 1.2);
+        const branchColor = "#3A2E22";
 
         return (
           <g
@@ -617,502 +586,45 @@ export function TreeOfLife({
             {/* Year branch — 4 sub-branches end-to-end, each with its
                  own gnarled multi-stroke and stepping width. Junctions
                  between sub-branches sprout small side-twigs. */}
-            {subBranches.map((sub) => (
-              <GnarledBranch
-                key={`subY-${sub.s}`}
-                points={[sub.p0, sub.pMid, sub.p1]}
-                baseWidth={sub.width}
-                tipFraction={0.82}
-                color={branchColor}
-              />
-            ))}
-            {/* Junction Y-forks — gated to year+ zoom so month/week
-                 don't see overlapping fractal masses. */}
-            {showJunctionForks && subBranches.slice(0, -1).map((sub) => {
-              const j = sub.p1;
-              // Outward direction along the year curve at this point
-              const ahead = sub.p1.x - sub.p0.x;
-              const aheadY = sub.p1.y - sub.p0.y;
-              const baseAhead = Math.atan2(-aheadY, ahead);
-              // Three siblings at -60° / +20° / +90° relative to baseAhead
-              // (= up-and-back, slightly-forward, down-and-back). Wider
-              // angles so they don't overlap.
-              const forks = [
-                {
-                  k: "up",
-                  angle: baseAhead + 0.95,
-                  lenMul: 1.0,
-                  widthMul: 0.88,
-                },
-                {
-                  k: "fwd",
-                  angle: baseAhead + 0.32 * tip.side,
-                  lenMul: 0.85,
-                  widthMul: 0.78,
-                },
-                {
-                  k: "dn",
-                  angle: baseAhead - 0.95,
-                  lenMul: 0.92,
-                  widthMul: 0.82,
-                },
-              ];
-              const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
-              return (
-                <g key={`jFork-${sub.s}`}>
-                  {forks.map((f, fi) => {
-                    const len = 56 * f.lenMul + (sub.s % 2) * 8;
-                    const w = sub.width * f.widthMul;
-                    const tx = r1(j.x + Math.cos(f.angle) * len);
-                    const ty = r1(j.y - Math.sin(f.angle) * len);
-                    // Slight midpoint kink for organic feel
-                    const midX = r1(
-                      j.x + Math.cos(f.angle) * len * 0.55 + (fi === 1 ? 0 : tip.side * 4),
-                    );
-                    const midY = r1(j.y - Math.sin(f.angle) * len * 0.55);
-                    const berryC = palette[(year + sub.s + fi) % palette.length];
-                    return (
-                      <g key={`${f.k}-${fi}`}>
-                        {/* Y-fork stem from junction outward */}
-                        <GnarledBranch
-                          points={[
-                            { x: j.x, y: j.y },
-                            { x: midX, y: midY },
-                            { x: tx, y: ty },
-                          ]}
-                          baseWidth={w}
-                          tipFraction={0.72}
-                          color={branchColor}
-                        />
-                        {/* Recursive fractal canopy at this fork's tip */}
-                        {showLeafMass && (
-                          <FractalBranch
-                            rootX={tx}
-                            rootY={ty}
-                            baseAngle={f.angle}
-                            baseLength={28 * f.lenMul}
-                            baseWidth={w * 0.72}
-                            depth={3}
-                            forkAngle={0.6}
-                            lengthShrink={0.7}
-                            widthShrink={0.72}
-                            branchFactor={2}
-                            seed={year * 47 + sub.s * 13 + fi * 7}
-                            color={branchColor}
-                            budTips
-                            budPalette={[berryC, "#F2C5D1"]}
-                          />
-                        )}
-                      </g>
-                    );
-                  })}
-                </g>
-              );
-            })}
+            {/* Year branch — single chunky tapering stem, drawn as 3
+                 stacked paths (shadow + main + highlight) for depth. */}
+            <path
+              d={path}
+              stroke="#1F1612"
+              strokeWidth={branchBaseWidth + 2}
+              fill="none"
+              strokeLinecap="round"
+              opacity="0.45"
+            />
+            <path
+              d={path}
+              stroke={branchColor}
+              strokeWidth={branchBaseWidth}
+              fill="none"
+              strokeLinecap="round"
+            />
+            <path
+              d={path}
+              stroke="rgba(255,235,200,0.22)"
+              strokeWidth={Math.max(1.2, branchBaseWidth * 0.28)}
+              fill="none"
+              strokeLinecap="round"
+              transform={`translate(0, -${Math.max(1, branchBaseWidth * 0.18)})`}
+            />
 
-            {/* ── Mid-segment lateral offshoots — divisions BETWEEN
-                 junctions. Longer + chunkier + deeper-recursing than
-                 before so the user can clearly see "aralardan da
-                 bölünmeli". 4 per segment, asymmetrically placed. */}
-            {showOffshoots &&
-              subBranches.flatMap((sub, sIdx) => {
-                const rng = seedRand(year * 1009 + sub.s * 17);
-                const N_MID = 3 + (sIdx % 2); // 3-4 per sub-branch
-                return Array.from({ length: N_MID }).map((_, mi) => {
-                  const tFrac = 0.15 + rng() * 0.7;
-                  const t = sub.t0 + (sub.t1 - sub.t0) * tFrac;
-                  const pt = yearPointAt(year, t);
-                  const above = (sIdx + mi) % 2 === 0;
-                  const angleVar = (rng() - 0.5) * 0.55;
-                  const angle =
-                    (above ? Math.PI / 2 : -Math.PI / 2) +
-                    tip.side * (0.18 + (rng() - 0.5) * 0.22) +
-                    angleVar;
-                  // Longer + chunkier so they read as proper sub-branches
-                  const len = 36 + rng() * 26;
-                  const tx = r1(pt.x + Math.cos(angle) * len);
-                  const ty = r1(pt.y - Math.sin(angle) * len);
-                  const w = sub.width * (0.5 + rng() * 0.22);
-                  const palette = [
-                    "#E8826B",
-                    "#F2C5D1",
-                    "#C8E07A",
-                    "#9FC5BD",
-                    "#E8D9B0",
-                    "#D17A95",
-                  ];
-                  const berryC = palette[(year + sIdx + mi) % palette.length];
-                  return (
-                    <g key={`mid-${sIdx}-${mi}`}>
-                      <GnarledBranch
-                        points={[
-                          { x: pt.x, y: pt.y },
-                          { x: tx, y: ty },
-                        ]}
-                        baseWidth={w}
-                        tipFraction={0.72}
-                        color={branchColor}
-                        showKnots={false}
-                      />
-                      {showLeafMass && (
-                        <FractalBranch
-                          rootX={tx}
-                          rootY={ty}
-                          baseAngle={angle}
-                          baseLength={r1(20 + rng() * 12)}
-                          baseWidth={r1(w * 0.78)}
-                          depth={3}
-                          forkAngle={r1(0.55 + rng() * 0.18)}
-                          lengthShrink={0.7}
-                          widthShrink={0.72}
-                          branchFactor={2}
-                          seed={year * 1213 + sIdx * 19 + mi * 7}
-                          color={branchColor}
-                          budTips
-                          budPalette={[berryC, "#F2C5D1"]}
-                        />
-                      )}
-                    </g>
-                  );
-                });
-              })}
-
-            {/* ── Random leaf clusters along year backbone — small
-                 oval leaves scattered organically along the branch
-                 length, not tied to memory data. ── */}
-            {showLeafMass &&
-              showOffshoots &&
-              Array.from({ length: 8 }).map((_, li) => {
-                const rng = seedRand(year * 777 + li * 43);
-                const t = 0.12 + rng() * 0.78;
-                const pt = yearPointAt(year, t);
-                const sideMul = rng() > 0.5 ? 1 : -1;
-                const offX = sideMul * (6 + rng() * 14);
-                const offY = -(rng() * 16);
-                const cx = r1(pt.x + offX);
-                const cy = r1(pt.y + offY);
-                const rotA = r1((rng() - 0.5) * 80);
-                const rotB = r1((rng() - 0.5) * 80);
-                const sz = r1(2.4 + rng() * 1.6);
-                return (
-                  <g key={`leaf-${li}`} pointerEvents="none">
-                    {/* Tiny attachment hairline */}
-                    <line
-                      x1={r1(pt.x + sideMul * 2)}
-                      y1={r1(pt.y - 2)}
-                      x2={cx}
-                      y2={cy}
-                      stroke={branchColor}
-                      strokeWidth="0.5"
-                      opacity="0.6"
-                    />
-                    <ellipse
-                      cx={cx}
-                      cy={cy}
-                      rx={r1(sz * 0.55)}
-                      ry={sz}
-                      fill="#7FA847"
-                      opacity="0.85"
-                      transform={`rotate(${rotA} ${cx} ${cy})`}
-                    />
-                    <ellipse
-                      cx={r1(cx + sideMul * 3)}
-                      cy={r1(cy + 1)}
-                      rx={r1(sz * 0.5)}
-                      ry={r1(sz * 0.85)}
-                      fill="#9FC580"
-                      opacity="0.78"
-                      transform={`rotate(${rotB} ${r1(cx + sideMul * 3)} ${r1(cy + 1)})`}
-                    />
-                  </g>
-                );
-              })}
-
+            {/* Canopy at the year-branch tip — small fan of curved
+                 forks with bud terminals. Replaces the previous
+                 multi-component Plant/FractalBranch stack. */}
             {showLeafMass && (
-              <>
-                {showOffshoots && (
-                  <>
-                {/* ── Above-branch offshoots — multi-segment gnarled
-                     twigs with realistic leafy stems at the tip ── */}
-                {[0.18, 0.32, 0.46, 0.6, 0.74, 0.86].map((t, oi) => {
-                  const pt = yearPointAt(year, t);
-                  const angle = Math.PI / 2 + tip.side * 0.25;
-                  const len = 30 + (oi % 2) * 10;
-                  // Multi-segment: kink at midpoint for organic look
-                  const midKink = (oi % 2 === 0 ? -1 : 1) * 4;
-                  const midX = r1(pt.x + Math.cos(angle) * len * 0.55 + midKink);
-                  const midY = r1(pt.y - Math.sin(angle) * len * 0.55);
-                  const tx = r1(pt.x + Math.cos(angle) * len);
-                  const ty = r1(pt.y - Math.sin(angle) * len);
-                  const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
-                  const berryC = palette[(year + oi) % palette.length];
-                  return (
-                    <g key={`above-${oi}`}>
-                      <GnarledBranch
-                        points={[
-                          { x: pt.x, y: pt.y },
-                          { x: midX, y: midY },
-                          { x: tx, y: ty },
-                        ]}
-                        baseWidth={4.5}
-                        tipFraction={0.45}
-                        color={branchColor}
-                      />
-                      <LeafyTwig
-                        x={tx}
-                        y={ty}
-                        angle={angle}
-                        length={20}
-                        seed={year * 19 + oi * 7}
-                        nLeaves={4}
-                        berryColor={berryC}
-                      />
-                    </g>
-                  );
-                })}
-                {/* ── Below-branch offshoots — drooping multi-segment ── */}
-                {[0.25, 0.42, 0.58, 0.72, 0.84].map((t, oi) => {
-                  const pt = yearPointAt(year, t);
-                  const angle = -Math.PI / 2 + tip.side * 0.18;
-                  const len = 24 + (oi % 2) * 12;
-                  const midKink = (oi % 2 === 0 ? 1 : -1) * 5;
-                  const midX = r1(pt.x + Math.cos(angle) * len * 0.5 + midKink);
-                  const midY = r1(pt.y - Math.sin(angle) * len * 0.5);
-                  const tx = r1(pt.x + Math.cos(angle) * len);
-                  const ty = r1(pt.y - Math.sin(angle) * len);
-                  const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
-                  const berryC = palette[(year + oi + 1) % palette.length];
-                  return (
-                    <g key={`below-${oi}`}>
-                      <GnarledBranch
-                        points={[
-                          { x: pt.x, y: pt.y },
-                          { x: midX, y: midY },
-                          { x: tx, y: ty },
-                        ]}
-                        baseWidth={3.8}
-                        tipFraction={0.45}
-                        color={branchColor}
-                      />
-                      <LeafyTwig
-                        x={tx}
-                        y={ty}
-                        angle={angle}
-                        length={16}
-                        seed={year * 23 + oi * 11 + 41}
-                        nLeaves={3}
-                        berryColor={berryC}
-                      />
-                    </g>
-                  );
-                })}
-                  </>
-                )}
-
-                {/* ── Fractal canopy at year tip — recursive bark
-                     subdivision (3 levels). Mirrors the reference
-                     image's branchy silhouette. ── */}
-                <FractalBranch
-                  rootX={tip.x}
-                  rootY={tip.y}
-                  baseAngle={Math.PI / 2 + tip.side * 0.18}
-                  baseLength={plantBaseLength * 0.85}
-                  baseWidth={subBranches[N_SUB - 1].width * 0.7}
-                  depth={3}
-                  forkAngle={0.5}
-                  lengthShrink={0.66}
-                  widthShrink={0.6}
-                  branchFactor={3}
-                  seed={year * 7 + 19}
-                  color={branchColor}
-                  budTips
-                />
-                {/* ── Tip plant — delicate green stems + flowers
-                     overlay the fractal canopy ── */}
-                <Plant
-                  year={year}
-                  rootX={tip.x}
-                  rootY={tip.y}
-                  baseAngle={Math.PI / 2 + tip.side * 0.18}
-                  baseLength={plantBaseLength}
-                  depth={3}
-                  forkAngle={0.45}
-                  lengthShrink={0.68}
-                  widthShrink={0.78}
-                  stemColor="#6B8054"
-                  budScale={1.1}
-                />
-                {/* ── Above mid-plants ── */}
-                {(() => {
-                  const mid = yearPointAt(year, 0.7);
-                  return (
-                    <Plant
-                      year={year}
-                      rootX={r1(mid.x)}
-                      rootY={r1(mid.y)}
-                      baseAngle={Math.PI / 2 + tip.side * 0.32}
-                      baseLength={plantBaseLength * 0.6}
-                      depth={3}
-                      forkAngle={0.5}
-                      lengthShrink={0.66}
-                      widthShrink={0.78}
-                      stemColor="#6B8054"
-                      budScale={0.85}
-                      seed={year * 211 + 5}
-                    />
-                  );
-                })()}
-                {(() => {
-                  const mid = yearPointAt(year, 0.4);
-                  return (
-                    <Plant
-                      year={year}
-                      rootX={r1(mid.x)}
-                      rootY={r1(mid.y)}
-                      baseAngle={Math.PI / 2 + tip.side * 0.45}
-                      baseLength={plantBaseLength * 0.5}
-                      depth={3}
-                      forkAngle={0.5}
-                      lengthShrink={0.62}
-                      widthShrink={0.75}
-                      stemColor="#6B8054"
-                      budScale={0.78}
-                      seed={year * 419 + 11}
-                    />
-                  );
-                })()}
-                {/* ── Below mid-plants — hanging downward ── */}
-                {(() => {
-                  const mid = yearPointAt(year, 0.55);
-                  return (
-                    <Plant
-                      year={year}
-                      rootX={r1(mid.x)}
-                      rootY={r1(mid.y)}
-                      baseAngle={-Math.PI / 2 + tip.side * 0.22}
-                      baseLength={plantBaseLength * 0.55}
-                      depth={3}
-                      forkAngle={0.48}
-                      lengthShrink={0.65}
-                      widthShrink={0.78}
-                      stemColor="#6B8054"
-                      budScale={0.78}
-                      seed={year * 631 + 17}
-                    />
-                  );
-                })()}
-                {(() => {
-                  const mid = yearPointAt(year, 0.3);
-                  return (
-                    <Plant
-                      year={year}
-                      rootX={r1(mid.x)}
-                      rootY={r1(mid.y)}
-                      baseAngle={-Math.PI / 2 + tip.side * 0.32}
-                      baseLength={plantBaseLength * 0.42}
-                      depth={2}
-                      forkAngle={0.55}
-                      lengthShrink={0.62}
-                      widthShrink={0.75}
-                      stemColor="#6B8054"
-                      budScale={0.7}
-                      seed={year * 829 + 23}
-                    />
-                  );
-                })()}
-              </>
+              <Canopy
+                year={year}
+                rootX={tip.x}
+                rootY={tip.y}
+                baseAngle={Math.PI / 2 + tip.side * 0.18}
+                memCount={memCount}
+                stemColor={branchColor}
+              />
             )}
-
-            {/* ── Season + month sub-twigs — finer detail on focused
-                 branch as the user zooms in. Each season gets its own
-                 budak with a small Plant; at month/week zoom we add
-                 even smaller leaves at sub-positions. ── */}
-            {(level === "year" || level === "season" || level === "month" || level === "week") &&
-              [0.22, 0.35, 0.48, 0.62, 0.76, 0.88].map((t, si) => {
-                const pt = yearPointAt(year, t);
-                const above = si % 2 === 0;
-                const angle = (above ? Math.PI / 2 : -Math.PI / 2) + tip.side * (0.3 + (si % 3) * 0.04);
-                const len = 18 + (si % 3) * 8;
-                const tx = r1(pt.x + Math.cos(angle) * len);
-                const ty = r1(pt.y - Math.sin(angle) * len);
-                const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD", "#E8D9B0", "#D17A95"];
-                const c1 = palette[(si + year) % palette.length];
-                const c2 = palette[(si + year + 2) % palette.length];
-                const c3 = palette[(si + year + 4) % palette.length];
-                return (
-                  <g key={`subtwig-${si}`}>
-                    <line
-                      x1={r1(pt.x)}
-                      y1={r1(pt.y)}
-                      x2={tx}
-                      y2={ty}
-                      stroke={branchColor}
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      opacity="0.85"
-                    />
-                    {/* Bud cluster at sub-twig tip */}
-                    <circle cx={tx} cy={ty} r="2.8" fill={c1} opacity="0.85" />
-                    <circle cx={tx + 3.5} cy={ty + 1} r="2.2" fill={c2} opacity="0.85" />
-                    <circle cx={tx - 3} cy={ty - 1.5} r="2" fill={c3} opacity="0.75" />
-                    {/* Small oval leaf along the twig */}
-                    <ellipse
-                      cx={r1((pt.x + tx) / 2)}
-                      cy={r1((pt.y + ty) / 2)}
-                      rx="2"
-                      ry="3.6"
-                      fill="#7FA847"
-                      opacity="0.7"
-                      transform={`rotate(${r1((angle * 180) / Math.PI - 90)} ${r1((pt.x + tx) / 2)} ${r1((pt.y + ty) / 2)})`}
-                    />
-                  </g>
-                );
-              })}
-
-            {/* ── Month-twig leaves — extra fine foliage along each
-                 month-tip when zoomed deep. ── */}
-            {(level === "month" || level === "week") &&
-              focus.month != null &&
-              focus.year === year && (
-                <g pointerEvents="none">
-                  {Array.from({ length: 8 }).map((_, mi) => {
-                    const mt = monthTip(year, focus.month!);
-                    const ratio = 0.3 + (mi / 8) * 0.7;
-                    const u = 1 - ratio;
-                    const cpx = (mt.baseX + mt.tipX) / 2;
-                    const cpy = (mt.baseY + mt.tipY) / 2 - 6;
-                    const px = r1(
-                      u * u * mt.baseX + 2 * u * ratio * cpx + ratio * ratio * mt.tipX,
-                    );
-                    const py = r1(
-                      u * u * mt.baseY + 2 * u * ratio * cpy + ratio * ratio * mt.tipY,
-                    );
-                    const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
-                    const color = palette[(mi + year) % palette.length];
-                    const offSide = mi % 2 === 0 ? -1 : 1;
-                    return (
-                      <g key={`mtw-${mi}`}>
-                        <ellipse
-                          cx={r1(px + offSide * 4)}
-                          cy={r1(py - 3)}
-                          rx="1.6"
-                          ry="3"
-                          fill="#7FA847"
-                          opacity="0.7"
-                          transform={`rotate(${offSide * 35} ${r1(px + offSide * 4)} ${r1(py - 3)})`}
-                        />
-                        <circle
-                          cx={r1(px + offSide * 6)}
-                          cy={r1(py - 5)}
-                          r="1.6"
-                          fill={color}
-                          opacity="0.88"
-                        />
-                      </g>
-                    );
-                  })}
-                </g>
-              )}
 
             {(level === "all" || level === "year") && (
               <g
