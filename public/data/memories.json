@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Bahçemiz — Master Anı Kartları",
     "description": "Bahçemiz — birlikte büyüttüğümüz anılar, ZQWQZ'den bugüne.",
-    "total_cards": 113,
+    "total_cards": 96,
     "date_range": "2017-11-05 → 2026-04-30",
     "data_source": "kendi anılarımız",
     "generated": "2026-05-02",
@@ -108,116 +108,6 @@
       "media_count_estimate": 0,
       "ai_confidence": "high",
       "anchor_type": "iliski_baslangici",
-      "_batch": "01_anilar_batch1"
-    },
-    {
-      "id": "2018-01-14-whatsapp-baslangic",
-      "date": "2018-01-14",
-      "title": "Samsung en cicisi",
-      "subtitle": "arşivin ilk sözü",
-      "category": "ilkler",
-      "tags": [
-        "whatsapp",
-        "ilk-mesaj",
-        "anchor",
-        "başlangıç"
-      ],
-      "story": "Bu uygulamada, bu sohbet penceresinde kayıtlı ilk söz Yarim'e ait: 'Samsung en cicisi.' Bağlamı yarım hatırlanan bir telefon muhabbeti - yine sevdiğin gibi, içinden uçup kayıveren küçük bir cümle.",
-      "quote": "Samsung en cicisi.",
-      "location": null,
-      "song_ref": null,
-      "mood": "nostalgic",
-      "is_pinned": true,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "anchor_type": "whatsapp_baslangici",
-      "_batch": "01_anilar_batch1"
-    },
-    {
-      "id": "2018-01-16-yarim-dogusu",
-      "date": "2018-01-16",
-      "title": "Yarım saat",
-      "subtitle": "kelime oyunundan kalıcı isime",
-      "category": "ilkler",
-      "tags": [
-        "yarim",
-        "hitap",
-        "etimoloji",
-        "ilk-aylar"
-      ],
-      "story": "Ama o tek harfli düşüş - 'yarım' → 'yarim' - sonradan ikinizin sözlüğüne en kalıcı kelime olarak yerleşecek. Sekiz yıl boyunca tam *24,948 kez tekrar edilecek; ikinizin günlük dilinin omurgası olacak.",
-      "quote": "Yarım saat mi sürdü",
-      "location": null,
-      "song_ref": null,
-      "mood": "nostalgic",
-      "is_pinned": true,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "anchor_type": "ilk_yarim",
-      "_batch": "01_anilar_batch1"
-    },
-    {
-      "id": "2018-01-17-tatlis",
-      "date": "2018-01-17",
-      "title": "Ne kadar tatlış oldun sen öyle",
-      "subtitle": "küçük bir kelime, büyük bir sıfat",
-      "category": "ilkler",
-      "tags": [
-        "tatlış",
-        "ilk-jargon",
-        "ilk-aylar"
-      ],
-      "story": "O gün ilk kez yazılan bu kelime sonraki sekiz yılda 95 kez daha tekrar edilecek. Erdoğan da, Yarim de birbirlerine tatlış diyecek - tatlış kekik, tatlış yarim, tatlış rüyalar.",
-      "quote": "Ne kadar tatlış oldun sen öyle 🙈",
-      "location": null,
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "01_anilar_batch1"
-    },
-    {
-      "id": "2018-01-28-son-metroya-iniyorum",
-      "date": "2018-01-28",
-      "title": "Son metroya iniyorum",
-      "subtitle": "1165 mesajlık günün son üç kelimesi",
-      "category": "kucuksey",
-      "tags": [
-        "marmaray",
-        "metro",
-        "buluşma",
-        "geç-saat",
-        "kadıköy"
-      ],
-      "story": "Arşivin *rekor günü - 1,165 mesaj. Marmaray'dan inen bir kadın, üşüyen, onu bekleyen bir adam. Konum daha sonra geldi - Kadıköy, Osmanağa Mahallesi, Vahap Bey Sokak.",
-      "quote": "Son metroya iniyorum.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Son metroya iniyorum",
-          "time": "22:37"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Taam geldim zaten",
-          "time": "22:37"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Aşağı indim sovuk",
-          "time": "22:40"
-        }
-      ],
-      "location": {
-        "name": "Kadıköy / Vahap Bey Sokak",
-        "context": "Starbucks/Timsahlı yer — sık buluşma noktası"
-      },
-      "song_ref": null,
-      "mood": "bittersweet",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
       "_batch": "01_anilar_batch1"
     },
     {
@@ -347,40 +237,6 @@
       "ai_confidence": "high"
     },
     {
-      "id": "2018-04-22-arabaya-dikkat",
-      "date": "2018-04-22",
-      "title": "Yapacağın şeyler kafada otomatikleşsin",
-      "subtitle": "Erdoğan'dan Yarim'e bir sürüş dersi",
-      "category": "kucuksey",
-      "tags": [
-        "araba",
-        "sürüş",
-        "öğüt",
-        "şefkat"
-      ],
-      "story": "Erdoğan tipik tavrıyla: dikkati istemiyor istemediğin yerden alsın. 630 mesajlık günün gizli felsefesi bu üç satırda.",
-      "quote": "Yapacağın şeyler kafada otomatikleşsin. Arabaya dikkatini vermek zorunda kalma.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Erdoğan",
-          "text": "Yapicagin şeyler kafada otomatiklessin",
-          "time": "23:59"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Arabaya dikkatini vermek zorunda kalma",
-          "time": "23:59"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "nostalgic",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "medium",
-      "_batch": "01_anilar_batch1"
-    },
-    {
       "id": "2018-q1-jenerik-yarim-jargon",
       "date": "2018-04-30",
       "title": "Bir sözlük doğuyor",
@@ -402,28 +258,6 @@
       "media_count_estimate": 0,
       "ai_confidence": "high",
       "_batch": "01_anilar_batch1"
-    },
-    {
-      "id": "2018-05-02-yaz-acilis",
-      "date": "2018-05-02",
-      "title": "Yazın ilk iyi geceleri",
-      "subtitle": "Mayıs'ta uzayan emojiler",
-      "category": "kucuksey",
-      "tags": [
-        "mayıs",
-        "yaz-başı",
-        "iyi-geceler",
-        "emoji"
-      ],
-      "story": "Mayıs 2018 - sevgili olalı altı ay olmuş, WhatsApp arşivi de dört aylık. Bahar mektubu değil bunlar; günün son sayfası.",
-      "quote": "Bende seni çok seviyoruuummm 😚😚",
-      "location": null,
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "02_anilar_batch2_2018_yaz"
     },
     {
       "id": "2018-05-06-leventte-napsak",
@@ -463,80 +297,6 @@
       "_batch": "02_anilar_batch2_2018_yaz"
     },
     {
-      "id": "2018-06-21-tatil-haberi",
-      "date": "2018-06-21",
-      "title": "13-23 Temmuz, kurum tatil yapacak",
-      "subtitle": "ilk yaz tatilinin müjdesi",
-      "category": "kucuksey",
-      "tags": [
-        "tatil-plani",
-        "haziran",
-        "is",
-        "müdür"
-      ],
-      "story": "Bu sevgili oldukları ilk yazın ilk büyük plan haberi. Aynı gün öğleden sonra konuşma yıllık izine, müdürün yeni planına, Yarim'in dönüştürebileceği günlere kayıyor.",
-      "quote": "Sen de bişeyler ayarlarsan bişeyler yaparis.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Erdoğan",
-          "text": "13-23 temmuz arası kurumu tatil yapmayı düşünüyomus müdür",
-          "time": "14:39"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Sen de bişeyler ayarlarsan bişeyler yaparis",
-          "time": "14:48"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "02_anilar_batch2_2018_yaz"
-    },
-    {
-      "id": "2018-07-07-demet-akbag",
-      "date": "2018-07-07",
-      "title": "Sermiyan Midyat, Demet Akbağ",
-      "subtitle": "yaz akşamı dizi muhabbeti",
-      "category": "kucuksey",
-      "tags": [
-        "temmuz",
-        "tv",
-        "demet-akbağ",
-        "buluşma",
-        "ortak-zevk"
-      ],
-      "story": "Sıradan görünen ama sonradan değer kazanan küçük bir an.",
-      "quote": "Demet akbag sakalarken kendi şakalaniyo. Şahane.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Erdoğan",
-          "text": "Aşkım geç kaliyon",
-          "time": "11:01"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Demet akbag sakalarken kendi şakalaniyo",
-          "time": "23:31"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Şahane shdjfmv",
-          "time": "23:31"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "medium",
-      "_batch": "02_anilar_batch2_2018_yaz"
-    },
-    {
       "id": "2018-08-19-eskisehir-anisi",
       "date": "2018-08-19",
       "title": "Biz Eskişehir'den dönerken bayram bitişinden sonra",
@@ -560,85 +320,6 @@
       "is_pinned": false,
       "media_count_estimate": 0,
       "ai_confidence": "medium",
-      "_batch": "02_anilar_batch2_2018_yaz"
-    },
-    {
-      "id": "2018-08-24-ust-dudak",
-      "date": "2018-08-24",
-      "title": "Yav ben onu yerem",
-      "subtitle": "üst dudak tartışmasının sonu",
-      "category": "kucuksey",
-      "tags": [
-        "fiziksel-yakınlık",
-        "öpme",
-        "özgüven",
-        "şefkat"
-      ],
-      "story": "Bu küçük geçişler - birinin kendi bedenine eleştirel baktığı an, diğerinin o bedeni 'yerem' demesi - ilişkinin omuriliği.",
-      "quote": "Yav ben onu yerem.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Üst dudağım çok çirkin",
-          "time": "00:10"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Yav ben onu yerem",
-          "time": "00:11"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "romantic",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "02_anilar_batch2_2018_yaz"
-    },
-    {
-      "id": "2018-08-26-anne-aglarken-uzaklasmak",
-      "date": "2018-08-26",
-      "title": "Annem ağlaya ağlaya bi hal oldu",
-      "subtitle": "ailelerin uzaktan kabulu",
-      "category": "kucuksey",
-      "tags": [
-        "aile",
-        "anne",
-        "uzaklaşma",
-        "şefkat",
-        "mesafe"
-      ],
-      "story": "Annem ağlaya ağlaya bi hal oldu.' Yarim üzülüyor: 'Çok kötü olmuş. Hep diyorum ağlama diye ama. Onları birbirine çeken sadece kendileri değil - ailelerin de gözü yaş bağı bu işin içinde.",
-      "quote": "Keşke böyle mesafeler sorun olmasa.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Erdoğan",
-          "text": "Annem ağlaya ağlaya bi hal oldu",
-          "time": "20:38"
-        },
-        {
-          "sender": "Yarim",
-          "text": "Niçin ağlamış ki o kadar",
-          "time": "21:03"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Hep agliyo. Hep diyorum ağlama diye ama. Naparsin işte.",
-          "time": "21:03"
-        },
-        {
-          "sender": "Yarim",
-          "text": "Keşke böyle mesafeler sorun olmasa",
-          "time": "21:06"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "bittersweet",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
       "_batch": "02_anilar_batch2_2018_yaz"
     },
     {
@@ -764,28 +445,6 @@
       "_batch": "03_anilar_batch3_2018_yilsonu"
     },
     {
-      "id": "2018-11-03-emoji-defile",
-      "date": "2018-11-03",
-      "title": "🦄🦄🦄 / 💃🏽💃🏽💃🏽",
-      "subtitle": "iyi geceler emoji defilesi",
-      "category": "kucuksey",
-      "tags": [
-        "emoji",
-        "iyi-geceler",
-        "şirin",
-        "ilk-yıl"
-      ],
-      "story": "Yıldönümünün iki gün öncesi, 3 Kasım 2018 gece yarısı 01:25. Hiçbir şey, ya da her şey. Sen benim tek boynuzlu atımsın. Sen benim hayalet ürküntümsün.",
-      "quote": "🦄🦄🦄 / 👻👻👻 / 🐣🐣🐣",
-      "location": null,
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "03_anilar_batch3_2018_yilsonu"
-    },
-    {
       "id": "2018-11-05-1-yildonumu",
       "date": "2018-11-05",
       "title": "Akşama yemeği bir yerde yiyelim mi",
@@ -832,50 +491,6 @@
       "media_count_estimate": 14,
       "ai_confidence": "high",
       "anchor_type": "iliski_yildonumu_1",
-      "_batch": "03_anilar_batch3_2018_yilsonu"
-    },
-    {
-      "id": "2018-12-05-puantaj-tablosu",
-      "date": "2018-12-05",
-      "title": "Bu yetiyo mu",
-      "subtitle": "iş, maaş, ve birinin diğerini sahiplenmesi",
-      "category": "kucuksey",
-      "tags": [
-        "iş",
-        "maaş",
-        "şefkat",
-        "günlük-hayat"
-      ],
-      "story": "Yarim'in maaş hesabında bir yanlışlık var - eksik gelmiş. Yarim sinirli: 'Bildiğin oturup her iş gününe sabah 8 akşam 17.30 yazıp, üstüne her güne imza atıyorum, sonra o tabloyu veriyorum.",
-      "quote": "Bana şu an vermen acil mi merve, sanki saçma sapan düşünme.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Sana 700 vericem geriye 157 lira kalıyo",
-          "time": "13:05"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Bana şu an vermen acil mi merve sanki saçma sapan düşünme",
-          "time": "13:05"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Adam sana sordu bi de bu yetiyo mu diye yani",
-          "time": "13:06"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Seni herseyden çok seviyorum hayatımın anlamı 🙃",
-          "time": "23:47"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "bittersweet",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "medium",
       "_batch": "03_anilar_batch3_2018_yilsonu"
     },
     {
@@ -1263,44 +878,6 @@
       "_batch": "05_anilar_batch5_2019_h2"
     },
     {
-      "id": "2019-08-21-tutumluluk-takı",
-      "date": "2019-08-21",
-      "title": "3 kolye, 17.5 TL",
-      "subtitle": "kendi kendine sınır koymanın gururu",
-      "category": "kucuksey",
-      "tags": [
-        "takı",
-        "tutumluluk",
-        "yarim-zaferi"
-      ],
-      "story": "Takıcıya girip kolye aldım kendime. Birlikte ev kurma, ileride nişan-düğün, ev eşyası alımları için biriktirmek hâli, daha o yıllarda kendine evrilmiş.",
-      "quote": "Sadece 17.5 tl harcadım 3 kolye alıp. Daha fazlasını almadım, tuttum kendimi.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Takıcıya girip kolye aldım kendime / Bi de zincir",
-          "time": "18:56"
-        },
-        {
-          "sender": "Yarim",
-          "text": "Ve sadece 17.5 tl harcadım 3 kolye alıp",
-          "time": "18:56"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Bu ara tutumluluk zamaniii",
-          "time": "19:24"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "05_anilar_batch5_2019_h2"
-    },
-    {
       "id": "2019-10-14-merve-24-tekerleme",
       "date": "2019-10-14",
       "title": "Kız saçını kim gördü",
@@ -1343,50 +920,6 @@
       "media_count_estimate": 0,
       "ai_confidence": "high",
       "anchor_type": "merve_dgn",
-      "_batch": "05_anilar_batch5_2019_h2"
-    },
-    {
-      "id": "2019-11-03-komando-modu",
-      "date": "2019-11-03",
-      "title": "Comando Mode",
-      "subtitle": "yıldönümünden 2 gün önce, esprili bir kıskançlık",
-      "category": "kucuksey",
-      "tags": [
-        "komando-modu",
-        "espri",
-        "ilişki-jargonu",
-        "yıldönümü-öncesi"
-      ],
-      "story": "Yarim sitemli: 'Hiç yazma demedim ki. Bu kelimeler ne romantik ne formal - bu tam ortada bir bölge: tek başına anlamsız, çift olarak çok anlamlı.",
-      "quote": "Yani kamufle oluyorum, yazmıyorum.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Erdoğan",
-          "text": "Sen oradayken yazma demiştin ya. Ben de ondan comando modu dedim",
-          "time": "01:51"
-        },
-        {
-          "sender": "Yarim",
-          "text": "Yazma demedim. Arama dedim",
-          "time": "01:52"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "Yani kamufle oluyorum, yazmıyorum",
-          "time": "01:53"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "ya bayılsam kalsam hi… Pertingen olsam…",
-          "time": "01:54"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "funny",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
       "_batch": "05_anilar_batch5_2019_h2"
     },
     {
@@ -1707,41 +1240,6 @@
       "story": "İlk Sevgililer Günü'müzde Erdoğan gece 'uyu güzelim' yazmıştı. O cümle yıllara yayıldı, her 14 Şubat geri geliyor.",
       "is_pinned": true,
       "ai_confidence": "high"
-    },
-    {
-      "id": "2021-03-13-gece-kuruma-baris",
-      "date": "2021-03-13",
-      "title": "Senin çalışanınsa, benim de danışmanım",
-      "subtitle": "Yarim'in iş içi diplomasisi",
-      "category": "kucuksey",
-      "tags": [
-        "iş",
-        "diplomasi",
-        "barbaros",
-        "kaan",
-        "danışman"
-      ],
-      "story": "Başka kesintiler vardı, onları ayarladım. Motivasyonunu bozma.' 'Şinanay.' Bu, bir SEO Team Lead olan birinin iş içi yönetim diline dair en güzel ipucu.",
-      "quote": "Senin çalışanınsa, benim de danışmanım. Motivasyonunu bozma.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Barbaros kaana kızmış",
-          "time": "02:14"
-        },
-        {
-          "sender": "Yarim",
-          "text": "Bende barbarosa dedim ki senin çalışanınsa benimde danışmanım motivasyonunu bozma",
-          "time": "02:15"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "07_anilar_batch7_2021_h1"
     },
     {
       "id": "2021-04-14-erdogan-27-dgn",
@@ -2694,51 +2192,6 @@
       "_batch": "10_anilar_batch10_2022h2_2023"
     },
     {
-      "id": "2022-09-12-lemongrass-firsat",
-      "date": "2022-09-12",
-      "title": "I would like to consider this",
-      "subtitle": "yurt dışından bir yazışma, üç versiyon e-posta",
-      "category": "donumnoktasi",
-      "tags": [
-        "iş",
-        "kariyer",
-        "lemongrass",
-        "yarim",
-        "yurt-dışı"
-      ],
-      "story": "Yarim, Erdoğan'a bir CV gönderiyor - Merve-Ertan-Ozdemir_CV_EN (2).pdf. I'm sorry my late response, i was on vacation. İngilizce mesaj göndermekle ilgili o klasik tedirginlik - kelime kelime üstünden geçme.",
-      "quote": "Sana şirket satın alacağım. Bu işi bırakabilirsin tabii.",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "Hi Alex, Thank you, i hope you're well too. I'm sorry my late response, i was on vacation. Ofcourse i would like to consider this...",
-          "time": "09:54"
-        },
-        {
-          "sender": "Yarim",
-          "text": "1500 euro. Az mı?",
-          "time": "19:41"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "İşi bırakım mı, sana bakarım, ne diyosun",
-          "time": "20:10"
-        },
-        {
-          "sender": "Yarim",
-          "text": "Olmaç. Sana şirket satın alacağım. Bu işi bırakabilirsin tabii.",
-          "time": "20:13"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "happy",
-      "is_pinned": false,
-      "media_count_estimate": 1,
-      "ai_confidence": "high",
-      "_batch": "10_anilar_batch10_2022h2_2023"
-    },
-    {
       "id": "2022-09-17-ilk-karim",
       "date": "2022-09-17",
       "title": "Karım nerde dediler",
@@ -3185,51 +2638,6 @@
       "story": "8 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
       "is_pinned": true,
       "ai_confidence": "high"
-    },
-    {
-      "id": "2024-11-12-sap-kabus",
-      "date": "2024-11-12",
-      "title": "ALIN SİZE YENİ HATA",
-      "subtitle": "SAP kurulum kabusu ve bir yanlış anlama",
-      "category": "kucuksey",
-      "tags": [
-        "iş",
-        "sap",
-        "tartışma",
-        "barışma",
-        "espri"
-      ],
-      "story": "Bu noktadan itibaren bir yanlış anlama dalga dalga büyüyor: ses tonu, hesap sorma havası, kelime seçimleri. Sonunda 13:50 itibariyle çözülüyor.",
-      "quote": "ALIN SİZE YENİ HATA. ajnfmkafjm. - Erdoğan · şansımı bahtımı sikim ya",
-      "whatsapp_excerpt": [
-        {
-          "sender": "Yarim",
-          "text": "şansımı bahtımı sikim ya",
-          "time": "16:58"
-        },
-        {
-          "sender": "Yarim",
-          "text": "kafayı yiycrm ya",
-          "time": "17:01"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "bi de beğenmiyor pezevenk",
-          "time": "17:10"
-        },
-        {
-          "sender": "Erdoğan",
-          "text": "ALIN SİZE YENİ HATA / ajnfmkafjm",
-          "time": "17:36"
-        }
-      ],
-      "location": null,
-      "song_ref": null,
-      "mood": "funny",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "medium",
-      "_batch": "11_anilar_batch11_2024"
     },
     {
       "id": "anchor-nisan-2025",

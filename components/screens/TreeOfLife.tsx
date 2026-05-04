@@ -32,6 +32,7 @@ import { PhantomBranches } from "@/components/tree/PhantomBranches";
 import { GnarledBranch } from "@/components/tree/GnarledBranch";
 import { LeafyTwig } from "@/components/tree/LeafyTwig";
 import { RootCapillaries } from "@/components/tree/RootCapillaries";
+import { RootSystem } from "@/components/tree/RootSystem";
 import { EventGlyph, FoliageBurst } from "@/components/tree/Tokens";
 import { r1 } from "@/components/tree/utils";
 
@@ -369,6 +370,11 @@ export function TreeOfLife({
   // moment list view which has its own UI). Each zoom keeps the visual
   // density of the all-zoom view, just framed on a smaller area.
   const showLeafMass = level !== "moment";
+  // At month/week the viewBox is small (~220x170 / 180x140) — the
+  // dense offshoot foliage starts to overlap and clutter. Drop the
+  // bulky decorative offshoots in favour of just tokens + the
+  // focused month-tip leaves at deep zoom.
+  const showOffshoots = level === "all" || level === "year" || level === "season";
   // Inter-year fillers + drift particles only at all-zoom — they
   // depend on absolute trunk coords that fall outside year+ viewBoxes.
   const showCanopyFill = level === "all";
@@ -486,130 +492,8 @@ export function TreeOfLife({
       {/* Fine capillary roots interleaved between the main strokes */}
       <RootCapillaries />
 
-      {/* Roots — chunky main trunks + side branches + capillaries */}
-      <g opacity="0.95">
-        {[
-          { dx: -440, dy: 60, w: 14, branches: 2 },
-          { dx: -320, dy: 78, w: 12, branches: 2 },
-          { dx: -200, dy: 90, w: 10, branches: 1 },
-          { dx: -90, dy: 96, w: 7, branches: 1 },
-          { dx: 90, dy: 96, w: 7, branches: 1 },
-          { dx: 200, dy: 90, w: 10, branches: 1 },
-          { dx: 320, dy: 78, w: 12, branches: 2 },
-          { dx: 440, dy: 60, w: 14, branches: 2 },
-          { dx: 0, dy: 102, w: 5, branches: 1 },
-        ].map((r, i) => {
-          const startX = TRUNK_X;
-          const startY = GROUND_Y - 30;
-          const endX = TRUNK_X + r.dx;
-          const endY = GROUND_Y + r.dy;
-          const cp1x = TRUNK_X + r.dx * 0.3;
-          const cp1y = GROUND_Y - 5;
-          const cp2x = TRUNK_X + r.dx * 0.7;
-          const cp2y = GROUND_Y + r.dy * 0.5;
-          const d = `M ${startX} ${startY} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${endX} ${endY}`;
-          const sideRng = seedRand(i * 211 + 17);
-          // Branch points along the root
-          const branchOffshoots = Array.from({ length: r.branches }).map(
-            (_, b) => {
-              // Place branch at 45-78% along root
-              const t = 0.5 + b * 0.22 + sideRng() * 0.12;
-              const u = 1 - t;
-              const px = r1(
-                u * u * u * startX +
-                  3 * u * u * t * cp1x +
-                  3 * u * t * t * cp2x +
-                  t * t * t * endX,
-              );
-              const py = r1(
-                u * u * u * startY +
-                  3 * u * u * t * cp1y +
-                  3 * u * t * t * cp2y +
-                  t * t * t * endY,
-              );
-              const sign = r.dx >= 0 ? 1 : -1;
-              const offDx = (40 + sideRng() * 50) * sign;
-              const offDy = 26 + sideRng() * 18;
-              const tx = r1(px + offDx);
-              const ty = r1(py + offDy);
-              const w = Math.max(1.5, r.w * 0.42);
-              return { px, py, tx, ty, w };
-            },
-          );
-          return (
-            <g key={i}>
-              {/* Outer shadow */}
-              <path
-                d={d}
-                stroke="#0C0A08"
-                strokeWidth={r.w + 2}
-                fill="none"
-                strokeLinecap="round"
-                opacity="0.45"
-              />
-              {/* Main root */}
-              <path
-                d={d}
-                stroke={trunkColor}
-                strokeWidth={r.w}
-                fill="none"
-                strokeLinecap="round"
-              />
-              {/* Highlight */}
-              <path
-                d={d}
-                stroke="rgba(255,235,200,0.18)"
-                strokeWidth={Math.max(1, r.w * 0.3)}
-                fill="none"
-                strokeLinecap="round"
-                transform={`translate(0, -${Math.max(1, r.w * 0.25)})`}
-              />
-              {/* Side branches */}
-              {branchOffshoots.map((o, b) => {
-                const cpx = (o.px + o.tx) / 2 + (r.dx >= 0 ? 6 : -6);
-                const cpy = (o.py + o.ty) / 2 + 4;
-                const branchD = `M ${o.px} ${o.py} Q ${cpx} ${cpy}, ${o.tx} ${o.ty}`;
-                return (
-                  <g key={b}>
-                    <path
-                      d={branchD}
-                      stroke={trunkColor}
-                      strokeWidth={o.w}
-                      fill="none"
-                      strokeLinecap="round"
-                      opacity="0.92"
-                    />
-                    {/* Tiny capillary off the branch */}
-                    <path
-                      d={`M ${o.tx} ${o.ty} Q ${o.tx + (r.dx >= 0 ? 8 : -8)} ${o.ty + 8}, ${o.tx + (r.dx >= 0 ? 16 : -16)} ${o.ty + 14}`}
-                      stroke={trunkColor}
-                      strokeWidth={Math.max(0.8, o.w * 0.55)}
-                      fill="none"
-                      strokeLinecap="round"
-                      opacity="0.78"
-                    />
-                  </g>
-                );
-              })}
-              {showCanopyFill &&
-                Array.from({ length: 3 }).map((_, j) => {
-                  const gx = TRUNK_X + r.dx + (j - 1) * 6;
-                  const gy = GROUND_Y + r.dy + 18;
-                  return (
-                    <path
-                      key={j}
-                      d={`M ${gx} ${gy} Q ${gx - 1} ${gy - 5}, ${gx - 2} ${gy - 9}`}
-                      stroke={minorTint}
-                      strokeWidth="0.6"
-                      fill="none"
-                      opacity="0.7"
-                    />
-                  );
-                })}
-            </g>
-          );
-        })}
-      </g>
+      {/* Multi-layer root system — main + side branches + capillaries */}
+      <RootSystem showGrassTufts={showCanopyFill} />
 
       <OrganicTrunk />
       {showCanopyFill && (
@@ -672,21 +556,30 @@ export function TreeOfLife({
         }
         const yearOpacity = dimmed ? 0.16 : 1;
         const memCount = yearCounts.get(year) ?? 0;
-        // Chunky brown gnarly year branch — same family as the trunk.
-        // Width tapers from base to tip across the multi-segment render.
-        // Sized in viewBox units (svg is 1000x2400) so values feel large
-        // but render at sensible on-screen weights at the default zoom.
+        // Chunky brown gnarly year branch. Now rendered as 4 distinct
+        // sub-branches end-to-end (büyükten küçüğe azalan yapı), each
+        // a GnarledBranch with stepping width, joined by knots.
         const branchBaseWidth = 22 + Math.min(8, Math.sqrt(memCount) * 1.2);
         const branchColor = "#3A2E22"; // bark brown
         const plantBaseLength = 36 + Math.min(28, memCount * 1.4);
-        // Number of segments the year branch is split into for tapering.
-        // 8 segments → "uc uca eklenmiş gittikçe küçülen" feel.
-        const N_SEG = 8;
-
-        // Pre-compute geometry along the branch curve
-        const branchPoints = Array.from({ length: N_SEG + 1 }).map((_, i) =>
-          yearPointAt(year, i / N_SEG),
-        );
+        // Sub-branches per year — 4 distinct chunks end-to-end.
+        const N_SUB = 4;
+        // Each sub-branch is a small multi-point gnarled segment.
+        const subBranches = Array.from({ length: N_SUB }).map((_, s) => {
+          const t0 = s / N_SUB;
+          const tMid = (s + 0.5) / N_SUB;
+          const t1 = (s + 1) / N_SUB;
+          return {
+            s,
+            t0,
+            t1,
+            p0: yearPointAt(year, t0),
+            pMid: yearPointAt(year, tMid),
+            p1: yearPointAt(year, t1),
+            // Width steps down ~28% each sub-branch
+            width: branchBaseWidth * Math.pow(0.72, s),
+          };
+        });
 
         return (
           <g
@@ -710,17 +603,64 @@ export function TreeOfLife({
               opacity={isFocused ? 0.32 : 0}
               style={{ transition: "opacity 240ms ease", filter: "blur(2px)" }}
             />
-            {/* Year branch — 8-segment gnarled multi-stroke (main +
-                 highlight + shadow + knots), chunky bark brown */}
-            <GnarledBranch
-              points={branchPoints}
-              baseWidth={branchBaseWidth}
-              tipFraction={0.32}
-              color={branchColor}
-            />
+            {/* Year branch — 4 sub-branches end-to-end, each with its
+                 own gnarled multi-stroke and stepping width. Junctions
+                 between sub-branches sprout small side-twigs. */}
+            {subBranches.map((sub) => (
+              <GnarledBranch
+                key={`subY-${sub.s}`}
+                points={[sub.p0, sub.pMid, sub.p1]}
+                baseWidth={sub.width}
+                tipFraction={0.82}
+                color={branchColor}
+              />
+            ))}
+            {/* Side-twigs at each junction (between sub-branches) */}
+            {subBranches.slice(0, -1).map((sub) => {
+              const j = sub.p1;
+              // Alternate above + below for visual rhythm
+              const above = sub.s % 2 === 0;
+              const angle =
+                (above ? Math.PI / 2 : -Math.PI / 2) + tip.side * 0.22;
+              const len = 28 + (sub.s % 2) * 6;
+              const midX = r1(j.x + Math.cos(angle) * len * 0.5 + tip.side * 3);
+              const midY = r1(j.y - Math.sin(angle) * len * 0.5);
+              const tx = r1(j.x + Math.cos(angle) * len);
+              const ty = r1(j.y - Math.sin(angle) * len);
+              const w = sub.width * 0.55;
+              const palette = ["#E8826B", "#F2C5D1", "#C8E07A", "#9FC5BD"];
+              const berryC = palette[(year + sub.s) % palette.length];
+              return (
+                <g key={`jSide-${sub.s}`}>
+                  <GnarledBranch
+                    points={[
+                      { x: j.x, y: j.y },
+                      { x: midX, y: midY },
+                      { x: tx, y: ty },
+                    ]}
+                    baseWidth={w}
+                    tipFraction={0.55}
+                    color={branchColor}
+                  />
+                  {showLeafMass && (
+                    <LeafyTwig
+                      x={tx}
+                      y={ty}
+                      angle={angle}
+                      length={20}
+                      seed={year * 47 + sub.s * 13}
+                      nLeaves={4}
+                      berryColor={berryC}
+                    />
+                  )}
+                </g>
+              );
+            })}
 
             {showLeafMass && (
               <>
+                {showOffshoots && (
+                  <>
                 {/* ── Above-branch offshoots — multi-segment gnarled
                      twigs with realistic leafy stems at the tip ── */}
                 {[0.18, 0.32, 0.46, 0.6, 0.74, 0.86].map((t, oi) => {
@@ -795,6 +735,8 @@ export function TreeOfLife({
                     </g>
                   );
                 })}
+                  </>
+                )}
 
                 {/* ── Tip plant — biggest, points outward ── */}
                 <Plant

@@ -284,6 +284,7 @@ export function Timeline({
     >
       <TopBar isDark={isDark} onToggleDark={onToggleDark} />
       <Breadcrumbs level={level} focus={focus} onSet={onCrumbSet} />
+      <FocusCount count={focusedEvents.length} level={level} />
 
       {level !== "moment" ? (
         <div
@@ -502,6 +503,59 @@ function PreviewOverlay({
             anıyı aç →
           </button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function FocusCount({ count, level }: { count: number; level: ZoomLevel }) {
+  const scopeLabel: Record<ZoomLevel, string> = {
+    all: "tüm bahçede",
+    year: "bu yılda",
+    season: "bu mevsimde",
+    month: "bu ayda",
+    week: "bu haftada",
+    moment: "bu pencerede",
+  };
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        padding: "4px 16px 8px",
+      }}
+    >
+      <div
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "4px 12px",
+          borderRadius: 999,
+          background: "rgba(255, 253, 246, 0.55)",
+          border: "1px solid rgba(31, 27, 22, 0.08)",
+          backdropFilter: "blur(6px)",
+          fontSize: 11,
+          letterSpacing: 1.4,
+          textTransform: "uppercase",
+          color: "var(--text-muted)",
+          fontWeight: 600,
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "var(--font-heading)",
+            fontStyle: "italic",
+            fontSize: 16,
+            color: "var(--accent)",
+            letterSpacing: 0,
+            textTransform: "none",
+            fontWeight: 500,
+          }}
+        >
+          {count}
+        </span>
+        <span>anı · {scopeLabel[level]}</span>
       </div>
     </div>
   );
