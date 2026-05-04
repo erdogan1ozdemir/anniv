@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ANCHORS, countAnchor, ordinalTr } from "@/lib/anchors";
+import { ANCHORS, countAnchor } from "@/lib/anchors";
 
 function todayLocal(): Date {
   const d = new Date();
@@ -171,7 +171,7 @@ export function CounterScreen() {
                       letterSpacing: -0.4,
                     }}
                   >
-                    {ordinalTr(count.occurrences)} {anchor.countNoun ?? "yıldönümü"}
+                    {count.completed} {anchor.countNoun ?? "yıldönümü"}
                   </div>
                   <div
                     style={{
@@ -184,7 +184,7 @@ export function CounterScreen() {
                   >
                     {count.daysUntilNext === 0
                       ? "bugün ✨"
-                      : `bir sonrakine ${count.daysUntilNext} gün`}
+                      : `${count.nextOrdinal}.'sına ${count.daysUntilNext} gün`}
                   </div>
                 </div>
                 {anchor.memoryId && (
@@ -211,7 +211,7 @@ export function CounterScreen() {
                 key={anchor.id}
                 href={`/ani/${anchor.memoryId}`}
                 style={{ textDecoration: "none" }}
-                aria-label={`${anchor.label}: ${ordinalTr(count.occurrences)} ${anchor.countNoun ?? "yıldönümü"}, ilgili anıyı aç`}
+                aria-label={`${anchor.label}: ${count.completed} ${anchor.countNoun ?? "yıldönümü"}, ilgili anıyı aç`}
               >
                 {card}
               </Link>

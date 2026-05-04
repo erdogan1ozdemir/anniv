@@ -117,21 +117,36 @@ export const ANCHORS: AnchorDate[] = [
 ];
 
 export interface AnchorCount {
-  /** How many times this date has come around since the original. */
-  occurrences: number;
-  /** Days until the next occurrence (0 if today). */
+  /**
+   * Anniversaries completed since the original event. The original event
+   * itself is NOT counted — so for evlilik 2022-05-03 on 2026-05-04 we
+   * report 4 (yesterday was the 4th anniversary; we are heading toward
+   * the 5th).
+   */
+  completed: number;
+  /**
+   * Ordinal of the upcoming anniversary (= completed + 1).
+   * Used in 'sonraki N. yıldönümüne X gün' style labels.
+   */
+  nextOrdinal: number;
+  /** Days until the next anniversary (0 if today). */
   daysUntilNext: number;
-  /** ISO yyyy-mm-dd of the next occurrence. */
+  /** ISO yyyy-mm-dd of the next anniversary. */
   nextDate: string;
 }
 
-/** Counts how many times a yearly anchor has been observed up to & including `today`. */
+/**
+ * Returns how many anniversaries of `anchor` have been completed up to
+ * `today`. The first anniversary is one full year after the original
+ * event — the original event itself is year 0.
+ */
 export function countAnchor(anchor: AnchorDate, today: Date): AnchorCount {
   const start = new Date(anchor.date + "T00:00:00");
   if (anchor.recurrence === "once") {
     const happened = today.getTime() >= start.getTime();
     return {
-      occurrences: happened ? 1 : 0,
+      completed: happened ? 1 : 0,
+      nextOrdinal: happened ? 1 : 1,
       daysUntilNext: happened
         ? 0
         : Math.ceil((start.getTime() - today.getTime()) / 86_400_000),
@@ -142,14 +157,14 @@ export function countAnchor(anchor: AnchorDate, today: Date): AnchorCount {
   const d = start.getDate();
   const startYear = start.getFullYear();
   const todayYear = today.getFullYear();
-  let occurrences = 0;
-  for (let y = startYear; y <= todayYear; y++) {
-    const occ = new Date(y, m, d);
-    if (occ.getTime() <= today.getTime()) occurrences++;
-  }
+  // raw years between today and the original event
+  let completed = todayYear - startYear;
   const thisYearOcc = new Date(todayYear, m, d);
+  // If this year's anniversary hasn't occurred yet, shave one year off.
+  if (thisYearOcc.getTime() > today.getTime()) completed -= 1;
+  if (completed < 0) completed = 0;
   const next =
-    thisYearOcc.getTime() >= today.getTime()
+    thisYearOcc.getTime() > today.getTime()
       ? thisYearOcc
       : new Date(todayYear + 1, m, d);
   const daysUntilNext = Math.max(
@@ -158,7 +173,7 @@ export function countAnchor(anchor: AnchorDate, today: Date): AnchorCount {
   );
   const pad = (n: number) => String(n).padStart(2, "0");
   const nextDate = `${next.getFullYear()}-${pad(next.getMonth() + 1)}-${pad(next.getDate())}`;
-  return { occurrences, daysUntilNext, nextDate };
+  return { completed, nextOrdinal: completed + 1, daysUntilNext, nextDate };
 }
 
 /** Turkish ordinal — always trailing dot. */
