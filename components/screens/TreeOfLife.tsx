@@ -670,21 +670,20 @@ export function TreeOfLife({
 }: TreeOfLifeProps) {
   const seasonAlpha = level === "all" ? 0.55 : 1;
   const monthAlpha = level === "all" ? 0 : level === "year" ? 0.4 : 1;
-  // Apparent on-screen size stays roughly constant: the viewBox does the
-  // zoom, the token scales mildly to compensate. Tokens SHRINK as you zoom
-  // in so they read as discrete glyphs instead of overpowering the branch
-  // they sit on. Year-level keeps generous tap targets; deeper zooms taper
-  // because viewBox is small enough that even a 0.7x token reads clearly.
+  // Tokens shrink as you zoom in. Deeper zooms have a small viewBox AND
+  // few tokens, so a small token still has plenty of tap area. Going
+  // aggressively small at month/week prevents the previous "emoji
+  // overflowing the branch" problem the user flagged.
   const eventScale =
     level === "all"
       ? 1.2
       : level === "year"
-        ? 1.4
+        ? 1.1
         : level === "season"
-          ? 1.0
+          ? 0.75
           : level === "month"
-            ? 0.8
-            : 0.7; // week / moment
+            ? 0.55
+            : 0.45; // week / moment
   const eventLabelShow = level === "month" || level === "week";
   // Show decorative leaf scatter only at "all" zoom, hide entirely once focused
   const showLeafMass = level === "all";
