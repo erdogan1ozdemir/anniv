@@ -560,9 +560,15 @@ export function TreeOfLife({
         // Chunky brown gnarly year branch. Now rendered as 4 distinct
         // sub-branches end-to-end (büyükten küçüğe azalan yapı), each
         // a GnarledBranch with stepping width, joined by knots.
-        const branchBaseWidth = 22 + Math.min(8, Math.sqrt(memCount) * 1.2);
+        // Older years (lower on trunk) thicker, newer years thinner —
+        // matches a real tree where the trunk thickens with age.
+        const ageBoost = (2026 - year) * 0.7;
+        const branchBaseWidth =
+          18 + ageBoost + Math.min(10, Math.sqrt(memCount) * 1.5);
         const branchColor = "#3A2E22"; // bark brown
-        const plantBaseLength = 36 + Math.min(28, memCount * 1.4);
+        // Plant length also asymmetric — years with more memories grow
+        // more substantial canopies.
+        const plantBaseLength = 32 + Math.min(34, memCount * 1.6);
         // Sub-branches per year — 4 distinct chunks end-to-end.
         const N_SUB = 4;
         // Each sub-branch is a small multi-point gnarled segment.
@@ -702,6 +708,124 @@ export function TreeOfLife({
                 </g>
               );
             })}
+
+            {/* ── Mid-segment lateral offshoots — divisions BETWEEN
+                 junctions, asymmetric placement using deterministic RNG.
+                 Adds the "aralardan da bölünmeli" detail the user asked
+                 for: real trees branch all along, not only at corners. */}
+            {showOffshoots &&
+              subBranches.flatMap((sub, sIdx) => {
+                const rng = seedRand(year * 1009 + sub.s * 17);
+                const N_MID = 2 + (sIdx % 2); // 2-3 per sub-branch — asymmetric count
+                return Array.from({ length: N_MID }).map((_, mi) => {
+                  // Random position within the sub-branch (avoiding the
+                  // very ends so we don't sit on a junction).
+                  const tFrac = 0.18 + rng() * 0.62;
+                  const t = sub.t0 + (sub.t1 - sub.t0) * tFrac;
+                  const pt = yearPointAt(year, t);
+                  const above = (sIdx + mi) % 2 === 0;
+                  const angleVar = (rng() - 0.5) * 0.45;
+                  const angle =
+                    (above ? Math.PI / 2 : -Math.PI / 2) +
+                    tip.side * (0.18 + (rng() - 0.5) * 0.2) +
+                    angleVar;
+                  const len = 22 + rng() * 18;
+                  const tx = r1(pt.x + Math.cos(angle) * len);
+                  const ty = r1(pt.y - Math.sin(angle) * len);
+                  const w = sub.width * (0.32 + rng() * 0.18);
+                  const palette = [
+                    "#E8826B",
+                    "#F2C5D1",
+                    "#C8E07A",
+                    "#9FC5BD",
+                    "#E8D9B0",
+                  ];
+                  const berryC = palette[(year + sIdx + mi) % palette.length];
+                  return (
+                    <g key={`mid-${sIdx}-${mi}`}>
+                      <GnarledBranch
+                        points={[
+                          { x: pt.x, y: pt.y },
+                          { x: tx, y: ty },
+                        ]}
+                        baseWidth={w}
+                        tipFraction={0.7}
+                        color={branchColor}
+                        showKnots={false}
+                      />
+                      {showLeafMass && (
+                        <FractalBranch
+                          rootX={tx}
+                          rootY={ty}
+                          baseAngle={angle}
+                          baseLength={r1(14 + rng() * 8)}
+                          baseWidth={r1(w * 0.72)}
+                          depth={2}
+                          forkAngle={r1(0.55 + rng() * 0.15)}
+                          lengthShrink={0.68}
+                          widthShrink={0.72}
+                          branchFactor={2}
+                          seed={year * 1213 + sIdx * 19 + mi * 7}
+                          color={branchColor}
+                          budTips
+                          budPalette={[berryC, "#F2C5D1"]}
+                        />
+                      )}
+                    </g>
+                  );
+                });
+              })}
+
+            {/* ── Random leaf clusters along year backbone — small
+                 oval leaves scattered organically along the branch
+                 length, not tied to memory data. ── */}
+            {showLeafMass &&
+              showOffshoots &&
+              Array.from({ length: 8 }).map((_, li) => {
+                const rng = seedRand(year * 777 + li * 43);
+                const t = 0.12 + rng() * 0.78;
+                const pt = yearPointAt(year, t);
+                const sideMul = rng() > 0.5 ? 1 : -1;
+                const offX = sideMul * (6 + rng() * 14);
+                const offY = -(rng() * 16);
+                const cx = r1(pt.x + offX);
+                const cy = r1(pt.y + offY);
+                const rotA = r1((rng() - 0.5) * 80);
+                const rotB = r1((rng() - 0.5) * 80);
+                const sz = r1(2.4 + rng() * 1.6);
+                return (
+                  <g key={`leaf-${li}`} pointerEvents="none">
+                    {/* Tiny attachment hairline */}
+                    <line
+                      x1={r1(pt.x + sideMul * 2)}
+                      y1={r1(pt.y - 2)}
+                      x2={cx}
+                      y2={cy}
+                      stroke={branchColor}
+                      strokeWidth="0.5"
+                      opacity="0.6"
+                    />
+                    <ellipse
+                      cx={cx}
+                      cy={cy}
+                      rx={r1(sz * 0.55)}
+                      ry={sz}
+                      fill="#7FA847"
+                      opacity="0.85"
+                      transform={`rotate(${rotA} ${cx} ${cy})`}
+                    />
+                    <ellipse
+                      cx={r1(cx + sideMul * 3)}
+                      cy={r1(cy + 1)}
+                      rx={r1(sz * 0.5)}
+                      ry={r1(sz * 0.85)}
+                      fill="#9FC580"
+                      opacity="0.78"
+                      transform={`rotate(${rotB} ${r1(cx + sideMul * 3)} ${r1(cy + 1)})`}
+                    />
+                  </g>
+                );
+              })}
 
             {showLeafMass && (
               <>
