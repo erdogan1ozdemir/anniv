@@ -376,6 +376,10 @@ export function TreeOfLife({
   // bulky decorative offshoots in favour of just tokens + the
   // focused month-tip leaves at deep zoom.
   const showOffshoots = level === "all" || level === "year" || level === "season";
+  // Junction Y-forks (3 forks per junction) read as overlapping mass
+  // at month/week zoom because the focused branch fills the small
+  // viewBox vertically. Restrict to year+ levels.
+  const showJunctionForks = level === "all" || level === "year";
   // Inter-year fillers + drift particles only at all-zoom — they
   // depend on absolute trunk coords that fall outside year+ viewBoxes.
   const showCanopyFill = level === "all";
@@ -622,12 +626,9 @@ export function TreeOfLife({
                 color={branchColor}
               />
             ))}
-            {/* Junction Y-forks — at each junction between year
-                 sub-branches, spawn THREE side-branches diverging at
-                 distinct angles (above + below + diagonal-forward).
-                 Each fork is itself a recursive FractalBranch so the
-                 silhouette reads as a tree, not a wand with feathers. */}
-            {subBranches.slice(0, -1).map((sub) => {
+            {/* Junction Y-forks — gated to year+ zoom so month/week
+                 don't see overlapping fractal masses. */}
+            {showJunctionForks && subBranches.slice(0, -1).map((sub) => {
               const j = sub.p1;
               // Outward direction along the year curve at this point
               const ahead = sub.p1.x - sub.p0.x;
@@ -710,35 +711,35 @@ export function TreeOfLife({
             })}
 
             {/* ── Mid-segment lateral offshoots — divisions BETWEEN
-                 junctions, asymmetric placement using deterministic RNG.
-                 Adds the "aralardan da bölünmeli" detail the user asked
-                 for: real trees branch all along, not only at corners. */}
+                 junctions. Longer + chunkier + deeper-recursing than
+                 before so the user can clearly see "aralardan da
+                 bölünmeli". 4 per segment, asymmetrically placed. */}
             {showOffshoots &&
               subBranches.flatMap((sub, sIdx) => {
                 const rng = seedRand(year * 1009 + sub.s * 17);
-                const N_MID = 2 + (sIdx % 2); // 2-3 per sub-branch — asymmetric count
+                const N_MID = 3 + (sIdx % 2); // 3-4 per sub-branch
                 return Array.from({ length: N_MID }).map((_, mi) => {
-                  // Random position within the sub-branch (avoiding the
-                  // very ends so we don't sit on a junction).
-                  const tFrac = 0.18 + rng() * 0.62;
+                  const tFrac = 0.15 + rng() * 0.7;
                   const t = sub.t0 + (sub.t1 - sub.t0) * tFrac;
                   const pt = yearPointAt(year, t);
                   const above = (sIdx + mi) % 2 === 0;
-                  const angleVar = (rng() - 0.5) * 0.45;
+                  const angleVar = (rng() - 0.5) * 0.55;
                   const angle =
                     (above ? Math.PI / 2 : -Math.PI / 2) +
-                    tip.side * (0.18 + (rng() - 0.5) * 0.2) +
+                    tip.side * (0.18 + (rng() - 0.5) * 0.22) +
                     angleVar;
-                  const len = 22 + rng() * 18;
+                  // Longer + chunkier so they read as proper sub-branches
+                  const len = 36 + rng() * 26;
                   const tx = r1(pt.x + Math.cos(angle) * len);
                   const ty = r1(pt.y - Math.sin(angle) * len);
-                  const w = sub.width * (0.32 + rng() * 0.18);
+                  const w = sub.width * (0.5 + rng() * 0.22);
                   const palette = [
                     "#E8826B",
                     "#F2C5D1",
                     "#C8E07A",
                     "#9FC5BD",
                     "#E8D9B0",
+                    "#D17A95",
                   ];
                   const berryC = palette[(year + sIdx + mi) % palette.length];
                   return (
@@ -749,7 +750,7 @@ export function TreeOfLife({
                           { x: tx, y: ty },
                         ]}
                         baseWidth={w}
-                        tipFraction={0.7}
+                        tipFraction={0.72}
                         color={branchColor}
                         showKnots={false}
                       />
@@ -758,11 +759,11 @@ export function TreeOfLife({
                           rootX={tx}
                           rootY={ty}
                           baseAngle={angle}
-                          baseLength={r1(14 + rng() * 8)}
-                          baseWidth={r1(w * 0.72)}
-                          depth={2}
-                          forkAngle={r1(0.55 + rng() * 0.15)}
-                          lengthShrink={0.68}
+                          baseLength={r1(20 + rng() * 12)}
+                          baseWidth={r1(w * 0.78)}
+                          depth={3}
+                          forkAngle={r1(0.55 + rng() * 0.18)}
+                          lengthShrink={0.7}
                           widthShrink={0.72}
                           branchFactor={2}
                           seed={year * 1213 + sIdx * 19 + mi * 7}
