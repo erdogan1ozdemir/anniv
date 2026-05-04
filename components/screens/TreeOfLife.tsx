@@ -468,6 +468,66 @@ function OrganicTrunk() {
 }
 
 // ===================================================================
+// SECONDARY BRANCHES — small organic offshoots from each year branch
+// ===================================================================
+// Adds visual richness without the chaos of the previous random
+// FillerBranches: each offshoot grows ORGANICALLY from a point on
+// the year branch, lifts upward, and tapers in width.
+function SecondaryBranches({
+  year,
+  side,
+  trunkColor,
+}: {
+  year: number;
+  side: 1 | -1;
+  trunkColor: string;
+}) {
+  const rng = seedRand(year * 313 + 41);
+  const offshoots = Array.from({ length: 5 }).map((_, i) => {
+    const t = 0.45 + (i / 5) * 0.42; // along year branch from 45% to 87%
+    const pt = yearPointAt(year, t);
+    const r = rng();
+    // Lift and angle outward, gentle randomness so they don't feel grid-like
+    const lift = -55 - r * 35;
+    const horiz = (15 + rng() * 25) * side;
+    const tx = r1(pt.x + horiz);
+    const ty = r1(pt.y + lift);
+    // Sub-twig from offshoot tip — adds depth
+    const sr = rng();
+    const stx = r1(tx + (sr - 0.5) * 38);
+    const sty = r1(ty - 22 - sr * 18);
+    const w = r1(3 + (1 - i / 5) * 3);
+    return { px: r1(pt.x), py: r1(pt.y), tx, ty, stx, sty, w };
+  });
+  return (
+    <g pointerEvents="none">
+      {offshoots.map((o, i) => (
+        <g key={i}>
+          {/* Main offshoot */}
+          <path
+            d={`M ${o.px} ${o.py} Q ${(o.px + o.tx) / 2 + side * 4} ${(o.py + o.ty) / 2 - 8}, ${o.tx} ${o.ty}`}
+            stroke={trunkColor}
+            strokeWidth={o.w}
+            fill="none"
+            strokeLinecap="round"
+            opacity="0.92"
+          />
+          {/* Sub-twig */}
+          <path
+            d={`M ${o.tx} ${o.ty} Q ${(o.tx + o.stx) / 2} ${(o.ty + o.sty) / 2 - 6}, ${o.stx} ${o.sty}`}
+            stroke={trunkColor}
+            strokeWidth={Math.max(1, o.w * 0.55)}
+            fill="none"
+            strokeLinecap="round"
+            opacity="0.8"
+          />
+        </g>
+      ))}
+    </g>
+  );
+}
+
+// ===================================================================
 // RAINBOW FOLIAGE — decorative dense cloud at each year's branch tip
 // ===================================================================
 // Renders independently of memory count so even sparse years still
@@ -485,6 +545,12 @@ const FOLIAGE_PALETTES: string[][] = [
   ["#5A8B7E", "#9FC5BD", "#E8D9B0", "#C8E07A"], // ocean+meadow
   ["#E8826B", "#F2C5D1", "#9FC5BD", "#C8E07A"], // sunset+sky
 ];
+
+// Round to 1 decimal so SSR + client agree on Math.cos / sin output
+// (ECMAScript doesn't guarantee bit-identical trig results across JIT
+// runs, which manifested as hydration mismatches on the foliage paths).
+const r1 = (n: number) => Math.round(n * 10) / 10;
+const r3 = (n: number) => Math.round(n * 1000) / 1000;
 
 function RainbowFoliage({
   year,
@@ -526,12 +592,12 @@ function RainbowFoliage({
         const a = rng() * Math.PI * 2;
         // Bias the cluster slightly to the tip-side so it leans outward
         const dist = 10 + rng() * 78;
-        const px = cx + Math.cos(a) * dist + side * (rng() * 8);
-        const py = cy + Math.sin(a) * dist * 0.92 - rng() * 14;
-        const sz = 4 + rng() * 7;
+        const px = r1(cx + Math.cos(a) * dist + side * (rng() * 8));
+        const py = r1(cy + Math.sin(a) * dist * 0.92 - rng() * 14);
+        const sz = r1(4 + rng() * 7);
         const color = palette[i % palette.length];
-        const op = 0.45 + rng() * 0.45;
-        const rot = (rng() - 0.5) * 90;
+        const op = r3(0.45 + rng() * 0.45);
+        const rot = r1((rng() - 0.5) * 90);
         const shape = i % 4;
         if (shape === 0) {
           // 4-pointed sparkle
@@ -955,12 +1021,19 @@ export function TreeOfLife({
             />
 
             {showLeafMass && (
-              <RainbowFoliage
-                year={year}
-                tipX={tip.x}
-                tipY={tip.y}
-                side={tip.side}
-              />
+              <>
+                <SecondaryBranches
+                  year={year}
+                  side={tip.side}
+                  trunkColor={trunkColor}
+                />
+                <RainbowFoliage
+                  year={year}
+                  tipX={tip.x}
+                  tipY={tip.y}
+                  side={tip.side}
+                />
+              </>
             )}
 
             {(level === "all" || level === "year") && (
