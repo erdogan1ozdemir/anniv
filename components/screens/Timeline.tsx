@@ -249,12 +249,25 @@ function PreviewOverlay({
   onClose: () => void;
   onOpen: (id: string) => void;
 }) {
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+  const previousFocusRef = useRef<Element | null>(null);
+  const primaryBtnRef = useRef<HTMLButtonElement | null>(null);
+
   useEffect(() => {
+    previousFocusRef.current = document.activeElement;
+    const t = window.setTimeout(() => {
+      primaryBtnRef.current?.focus();
+    }, 30);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("keydown", onKey);
+      const prev = previousFocusRef.current;
+      if (prev instanceof HTMLElement) prev.focus({ preventScroll: true });
+    };
   }, [onClose]);
   const style = KIND_STYLE[ev.kind];
   return (
@@ -275,6 +288,7 @@ function PreviewOverlay({
       }}
     >
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={`${ev.t} önizleme`}
@@ -351,6 +365,7 @@ function PreviewOverlay({
             kapat
           </button>
           <button
+            ref={primaryBtnRef}
             onClick={() => onOpen(ev.id)}
             style={{
               padding: "10px 18px",

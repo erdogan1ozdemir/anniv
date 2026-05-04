@@ -113,6 +113,17 @@ export function CounterScreen() {
                   pointerEvents: "none",
                 }}
               />
+              {/* Dark scrim ensures bone-cream text reads against light gradients */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(135deg, rgba(15,17,13,0.18) 0%, rgba(15,17,13,0.04) 60%, rgba(15,17,13,0.22) 100%)",
+                  pointerEvents: "none",
+                }}
+              />
               <div
                 style={{
                   position: "relative",
@@ -182,8 +193,9 @@ export function CounterScreen() {
                     style={{
                       alignSelf: "center",
                       fontSize: 22,
-                      opacity: 0.7,
+                      opacity: 0.5,
                       flexShrink: 0,
+                      color: "rgba(255,255,255,0.85)",
                     }}
                   >
                     ›
