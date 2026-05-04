@@ -467,45 +467,43 @@ function OrganicTrunk() {
   );
 }
 
-function FillerBranches() {
-  const trunkColor = "#2C2620";
-  const fillers = Array.from({ length: 28 }).map((_, i) => {
-    const rng = seedRand(i * 31 + 7);
-    const y = 250 + rng() * 1900;
-    const side = i % 2 === 0 ? -1 : 1;
-    const startX = TRUNK_X + side * (10 + rng() * 4);
-    const len = 30 + rng() * 80;
-    const ang = (rng() - 0.5) * 1.4 - 0.4 * side;
-    const tx = startX + Math.cos(ang) * len * side;
-    const ty = y - Math.abs(Math.sin(ang)) * len - 10;
-    return { y, side, startX, tx, ty, len, w: 1.5 + rng() * 2.5 };
-  });
+// ===================================================================
+// FOLIAGE BURST — colored dots/stars at "all" zoom, replacing tokens
+// ===================================================================
+function FoliageBurst({
+  ev,
+  x,
+  y,
+  scale = 1,
+}: {
+  ev: LifeEvent;
+  x: number;
+  y: number;
+  scale?: number;
+}) {
+  const color = ev.color ?? KIND_STYLE[ev.kind].color;
+  const r = (ev.pinned ? 8 : 5) * scale;
+  if (ev.pinned) {
+    // 8-pointed twinkle for important events
+    const inner = r * 0.42;
+    const pts = Array.from({ length: 8 }).map((_, i) => {
+      const a = (i * Math.PI) / 4;
+      const rr = i % 2 === 0 ? r : inner;
+      return `${(x + Math.cos(a) * rr).toFixed(2)},${(y + Math.sin(a) * rr).toFixed(2)}`;
+    });
+    return (
+      <g pointerEvents="none">
+        <circle cx={x} cy={y} r={r * 1.6} fill={color} opacity="0.18" />
+        <polygon points={pts.join(" ")} fill={color} opacity="0.95" />
+        <circle cx={x} cy={y} r={r * 0.35} fill="#FFF8E7" opacity="0.85" />
+      </g>
+    );
+  }
   return (
-    <g opacity="0.7" pointerEvents="none">
-      {fillers.map((f, i) => {
-        const cpx = (f.startX + f.tx) / 2 + f.side * 8;
-        const cpy = (f.y + f.ty) / 2 - 4;
-        return (
-          <g key={i}>
-            <path
-              d={`M ${f.startX} ${f.y} Q ${cpx} ${cpy}, ${f.tx} ${f.ty}`}
-              stroke={trunkColor}
-              strokeWidth={f.w}
-              fill="none"
-              strokeLinecap="round"
-            />
-            {f.len > 60 && (
-              <path
-                d={`M ${f.tx} ${f.ty} Q ${f.tx + f.side * 15} ${f.ty - 12}, ${f.tx + f.side * 30} ${f.ty - 25}`}
-                stroke={trunkColor}
-                strokeWidth={Math.max(0.6, f.w * 0.5)}
-                fill="none"
-                strokeLinecap="round"
-              />
-            )}
-          </g>
-        );
-      })}
+    <g pointerEvents="none">
+      <circle cx={x} cy={y} r={r * 1.5} fill={color} opacity="0.18" />
+      <circle cx={x} cy={y} r={r} fill={color} opacity="0.92" />
+      <circle cx={x - r * 0.32} cy={y - r * 0.32} r={r * 0.32} fill="#FFF8E7" opacity="0.6" />
     </g>
   );
 }
@@ -742,7 +740,6 @@ export function TreeOfLife({
       </g>
 
       <OrganicTrunk />
-      <FillerBranches />
 
       <g>
         <path
@@ -800,26 +797,6 @@ export function TreeOfLife({
         const baseWidth = tip.len > 320 ? 20 : 16;
         const branchWidth = baseWidth + Math.min(12, Math.sqrt(memCount) * 2);
 
-        const tipRng = seedRand(year);
-        const nTwigs = 14;
-        const tipTwigs = Array.from({ length: nTwigs }).map((_, i) => {
-          const t = 0.4 + (i / nTwigs) * 0.6;
-          const pt = yearPointAt(year, t);
-          const rng = tipRng();
-          const angOff = (rng - 0.5) * 1.8;
-          const len = 50 + rng * 100;
-          const upBias = -0.5;
-          const ang = Math.atan2(pt.dy, pt.dx) + (Math.PI / 2) * tip.side + angOff;
-          const tx = pt.x + Math.cos(ang) * len;
-          const ty = pt.y + Math.sin(ang) * len + upBias * len;
-          const subRng = tipRng();
-          const subLen = len * 0.55;
-          const subAng = ang + (subRng - 0.5) * 1.4;
-          const sx = tx + Math.cos(subAng) * subLen;
-          const sy = ty + Math.sin(subAng) * subLen + upBias * subLen * 0.5;
-          return { px: pt.x, py: pt.y, tx, ty, sx, sy, w: 6 - i * 0.25 };
-        });
-
         return (
           <g
             key={year}
@@ -859,25 +836,6 @@ export function TreeOfLife({
               opacity={isFocused ? 0.35 : 0}
               style={{ transition: "opacity 240ms ease", filter: "blur(2px)" }}
             />
-
-            {tipTwigs.map((t, i) => (
-              <g key={i}>
-                <path
-                  d={`M ${t.px} ${t.py} Q ${(t.px + t.tx) / 2} ${(t.py + t.ty) / 2 - 10}, ${t.tx} ${t.ty}`}
-                  stroke={trunkColor}
-                  strokeWidth={t.w}
-                  fill="none"
-                  strokeLinecap="round"
-                />
-                <path
-                  d={`M ${t.tx} ${t.ty} Q ${(t.tx + t.sx) / 2} ${(t.ty + t.sy) / 2 - 6}, ${t.sx} ${t.sy}`}
-                  stroke={trunkColor}
-                  strokeWidth={Math.max(1, t.w * 0.5)}
-                  fill="none"
-                  strokeLinecap="round"
-                />
-              </g>
-            ))}
 
             {showLeafMass &&
               Array.from({ length: Math.min(20, 6 + memCount) }).map((_, i) => {
@@ -1104,14 +1062,18 @@ export function TreeOfLife({
                 }
                 return (
                   <g key={ev.id} style={{ transition: "opacity 400ms ease" }}>
-                    <EventGlyph
-                      ev={ev}
-                      x={pos.x}
-                      y={pos.y}
-                      scale={eventScale}
-                      onClick={onSelectEvent}
-                      onPreview={onPreviewEvent}
-                    />
+                    {level === "all" ? (
+                      <FoliageBurst ev={ev} x={pos.x} y={pos.y} scale={eventScale} />
+                    ) : (
+                      <EventGlyph
+                        ev={ev}
+                        x={pos.x}
+                        y={pos.y}
+                        scale={eventScale}
+                        onClick={onSelectEvent}
+                        onPreview={onPreviewEvent}
+                      />
+                    )}
                     {showCatEmojiAbove && ev.cat && (
                       <text
                         x={pos.x}
