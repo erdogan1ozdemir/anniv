@@ -19,7 +19,7 @@ export function RainbowFoliage({ year, tipX, tipY, side }: RainbowFoliageProps) 
   // Cluster center sits past the branch tip, fanning further out
   const cx = tipX + side * 30;
   const cy = tipY - 26;
-  const N_PETALS = 42;
+  const N_PETALS = 64; // densified — fuller canopy
   return (
     <g pointerEvents="none">
       {/* Soft watercolor blooms behind */}

@@ -28,6 +28,8 @@ import { OrganicTrunk } from "@/components/tree/Trunk";
 import { DriftParticles } from "@/components/tree/DriftParticles";
 import { SecondaryBranches } from "@/components/tree/Branches";
 import { RainbowFoliage } from "@/components/tree/Foliage";
+import { MidBranchLeaves } from "@/components/tree/MidBranchLeaves";
+import { RootCapillaries } from "@/components/tree/RootCapillaries";
 import { EventGlyph, FoliageBurst } from "@/components/tree/Tokens";
 import { r1 } from "@/components/tree/utils";
 
@@ -473,6 +475,9 @@ export function TreeOfLife({
         </g>
       )}
 
+      {/* Fine capillary roots interleaved between the main strokes */}
+      <RootCapillaries />
+
       {/* Roots — main trunks + side branches + capillaries */}
       <g opacity="0.95">
         {[
@@ -704,6 +709,7 @@ export function TreeOfLife({
                   side={tip.side}
                   trunkColor={trunkColor}
                 />
+                <MidBranchLeaves year={year} side={tip.side} />
                 <RainbowFoliage
                   year={year}
                   tipX={tip.x}

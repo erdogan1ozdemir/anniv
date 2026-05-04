@@ -313,6 +313,113 @@ export function AcornBerry({ px, py, sz, rot, color, accent, opacity }: LeafShap
   );
 }
 
+// ─── More variants (densification pass) ─────────────────────────────
+
+/** Pine needle cluster — radial spikes from a central point. */
+export function PineNeedles({ px, py, sz, rot, color, opacity }: LeafShapeProps) {
+  const s = r1(sz * 1.1);
+  return (
+    <g transform={`translate(${px} ${py}) rotate(${rot})`} opacity={opacity}>
+      {[-60, -30, 0, 30, 60, 90, 120, 150, 180, 210, 240, 270].map((angDeg) => (
+        <line
+          key={angDeg}
+          x1="0"
+          y1="0"
+          x2="0"
+          y2={r1(-s)}
+          stroke={color}
+          strokeWidth="0.7"
+          strokeLinecap="round"
+          transform={`rotate(${angDeg})`}
+        />
+      ))}
+    </g>
+  );
+}
+
+/** Simple twig with three small leaflets. */
+export function SimpleTwig({ px, py, sz, rot, color, accent, opacity }: LeafShapeProps) {
+  const s = r1(sz);
+  return (
+    <g transform={`translate(${px} ${py}) rotate(${rot})`} opacity={opacity}>
+      <line
+        x1="0"
+        y1={r1(s * 0.8)}
+        x2="0"
+        y2={r1(-s * 0.8)}
+        stroke={accent}
+        strokeWidth="0.6"
+      />
+      <ellipse cx={r1(-s * 0.4)} cy={r1(-s * 0.3)} rx={r1(s * 0.35)} ry={r1(s * 0.18)} fill={color} transform={`rotate(-30 ${r1(-s * 0.4)} ${r1(-s * 0.3)})`} />
+      <ellipse cx={r1(s * 0.4)} cy={r1(-s * 0.3)} rx={r1(s * 0.35)} ry={r1(s * 0.18)} fill={color} transform={`rotate(30 ${r1(s * 0.4)} ${r1(-s * 0.3)})`} />
+      <ellipse cx="0" cy={r1(-s * 0.6)} rx={r1(s * 0.3)} ry={r1(s * 0.5)} fill={color} />
+    </g>
+  );
+}
+
+/** Dandelion puff — tiny radiating fluff strokes. */
+export function DandelionPuff({ px, py, sz, color, opacity }: LeafShapeProps) {
+  const s = r1(sz * 0.9);
+  return (
+    <g transform={`translate(${px} ${py})`} opacity={opacity}>
+      <circle r={r1(s * 0.18)} fill={color} />
+      {Array.from({ length: 14 }).map((_, i) => {
+        const a = (i * 360) / 14;
+        return (
+          <line
+            key={i}
+            x1="0"
+            y1="0"
+            x2="0"
+            y2={r1(-s)}
+            stroke={color}
+            strokeWidth="0.5"
+            strokeLinecap="round"
+            transform={`rotate(${a})`}
+            opacity="0.85"
+          />
+        );
+      })}
+    </g>
+  );
+}
+
+/** Floral spray — three small flowers on a stem. */
+export function FloralSpray({ px, py, sz, rot, color, accent, opacity }: LeafShapeProps) {
+  const s = r1(sz * 0.95);
+  const tinyFlower = (cx: number, cy: number, fillColor: string) => (
+    <g transform={`translate(${cx} ${cy})`}>
+      {[0, 90, 180, 270].map((angDeg) => (
+        <ellipse key={angDeg} cx="0" cy={r1(-s * 0.2)} rx={r1(s * 0.13)} ry={r1(s * 0.22)} fill={fillColor} transform={`rotate(${angDeg})`} />
+      ))}
+      <circle r={r1(s * 0.1)} fill={accent} />
+    </g>
+  );
+  return (
+    <g transform={`translate(${px} ${py}) rotate(${rot})`} opacity={opacity}>
+      <line x1="0" y1={r1(s * 0.5)} x2="0" y2={r1(-s * 0.85)} stroke={accent} strokeWidth="0.5" />
+      {tinyFlower(0, r1(-s * 0.85), color)}
+      {tinyFlower(r1(-s * 0.5), r1(-s * 0.3), color)}
+      {tinyFlower(r1(s * 0.5), r1(-s * 0.3), color)}
+    </g>
+  );
+}
+
+/** Druplet berry cluster — three berries on a stem. */
+export function DrupletBerry({ px, py, sz, rot, color, accent, opacity }: LeafShapeProps) {
+  const s = r1(sz * 0.85);
+  return (
+    <g transform={`translate(${px} ${py}) rotate(${rot})`} opacity={opacity}>
+      <line x1="0" y1={r1(s * 0.5)} x2="0" y2={r1(-s * 0.4)} stroke={accent} strokeWidth="0.6" />
+      <circle cx={0} cy={r1(-s * 0.55)} r={r1(s * 0.35)} fill={color} />
+      <circle cx={r1(-s * 0.45)} cy={r1(-s * 0.15)} r={r1(s * 0.32)} fill={color} />
+      <circle cx={r1(s * 0.45)} cy={r1(-s * 0.15)} r={r1(s * 0.32)} fill={color} />
+      {/* Highlights */}
+      <circle cx={r1(-s * 0.1)} cy={r1(-s * 0.65)} r={r1(s * 0.1)} fill="#FFF8E7" opacity="0.6" />
+    </g>
+  );
+}
+
 // ─── Dispatcher ─────────────────────────────────────────────────────
 
 const SHAPES = [
@@ -328,6 +435,11 @@ const SHAPES = [
   GinkgoLeaf,
   CherryBlossom,
   AcornBerry,
+  PineNeedles,
+  SimpleTwig,
+  DandelionPuff,
+  FloralSpray,
+  DrupletBerry,
 ] as const;
 
 /** Pick a shape deterministically by index (cycles through all 12). */
