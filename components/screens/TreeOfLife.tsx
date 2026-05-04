@@ -31,6 +31,7 @@ import { InterYearFillers } from "@/components/tree/InterYearFillers";
 import { PhantomBranches } from "@/components/tree/PhantomBranches";
 import { GnarledBranch } from "@/components/tree/GnarledBranch";
 import { LeafyTwig } from "@/components/tree/LeafyTwig";
+import { FractalBranch } from "@/components/tree/FractalBranch";
 import { RootCapillaries } from "@/components/tree/RootCapillaries";
 import { RootSystem } from "@/components/tree/RootSystem";
 import { EventGlyph, FoliageBurst } from "@/components/tree/Tokens";
@@ -632,6 +633,7 @@ export function TreeOfLife({
               const berryC = palette[(year + sub.s) % palette.length];
               return (
                 <g key={`jSide-${sub.s}`}>
+                  {/* Stem from year branch to junction-canopy base */}
                   <GnarledBranch
                     points={[
                       { x: j.x, y: j.y },
@@ -639,18 +641,26 @@ export function TreeOfLife({
                       { x: tx, y: ty },
                     ]}
                     baseWidth={w}
-                    tipFraction={0.55}
+                    tipFraction={0.6}
                     color={branchColor}
                   />
+                  {/* Recursive fractal mini-canopy at this junction's tip */}
                   {showLeafMass && (
-                    <LeafyTwig
-                      x={tx}
-                      y={ty}
-                      angle={angle}
-                      length={20}
+                    <FractalBranch
+                      rootX={tx}
+                      rootY={ty}
+                      baseAngle={angle}
+                      baseLength={16}
+                      baseWidth={w * 0.55}
+                      depth={2}
+                      forkAngle={0.55}
+                      lengthShrink={0.62}
+                      widthShrink={0.6}
+                      branchFactor={2}
                       seed={year * 47 + sub.s * 13}
-                      nLeaves={4}
-                      berryColor={berryC}
+                      color={branchColor}
+                      budTips
+                      budPalette={[berryC, "#F2C5D1"]}
                     />
                   )}
                 </g>
@@ -738,7 +748,26 @@ export function TreeOfLife({
                   </>
                 )}
 
-                {/* ── Tip plant — biggest, points outward ── */}
+                {/* ── Fractal canopy at year tip — recursive bark
+                     subdivision (3 levels). Mirrors the reference
+                     image's branchy silhouette. ── */}
+                <FractalBranch
+                  rootX={tip.x}
+                  rootY={tip.y}
+                  baseAngle={Math.PI / 2 + tip.side * 0.18}
+                  baseLength={plantBaseLength * 0.85}
+                  baseWidth={subBranches[N_SUB - 1].width * 0.7}
+                  depth={3}
+                  forkAngle={0.5}
+                  lengthShrink={0.66}
+                  widthShrink={0.6}
+                  branchFactor={3}
+                  seed={year * 7 + 19}
+                  color={branchColor}
+                  budTips
+                />
+                {/* ── Tip plant — delicate green stems + flowers
+                     overlay the fractal canopy ── */}
                 <Plant
                   year={year}
                   rootX={tip.x}
