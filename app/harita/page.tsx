@@ -1,12 +1,13 @@
-import { MapScreen } from "@/components/screens/MapScreen";
+import { CounterScreen } from "@/components/screens/CounterScreen";
 import { BottomNav } from "@/components/ui/BottomNav";
-import { loadLocations } from "@/lib/data";
 
-export default async function MapPage() {
-  const locations = await loadLocations();
+// Legacy /harita route — now serves the Sayaç screen so old bookmarks
+// keep working. The MapScreen component (in components/screens/MapScreen.tsx)
+// is preserved with a feature flag for future map development.
+export default function MapPage() {
   return (
     <>
-      <MapScreen locations={locations} />
+      <CounterScreen />
       <BottomNav />
     </>
   );

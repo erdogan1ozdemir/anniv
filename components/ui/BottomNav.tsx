@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 const items = [
   { href: "/", icon: "🌿", label: "bahçe", id: "tree" },
   { href: "/koleksiyonlar", icon: "📚", label: "koleksiyon", id: "collections" },
-  { href: "/harita", icon: "🗺", label: "harita", id: "map" },
+  { href: "/sayac", icon: "⏳", label: "sayaç", id: "counter" },
   { href: "/jedi", icon: "🐈", label: "jedi", id: "jedi" },
 ];
 
@@ -14,7 +14,8 @@ function activeFor(pathname: string): string {
   if (pathname === "/") return "tree";
   if (pathname.startsWith("/koleksiyonlar") || pathname.startsWith("/kategoriler"))
     return "collections";
-  if (pathname.startsWith("/harita")) return "map";
+  if (pathname.startsWith("/sayac") || pathname.startsWith("/harita"))
+    return "counter";
   if (pathname.startsWith("/jedi")) return "jedi";
   if (pathname.startsWith("/ani")) return "tree";
   return "";
