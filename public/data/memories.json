@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Bahçemiz — Master Anı Kartları",
     "description": "Bahçemiz — birlikte büyüttüğümüz anılar, ZQWQZ'den bugüne.",
-    "total_cards": 96,
+    "total_cards": 95,
     "date_range": "2017-11-05 → 2026-04-30",
     "data_source": "kendi anılarımız",
     "generated": "2026-05-02",
@@ -235,29 +235,6 @@
       "story": "Bugün Erdoğan'ın doğum günü. Yarim her yıl gece yarısı 'iyi ki doğdun' yazıyor; bu yıl da yazacak.",
       "is_pinned": true,
       "ai_confidence": "high"
-    },
-    {
-      "id": "2018-q1-jenerik-yarim-jargon",
-      "date": "2018-04-30",
-      "title": "Bir sözlük doğuyor",
-      "subtitle": "ilk dört ayın armağanı: özel kelimeler",
-      "category": "ilkler",
-      "tags": [
-        "jargon",
-        "sözlük",
-        "ilk-aylar",
-        "yarim-aşkım-tatlış"
-      ],
-      "story": "Ocak ortasından Nisan sonuna kadar geçen 101 günde 24,932 mesaj attınız - günde ortalama 247 mesaj. Bu kadar yoğun bir iletişim, doğal olarak kendi şifrelerini de yarattı.",
-      "quote": null,
-      "whatsapp_excerpt": [],
-      "location": null,
-      "song_ref": null,
-      "mood": "nostalgic",
-      "is_pinned": false,
-      "media_count_estimate": 0,
-      "ai_confidence": "high",
-      "_batch": "01_anilar_batch1"
     },
     {
       "id": "2018-05-06-leventte-napsak",

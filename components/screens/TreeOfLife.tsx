@@ -9,10 +9,8 @@ import {
   TRUNK_X,
   YEARS,
   eventPos,
-  monthPath,
   monthSeason,
   monthTip,
-  seasonPath,
   seasonTip,
   seedRand,
   yearPath,
@@ -696,42 +694,65 @@ export function TreeOfLife({
         </g>
       )}
 
-      <g>
-        <path
-          d="M 500 110 C 498 90, 502 70, 500 40"
-          stroke={trunkColor}
-          strokeWidth="14"
-          fill="none"
-          strokeLinecap="round"
-        />
-        <path
-          d="M 500 110 C 460 90, 380 50, 280 25"
-          stroke={trunkColor}
-          strokeWidth="11"
-          fill="none"
-          strokeLinecap="round"
-        />
-        <path
-          d="M 500 110 C 540 90, 620 50, 720 25"
-          stroke={trunkColor}
-          strokeWidth="11"
-          fill="none"
-          strokeLinecap="round"
-        />
-        <path
-          d="M 500 110 C 470 95, 420 80, 350 80"
-          stroke={trunkColor}
-          strokeWidth="7"
-          fill="none"
-          strokeLinecap="round"
-        />
-        <path
-          d="M 500 110 C 530 95, 580 80, 650 80"
-          stroke={trunkColor}
-          strokeWidth="7"
-          fill="none"
-          strokeLinecap="round"
-        />
+      {/* Top canopy fork — 5 multi-segment tapered branches sprouting
+           from the trunk apex. Each branch has 4 kinks following the
+           first-kink-up + zigzag rule, just like the year branches. */}
+      <g pointerEvents="none">
+        {(() => {
+          // Each entry: { baseAngle (radians), len, baseW, segs, seed }
+          // Angles in polar convention (0=right, π/2=up, π=left).
+          const apex = { x: 500, y: 110 };
+          const forkBranches = [
+            // Center branch — straight up
+            { ang: Math.PI / 2 + 0.04, len: 90, baseW: 14, segs: 4, seed: 11 },
+            // Upper-left — up & far-left
+            { ang: Math.PI - 0.45, len: 260, baseW: 11, segs: 5, seed: 23 },
+            // Upper-right — up & far-right
+            { ang: 0.45, len: 260, baseW: 11, segs: 5, seed: 37 },
+            // Mid-left — flatter
+            { ang: Math.PI - 0.95, len: 170, baseW: 7, segs: 4, seed: 41 },
+            // Mid-right — flatter
+            { ang: 0.95, len: 170, baseW: 7, segs: 4, seed: 53 },
+          ];
+          return forkBranches.map((b, i) => {
+            const rng = seedRand(b.seed);
+            const segLen = (b.len / b.segs) * 1.05;
+            const points: Array<{ x: number; y: number }> = [
+              { x: apex.x, y: apex.y },
+            ];
+            let cx = apex.x;
+            let cy = apex.y;
+            let cAng = b.ang;
+            let lastSign: 1 | -1 = 1;
+            for (let k = 0; k < b.segs; k++) {
+              let sign: 1 | -1;
+              if (k === 0) {
+                // First kink → toward sky.
+                sign = cAng < Math.PI / 2 ? 1 : -1;
+              } else {
+                const flip = rng() > 0.3;
+                sign = (flip ? -lastSign : lastSign) as 1 | -1;
+              }
+              const kinkMag = 0.32 + rng() * 0.4;
+              cAng += sign * kinkMag;
+              lastSign = sign;
+              cx += Math.cos(cAng) * segLen * Math.pow(0.94, k);
+              cy -= Math.sin(cAng) * segLen * Math.pow(0.94, k);
+              points.push({ x: r1(cx), y: r1(cy) });
+            }
+            return (
+              <TaperedBranch
+                key={`fork-${i}`}
+                points={points}
+                baseWidth={b.baseW}
+                taperRatio={0.8}
+                color={trunkColor}
+                shadow
+                highlight
+              />
+            );
+          });
+        })()}
       </g>
 
       {/* Removed canopy halo + leaf-mass clouds for cleaner Nordic backdrop */}
@@ -1131,14 +1152,47 @@ export function TreeOfLife({
             )}
 
             {SEASON_ORDER.map((seasonId) => {
-              const sPath = seasonPath(year, seasonId);
-              const sFocused = focus.year === year && focus.season === seasonId;
               const sDimmed =
                 focus.season &&
                 focus.season !== seasonId &&
                 level !== "all" &&
                 level !== "year";
               const sOpacity = (sDimmed ? 0.2 : 1) * seasonAlpha;
+              const sTip = seasonTip(year, seasonId);
+              // Multi-segment season branch with first-kink-up + zigzag.
+              // Walk from base toward the season tip, treating the
+              // straight base→tip vector as the initial heading.
+              const sRng = seedRand(year * 911 + seasonId.charCodeAt(0));
+              const sDx = sTip.tipX - sTip.baseX;
+              const sDy = sTip.tipY - sTip.baseY;
+              const sBaseAngle = Math.atan2(-sDy, sDx); // sky-positive
+              const sTotalLen = Math.hypot(sDx, sDy);
+              const sSegs = 4; // 4 segments → 4 kinks total
+              const sSegLen = (sTotalLen / sSegs) * 1.05;
+              const seasonPoints: Array<{ x: number; y: number }> = [
+                { x: r1(sTip.baseX), y: r1(sTip.baseY) },
+              ];
+              {
+                let cx = sTip.baseX;
+                let cy = sTip.baseY;
+                let cAng = sBaseAngle;
+                let lastSign: 1 | -1 = 1;
+                for (let k = 0; k < sSegs; k++) {
+                  let sign: 1 | -1;
+                  if (k === 0) {
+                    sign = cAng < Math.PI / 2 ? 1 : -1;
+                  } else {
+                    const flip = sRng() > 0.25;
+                    sign = (flip ? -lastSign : lastSign) as 1 | -1;
+                  }
+                  const kinkMag = 0.3 + sRng() * 0.35;
+                  cAng += sign * kinkMag;
+                  lastSign = sign;
+                  cx += Math.cos(cAng) * sSegLen;
+                  cy -= Math.sin(cAng) * sSegLen;
+                  seasonPoints.push({ x: r1(cx), y: r1(cy) });
+                }
+              }
               return (
                 <g
                   key={seasonId}
@@ -1152,26 +1206,51 @@ export function TreeOfLife({
                     onSelectSeason?.(year, seasonId);
                   }}
                 >
-                  <path
-                    d={sPath}
-                    stroke={trunkColor}
-                    strokeWidth="7"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d={sPath}
-                    stroke="rgba(255,235,200,0.15)"
-                    strokeWidth="1.5"
-                    fill="none"
-                    strokeLinecap="round"
+                  <TaperedBranch
+                    points={seasonPoints}
+                    baseWidth={9}
+                    taperRatio={0.78}
+                    color={trunkColor}
+                    shadow={false}
+                    highlight
                   />
 
                   {SEASON_MONTHS[seasonId].map((month) => {
                     const m = monthTip(year, month);
-                    const mPath = monthPath(year, month);
                     const mDimmed = focus.month != null && focus.month !== month && level === "month";
                     const mOpacity = (mDimmed ? 0.2 : 1) * monthAlpha;
+                    // Multi-segment month twig — same first-kink-up rule
+                    const mRng = seedRand(year * 100 + month + 41);
+                    const mDx = m.tipX - m.baseX;
+                    const mDy = m.tipY - m.baseY;
+                    const mBaseAngle = Math.atan2(-mDy, mDx);
+                    const mTotalLen = Math.hypot(mDx, mDy);
+                    const mSegs = 3; // 3 segments for the smaller scale
+                    const mSegLen = (mTotalLen / mSegs) * 1.05;
+                    const monthPoints: Array<{ x: number; y: number }> = [
+                      { x: r1(m.baseX), y: r1(m.baseY) },
+                    ];
+                    {
+                      let cx = m.baseX;
+                      let cy = m.baseY;
+                      let cAng = mBaseAngle;
+                      let lastSign: 1 | -1 = 1;
+                      for (let k = 0; k < mSegs; k++) {
+                        let sign: 1 | -1;
+                        if (k === 0) {
+                          sign = cAng < Math.PI / 2 ? 1 : -1;
+                        } else {
+                          const flip = mRng() > 0.25;
+                          sign = (flip ? -lastSign : lastSign) as 1 | -1;
+                        }
+                        const kinkMag = 0.4 + mRng() * 0.4;
+                        cAng += sign * kinkMag;
+                        lastSign = sign;
+                        cx += Math.cos(cAng) * mSegLen;
+                        cy -= Math.sin(cAng) * mSegLen;
+                        monthPoints.push({ x: r1(cx), y: r1(cy) });
+                      }
+                    }
                     return (
                       <g
                         key={month}
@@ -1185,15 +1264,20 @@ export function TreeOfLife({
                           onSelectMonth?.(year, month);
                         }}
                       >
-                        <path
-                          d={mPath}
-                          stroke={trunkColor}
-                          strokeWidth="3"
-                          fill="none"
-                          strokeLinecap="round"
-                          opacity="0.95"
+                        <TaperedBranch
+                          points={monthPoints}
+                          baseWidth={4.6}
+                          taperRatio={0.78}
+                          color={trunkColor}
+                          shadow={false}
+                          highlight={false}
                         />
-                        <circle cx={m.tipX} cy={m.tipY} r="2" fill={trunkColor} />
+                        <circle
+                          cx={r1(monthPoints[monthPoints.length - 1].x)}
+                          cy={r1(monthPoints[monthPoints.length - 1].y)}
+                          r="2"
+                          fill={trunkColor}
+                        />
                       </g>
                     );
                   })}
