@@ -28,7 +28,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Yarim'in Bahçesi",
+  title: "Hayat Ağacımız",
   description: "özel bir hatıra uygulaması",
   robots: { index: false, follow: false },
 };

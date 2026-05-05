@@ -328,12 +328,56 @@ export function Timeline({
               in case we want to bring it back behind a toggle. */}
         </div>
       ) : (
-        <MomentView
-          events={focusedEvents.length ? focusedEvents : events}
-          focus={focus}
-          onOpen={onOpen}
-          onBroaden={broadenScope}
-        />
+        <>
+          <MomentView
+            events={focusedEvents.length ? focusedEvents : events}
+            focus={focus}
+            onOpen={onOpen}
+            onBroaden={broadenScope}
+          />
+          {/* Toggle back to tree view — preserves the focus so switching
+              ağaç ↔ an stays anchored to the same year/season/month. */}
+          <button
+            onClick={() => {
+              let returnLevel: ZoomLevel = "all";
+              if (focus.month != null) returnLevel = "month";
+              else if (focus.season) returnLevel = "season";
+              else if (focus.year) returnLevel = "year";
+              setLevel(returnLevel);
+            }}
+            aria-label="Ağaç görünümüne dön"
+            style={{
+              position: "fixed",
+              left: 14,
+              bottom: 92, // above BottomNav (which has ~78px effective height)
+              zIndex: 50,
+              padding: "10px 16px",
+              borderRadius: 999,
+              background: "var(--accent)",
+              color: "var(--surface-2)",
+              border: "none",
+              cursor: "pointer",
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              fontWeight: 600,
+              letterSpacing: 0.5,
+              boxShadow: "var(--shadow-md)",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              transition: "transform 180ms ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-1px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "none";
+            }}
+          >
+            <span aria-hidden style={{ fontSize: 14 }}>🌳</span>
+            <span>Ağaç görünümü</span>
+          </button>
+        </>
       )}
       {preview && (
         <PreviewOverlay
@@ -591,7 +635,7 @@ function TopBar({ onOpenSearch }: { onOpenSearch?: () => void }) {
           lineHeight: 1,
         }}
       >
-        yarim&apos;in
+        hayat
         <div
           style={{
             fontFamily: "var(--font-heading)",
@@ -601,7 +645,7 @@ function TopBar({ onOpenSearch }: { onOpenSearch?: () => void }) {
             letterSpacing: 0.5,
           }}
         >
-          hayat ağacı
+          ağacımız
         </div>
       </div>
       <div style={{ display: "flex", gap: 8, position: "relative" }}>
