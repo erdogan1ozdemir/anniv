@@ -104,6 +104,25 @@
   --shadow-glow: 0 0 40px rgba(184, 101, 74, 0.2);
 }
 
+[data-theme="twilight"] {
+  /* Sunset gradient — peach + dusty pink + lavender, with cream
+     surfaces so the tree silhouette and tokens still pop. */
+  --primary: #6b5a9e;
+  --primary-deep: #3d3266;
+  --accent: #e89478;
+  --accent-soft: #f4b59f;
+  --gold: #f0c896;
+  --surface: #fde8c4;
+  --surface-2: #fef3da;
+  --surface-3: #f4d3b0;
+  --text: #3d3266;
+  --text-muted: #7c6e9a;
+  --text-soft: #a698c4;
+  --border: #e0c8a8;
+  --border-soft: #ecd9bc;
+  --shadow-glow: 0 0 40px rgba(212, 165, 200, 0.28);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -123,18 +142,111 @@ body {
 }
 
 body {
+  /* Multi-layer atmospheric gradient: warm sky overhead, soft glow on
+     each side, distant horizon haze near the bottom. Renders through
+     all themes by inheriting the var() colors. */
   background:
+    /* Soft warm halo at top — implied sun/canopy light */
     radial-gradient(
-      ellipse 60% 40% at 50% 0%,
-      color-mix(in srgb, var(--accent) 8%, transparent) 0%,
-      transparent 60%
+      ellipse 80% 50% at 50% -10%,
+      color-mix(in srgb, var(--accent) 14%, transparent) 0%,
+      transparent 55%
     ),
+    /* Subtle left glow — primary tint */
     radial-gradient(
-      ellipse 80% 60% at 0% 50%,
-      color-mix(in srgb, var(--primary) 6%, transparent) 0%,
+      ellipse 90% 80% at 0% 30%,
+      color-mix(in srgb, var(--primary) 10%, transparent) 0%,
       transparent 50%
     ),
-    var(--surface);
+    /* Subtle right glow — gold tint */
+    radial-gradient(
+      ellipse 90% 80% at 100% 70%,
+      color-mix(in srgb, var(--gold) 14%, transparent) 0%,
+      transparent 50%
+    ),
+    /* Bottom horizon haze — deeper surface tone */
+    linear-gradient(
+      180deg,
+      transparent 60%,
+      color-mix(in srgb, var(--surface-3) 60%, transparent) 100%
+    ),
+    /* Vertical base wash from surface to slightly warmer */
+    linear-gradient(
+      180deg,
+      var(--surface) 0%,
+      color-mix(in srgb, var(--surface-2) 70%, var(--gold) 30%) 100%
+    );
+  background-attachment: fixed;
+}
+
+/* Tree backdrop — subtle scenery layer placed behind the SVG tree to
+   prevent the empty-canvas feel. Composed of distant rolling hills,
+   soft sun/moon, and atmospheric haze. */
+.tree-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.tree-backdrop::before {
+  /* Soft sun/glow — top center */
+  content: "";
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 28%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 8%, transparent) 35%,
+    transparent 70%
+  );
+  filter: blur(20px);
+  opacity: 0.6;
+}
+.tree-backdrop::after {
+  /* Distant horizon hills — soft mound silhouettes near ground */
+  content: "";
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 8%;
+  height: 24%;
+  background:
+    radial-gradient(
+      ellipse 50% 100% at 30% 100%,
+      color-mix(in srgb, var(--primary) 22%, transparent) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 90% at 70% 100%,
+      color-mix(in srgb, var(--primary-deep) 18%, transparent) 0%,
+      transparent 70%
+    );
+  filter: blur(8px);
+  opacity: 0.55;
+}
+
+/* Decorative drifting clouds — pure CSS, repurposed via theme tints. */
+@keyframes cloud-drift {
+  0% { transform: translateX(-20px); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateX(calc(100vw + 20px)); opacity: 0; }
+}
+.tree-cloud {
+  position: absolute;
+  width: 140px;
+  height: 36px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-2) 80%, transparent);
+  filter: blur(14px);
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 ::selection {

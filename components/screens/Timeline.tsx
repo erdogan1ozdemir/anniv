@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { ThemePicker, useTheme } from "@/components/ui/ThemeProvider";
 import { useRouter } from "next/navigation";
 import { TreeOfLife } from "./TreeOfLife";
 import {
@@ -223,14 +224,21 @@ export function Timeline({
     return true;
   });
 
-  // Smooth top-to-bottom gradient backgrounds — no radial halos
+  // Theme-aware backgrounds — composed from CSS variables so changing
+  // theme automatically re-tints all zoom levels.
   const bgs: Record<ZoomLevel, string> = {
-    all: "linear-gradient(180deg, #F4F0E1 0%, #ECE5D2 38%, #DBD3BD 100%)",
-    year: "linear-gradient(180deg, #F4F0E1 0%, #E8E1CC 100%)",
-    season: "linear-gradient(180deg, #F2EDDE 0%, #E5DCC5 100%)",
-    month: "linear-gradient(180deg, #F4F0E1 0%, #E0D7BE 100%)",
-    week: "linear-gradient(180deg, #F4F0E1 0%, #DBD3BD 100%)",
-    moment: "linear-gradient(180deg, #F4F0E1 0%, #E8E1CC 60%, #DBD3BD 100%)",
+    all:
+      "linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 38%, var(--surface-3) 100%)",
+    year:
+      "linear-gradient(180deg, var(--surface) 0%, var(--surface-3) 100%)",
+    season:
+      "linear-gradient(180deg, var(--surface-2) 0%, var(--surface-3) 100%)",
+    month:
+      "linear-gradient(180deg, var(--surface) 0%, var(--surface-3) 100%)",
+    week:
+      "linear-gradient(180deg, var(--surface) 0%, var(--surface-3) 100%)",
+    moment:
+      "linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 60%, var(--surface-3) 100%)",
   };
 
   return (
@@ -246,7 +254,7 @@ export function Timeline({
         paddingBottom: 88,
       }}
     >
-      <TopBar isDark={isDark} onToggleDark={onToggleDark} />
+      <TopBar />
       <Breadcrumbs level={level} focus={focus} onSet={onCrumbSet} />
       <FocusCount
         count={focusedEvents.length}
@@ -264,6 +272,8 @@ export function Timeline({
             touchAction: swipeEnabled ? "pan-y" : "auto",
           }}
         >
+          {/* Atmospheric backdrop layer — sun/glow + distant hills */}
+          <div className="tree-backdrop" aria-hidden />
           <ZoomSlider level={level} onSet={goLevel} />
           {level === "month" && (
             <button
@@ -289,7 +299,7 @@ export function Timeline({
               ✦ Anları aç →
             </button>
           )}
-          <div style={{ height: "calc(100vh - 200px)", minHeight: 600 }}>
+          <div style={{ height: "calc(100vh - 200px)", minHeight: 600, position: "relative", zIndex: 1 }}>
             <TreeOfLife
               events={events}
               viewBox={vb}
@@ -547,13 +557,10 @@ function FocusCount({
   );
 }
 
-function TopBar({
-  isDark,
-  onToggleDark,
-}: {
-  isDark: boolean;
-  onToggleDark?: () => void;
-}) {
+function TopBar() {
+  const { theme, setTheme } = useTheme();
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const isDarkLike = theme === "coastal-dark";
   return (
     <div
       style={{
@@ -586,7 +593,7 @@ function TopBar({
           hayat ağacı
         </div>
       </div>
-      <div style={{ display: "flex", gap: 8 }}>
+      <div style={{ display: "flex", gap: 8, position: "relative" }}>
         <button
           aria-label="Ara"
           style={{
@@ -606,8 +613,8 @@ function TopBar({
           🔍
         </button>
         <button
-          aria-label="Tema"
-          onClick={onToggleDark}
+          aria-label="Tema seç"
+          onClick={() => setPickerOpen((v) => !v)}
           style={{
             width: 34,
             height: 34,
@@ -622,8 +629,14 @@ function TopBar({
             boxShadow: "var(--shadow-sm)",
           }}
         >
-          {isDark ? "☀" : "☾"}
+          {isDarkLike ? "☀" : "☾"}
         </button>
+        <ThemePicker
+          open={pickerOpen}
+          onClose={() => setPickerOpen(false)}
+          theme={theme}
+          onSelect={setTheme}
+        />
       </div>
     </div>
   );
