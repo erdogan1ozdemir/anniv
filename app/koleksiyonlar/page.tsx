@@ -57,7 +57,19 @@ export default async function CollectionsPage() {
             marginTop: 6,
           }}
         >
-          {memories.length} anı, {clusters.length} tema
+          toplam {memories.length} anı · {clusters.length} tema
+          <span
+            style={{
+              display: "block",
+              fontSize: 12,
+              opacity: 0.7,
+              marginTop: 4,
+              fontFamily: "var(--font-body)",
+              letterSpacing: 0.2,
+            }}
+          >
+            bir anı birden fazla temaya ait olabilir
+          </span>
         </p>
       </header>
 

@@ -40,6 +40,8 @@ interface MemoryDetailProps {
   memory: Memory;
   related: Memory[];
   sameCategory?: Memory[];
+  /** Total memories in this category (before slicing). */
+  sameCategoryTotal?: number;
   prevId?: string | null;
   nextId?: string | null;
 }
@@ -48,6 +50,7 @@ export function MemoryDetail({
   memory,
   related,
   sameCategory = [],
+  sameCategoryTotal,
   prevId,
   nextId,
 }: MemoryDetailProps) {
@@ -739,7 +742,9 @@ export function MemoryDetail({
           >
             <span>{meta?.label ?? "Koleksiyon"} koleksiyonundan</span>
             <span style={{ flex: 1, height: 1, background: "var(--border-soft)" }} />
-            <span style={{ color: "var(--accent)" }}>{sameCategory.length}</span>
+            <span style={{ color: "var(--accent)" }}>
+              {sameCategoryTotal ?? sameCategory.length}
+            </span>
           </div>
           <div
             style={{

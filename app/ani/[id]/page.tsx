@@ -27,13 +27,15 @@ export default async function MemoryPage({
     getMemoriesByCategory(memory.category),
     getAdjacentMemories(id),
   ]);
-  const sameCatList = sameCategory.filter((m) => m.id !== id).slice(0, 6);
+  const sameCatFiltered = sameCategory.filter((m) => m.id !== id);
+  const sameCatList = sameCatFiltered.slice(0, 6);
   return (
     <>
       <MemoryDetail
         memory={memory}
         related={related}
         sameCategory={sameCatList}
+        sameCategoryTotal={sameCatFiltered.length}
         prevId={neighbors.prev?.id ?? null}
         nextId={neighbors.next?.id ?? null}
       />

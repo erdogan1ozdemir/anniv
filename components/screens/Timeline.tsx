@@ -248,7 +248,11 @@ export function Timeline({
     >
       <TopBar isDark={isDark} onToggleDark={onToggleDark} />
       <Breadcrumbs level={level} focus={focus} onSet={onCrumbSet} />
-      <FocusCount count={focusedEvents.length} level={level} />
+      <FocusCount
+        count={focusedEvents.length}
+        level={level}
+        onClick={() => setLevel("moment")}
+      />
 
       {level !== "moment" ? (
         <div
@@ -473,14 +477,23 @@ function PreviewOverlay({
   );
 }
 
-function FocusCount({ count, level }: { count: number; level: ZoomLevel }) {
-  const scopeLabel: Record<ZoomLevel, string> = {
-    all: "hayat ağacımızda",
-    year: "bu yılda",
-    season: "bu mevsimde",
-    month: "bu ayda",
-    week: "bu haftada",
-    moment: "bu pencerede",
+function FocusCount({
+  count,
+  level,
+  onClick,
+}: {
+  count: number;
+  level: ZoomLevel;
+  onClick?: () => void;
+}) {
+  // Scope appears BEFORE the count, e.g. "Bu Yıl'da 4 An".
+  const scopePrefix: Record<ZoomLevel, string> = {
+    all: "Hayat Ağacımızda",
+    year: "Bu Yıl'da",
+    season: "Bu Mevsim'de",
+    month: "Bu Ay'da",
+    week: "Bu Hafta'da", // unused (level removed) — kept for type safety
+    moment: "Bu Pencerede",
   };
   return (
     <div
@@ -490,12 +503,14 @@ function FocusCount({ count, level }: { count: number; level: ZoomLevel }) {
         padding: "4px 16px 8px",
       }}
     >
-      <div
+      <button
+        onClick={onClick}
+        aria-label={`${scopePrefix[level]} ${count} anı — anlara aç`}
         style={{
           display: "inline-flex",
           alignItems: "center",
           gap: 8,
-          padding: "4px 12px",
+          padding: "4px 14px",
           borderRadius: 999,
           background: "rgba(255, 253, 246, 0.55)",
           border: "1px solid rgba(31, 27, 22, 0.08)",
@@ -505,13 +520,19 @@ function FocusCount({ count, level }: { count: number; level: ZoomLevel }) {
           textTransform: "uppercase",
           color: "var(--text-muted)",
           fontWeight: 600,
+          cursor: onClick ? "pointer" : "default",
+          fontFamily: "inherit",
+          transition: "background 200ms",
         }}
       >
+        <span style={{ textTransform: "none", letterSpacing: 0.4 }}>
+          {scopePrefix[level]}
+        </span>
         <span
           style={{
             fontFamily: "var(--font-heading)",
             fontStyle: "italic",
-            fontSize: 16,
+            fontSize: 17,
             color: "var(--accent)",
             letterSpacing: 0,
             textTransform: "none",
@@ -520,8 +541,8 @@ function FocusCount({ count, level }: { count: number; level: ZoomLevel }) {
         >
           {count}
         </span>
-        <span>anı · {scopeLabel[level]}</span>
-      </div>
+        <span>An</span>
+      </button>
     </div>
   );
 }

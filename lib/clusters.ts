@@ -16,10 +16,12 @@ const CLUSTERS_RAW: Cluster[] = [
     subtitle: "her şeyin başladığı, döndüğü, bağlandığı yerler",
     hero: "kilometre_tasi",
     hue: { from: "#1F1B16", to: "#3A332C" },
+    // Pinned memories are the curated milestones. We don't sweep in
+    // kind="sparkle" because inferKind() makes ALL unpinned jedi memories
+    // sparkle, which would double-count them across this cluster + the
+    // dedicated Jedi Anıları cluster.
     filter: (m) =>
-      m.is_pinned === true ||
-      m.category === "kilometre_tasi" ||
-      m.kind === "sparkle",
+      m.is_pinned === true || m.category === "kilometre_tasi",
   },
   {
     id: "ilkler",

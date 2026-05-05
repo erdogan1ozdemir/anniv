@@ -573,11 +573,16 @@ export function TreeOfLife({
         <g pointerEvents="none">
           {Array.from({ length: 10 }).map((_, di) => {
             const rng = seedRand(di * 727 + 31);
-            // Distribute decorative branches along the trunk vertically
-            const yPos = 180 + di * 200 + rng() * 60;
-            const sideMul = di % 2 === 0 ? -1 : 1;
+            // Distribute decorative branches along the trunk vertically.
+            // Stagger left/right with index parity but ALSO interleave
+            // y-positions so both sides get evenly spaced branches.
+            const sideMul: 1 | -1 = di % 2 === 0 ? -1 : 1;
+            const yPos =
+              200 + Math.floor(di / 2) * 380 + (di % 2) * 180 + rng() * 50;
             const startX = TRUNK_X + sideMul * 14;
-            const angle = sideMul * (0.4 + rng() * 0.4); // mostly horizontal
+            // Angle now includes sideMul so left/right branches actually
+            // point left/right (was double-multiplied below before).
+            const angle = sideMul * (0.4 + rng() * 0.4);
             const segs = 5 + Math.floor(rng() * 2); // 5-6 segments
             const baseSegLen = 50 + rng() * 28;
             // Walk segment-by-segment with kink at each junction
@@ -586,36 +591,44 @@ export function TreeOfLife({
             ];
             let dx = startX;
             let dy = yPos;
-            let dAng = angle * sideMul;
+            let dAng = angle;
             for (let k = 0; k < segs; k++) {
               const segLen = baseSegLen * Math.pow(0.84, k);
               dAng += (rng() - 0.5) * 0.55;
               dx += Math.cos(dAng) * segLen;
-              dy -= Math.sin(dAng) * segLen * 0.6 - segLen * 0.3;
+              dy -= Math.sin(dAng) * segLen * 0.55 - segLen * 0.18;
               points.push({ x: r1(dx), y: r1(dy) });
             }
-            // 2-4 small leaf clusters along the branch
+            // 2 leaves per segment + 1 flower per segment for fullness
             const leaves: Array<{ x: number; y: number; rot: number }> = [];
+            const flowers: Array<{ x: number; y: number }> = [];
             for (let k = 0; k < points.length - 1; k++) {
               const p1 = points[k];
               const p2 = points[k + 1];
               const lx = r1((p1.x + p2.x) / 2);
               const ly = r1((p1.y + p2.y) / 2);
-              const dy = p2.y - p1.y;
-              const dx = p2.x - p1.x;
-              const len = Math.hypot(dx, dy) || 1;
-              const sf = k % 2 === 0 ? 1 : -1;
-              leaves.push({
-                x: r1(lx + (-dy / len) * sf * 5),
-                y: r1(ly + (dx / len) * sf * 5),
-                rot: r1(((Math.atan2(-dy, dx) + sf * 0.5) * 180) / Math.PI - 90),
-              });
+              const sdy = p2.y - p1.y;
+              const sdx = p2.x - p1.x;
+              const len = Math.hypot(sdx, sdy) || 1;
+              // Two leaves per segment, opposite sides
+              for (const sf of [1, -1] as const) {
+                leaves.push({
+                  x: r1(lx + (-sdy / len) * sf * 8),
+                  y: r1(ly + (sdx / len) * sf * 8),
+                  rot: r1(((Math.atan2(-sdy, sdx) + sf * 0.5) * 180) / Math.PI - 90),
+                });
+              }
+              // One flower at end of every other segment
+              if (k % 2 === 0) {
+                flowers.push({ x: r1(p2.x), y: r1(p2.y) });
+              }
             }
+            const palette = ["#E8826B", "#F2C5D1", "#9FC5BD", "#C8E07A"];
             return (
               <g key={`deco-${di}`}>
                 <TaperedBranch
                   points={points}
-                  baseWidth={20 + rng() * 6}
+                  baseWidth={22 + rng() * 6}
                   taperRatio={0.76}
                   color="#3A2E22"
                   shadow
@@ -626,18 +639,39 @@ export function TreeOfLife({
                     key={`d-leaf-${di}-${li}`}
                     cx={l.x}
                     cy={l.y}
-                    rx="2"
-                    ry="3.4"
+                    rx="3.6"
+                    ry="6.2"
                     fill={li % 2 === 0 ? "#7FA847" : "#9FC580"}
-                    opacity="0.88"
+                    opacity="0.92"
                     transform={`rotate(${l.rot} ${l.x} ${l.y})`}
                   />
                 ))}
+                {/* 5-petal flowers at every other segment end */}
+                {flowers.map((f, fi) => {
+                  const c1 = palette[(di + fi) % palette.length];
+                  return (
+                    <g key={`d-flw-${di}-${fi}`} transform={`translate(${f.x} ${f.y})`}>
+                      {[0, 72, 144, 216, 288].map((deg) => (
+                        <ellipse
+                          key={deg}
+                          cx="0"
+                          cy="-3.2"
+                          rx="2"
+                          ry="3.2"
+                          fill={c1}
+                          opacity="0.92"
+                          transform={`rotate(${deg})`}
+                        />
+                      ))}
+                      <circle r="1.5" fill="#F4D060" />
+                    </g>
+                  );
+                })}
                 {/* Bud at tip */}
                 <circle
                   cx={r1(points[points.length - 1].x)}
                   cy={r1(points[points.length - 1].y)}
-                  r="2.2"
+                  r="3.2"
                   fill={di % 2 === 0 ? "#E8826B" : "#F2C5D1"}
                   opacity="0.92"
                 />
@@ -856,13 +890,15 @@ export function TreeOfLife({
                      and leaves attached on every segment. Each twig
                      fans away from the year curve at its own angle. */}
                 {(() => {
+                  // 4-5 segments per twig (was 2-3) so the chain reads
+                  // as a real branch with proper kinks.
                   const seasons = [
-                    { t: 0.18, side: 1, segs: 3 },
-                    { t: 0.32, side: -1, segs: 2 },
-                    { t: 0.46, side: 1, segs: 3 },
-                    { t: 0.6, side: -1, segs: 3 },
-                    { t: 0.74, side: 1, segs: 2 },
-                    { t: 0.88, side: -1, segs: 2 },
+                    { t: 0.18, side: 1, segs: 5 },
+                    { t: 0.32, side: -1, segs: 4 },
+                    { t: 0.46, side: 1, segs: 5 },
+                    { t: 0.6, side: -1, segs: 4 },
+                    { t: 0.74, side: 1, segs: 4 },
+                    { t: 0.88, side: -1, segs: 4 },
                   ];
                   const yearRng = seedRand(year * 211 + 7);
                   return seasons.map((s, si) => {
@@ -872,20 +908,26 @@ export function TreeOfLife({
                       upBias +
                       tip.side * (0.18 + (yearRng() - 0.5) * 0.4) +
                       (yearRng() - 0.5) * 0.5;
-                    const baseSegLen = 12 + yearRng() * 10;
-                    // Walk segment-by-segment with a fresh kink at each
-                    // junction — each new segment continues from the
-                    // previous endpoint at a slightly bent angle.
+                    const baseSegLen = 14 + yearRng() * 10;
+                    // Zigzag kink — alternating sign so the branch
+                    // visibly bends in different directions instead
+                    // of curving smoothly in one.
                     const points: Array<{ x: number; y: number }> = [
                       { x: r1(pt.x), y: r1(pt.y) },
                     ];
                     let cx = pt.x;
                     let cy = pt.y;
                     let cAng = angle;
+                    let lastSign = yearRng() > 0.5 ? 1 : -1;
                     for (let i = 0; i < s.segs; i++) {
-                      const segLen = baseSegLen * Math.pow(0.84, i);
-                      const kink = (yearRng() - 0.5) * 0.7;
-                      cAng = cAng + kink;
+                      const segLen = baseSegLen * Math.pow(0.82, i);
+                      // Alternate kink direction (zigzag) with 25%
+                      // chance to skip flip → not perfectly regular.
+                      const flip = yearRng() > 0.25;
+                      const sign = flip ? -lastSign : lastSign;
+                      const kinkMag = 0.55 + yearRng() * 0.45;
+                      cAng = cAng + sign * kinkMag;
+                      lastSign = sign;
                       cx += Math.cos(cAng) * segLen;
                       cy -= Math.sin(cAng) * segLen;
                       points.push({ x: r1(cx), y: r1(cy) });

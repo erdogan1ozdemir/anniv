@@ -83,7 +83,7 @@
       "mood": "nostalgic",
       "is_pinned": true,
       "media_count_estimate": 0,
-      "ai_confidence": 1.0,
+      "ai_confidence": 1,
       "anchor_type": "tanisma",
       "_batch": "manual"
     },
@@ -2232,7 +2232,7 @@
     {
       "id": "anchor-iliski-baslangic-2022",
       "date": "2022-11-05",
-      "title": "Altıncı. yıldönümümüz - tanışma",
+      "title": "Beşinci. yıldönümümüz - tanışma",
       "subtitle": "5 Kasım, beraber başladığımız gün",
       "category": "kilometre_tasi",
       "kind": "sparkle",
@@ -2240,7 +2240,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "6 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
+      "story": "5 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -2255,7 +2255,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "Nişan günümüzden bu yana 2 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
+      "story": "Nişan günümüzden bu yana 1 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -2300,7 +2300,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "2 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
+      "story": "1 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -2322,7 +2322,7 @@
     {
       "id": "anchor-iliski-baslangic-2023",
       "date": "2023-11-05",
-      "title": "Yedinci. yıldönümümüz - tanışma",
+      "title": "Altıncı. yıldönümümüz - tanışma",
       "subtitle": "5 Kasım, beraber başladığımız gün",
       "category": "kilometre_tasi",
       "kind": "sparkle",
@@ -2330,7 +2330,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "7 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
+      "story": "6 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -2429,7 +2429,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "Nişan günümüzden bu yana 3 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
+      "story": "Nişan günümüzden bu yana 2 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -2512,7 +2512,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "3 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
+      "story": "2 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -2627,7 +2627,7 @@
     {
       "id": "anchor-iliski-baslangic-2024",
       "date": "2024-11-05",
-      "title": "Sekizinci. yıldönümümüz - tanışma",
+      "title": "Yedinci. yıldönümümüz - tanışma",
       "subtitle": "5 Kasım, beraber başladığımız gün",
       "category": "kilometre_tasi",
       "kind": "sparkle",
@@ -2635,7 +2635,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "8 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
+      "story": "7 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -2650,7 +2650,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "Nişan günümüzden bu yana 4 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
+      "story": "Nişan günümüzden bu yana 3 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -2726,7 +2726,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "4 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
+      "story": "3 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -2970,7 +2970,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "Nişan günümüzden bu yana 5 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
+      "story": "Nişan günümüzden bu yana 4 yıl. O akşam yazılan mesajlardan birini hâlâ hatırlıyoruz: 'iyi ki varsın.'",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -3081,7 +3081,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "5 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
+      "story": "4 yıl önce evlendik. Akşam üzeri ışığında, küçük bir törenle. Her yıl bu tarih bize aynı sıcaklığı getiriyor.",
       "is_pinned": true,
       "ai_confidence": "high"
     },
@@ -3103,7 +3103,7 @@
     {
       "id": "anchor-iliski-baslangic-2026",
       "date": "2026-11-05",
-      "title": "Onuncu. yıldönümümüz - tanışma",
+      "title": "Dokuzuncu. yıldönümümüz - tanışma",
       "subtitle": "5 Kasım, beraber başladığımız gün",
       "category": "kilometre_tasi",
       "kind": "sparkle",
@@ -3111,7 +3111,7 @@
         "anchor",
         "yillik"
       ],
-      "story": "10 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
+      "story": "9 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
       "is_pinned": true,
       "ai_confidence": "high"
     }
