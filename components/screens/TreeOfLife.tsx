@@ -450,32 +450,33 @@ export function TreeOfLife({
         />
       )}
 
-      {/* Roots — 12 multi-segment tapered roots, asymmetric in
-           direction so they don't all curl the same way. Per-point
-           perpendicular jitter gives each root its own organic
-           wander. Larger base widths than before (user asked for
-           thicker trunk attachment). Knot bifurcations spawn a 2nd
-           branch from selected junctions. */}
+      {/* Roots — 12 epic-scale tapered roots emerging from the
+           flared trunk base. Base widths 35-70 (5× the previous
+           7-14) so the trunk-to-root transition reads as a settled
+           ancient tree, tapering aggressively to thin tips via
+           strong taperRatio (0.65) and 5-7 segments. */}
       <g pointerEvents="none">
         {(() => {
-          // 12 roots, asymmetric horizontal distribution
+          // 12 roots — base widths 5× the prior implementation
+          // (was 7-14, now 36-72). Asymmetric horizontal distribution.
           const ROOTS = [
-            { dx: -480, dy: 50, w: 14, segs: 5 },
-            { dx: -380, dy: 70, w: 12, segs: 5 },
-            { dx: -280, dy: 84, w: 11, segs: 4 },
-            { dx: -190, dy: 92, w: 9, segs: 4 },
-            { dx: -100, dy: 100, w: 8, segs: 4 },
-            { dx: -40, dy: 108, w: 7, segs: 3 },
-            { dx: 40, dy: 108, w: 7, segs: 3 },
-            { dx: 100, dy: 100, w: 8, segs: 4 },
-            { dx: 190, dy: 92, w: 9, segs: 4 },
-            { dx: 280, dy: 84, w: 11, segs: 4 },
-            { dx: 380, dy: 70, w: 12, segs: 5 },
-            { dx: 480, dy: 50, w: 14, segs: 5 },
+            { dx: -500, dy: 80, w: 70, segs: 7 },
+            { dx: -400, dy: 100, w: 60, segs: 6 },
+            { dx: -300, dy: 120, w: 52, segs: 6 },
+            { dx: -200, dy: 138, w: 44, segs: 6 },
+            { dx: -110, dy: 152, w: 38, segs: 5 },
+            { dx: -45, dy: 168, w: 36, segs: 5 },
+            { dx: 45, dy: 168, w: 36, segs: 5 },
+            { dx: 110, dy: 152, w: 38, segs: 5 },
+            { dx: 200, dy: 138, w: 44, segs: 6 },
+            { dx: 300, dy: 120, w: 52, segs: 6 },
+            { dx: 400, dy: 100, w: 60, segs: 6 },
+            { dx: 500, dy: 80, w: 70, segs: 7 },
           ];
           return ROOTS.map((r, i) => {
+            // Roots now START from inside the flared trunk base
             const startX = TRUNK_X;
-            const startY = GROUND_Y - 26;
+            const startY = GROUND_Y - 8;
             const endX = TRUNK_X + r.dx;
             const endY = GROUND_Y + r.dy;
             // Asymmetric control points — different curvature per root
@@ -540,16 +541,16 @@ export function TreeOfLife({
                 <TaperedBranch
                   points={points}
                   baseWidth={r.w}
-                  taperRatio={0.74}
+                  taperRatio={0.65}
                   color="#3A2E22"
                   shadow
                   highlight
                 />
-                {bifurcChance > 0.45 && (
+                {bifurcChance > 0.2 && (
                   <TaperedBranch
                     points={bPoints}
-                    baseWidth={r.w * 0.55}
-                    taperRatio={0.7}
+                    baseWidth={r.w * 0.5}
+                    taperRatio={0.65}
                     color="#3A2E22"
                     shadow={false}
                     highlight={false}
@@ -563,21 +564,22 @@ export function TreeOfLife({
 
       <OrganicTrunk />
 
-      {/* Decorative Y-branches — 6 extra year-style branches sprouting
-           from the trunk between actual year branches. No memory
-           data, no year pill — pure visual filler so the trunk feels
-           like a real tree with branches everywhere. */}
+      {/* Decorative Y-branches — 10 extra year-style branches
+           sprouting from the trunk between actual year branches.
+           Each branch matches year-branch SIZE (not smaller filler).
+           No year pill — pure visual filler so the trunk feels like
+           a real tree with branches everywhere. */}
       {showCanopyFill && (
         <g pointerEvents="none">
-          {Array.from({ length: 6 }).map((_, di) => {
+          {Array.from({ length: 10 }).map((_, di) => {
             const rng = seedRand(di * 727 + 31);
             // Distribute decorative branches along the trunk vertically
-            const yPos = 200 + di * 320 + rng() * 80;
+            const yPos = 180 + di * 200 + rng() * 60;
             const sideMul = di % 2 === 0 ? -1 : 1;
             const startX = TRUNK_X + sideMul * 14;
             const angle = sideMul * (0.4 + rng() * 0.4); // mostly horizontal
-            const segs = 4 + Math.floor(rng() * 2); // 4-5 segments
-            const segLen = 38 + rng() * 22;
+            const segs = 5 + Math.floor(rng() * 2); // 5-6 segments
+            const segLen = 50 + rng() * 28;
             const points = Array.from({ length: segs + 1 }).map((_, k) => {
               const cum = Array.from({ length: k }).reduce<number>(
                 (acc, _, ji) => acc + segLen * Math.pow(0.84, ji),
@@ -610,7 +612,7 @@ export function TreeOfLife({
               <g key={`deco-${di}`}>
                 <TaperedBranch
                   points={points}
-                  baseWidth={9 + rng() * 3}
+                  baseWidth={20 + rng() * 6}
                   taperRatio={0.76}
                   color="#3A2E22"
                   shadow
@@ -750,7 +752,7 @@ export function TreeOfLife({
               // get an extra sub-branch perpendicular.
               const bifurc: number[] = [];
               for (let k = 1; k < N_SEG; k++) {
-                if (baseRng() < 0.55) bifurc.push(k);
+                if (baseRng() < 0.8) bifurc.push(k);
               }
               return (
                 <>
@@ -788,16 +790,54 @@ export function TreeOfLife({
                     });
                     const subWidth =
                       branchBaseWidth * Math.pow(0.78, idx) * 0.6;
+                    // Leaves on every segment of this bifurcation
+                    const subLeaves: Array<{ x: number; y: number; rot: number; color: string }> = [];
+                    for (let k = 0; k < subPoints.length - 1; k++) {
+                      const p1 = subPoints[k];
+                      const p2 = subPoints[k + 1];
+                      const lx = r1((p1.x + p2.x) / 2);
+                      const ly = r1((p1.y + p2.y) / 2);
+                      const sdx = p2.x - p1.x;
+                      const sdy = p2.y - p1.y;
+                      const slen = Math.hypot(sdx, sdy) || 1;
+                      const sf = k % 2 === 0 ? 1 : -1;
+                      subLeaves.push({
+                        x: r1(lx + (-sdy / slen) * sf * 4),
+                        y: r1(ly + (sdx / slen) * sf * 4),
+                        rot: r1(((Math.atan2(-sdy, sdx) + sf * 0.5) * 180) / Math.PI - 90),
+                        color: k % 2 === 0 ? "#7FA847" : "#9FC580",
+                      });
+                    }
                     return (
-                      <TaperedBranch
-                        key={`bif-${idx}`}
-                        points={subPoints}
-                        baseWidth={subWidth}
-                        taperRatio={0.74}
-                        color={branchColor}
-                        shadow={false}
-                        highlight={false}
-                      />
+                      <g key={`bif-${idx}`}>
+                        <TaperedBranch
+                          points={subPoints}
+                          baseWidth={subWidth}
+                          taperRatio={0.74}
+                          color={branchColor}
+                          shadow={false}
+                          highlight={false}
+                        />
+                        {subLeaves.map((l, li) => (
+                          <ellipse
+                            key={`bif-leaf-${idx}-${li}`}
+                            cx={l.x}
+                            cy={l.y}
+                            rx="1.8"
+                            ry="3.2"
+                            fill={l.color}
+                            opacity="0.9"
+                            transform={`rotate(${l.rot} ${l.x} ${l.y})`}
+                          />
+                        ))}
+                        <circle
+                          cx={r1(subPoints[subPoints.length - 1].x)}
+                          cy={r1(subPoints[subPoints.length - 1].y)}
+                          r="1.8"
+                          fill={idx % 2 === 0 ? "#E8826B" : "#F2C5D1"}
+                          opacity="0.9"
+                        />
+                      </g>
                     );
                   })}
                 </>
