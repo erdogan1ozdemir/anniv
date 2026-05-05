@@ -8,7 +8,7 @@ export default async function Home() {
   const events = memories.map(memoryToEvent);
   return (
     <>
-      <Timeline events={events} season="spring" />
+      <Timeline events={events} memories={memories} season="spring" />
       <BottomNav />
     </>
   );

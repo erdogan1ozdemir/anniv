@@ -11,6 +11,7 @@ import {
   shortTurkishDate,
 } from "@/lib/categories";
 import { CategoryHero } from "@/components/svg/CategoryIcons";
+import { StoryText } from "@/components/ui/StoryText";
 
 const MOOD_TINT: Record<string, string> = {
   romantic: "color-mix(in srgb, #E8826B 16%, transparent)",
@@ -233,12 +234,12 @@ export function MemoryDetail({
               flexDirection: "column",
               gap: 2,
               padding: "8px 12px",
-              background: "rgba(255, 253, 246, 0.55)",
+              background: "color-mix(in srgb, var(--surface-2) 60%, transparent)",
               borderRadius: 12,
               border: "1px solid rgba(31, 27, 22, 0.08)",
               fontFamily: "var(--font-accent)",
               fontSize: 14,
-              color: "#5A4F3E",
+              color: "var(--text-muted)",
               marginBottom: 12,
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
@@ -247,7 +248,7 @@ export function MemoryDetail({
             {sinceMeeting && (
               <span>
                 tanışmamızdan{" "}
-                <em style={{ color: "#1F1B16", fontStyle: "italic" }}>
+                <em style={{ color: "var(--text)", fontStyle: "italic" }}>
                   {sinceMeeting}
                 </em>
               </span>
@@ -255,7 +256,7 @@ export function MemoryDetail({
             {sinceRelationship && (
               <span>
                 ilişkimizden{" "}
-                <em style={{ color: "#1F1B16", fontStyle: "italic" }}>
+                <em style={{ color: "var(--text)", fontStyle: "italic" }}>
                   {sinceRelationship}
                 </em>
               </span>
@@ -371,30 +372,35 @@ export function MemoryDetail({
           lineHeight: 1.65,
         }}
       >
-        {paragraphs.map((paragraph, i) => (
-          <p
-            key={i}
-            style={{ marginBottom: 14 }}
-            className={i === 0 ? "with-drop-cap" : undefined}
-          >
-            {i === 0 && paragraph.length > 0 && (
-              <span
-                style={{
-                  fontFamily: "var(--font-heading)",
-                  fontSize: 56,
-                  fontWeight: 600,
-                  color: "var(--accent)",
-                  float: "left",
-                  lineHeight: 0.85,
-                  margin: "8px 8px 0 0",
-                }}
-              >
-                {paragraph[0]}
-              </span>
-            )}
-            {i === 0 ? paragraph.slice(1) : paragraph}
-          </p>
-        ))}
+        {paragraphs.map((paragraph, i) => {
+          const isFirst = i === 0;
+          const firstChar = isFirst ? paragraph[0] : "";
+          const rest = isFirst ? paragraph.slice(1) : paragraph;
+          return (
+            <p
+              key={i}
+              style={{ marginBottom: 14 }}
+              className={isFirst ? "with-drop-cap" : undefined}
+            >
+              {isFirst && paragraph.length > 0 && (
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontSize: 56,
+                    fontWeight: 600,
+                    color: "var(--accent)",
+                    float: "left",
+                    lineHeight: 0.85,
+                    margin: "8px 8px 0 0",
+                  }}
+                >
+                  {firstChar}
+                </span>
+              )}
+              <StoryText text={rest} />
+            </p>
+          );
+        })}
       </div>
 
       {memory.whatsapp_excerpt && memory.whatsapp_excerpt.length > 0 && (
@@ -553,70 +559,102 @@ export function MemoryDetail({
         </div>
       )}
 
-      {memory.song_ref && (
-        <div
-          style={{
-            margin: "16px 22px",
-            background: "#1F1F1F",
-            borderRadius: 14,
-            padding: "12px 14px",
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-          }}
-        >
-          <div
+      {memory.song_ref && (() => {
+        const isUrl = /^https?:\/\//i.test(memory.song_ref);
+        const href = isUrl
+          ? memory.song_ref
+          : `https://open.spotify.com/search/${encodeURIComponent(memory.song_ref)}`;
+        // Friendly label: strip URL, show track name only if available
+        const label = isUrl
+          ? "Spotify'da aç"
+          : memory.song_ref;
+        return (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
-              width: 50,
-              height: 50,
-              borderRadius: 6,
-              background:
-                "linear-gradient(135deg, #FFD93D, #1ED760)",
-              flexShrink: 0,
+              margin: "16px 22px",
+              background: "#1F1F1F",
+              borderRadius: 14,
+              padding: "12px 14px",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              textDecoration: "none",
+              cursor: "pointer",
+              transition: "transform 180ms ease, box-shadow 180ms ease",
             }}
-          />
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div
-              style={{
-                fontSize: 9,
-                color: "#1ED760",
-                letterSpacing: 1.5,
-                marginBottom: 2,
-                fontWeight: 600,
-              }}
-            >
-              ♪ ŞARKIMIZ
-            </div>
-            <div
-              style={{
-                color: "#FFF",
-                fontSize: 14,
-                fontWeight: 500,
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {memory.song_ref}
-            </div>
-          </div>
-          <div
-            style={{
-              width: 36,
-              height: 36,
-              background: "#1ED760",
-              borderRadius: "50%",
-              display: "grid",
-              placeItems: "center",
-              color: "#000",
-              flexShrink: 0,
-              fontSize: 14,
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-1px)";
+              e.currentTarget.style.boxShadow = "0 6px 18px -8px rgba(30,215,96,0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "none";
+              e.currentTarget.style.boxShadow = "none";
             }}
           >
-            ▶
-          </div>
-        </div>
-      )}
+            <div
+              style={{
+                width: 50,
+                height: 50,
+                borderRadius: 6,
+                background: "linear-gradient(135deg, #FFD93D, #1ED760)",
+                flexShrink: 0,
+                display: "grid",
+                placeItems: "center",
+                color: "#000",
+                fontSize: 22,
+                fontWeight: 700,
+              }}
+              aria-hidden
+            >
+              ♪
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div
+                style={{
+                  fontSize: 9,
+                  color: "#1ED760",
+                  letterSpacing: 1.5,
+                  marginBottom: 2,
+                  fontWeight: 600,
+                }}
+              >
+                ♪ ŞARKIMIZ · SPOTIFY'DA AÇ
+              </div>
+              <div
+                style={{
+                  color: "#FFF",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {label}
+              </div>
+            </div>
+            <div
+              aria-hidden
+              style={{
+                width: 36,
+                height: 36,
+                background: "#1ED760",
+                borderRadius: "50%",
+                display: "grid",
+                placeItems: "center",
+                color: "#000",
+                flexShrink: 0,
+                fontSize: 14,
+              }}
+            >
+              ▶
+            </div>
+          </a>
+        );
+      })()}
 
       {related.length > 0 && (
         <div style={{ padding: "24px 22px 0" }}>

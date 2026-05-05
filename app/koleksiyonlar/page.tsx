@@ -18,7 +18,7 @@ export default async function CollectionsPage() {
         minHeight: "100vh",
         padding: "24px 0 96px",
         background:
-          "linear-gradient(180deg, #F4F0E1 0%, #ECE5D2 50%, #DBD3BD 100%)",
+          "linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface-3) 100%)",
         position: "relative",
       }}
     >
@@ -40,7 +40,7 @@ export default async function CollectionsPage() {
             fontFamily: "var(--font-heading)",
             fontStyle: "italic",
             fontSize: 34,
-            color: "#1F1B16",
+            color: "var(--text)",
             marginTop: 14,
             lineHeight: 1.05,
             letterSpacing: -0.4,
@@ -193,9 +193,9 @@ export default async function CollectionsPage() {
             key={cluster.id}
             href={`/koleksiyonlar/${cluster.id}`}
             style={{
-              background: "rgba(255, 253, 246, 0.82)",
+              background: "color-mix(in srgb, var(--surface-2) 92%, transparent)",
               backdropFilter: "blur(12px)",
-              border: "1px solid rgba(31, 27, 22, 0.06)",
+              border: "1px solid var(--border-soft)",
               borderRadius: 18,
               padding: "16px 14px 14px",
               minHeight: 168,
@@ -241,7 +241,7 @@ export default async function CollectionsPage() {
                   fontFamily: "var(--font-heading)",
                   fontStyle: "italic",
                   fontSize: 18,
-                  color: "#1F1B16",
+                  color: "var(--text)",
                   marginTop: 4,
                   lineHeight: 1.1,
                   fontWeight: 500,
@@ -255,7 +255,7 @@ export default async function CollectionsPage() {
               style={{
                 fontFamily: "var(--font-accent)",
                 fontSize: 13,
-                color: "#5A8B7E",
+                color: "var(--primary)",
                 lineHeight: 1.3,
                 position: "relative",
                 zIndex: 2,

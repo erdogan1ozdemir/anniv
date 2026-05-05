@@ -35,10 +35,11 @@ export function BottomNav() {
         display: "flex",
         justifyContent: "space-around",
         padding: "10px 8px calc(env(safe-area-inset-bottom) + 14px)",
-        background: "rgba(244, 240, 225, 0.78)",
+        // Theme-aware translucent surface so dark themes stay dark
+        background: "color-mix(in srgb, var(--surface-2) 88%, transparent)",
         backdropFilter: "blur(22px) saturate(1.6)",
         WebkitBackdropFilter: "blur(22px) saturate(1.6)",
-        borderTop: "1px solid rgba(31, 27, 22, 0.08)",
+        borderTop: "1px solid var(--border-soft)",
       }}
     >
       {items.map((item) => {
@@ -52,7 +53,7 @@ export function BottomNav() {
               flexDirection: "column",
               alignItems: "center",
               gap: 2,
-              color: isActive ? "var(--accent)" : "var(--text-muted)",
+              color: isActive ? "var(--accent)" : "var(--text)",
               transition: "color 200ms",
               padding: "4px 10px",
               borderRadius: 12,

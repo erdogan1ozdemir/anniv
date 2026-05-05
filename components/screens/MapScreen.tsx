@@ -73,7 +73,7 @@ function MapPlaceholder() {
           justifyContent: "space-between",
         }}
       >
-        <Link href="/" style={{ color: "#1F1B16", fontSize: 14, opacity: 0.8 }}>
+        <Link href="/" style={{ color: "var(--text)", fontSize: 14, opacity: 0.8 }}>
           ‹ ağaç
         </Link>
       </header>
@@ -91,7 +91,7 @@ function MapPlaceholder() {
       >
         <div
           style={{
-            color: "#7C6E55",
+            color: "var(--text-muted)",
             opacity: 0.6,
             animation: "breathe 8s ease-in-out infinite",
             marginBottom: 24,
@@ -105,7 +105,7 @@ function MapPlaceholder() {
             fontSize: 11,
             letterSpacing: 2.4,
             textTransform: "uppercase",
-            color: "#A38B5F",
+            color: "var(--gold)",
             fontWeight: 600,
             marginBottom: 14,
           }}
@@ -119,7 +119,7 @@ function MapPlaceholder() {
             fontStyle: "italic",
             fontSize: 38,
             lineHeight: 1.1,
-            color: "#1F1B16",
+            color: "var(--text)",
             fontWeight: 500,
             letterSpacing: -0.5,
             marginBottom: 14,
@@ -134,8 +134,8 @@ function MapPlaceholder() {
             fontFamily: "var(--font-accent)",
             fontSize: 19,
             lineHeight: 1.4,
-            color: "#5A4F3E",
-            opacity: 0.85,
+            color: "var(--text-muted)",
+            opacity: 0.92,
             maxWidth: 300,
             marginBottom: 28,
           }}
@@ -149,9 +149,9 @@ function MapPlaceholder() {
           style={{
             fontFamily: "var(--font-body)",
             fontSize: 14,
-            color: "#1F1B16",
-            background: "rgba(255, 253, 246, 0.85)",
-            border: "1px solid rgba(31, 27, 22, 0.12)",
+            color: "var(--text)",
+            background: "color-mix(in srgb, var(--surface-2) 90%, transparent)",
+            border: "1px solid var(--border)",
             borderRadius: 999,
             padding: "10px 20px",
             backdropFilter: "blur(10px)",

@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ThemePicker, useTheme } from "@/components/ui/ThemeProvider";
+import { SearchOverlay } from "@/components/ui/SearchOverlay";
+import type { Memory } from "@/types";
 import { useRouter } from "next/navigation";
 import { TreeOfLife } from "./TreeOfLife";
 import {
@@ -34,6 +36,8 @@ const ZOOM_LABEL: Record<ZoomLevel, string> = {
 
 interface TimelineProps {
   events: LifeEvent[];
+  /** Full memory objects — for the search overlay. */
+  memories?: Memory[];
   season?: Season;
   isDark?: boolean;
   onToggleDark?: () => void;
@@ -41,6 +45,7 @@ interface TimelineProps {
 
 export function Timeline({
   events,
+  memories = [],
   season = "spring",
   isDark = false,
   onToggleDark,
@@ -49,6 +54,7 @@ export function Timeline({
   const [level, setLevel] = useState<ZoomLevel>("all");
   const [focus, setFocus] = useState<ZoomFocus>({});
   const [preview, setPreview] = useState<LifeEvent | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const goLevel = (newLevel: ZoomLevel) => {
     let f: ZoomFocus = { ...focus };
@@ -254,7 +260,12 @@ export function Timeline({
         paddingBottom: 88,
       }}
     >
-      <TopBar />
+      <TopBar onOpenSearch={() => setSearchOpen(true)} />
+      <SearchOverlay
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        memories={memories}
+      />
       <Breadcrumbs level={level} focus={focus} onSet={onCrumbSet} />
       <FocusCount
         count={focusedEvents.length}
@@ -392,13 +403,13 @@ function PreviewOverlay({
         aria-label={`${ev.t} önizleme`}
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: "rgba(255, 253, 246, 0.97)",
+          background: "var(--surface-2)",
           borderRadius: 22,
           padding: "22px 22px 18px",
           maxWidth: 340,
           width: "100%",
           boxShadow: "0 22px 60px -22px rgba(15,17,13,0.55)",
-          border: "1px solid rgba(31,27,22,0.08)",
+          border: "1px solid var(--border-soft)",
           textAlign: "center",
         }}
       >
@@ -408,8 +419,8 @@ function PreviewOverlay({
             height: 64,
             margin: "0 auto 14px",
             borderRadius: "50%",
-            background: ev.pinned ? "#FFF8E7" : "#FBF6EA",
-            border: `2.4px solid ${ev.pinned ? "#C66E3D" : style.color}`,
+            background: ev.pinned ? "color-mix(in srgb, var(--accent) 18%, var(--surface))" : "var(--surface)",
+            border: `2.4px solid ${ev.pinned ? "var(--accent)" : style.color}`,
             display: "grid",
             placeItems: "center",
             fontSize: 32,
@@ -423,7 +434,7 @@ function PreviewOverlay({
             fontSize: 10,
             letterSpacing: 1.8,
             textTransform: "uppercase",
-            color: "#A38B5F",
+            color: "var(--gold)",
             fontWeight: 600,
             marginBottom: 8,
           }}
@@ -436,7 +447,7 @@ function PreviewOverlay({
             fontStyle: "italic",
             fontSize: 22,
             lineHeight: 1.18,
-            color: "#1F1B16",
+            color: "var(--text)",
             marginBottom: 18,
             fontWeight: 500,
             letterSpacing: -0.3,
@@ -450,9 +461,9 @@ function PreviewOverlay({
             style={{
               padding: "10px 16px",
               borderRadius: 999,
-              border: "1px solid rgba(31,27,22,0.18)",
+              border: "1px solid var(--border)",
               background: "transparent",
-              color: "#1F1B16",
+              color: "var(--text)",
               fontSize: 12,
               letterSpacing: 1.2,
               textTransform: "uppercase",
@@ -469,8 +480,8 @@ function PreviewOverlay({
               padding: "10px 18px",
               borderRadius: 999,
               border: "none",
-              background: "#1F1B16",
-              color: "#FBF6EA",
+              background: "var(--text)",
+              color: "var(--surface)",
               fontSize: 12,
               letterSpacing: 1.2,
               textTransform: "uppercase",
@@ -522,8 +533,8 @@ function FocusCount({
           gap: 8,
           padding: "4px 14px",
           borderRadius: 999,
-          background: "rgba(255, 253, 246, 0.55)",
-          border: "1px solid rgba(31, 27, 22, 0.08)",
+          background: "color-mix(in srgb, var(--surface-2) 60%, transparent)",
+          border: "1px solid var(--border-soft)",
           backdropFilter: "blur(6px)",
           fontSize: 11,
           letterSpacing: 1.4,
@@ -557,10 +568,10 @@ function FocusCount({
   );
 }
 
-function TopBar() {
+function TopBar({ onOpenSearch }: { onOpenSearch?: () => void }) {
   const { theme, setTheme } = useTheme();
   const [pickerOpen, setPickerOpen] = useState(false);
-  const isDarkLike = theme === "coastal-dark";
+  const isDarkLike = theme === "coastal-dark" || theme === "moonlit-sage";
   return (
     <div
       style={{
@@ -596,6 +607,7 @@ function TopBar() {
       <div style={{ display: "flex", gap: 8, position: "relative" }}>
         <button
           aria-label="Ara"
+          onClick={onOpenSearch}
           style={{
             width: 34,
             height: 34,
@@ -608,6 +620,13 @@ function TopBar() {
             fontSize: 14,
             cursor: "pointer",
             boxShadow: "var(--shadow-sm)",
+            transition: "transform 160ms ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.06)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "none";
           }}
         >
           🔍
@@ -901,10 +920,10 @@ function MomentView({
             style={{
               padding: "8px 18px",
               borderRadius: 999,
-              background: "rgba(255, 253, 246, 0.85)",
+              background: "color-mix(in srgb, var(--surface-2) 90%, transparent)",
               backdropFilter: "blur(10px)",
-              border: "1px solid rgba(31,27,22,0.12)",
-              color: "var(--text-muted)",
+              border: "1px solid var(--border)",
+              color: "var(--text)",
               fontFamily: "var(--font-body)",
               fontSize: 12,
               fontWeight: 500,

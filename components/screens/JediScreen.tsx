@@ -156,37 +156,41 @@ export function JediScreen({ memories }: JediScreenProps) {
         {[
           { n: String(yearsOld), l: "yaş", c: "var(--accent)" },
           { n: "5.2", l: "kg", c: "var(--primary)" },
-          { n: String(memories.length), l: "anı", c: "#A89376" },
+          { n: String(memories.length), l: "anı", c: "var(--gold)" },
           { n: "∞", l: "miyav", c: "var(--accent)" },
         ].map((s, i) => (
           <div
             key={i}
             style={{
-              background: "rgba(255,255,255,0.6)",
+              background: "var(--surface-2)",
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
               borderRadius: 12,
               padding: 12,
               textAlign: "center",
               border: "1px solid var(--border-soft)",
+              boxShadow: "var(--shadow-sm)",
             }}
           >
             <div
               style={{
                 fontFamily: "var(--font-heading)",
-                fontSize: 22,
+                fontSize: 24,
                 color: s.c,
                 fontStyle: "italic",
+                fontWeight: 600,
               }}
             >
               {s.n}
             </div>
             <div
               style={{
-                fontSize: 8,
+                fontSize: 9,
                 letterSpacing: 1.5,
-                color: "var(--text-muted)",
+                color: "var(--text)",
                 textTransform: "uppercase",
+                marginTop: 2,
+                opacity: 0.75,
               }}
             >
               {s.l}

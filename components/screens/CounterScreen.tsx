@@ -44,7 +44,7 @@ export function CounterScreen() {
         minHeight: "100vh",
         padding: "0 0 96px",
         background:
-          "linear-gradient(180deg, #F4F0E1 0%, #ECE5D2 50%, #DBD3BD 100%)",
+          "linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface-3) 100%)",
       }}
     >
       <header
@@ -56,7 +56,7 @@ export function CounterScreen() {
       >
         <Link
           href="/"
-          style={{ color: "#1F1B16", fontSize: 14, opacity: 0.8 }}
+          style={{ color: "var(--text)", fontSize: 14, opacity: 0.8 }}
         >
           ‹ ağaç
         </Link>
@@ -68,7 +68,7 @@ export function CounterScreen() {
             fontSize: 11,
             letterSpacing: 2.4,
             textTransform: "uppercase",
-            color: "#A38B5F",
+            color: "var(--gold)",
             fontWeight: 600,
             marginBottom: 6,
           }}
@@ -81,7 +81,7 @@ export function CounterScreen() {
             fontStyle: "italic",
             fontSize: 36,
             lineHeight: 1.05,
-            color: "#1F1B16",
+            color: "var(--text)",
             fontWeight: 500,
             letterSpacing: -0.5,
             margin: 0,
@@ -93,8 +93,8 @@ export function CounterScreen() {
           style={{
             fontFamily: "var(--font-accent)",
             fontSize: 18,
-            color: "#5A4F3E",
-            opacity: 0.85,
+            color: "var(--text-muted)",
+            opacity: 0.92,
             marginTop: 8,
             marginBottom: 0,
             lineHeight: 1.35,
@@ -269,7 +269,7 @@ export function CounterScreen() {
           padding: "20px 22px 0",
           fontFamily: "var(--font-accent)",
           fontSize: 13,
-          color: "#7C6E55",
+          color: "var(--text-muted)",
           opacity: 0.75,
           lineHeight: 1.5,
         }}

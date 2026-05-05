@@ -26,7 +26,7 @@ export default async function ClusterDetailPage({
         minHeight: "100vh",
         padding: "0 0 96px",
         background:
-          "linear-gradient(180deg, #F4F0E1 0%, #ECE5D2 50%, #DBD3BD 100%)",
+          "linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface-3) 100%)",
       }}
     >
       <section
@@ -139,9 +139,9 @@ export default async function ClusterDetailPage({
               key={memory.id}
               href={`/ani/${memory.id}`}
               style={{
-                background: "rgba(255, 253, 246, 0.85)",
+                background: "color-mix(in srgb, var(--surface-2) 92%, transparent)",
                 backdropFilter: "blur(10px)",
-                border: "1px solid rgba(31, 27, 22, 0.06)",
+                border: "1px solid var(--border-soft)",
                 borderRadius: 16,
                 padding: "14px 16px",
                 display: "flex",
@@ -155,7 +155,7 @@ export default async function ClusterDetailPage({
                   width: 46,
                   height: 46,
                   borderRadius: "50%",
-                  background: "#FBF6EA",
+                  background: "var(--surface)",
                   border: `1.6px solid ${cluster.hue.from}`,
                   display: "grid",
                   placeItems: "center",
@@ -171,7 +171,7 @@ export default async function ClusterDetailPage({
                   style={{
                     fontFamily: "var(--font-heading)",
                     fontSize: 16,
-                    color: "#1F1B16",
+                    color: "var(--text)",
                     lineHeight: 1.2,
                     fontWeight: 500,
                   }}
