@@ -450,61 +450,197 @@ export function TreeOfLife({
         />
       )}
 
-      {/* Roots — same multi-segment tapered anatomy as branches.
-           4 segments per root, base thick (trunk attachment) → tip
-           thin. Sample points along the cubic Bezier curve. */}
+      {/* Roots — 12 multi-segment tapered roots, asymmetric in
+           direction so they don't all curl the same way. Per-point
+           perpendicular jitter gives each root its own organic
+           wander. Larger base widths than before (user asked for
+           thicker trunk attachment). Knot bifurcations spawn a 2nd
+           branch from selected junctions. */}
       <g pointerEvents="none">
-        {[
-          { dx: -440, dy: 60, w: 11, segs: 4 },
-          { dx: -320, dy: 78, w: 9, segs: 4 },
-          { dx: -200, dy: 90, w: 8, segs: 4 },
-          { dx: -90, dy: 96, w: 6, segs: 3 },
-          { dx: 90, dy: 96, w: 6, segs: 3 },
-          { dx: 200, dy: 90, w: 8, segs: 4 },
-          { dx: 320, dy: 78, w: 9, segs: 4 },
-          { dx: 440, dy: 60, w: 11, segs: 4 },
-          { dx: 0, dy: 102, w: 5, segs: 3 },
-        ].map((r, i) => {
-          const startX = TRUNK_X;
-          const startY = GROUND_Y - 24;
-          const endX = TRUNK_X + r.dx;
-          const endY = GROUND_Y + r.dy;
-          const cp1x = TRUNK_X + r.dx * 0.3;
-          const cp1y = GROUND_Y - 4;
-          const cp2x = TRUNK_X + r.dx * 0.7;
-          const cp2y = GROUND_Y + r.dy * 0.5;
-          // Sample (segs+1) points along the cubic Bezier
-          const points = Array.from({ length: r.segs + 1 }).map((_, k) => {
-            const t = k / r.segs;
-            const u = 1 - t;
-            return {
-              x:
-                u * u * u * startX +
-                3 * u * u * t * cp1x +
-                3 * u * t * t * cp2x +
-                t * t * t * endX,
-              y:
-                u * u * u * startY +
-                3 * u * u * t * cp1y +
-                3 * u * t * t * cp2y +
-                t * t * t * endY,
-            };
+        {(() => {
+          // 12 roots, asymmetric horizontal distribution
+          const ROOTS = [
+            { dx: -480, dy: 50, w: 14, segs: 5 },
+            { dx: -380, dy: 70, w: 12, segs: 5 },
+            { dx: -280, dy: 84, w: 11, segs: 4 },
+            { dx: -190, dy: 92, w: 9, segs: 4 },
+            { dx: -100, dy: 100, w: 8, segs: 4 },
+            { dx: -40, dy: 108, w: 7, segs: 3 },
+            { dx: 40, dy: 108, w: 7, segs: 3 },
+            { dx: 100, dy: 100, w: 8, segs: 4 },
+            { dx: 190, dy: 92, w: 9, segs: 4 },
+            { dx: 280, dy: 84, w: 11, segs: 4 },
+            { dx: 380, dy: 70, w: 12, segs: 5 },
+            { dx: 480, dy: 50, w: 14, segs: 5 },
+          ];
+          return ROOTS.map((r, i) => {
+            const startX = TRUNK_X;
+            const startY = GROUND_Y - 26;
+            const endX = TRUNK_X + r.dx;
+            const endY = GROUND_Y + r.dy;
+            // Asymmetric control points — different curvature per root
+            const sideMul = r.dx >= 0 ? 1 : -1;
+            const cp1x = TRUNK_X + r.dx * (0.25 + (i % 3) * 0.06);
+            const cp1y = GROUND_Y - 4 + (i % 4) * 3;
+            const cp2x = TRUNK_X + r.dx * (0.65 + (i % 3) * 0.05);
+            const cp2y = GROUND_Y + r.dy * (0.4 + (i % 3) * 0.06);
+            const rng = seedRand(i * 919 + 13);
+            // Sample (segs+1) points along the cubic Bezier
+            const rawPoints = Array.from({ length: r.segs + 1 }).map((_, k) => {
+              const t = k / r.segs;
+              const u = 1 - t;
+              return {
+                x:
+                  u * u * u * startX +
+                  3 * u * u * t * cp1x +
+                  3 * u * t * t * cp2x +
+                  t * t * t * endX,
+                y:
+                  u * u * u * startY +
+                  3 * u * u * t * cp1y +
+                  3 * u * t * t * cp2y +
+                  t * t * t * endY,
+              };
+            });
+            // Perpendicular jitter at interior points → organic wander
+            const points = rawPoints.map((pt, k) => {
+              if (k === 0 || k === rawPoints.length - 1) return pt;
+              const prev = rawPoints[k - 1];
+              const next = rawPoints[k + 1];
+              const dx = next.x - prev.x;
+              const dy = next.y - prev.y;
+              const len = Math.hypot(dx, dy) || 1;
+              const perpX = -dy / len;
+              const perpY = dx / len;
+              const offset = (rng() - 0.5) * 14;
+              return { x: r1(pt.x + perpX * offset), y: r1(pt.y + perpY * offset) };
+            });
+            // Bifurcation — 1 random interior junction spawns an extra
+            // smaller root branching off
+            const bifurcK = 1 + Math.floor(rng() * (r.segs - 1));
+            const bifurcChance = rng();
+            const j = points[bifurcK];
+            // Direction for bifurcation: down-and-out
+            const bAngle = sideMul * 0.25 + (rng() - 0.5) * 0.4;
+            const bSegs = 2 + Math.floor(rng() * 2);
+            const bSegLen = 22 + rng() * 12;
+            const bPoints = Array.from({ length: bSegs + 1 }).map((_, kk) => {
+              const cum = Array.from({ length: kk }).reduce<number>(
+                (acc, _, ji) => acc + bSegLen * Math.pow(0.8, ji),
+                0,
+              );
+              const a = bAngle + (kk > 0 ? (rng() - 0.5) * 0.3 : 0);
+              return {
+                x: r1(j.x + Math.cos(a) * cum * sideMul),
+                y: r1(j.y + Math.abs(Math.sin(a)) * cum + Math.abs(cum * 0.3)),
+              };
+            });
+            return (
+              <g key={`root-${i}`}>
+                <TaperedBranch
+                  points={points}
+                  baseWidth={r.w}
+                  taperRatio={0.74}
+                  color="#3A2E22"
+                  shadow
+                  highlight
+                />
+                {bifurcChance > 0.45 && (
+                  <TaperedBranch
+                    points={bPoints}
+                    baseWidth={r.w * 0.55}
+                    taperRatio={0.7}
+                    color="#3A2E22"
+                    shadow={false}
+                    highlight={false}
+                  />
+                )}
+              </g>
+            );
           });
-          return (
-            <TaperedBranch
-              key={`root-${i}`}
-              points={points}
-              baseWidth={r.w}
-              taperRatio={0.74}
-              color="#3A2E22"
-              shadow
-              highlight
-            />
-          );
-        })}
+        })()}
       </g>
 
       <OrganicTrunk />
+
+      {/* Decorative Y-branches — 6 extra year-style branches sprouting
+           from the trunk between actual year branches. No memory
+           data, no year pill — pure visual filler so the trunk feels
+           like a real tree with branches everywhere. */}
+      {showCanopyFill && (
+        <g pointerEvents="none">
+          {Array.from({ length: 6 }).map((_, di) => {
+            const rng = seedRand(di * 727 + 31);
+            // Distribute decorative branches along the trunk vertically
+            const yPos = 200 + di * 320 + rng() * 80;
+            const sideMul = di % 2 === 0 ? -1 : 1;
+            const startX = TRUNK_X + sideMul * 14;
+            const angle = sideMul * (0.4 + rng() * 0.4); // mostly horizontal
+            const segs = 4 + Math.floor(rng() * 2); // 4-5 segments
+            const segLen = 38 + rng() * 22;
+            const points = Array.from({ length: segs + 1 }).map((_, k) => {
+              const cum = Array.from({ length: k }).reduce<number>(
+                (acc, _, ji) => acc + segLen * Math.pow(0.84, ji),
+                0,
+              );
+              const localAng = angle + (k > 0 ? (rng() - 0.5) * 0.5 : 0);
+              return {
+                x: r1(startX + Math.cos(localAng) * cum * sideMul),
+                y: r1(yPos - Math.sin(localAng) * cum * 0.6 - cum * 0.3),
+              };
+            });
+            // 2-4 small leaf clusters along the branch
+            const leaves: Array<{ x: number; y: number; rot: number }> = [];
+            for (let k = 0; k < points.length - 1; k++) {
+              const p1 = points[k];
+              const p2 = points[k + 1];
+              const lx = r1((p1.x + p2.x) / 2);
+              const ly = r1((p1.y + p2.y) / 2);
+              const dy = p2.y - p1.y;
+              const dx = p2.x - p1.x;
+              const len = Math.hypot(dx, dy) || 1;
+              const sf = k % 2 === 0 ? 1 : -1;
+              leaves.push({
+                x: r1(lx + (-dy / len) * sf * 5),
+                y: r1(ly + (dx / len) * sf * 5),
+                rot: r1(((Math.atan2(-dy, dx) + sf * 0.5) * 180) / Math.PI - 90),
+              });
+            }
+            return (
+              <g key={`deco-${di}`}>
+                <TaperedBranch
+                  points={points}
+                  baseWidth={9 + rng() * 3}
+                  taperRatio={0.76}
+                  color="#3A2E22"
+                  shadow
+                  highlight
+                />
+                {leaves.map((l, li) => (
+                  <ellipse
+                    key={`d-leaf-${di}-${li}`}
+                    cx={l.x}
+                    cy={l.y}
+                    rx="2"
+                    ry="3.4"
+                    fill={li % 2 === 0 ? "#7FA847" : "#9FC580"}
+                    opacity="0.88"
+                    transform={`rotate(${l.rot} ${l.x} ${l.y})`}
+                  />
+                ))}
+                {/* Bud at tip */}
+                <circle
+                  cx={r1(points[points.length - 1].x)}
+                  cy={r1(points[points.length - 1].y)}
+                  r="2.2"
+                  fill={di % 2 === 0 ? "#E8826B" : "#F2C5D1"}
+                  opacity="0.92"
+                />
+              </g>
+            );
+          })}
+        </g>
+      )}
 
       <g>
         <path
@@ -586,111 +722,191 @@ export function TreeOfLife({
               opacity={isFocused ? 0.32 : 0}
               style={{ transition: "opacity 240ms ease", filter: "blur(2px)" }}
             />
-            {/* Year branch — 4-6 tapered segments end-to-end. Base
-                 width 22 → tip width baseWidth × 0.78^(N-1). Each
-                 segment fits the next via shared end/start widths +
-                 a knot ellipse smooths the visual step. */}
+            {/* Year branch — 5-7 tapered segments with organic
+                 per-point jitter (not a straight chain) + 1-2 knot
+                 bifurcations spawning small sub-branches at random
+                 directions. */}
             {(() => {
-              const N_SEG = 4 + (memCount % 3); // 4-6 segments
-              const yearPoints = Array.from({ length: N_SEG + 1 }).map((_, i) =>
+              const N_SEG = 5 + (memCount % 3); // 5-7 segments
+              const baseRng = seedRand(year * 419 + 11);
+              const rawPoints = Array.from({ length: N_SEG + 1 }).map((_, i) =>
                 yearPointAt(year, i / N_SEG),
               );
+              // Apply perpendicular jitter to interior points so each
+              // segment has its own kink direction.
+              const yearPoints = rawPoints.map((pt, i) => {
+                if (i === 0 || i === rawPoints.length - 1) return pt;
+                const prev = rawPoints[i - 1];
+                const next = rawPoints[i + 1];
+                const dx = next.x - prev.x;
+                const dy = next.y - prev.y;
+                const len = Math.hypot(dx, dy) || 1;
+                const perpX = -dy / len;
+                const perpY = dx / len;
+                const offset = (baseRng() - 0.5) * 18;
+                return { x: r1(pt.x + perpX * offset), y: r1(pt.y + perpY * offset) };
+              });
+              // Bifurcation indices — 1-2 random interior junctions
+              // get an extra sub-branch perpendicular.
+              const bifurc: number[] = [];
+              for (let k = 1; k < N_SEG; k++) {
+                if (baseRng() < 0.55) bifurc.push(k);
+              }
               return (
-                <TaperedBranch
-                  points={yearPoints}
-                  baseWidth={branchBaseWidth}
-                  taperRatio={0.78}
-                  color={branchColor}
-                  shadow
-                  highlight
-                />
+                <>
+                  <TaperedBranch
+                    points={yearPoints}
+                    baseWidth={branchBaseWidth}
+                    taperRatio={0.78}
+                    color={branchColor}
+                    shadow
+                    highlight
+                  />
+                  {/* Knot bifurcations — extra branches off junctions */}
+                  {bifurc.map((idx) => {
+                    const j = yearPoints[idx];
+                    const prev = yearPoints[idx - 1];
+                    const dx = j.x - prev.x;
+                    const dy = j.y - prev.y;
+                    const parentAngle = Math.atan2(-dy, dx);
+                    // 2-3 segments perpendicular to parent at this junction
+                    const sideMul = baseRng() < 0.5 ? 1 : -1;
+                    const angle = parentAngle + sideMul * (Math.PI / 2 + (baseRng() - 0.5) * 0.6);
+                    const segs = 2 + Math.floor(baseRng() * 2); // 2-3
+                    const segLen = 14 + baseRng() * 10;
+                    const subPoints = Array.from({ length: segs + 1 }).map((_, k) => {
+                      const cum = Array.from({ length: k }).reduce<number>(
+                        (acc, _, ji) => acc + segLen * Math.pow(0.82, ji),
+                        0,
+                      );
+                      // Add a small per-point kink
+                      const a = angle + (k > 0 ? (baseRng() - 0.5) * 0.4 : 0);
+                      return {
+                        x: r1(j.x + Math.cos(a) * cum),
+                        y: r1(j.y - Math.sin(a) * cum),
+                      };
+                    });
+                    const subWidth =
+                      branchBaseWidth * Math.pow(0.78, idx) * 0.6;
+                    return (
+                      <TaperedBranch
+                        key={`bif-${idx}`}
+                        points={subPoints}
+                        baseWidth={subWidth}
+                        taperRatio={0.74}
+                        color={branchColor}
+                        shadow={false}
+                        highlight={false}
+                      />
+                    );
+                  })}
+                </>
               );
             })()}
 
             {showLeafMass && (
               <>
-                {/* ── M (Mevsim) branches — 4 season twigs per year
-                     branch, each multi-segment tapered. Sprouts at
-                     spring/summer/autumn/winter t-positions on the
-                     year curve. 2-3 segments, each ~0.74× the prior
-                     in width. ── */}
-                {[
-                  { t: 0.22, segs: 3 },
-                  { t: 0.45, segs: 3 },
-                  { t: 0.65, segs: 2 },
-                  { t: 0.84, segs: 2 },
-                ].map((s, si) => {
-                  const pt = yearPointAt(year, s.t);
-                  const angle =
-                    Math.PI / 2 +
-                    tip.side * (0.18 + ((si * 0.07) % 0.21));
-                  // Build N-segment chain — each segment is a straight
-                  // line in the same direction, length tapers down
-                  // proportionally so the chain doesn't escape the
-                  // canopy bounds.
-                  const segLen = 14 + (si % 2) * 6;
-                  const points = Array.from({ length: s.segs + 1 }).map(
-                    (_, i) => {
-                      const cumLen =
-                        Array.from({ length: i }).reduce<number>(
-                          (acc, _, j) => acc + segLen * Math.pow(0.85, j),
-                          0,
-                        );
-                      return {
-                        x: pt.x + Math.cos(angle) * cumLen,
-                        y: pt.y - Math.sin(angle) * cumLen,
-                      };
-                    },
-                  );
-                  return (
-                    <TaperedBranch
-                      key={`m-${si}`}
-                      points={points}
-                      baseWidth={branchBaseWidth * 0.32}
-                      taperRatio={0.74}
-                      color={branchColor}
-                      shadow={false}
-                      highlight={false}
-                    />
-                  );
-                })}
-                {/* ── Below-side season twigs — same anatomy but
-                     drooping. Half as many, so the year branch reads
-                     as "leaning up". ── */}
-                {[
-                  { t: 0.32, segs: 2 },
-                  { t: 0.58, segs: 2 },
-                ].map((s, si) => {
-                  const pt = yearPointAt(year, s.t);
-                  const angle =
-                    -Math.PI / 2 +
-                    tip.side * (0.18 + ((si * 0.06) % 0.18));
-                  const segLen = 12 + (si % 2) * 4;
-                  const points = Array.from({ length: s.segs + 1 }).map(
-                    (_, i) => {
-                      const cumLen =
-                        Array.from({ length: i }).reduce<number>(
-                          (acc, _, j) => acc + segLen * Math.pow(0.85, j),
-                          0,
-                        );
-                      return {
-                        x: pt.x + Math.cos(angle) * cumLen,
-                        y: pt.y - Math.sin(angle) * cumLen,
-                      };
-                    },
-                  );
-                  return (
-                    <TaperedBranch
-                      key={`m-below-${si}`}
-                      points={points}
-                      baseWidth={branchBaseWidth * 0.28}
-                      taperRatio={0.72}
-                      color={branchColor}
-                      shadow={false}
-                      highlight={false}
-                    />
-                  );
-                })}
+                {/* ── M (Mevsim) branches — multi-segment tapered
+                     twigs with RANDOM directions (not all parallel)
+                     and leaves attached on every segment. Each twig
+                     fans away from the year curve at its own angle. */}
+                {(() => {
+                  const seasons = [
+                    { t: 0.18, side: 1, segs: 3 },
+                    { t: 0.32, side: -1, segs: 2 },
+                    { t: 0.46, side: 1, segs: 3 },
+                    { t: 0.6, side: -1, segs: 3 },
+                    { t: 0.74, side: 1, segs: 2 },
+                    { t: 0.88, side: -1, segs: 2 },
+                  ];
+                  const yearRng = seedRand(year * 211 + 7);
+                  return seasons.map((s, si) => {
+                    const pt = yearPointAt(year, s.t);
+                    // Random direction per twig — biased upward but each
+                    // can lean a different way.
+                    const upBias = s.side > 0 ? Math.PI / 2 : -Math.PI / 2;
+                    const angle =
+                      upBias +
+                      tip.side * (0.18 + (yearRng() - 0.5) * 0.4) +
+                      (yearRng() - 0.5) * 0.5;
+                    const segLen = 12 + yearRng() * 10;
+                    // Build segment chain with per-point kink
+                    const points = Array.from({ length: s.segs + 1 }).map(
+                      (_, i) => {
+                        const cum =
+                          Array.from({ length: i }).reduce<number>(
+                            (acc, _, j) => acc + segLen * Math.pow(0.84, j),
+                            0,
+                          );
+                        const localAngle =
+                          angle + (i > 0 ? (yearRng() - 0.5) * 0.45 : 0);
+                        return {
+                          x: r1(pt.x + Math.cos(localAngle) * cum),
+                          y: r1(pt.y - Math.sin(localAngle) * cum),
+                        };
+                      },
+                    );
+                    const baseW =
+                      branchBaseWidth * (s.side > 0 ? 0.32 : 0.28);
+                    // Leaves along each segment
+                    const leaves: Array<{ ax: number; ay: number; rot: number; color: string }> = [];
+                    for (let i = 0; i < points.length - 1; i++) {
+                      const p1 = points[i];
+                      const p2 = points[i + 1];
+                      const lt = 0.5;
+                      const lx = r1(p1.x + (p2.x - p1.x) * lt);
+                      const ly = r1(p1.y + (p2.y - p1.y) * lt);
+                      const dx = p2.x - p1.x;
+                      const dy = p2.y - p1.y;
+                      const len = Math.hypot(dx, dy) || 1;
+                      const sideFlip = i % 2 === 0 ? 1 : -1;
+                      const perpX = (-dy / len) * sideFlip;
+                      const perpY = (dx / len) * sideFlip;
+                      const ax = r1(lx + perpX * 4.5);
+                      const ay = r1(ly + perpY * 4.5);
+                      const segAngle = Math.atan2(-dy, dx);
+                      leaves.push({
+                        ax,
+                        ay,
+                        rot: r1(((segAngle + sideFlip * 0.5) * 180) / Math.PI - 90),
+                        color: si % 2 === 0 ? "#7FA847" : "#9FC580",
+                      });
+                    }
+                    return (
+                      <g key={`m-${si}`}>
+                        <TaperedBranch
+                          points={points}
+                          baseWidth={baseW}
+                          taperRatio={0.74}
+                          color={branchColor}
+                          shadow={false}
+                          highlight={false}
+                        />
+                        {/* Leaves on every segment */}
+                        {leaves.map((l, li) => (
+                          <ellipse
+                            key={`m-leaf-${si}-${li}`}
+                            cx={l.ax}
+                            cy={l.ay}
+                            rx="2"
+                            ry="3.4"
+                            fill={l.color}
+                            opacity="0.9"
+                            transform={`rotate(${l.rot} ${l.ax} ${l.ay})`}
+                          />
+                        ))}
+                        {/* Bud at tip */}
+                        <circle
+                          cx={r1(points[points.length - 1].x)}
+                          cy={r1(points[points.length - 1].y)}
+                          r="2"
+                          fill={si % 2 === 0 ? "#E8826B" : "#F2C5D1"}
+                          opacity="0.9"
+                        />
+                      </g>
+                    );
+                  });
+                })()}
                 {/* ── Mid-canopy bursts (kat 3): 2 deeper canopies at
                      prominent points along year curve. ── */}
                 {[0.4, 0.7].map((t, mi) => {
