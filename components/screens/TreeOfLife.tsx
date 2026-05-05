@@ -579,18 +579,21 @@ export function TreeOfLife({
             const startX = TRUNK_X + sideMul * 14;
             const angle = sideMul * (0.4 + rng() * 0.4); // mostly horizontal
             const segs = 5 + Math.floor(rng() * 2); // 5-6 segments
-            const segLen = 50 + rng() * 28;
-            const points = Array.from({ length: segs + 1 }).map((_, k) => {
-              const cum = Array.from({ length: k }).reduce<number>(
-                (acc, _, ji) => acc + segLen * Math.pow(0.84, ji),
-                0,
-              );
-              const localAng = angle + (k > 0 ? (rng() - 0.5) * 0.5 : 0);
-              return {
-                x: r1(startX + Math.cos(localAng) * cum * sideMul),
-                y: r1(yPos - Math.sin(localAng) * cum * 0.6 - cum * 0.3),
-              };
-            });
+            const baseSegLen = 50 + rng() * 28;
+            // Walk segment-by-segment with kink at each junction
+            const points: Array<{ x: number; y: number }> = [
+              { x: r1(startX), y: r1(yPos) },
+            ];
+            let dx = startX;
+            let dy = yPos;
+            let dAng = angle * sideMul;
+            for (let k = 0; k < segs; k++) {
+              const segLen = baseSegLen * Math.pow(0.84, k);
+              dAng += (rng() - 0.5) * 0.55;
+              dx += Math.cos(dAng) * segLen;
+              dy -= Math.sin(dAng) * segLen * 0.6 - segLen * 0.3;
+              points.push({ x: r1(dx), y: r1(dy) });
+            }
             // 2-4 small leaf clusters along the branch
             const leaves: Array<{ x: number; y: number; rot: number }> = [];
             for (let k = 0; k < points.length - 1; k++) {
@@ -775,19 +778,21 @@ export function TreeOfLife({
                     const sideMul = baseRng() < 0.5 ? 1 : -1;
                     const angle = parentAngle + sideMul * (Math.PI / 2 + (baseRng() - 0.5) * 0.6);
                     const segs = 2 + Math.floor(baseRng() * 2); // 2-3
-                    const segLen = 14 + baseRng() * 10;
-                    const subPoints = Array.from({ length: segs + 1 }).map((_, k) => {
-                      const cum = Array.from({ length: k }).reduce<number>(
-                        (acc, _, ji) => acc + segLen * Math.pow(0.82, ji),
-                        0,
-                      );
-                      // Add a small per-point kink
-                      const a = angle + (k > 0 ? (baseRng() - 0.5) * 0.4 : 0);
-                      return {
-                        x: r1(j.x + Math.cos(a) * cum),
-                        y: r1(j.y - Math.sin(a) * cum),
-                      };
-                    });
+                    const baseSegLen = 14 + baseRng() * 10;
+                    // Segment-by-segment walk with per-junction kink
+                    const subPoints: Array<{ x: number; y: number }> = [
+                      { x: r1(j.x), y: r1(j.y) },
+                    ];
+                    let bx = j.x;
+                    let by = j.y;
+                    let bAng = angle;
+                    for (let k = 0; k < segs; k++) {
+                      const segLen = baseSegLen * Math.pow(0.82, k);
+                      bAng += (baseRng() - 0.5) * 0.6;
+                      bx += Math.cos(bAng) * segLen;
+                      by -= Math.sin(bAng) * segLen;
+                      subPoints.push({ x: r1(bx), y: r1(by) });
+                    }
                     const subWidth =
                       branchBaseWidth * Math.pow(0.78, idx) * 0.6;
                     // Leaves on every segment of this bifurcation
@@ -862,30 +867,29 @@ export function TreeOfLife({
                   const yearRng = seedRand(year * 211 + 7);
                   return seasons.map((s, si) => {
                     const pt = yearPointAt(year, s.t);
-                    // Random direction per twig — biased upward but each
-                    // can lean a different way.
                     const upBias = s.side > 0 ? Math.PI / 2 : -Math.PI / 2;
                     const angle =
                       upBias +
                       tip.side * (0.18 + (yearRng() - 0.5) * 0.4) +
                       (yearRng() - 0.5) * 0.5;
-                    const segLen = 12 + yearRng() * 10;
-                    // Build segment chain with per-point kink
-                    const points = Array.from({ length: s.segs + 1 }).map(
-                      (_, i) => {
-                        const cum =
-                          Array.from({ length: i }).reduce<number>(
-                            (acc, _, j) => acc + segLen * Math.pow(0.84, j),
-                            0,
-                          );
-                        const localAngle =
-                          angle + (i > 0 ? (yearRng() - 0.5) * 0.45 : 0);
-                        return {
-                          x: r1(pt.x + Math.cos(localAngle) * cum),
-                          y: r1(pt.y - Math.sin(localAngle) * cum),
-                        };
-                      },
-                    );
+                    const baseSegLen = 12 + yearRng() * 10;
+                    // Walk segment-by-segment with a fresh kink at each
+                    // junction — each new segment continues from the
+                    // previous endpoint at a slightly bent angle.
+                    const points: Array<{ x: number; y: number }> = [
+                      { x: r1(pt.x), y: r1(pt.y) },
+                    ];
+                    let cx = pt.x;
+                    let cy = pt.y;
+                    let cAng = angle;
+                    for (let i = 0; i < s.segs; i++) {
+                      const segLen = baseSegLen * Math.pow(0.84, i);
+                      const kink = (yearRng() - 0.5) * 0.7;
+                      cAng = cAng + kink;
+                      cx += Math.cos(cAng) * segLen;
+                      cy -= Math.sin(cAng) * segLen;
+                      points.push({ x: r1(cx), y: r1(cy) });
+                    }
                     const baseW =
                       branchBaseWidth * (s.side > 0 ? 0.32 : 0.28);
                     // Leaves along each segment
