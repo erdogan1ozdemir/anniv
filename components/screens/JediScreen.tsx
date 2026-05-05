@@ -136,8 +136,10 @@ export function JediScreen({ memories }: JediScreenProps) {
             style={{
               fontFamily: "var(--font-accent)",
               fontSize: 22,
-              color: "var(--primary)",
-              marginTop: 2,
+              color: "var(--text)",
+              opacity: 0.92,
+              marginTop: 4,
+              textShadow: "0 1px 2px rgba(0,0,0,0.12)",
             }}
           >
             canım kızımız

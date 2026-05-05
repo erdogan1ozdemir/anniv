@@ -172,8 +172,8 @@ export default async function ClusterDetailPage({
                     fontFamily: "var(--font-heading)",
                     fontSize: 16,
                     color: "var(--text)",
-                    lineHeight: 1.2,
-                    fontWeight: 500,
+                    lineHeight: 1.25,
+                    fontWeight: 600,
                   }}
                 >
                   {memory.title}
@@ -181,7 +181,7 @@ export default async function ClusterDetailPage({
                 <div
                   style={{
                     fontSize: 10,
-                    color: cluster.hue.from,
+                    color: "var(--text-muted)",
                     letterSpacing: 1.2,
                     textTransform: "uppercase",
                     marginTop: 4,
@@ -202,8 +202,8 @@ export default async function ClusterDetailPage({
                   fontSize: 24,
                   fontFamily: "var(--font-heading)",
                   fontStyle: "italic",
-                  color: cluster.hue.from,
-                  opacity: 0.65,
+                  color: "var(--accent)",
+                  opacity: 0.7,
                   flexShrink: 0,
                   fontWeight: 500,
                 }}

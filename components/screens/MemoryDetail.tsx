@@ -691,14 +691,14 @@ export function MemoryDetail({
                 href={`/ani/${item.id}`}
                 style={{
                   flex: "0 0 200px",
-                  background: "rgba(255,253,246,0.92)",
-                  border: "1px solid rgba(31,27,22,0.06)",
+                  background: "var(--surface-2)",
+                  border: "1px solid var(--border-soft)",
                   borderRadius: 14,
                   padding: 12,
                   display: "flex",
                   flexDirection: "column",
                   gap: 8,
-                  boxShadow: "0 4px 14px -8px rgba(15,17,13,0.12)",
+                  boxShadow: "var(--shadow-sm)",
                 }}
               >
                 <div
@@ -770,9 +770,10 @@ export function MemoryDetail({
               fontSize: 10,
               letterSpacing: 2,
               textTransform: "uppercase",
-              color: "var(--primary)",
+              color: "var(--text)",
+              opacity: 0.85,
               marginBottom: 10,
-              fontWeight: 600,
+              fontWeight: 700,
               display: "flex",
               alignItems: "center",
               gap: 8,
@@ -803,10 +804,10 @@ export function MemoryDetail({
                     alignItems: "center",
                     gap: 12,
                     padding: "12px 14px",
-                    background: "rgba(255,253,246,0.92)",
-                    border: "1px solid rgba(31,27,22,0.06)",
+                    background: "var(--surface-2)",
+                    border: "1px solid var(--border-soft)",
                     borderRadius: 12,
-                    boxShadow: "0 2px 8px -4px rgba(15,17,13,0.06)",
+                    boxShadow: "var(--shadow-sm)",
                   }}
                 >
                   <div
@@ -814,7 +815,7 @@ export function MemoryDetail({
                       width: 42,
                       height: 42,
                       borderRadius: "50%",
-                      background: "var(--surface-2)",
+                      background: "var(--surface)",
                       border: `1.5px solid ${itemMeta ? "var(--accent)" : "var(--border)"}`,
                       display: "grid",
                       placeItems: "center",
@@ -831,8 +832,8 @@ export function MemoryDetail({
                         fontFamily: "var(--font-heading)",
                         fontSize: 15,
                         color: "var(--text)",
-                        lineHeight: 1.2,
-                        fontWeight: 500,
+                        lineHeight: 1.25,
+                        fontWeight: 600,
                       }}
                     >
                       {item.title}
@@ -840,7 +841,7 @@ export function MemoryDetail({
                     <div
                       style={{
                         fontSize: 10,
-                        color: "var(--accent)",
+                        color: "var(--text-muted)",
                         letterSpacing: 1,
                         textTransform: "uppercase",
                         marginTop: 3,
@@ -856,7 +857,7 @@ export function MemoryDetail({
                       fontStyle: "italic",
                       fontSize: 22,
                       color: "var(--accent)",
-                      opacity: 0.55,
+                      opacity: 0.7,
                       flexShrink: 0,
                       fontWeight: 500,
                     }}
