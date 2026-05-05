@@ -21,7 +21,7 @@ import {
   type ZoomLevel,
 } from "@/lib/tree-data";
 
-const ZOOM_LEVELS: ZoomLevel[] = ["all", "year", "season", "month", "week", "moment"];
+const ZOOM_LEVELS: ZoomLevel[] = ["all", "year", "season", "month", "moment"];
 const ZOOM_LABEL: Record<ZoomLevel, string> = {
   all: "Tüm Hayat",
   year: "Yıl",
@@ -55,7 +55,6 @@ export function Timeline({
     if (idx >= 1 && !f.year) f.year = NOW.year;
     if (idx >= 2 && !f.season) f.season = monthSeason(NOW.month);
     if (idx >= 3 && f.month == null) f.month = NOW.month;
-    if (idx >= 4 && !f.week) f.week = Math.ceil(NOW.day / 7);
     setFocus(f);
     setLevel(newLevel);
   };
@@ -79,8 +78,7 @@ export function Timeline({
         // pinch out → broaden scope (in moment, stay; otherwise step level)
         if (level === "moment") {
           // Moment: progressively clear focus, stay in list view
-          if (focus.week) setFocus({ year: focus.year, season: focus.season, month: focus.month });
-          else if (focus.month != null) setFocus({ year: focus.year, season: focus.season });
+          if (focus.month != null) setFocus({ year: focus.year, season: focus.season });
           else if (focus.season) setFocus({ year: focus.year });
           else if (focus.year) setFocus({});
           // else: at "all anlar", stay
@@ -159,38 +157,9 @@ export function Timeline({
       if (YEARS.includes(newY)) setMonth(newY, newM);
       return;
     }
-    if (level === "week" && focus.year != null && focus.month != null) {
-      const w = focus.week ?? 1;
-      let newW = w + dir;
-      if (newW >= 1 && newW <= 5) {
-        setFocus((f) => ({ ...f, week: newW }));
-        return;
-      }
-      // Roll over to neighbouring month, snap week to 1 or 4
-      let newY = focus.year;
-      let newM = focus.month + dir;
-      if (newM < 0) {
-        newM = 11;
-        newY -= 1;
-      } else if (newM > 11) {
-        newM = 0;
-        newY += 1;
-      }
-      if (!YEARS.includes(newY)) return;
-      setFocus((f) => ({
-        ...f,
-        year: newY,
-        season: monthSeason(newM),
-        month: newM,
-        week: dir === 1 ? 1 : 4,
-      }));
-    }
   };
   const swipeEnabled =
-    level === "year" ||
-    level === "season" ||
-    level === "month" ||
-    level === "week";
+    level === "year" || level === "season" || level === "month";
 
   // Native pointer-based swipe detector. Belt & suspenders alongside the
   // framer-motion drag — guarantees the gesture works on platforms where
@@ -235,7 +204,6 @@ export function Timeline({
       setFocus({ year: focus.year, season: focus.season });
     else if (target === "month")
       setFocus({ year: focus.year, season: focus.season, month: focus.month });
-    else if (target === "week") setFocus({ ...focus });
   };
 
   const onCrumbSet = (target: ZoomLevel) => {
@@ -246,16 +214,12 @@ export function Timeline({
     }
   };
 
-  const vb = zoomViewBox(level === "moment" ? "week" : level, focus);
+  const vb = zoomViewBox(level === "moment" ? "month" : level, focus);
 
   const focusedEvents = events.filter((ev) => {
     if (focus.year && ev.year !== focus.year) return false;
     if (focus.season && monthSeason(ev.month) !== focus.season) return false;
     if (focus.month != null && ev.month !== focus.month) return false;
-    if (focus.week) {
-      const evWeek = Math.ceil(ev.day / 7);
-      if (evWeek !== focus.week) return false;
-    }
     return true;
   });
 
@@ -297,7 +261,7 @@ export function Timeline({
           }}
         >
           <ZoomSlider level={level} onSet={goLevel} />
-          {level === "week" && (
+          {level === "month" && (
             <button
               onClick={() => setLevel("moment")}
               style={{
@@ -662,7 +626,6 @@ function Breadcrumbs({
     crumbs.push({ label: SEASON_TR[focus.season], level: "season" });
   if (idx >= 3 && focus.month != null)
     crumbs.push({ label: MONTHS_TR_LONG[focus.month], level: "month" });
-  if (idx >= 4 && focus.week) crumbs.push({ label: `${focus.week}. hafta`, level: "week" });
   if (idx >= 5) crumbs.push({ label: "an", level: "moment" });
   return (
     <div
@@ -841,9 +804,8 @@ function MomentView({
     [events],
   );
 
-  const scopeLabel = focus.week
-    ? `${focus.month != null ? MONTHS_TR_LONG[focus.month] : ""} · ${focus.week}. hafta`.trim()
-    : focus.month != null
+  const scopeLabel =
+    focus.month != null
       ? `${MONTHS_TR_LONG[focus.month]} ${focus.year}`
       : focus.season
         ? `${SEASON_TR[focus.season]} ${focus.year}`
@@ -852,14 +814,12 @@ function MomentView({
           : "Tüm zamanlar";
 
   // Show "broaden" affordance if any focus is active
-  const canBroaden = Boolean(focus.year || focus.season || focus.month != null || focus.week);
-  const broadenTarget: ZoomLevel = focus.week
-    ? "month"
-    : focus.month != null
-      ? "season"
-      : focus.season
-        ? "year"
-        : "all";
+  const canBroaden = Boolean(focus.year || focus.season || focus.month != null);
+  const broadenTarget: ZoomLevel = focus.month != null
+    ? "season"
+    : focus.season
+      ? "year"
+      : "all";
 
   return (
     <div

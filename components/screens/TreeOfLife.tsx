@@ -26,7 +26,7 @@ import {
 } from "@/lib/tree-data";
 import { OrganicTrunk } from "@/components/tree/Trunk";
 import { Canopy } from "@/components/tree/Canopy";
-import { SimpleTwig } from "@/components/tree/SimpleTwig";
+import { TaperedBranch } from "@/components/tree/TaperedBranch";
 import { EventGlyph, FoliageBurst } from "@/components/tree/Tokens";
 import { r1 } from "@/components/tree/utils";
 
@@ -450,18 +450,20 @@ export function TreeOfLife({
         />
       )}
 
-      {/* Simple root fan — 9 strokes radiating from trunk base */}
+      {/* Roots — same multi-segment tapered anatomy as branches.
+           4 segments per root, base thick (trunk attachment) → tip
+           thin. Sample points along the cubic Bezier curve. */}
       <g pointerEvents="none">
         {[
-          { dx: -440, dy: 60, w: 9 },
-          { dx: -320, dy: 78, w: 8 },
-          { dx: -200, dy: 90, w: 7 },
-          { dx: -90, dy: 96, w: 5 },
-          { dx: 90, dy: 96, w: 5 },
-          { dx: 200, dy: 90, w: 7 },
-          { dx: 320, dy: 78, w: 8 },
-          { dx: 440, dy: 60, w: 9 },
-          { dx: 0, dy: 102, w: 4 },
+          { dx: -440, dy: 60, w: 11, segs: 4 },
+          { dx: -320, dy: 78, w: 9, segs: 4 },
+          { dx: -200, dy: 90, w: 8, segs: 4 },
+          { dx: -90, dy: 96, w: 6, segs: 3 },
+          { dx: 90, dy: 96, w: 6, segs: 3 },
+          { dx: 200, dy: 90, w: 8, segs: 4 },
+          { dx: 320, dy: 78, w: 9, segs: 4 },
+          { dx: 440, dy: 60, w: 11, segs: 4 },
+          { dx: 0, dy: 102, w: 5, segs: 3 },
         ].map((r, i) => {
           const startX = TRUNK_X;
           const startY = GROUND_Y - 24;
@@ -471,33 +473,33 @@ export function TreeOfLife({
           const cp1y = GROUND_Y - 4;
           const cp2x = TRUNK_X + r.dx * 0.7;
           const cp2y = GROUND_Y + r.dy * 0.5;
-          const d = `M ${startX} ${startY} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${endX} ${endY}`;
+          // Sample (segs+1) points along the cubic Bezier
+          const points = Array.from({ length: r.segs + 1 }).map((_, k) => {
+            const t = k / r.segs;
+            const u = 1 - t;
+            return {
+              x:
+                u * u * u * startX +
+                3 * u * u * t * cp1x +
+                3 * u * t * t * cp2x +
+                t * t * t * endX,
+              y:
+                u * u * u * startY +
+                3 * u * u * t * cp1y +
+                3 * u * t * t * cp2y +
+                t * t * t * endY,
+            };
+          });
           return (
-            <g key={`root-${i}`}>
-              <path
-                d={d}
-                stroke="#1F1612"
-                strokeWidth={r.w + 2}
-                fill="none"
-                strokeLinecap="round"
-                opacity="0.4"
-              />
-              <path
-                d={d}
-                stroke="#3A2E22"
-                strokeWidth={r.w}
-                fill="none"
-                strokeLinecap="round"
-              />
-              <path
-                d={d}
-                stroke="rgba(255,235,200,0.18)"
-                strokeWidth={Math.max(1, r.w * 0.3)}
-                fill="none"
-                strokeLinecap="round"
-                transform={`translate(0, -${Math.max(0.8, r.w * 0.22)})`}
-              />
-            </g>
+            <TaperedBranch
+              key={`root-${i}`}
+              points={points}
+              baseWidth={r.w}
+              taperRatio={0.74}
+              color="#3A2E22"
+              shadow
+              highlight
+            />
           );
         })}
       </g>
@@ -584,76 +586,108 @@ export function TreeOfLife({
               opacity={isFocused ? 0.32 : 0}
               style={{ transition: "opacity 240ms ease", filter: "blur(2px)" }}
             />
-            {/* Year branch — 4 sub-branches end-to-end, each with its
-                 own gnarled multi-stroke and stepping width. Junctions
-                 between sub-branches sprout small side-twigs. */}
-            {/* Year branch — single chunky tapering stem, drawn as 3
-                 stacked paths (shadow + main + highlight) for depth. */}
-            <path
-              d={path}
-              stroke="#1F1612"
-              strokeWidth={branchBaseWidth + 2}
-              fill="none"
-              strokeLinecap="round"
-              opacity="0.45"
-            />
-            <path
-              d={path}
-              stroke={branchColor}
-              strokeWidth={branchBaseWidth}
-              fill="none"
-              strokeLinecap="round"
-            />
-            <path
-              d={path}
-              stroke="rgba(255,235,200,0.22)"
-              strokeWidth={Math.max(1.2, branchBaseWidth * 0.28)}
-              fill="none"
-              strokeLinecap="round"
-              transform={`translate(0, -${Math.max(1, branchBaseWidth * 0.18)})`}
-            />
+            {/* Year branch — 4-6 tapered segments end-to-end. Base
+                 width 22 → tip width baseWidth × 0.78^(N-1). Each
+                 segment fits the next via shared end/start widths +
+                 a knot ellipse smooths the visual step. */}
+            {(() => {
+              const N_SEG = 4 + (memCount % 3); // 4-6 segments
+              const yearPoints = Array.from({ length: N_SEG + 1 }).map((_, i) =>
+                yearPointAt(year, i / N_SEG),
+              );
+              return (
+                <TaperedBranch
+                  points={yearPoints}
+                  baseWidth={branchBaseWidth}
+                  taperRatio={0.78}
+                  color={branchColor}
+                  shadow
+                  highlight
+                />
+              );
+            })()}
 
             {showLeafMass && (
               <>
-                {/* ── Above-branch twigs (kat 2): 5 small twigs
-                     sprouting upward from year curve, scattered along
-                     its length. Densely fills the area above the year
-                     branch where the user marked. ── */}
-                {[0.18, 0.32, 0.48, 0.62, 0.78].map((t, ti) => {
-                  const pt = yearPointAt(year, t);
+                {/* ── M (Mevsim) branches — 4 season twigs per year
+                     branch, each multi-segment tapered. Sprouts at
+                     spring/summer/autumn/winter t-positions on the
+                     year curve. 2-3 segments, each ~0.74× the prior
+                     in width. ── */}
+                {[
+                  { t: 0.22, segs: 3 },
+                  { t: 0.45, segs: 3 },
+                  { t: 0.65, segs: 2 },
+                  { t: 0.84, segs: 2 },
+                ].map((s, si) => {
+                  const pt = yearPointAt(year, s.t);
                   const angle =
                     Math.PI / 2 +
-                    tip.side * (0.18 + ((ti * 0.06) % 0.18));
+                    tip.side * (0.18 + ((si * 0.07) % 0.21));
+                  // Build N-segment chain — each segment is a straight
+                  // line in the same direction, length tapers down
+                  // proportionally so the chain doesn't escape the
+                  // canopy bounds.
+                  const segLen = 14 + (si % 2) * 6;
+                  const points = Array.from({ length: s.segs + 1 }).map(
+                    (_, i) => {
+                      const cumLen =
+                        Array.from({ length: i }).reduce<number>(
+                          (acc, _, j) => acc + segLen * Math.pow(0.85, j),
+                          0,
+                        );
+                      return {
+                        x: pt.x + Math.cos(angle) * cumLen,
+                        y: pt.y - Math.sin(angle) * cumLen,
+                      };
+                    },
+                  );
                   return (
-                    <SimpleTwig
-                      key={`above-${ti}`}
-                      rootX={pt.x}
-                      rootY={pt.y}
-                      angle={angle}
-                      length={18 + (ti % 2) * 8}
-                      year={year}
-                      seed={year * 31 + ti * 7}
-                      stemColor={branchColor}
+                    <TaperedBranch
+                      key={`m-${si}`}
+                      points={points}
+                      baseWidth={branchBaseWidth * 0.32}
+                      taperRatio={0.74}
+                      color={branchColor}
+                      shadow={false}
+                      highlight={false}
                     />
                   );
                 })}
-                {/* ── Below-branch twigs (kat 2 alt): 4 drooping twigs
-                     keeping the underside from feeling empty. ── */}
-                {[0.25, 0.42, 0.58, 0.74].map((t, ti) => {
-                  const pt = yearPointAt(year, t);
+                {/* ── Below-side season twigs — same anatomy but
+                     drooping. Half as many, so the year branch reads
+                     as "leaning up". ── */}
+                {[
+                  { t: 0.32, segs: 2 },
+                  { t: 0.58, segs: 2 },
+                ].map((s, si) => {
+                  const pt = yearPointAt(year, s.t);
                   const angle =
                     -Math.PI / 2 +
-                    tip.side * (0.18 + ((ti * 0.05) % 0.15));
+                    tip.side * (0.18 + ((si * 0.06) % 0.18));
+                  const segLen = 12 + (si % 2) * 4;
+                  const points = Array.from({ length: s.segs + 1 }).map(
+                    (_, i) => {
+                      const cumLen =
+                        Array.from({ length: i }).reduce<number>(
+                          (acc, _, j) => acc + segLen * Math.pow(0.85, j),
+                          0,
+                        );
+                      return {
+                        x: pt.x + Math.cos(angle) * cumLen,
+                        y: pt.y - Math.sin(angle) * cumLen,
+                      };
+                    },
+                  );
                   return (
-                    <SimpleTwig
-                      key={`below-${ti}`}
-                      rootX={pt.x}
-                      rootY={pt.y}
-                      angle={angle}
-                      length={14 + (ti % 2) * 8}
-                      year={year}
-                      seed={year * 41 + ti * 11}
-                      stemColor={branchColor}
+                    <TaperedBranch
+                      key={`m-below-${si}`}
+                      points={points}
+                      baseWidth={branchBaseWidth * 0.28}
+                      taperRatio={0.72}
+                      color={branchColor}
+                      shadow={false}
+                      highlight={false}
                     />
                   );
                 })}

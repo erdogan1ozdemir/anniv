@@ -352,19 +352,6 @@ export function zoomViewBox(level: ZoomLevel, focus: ZoomFocus = {}): string {
     const h = 170;
     return `${cx - w / 2} ${cy - h / 2} ${w} ${h}`;
   }
-  if (level === "week" && focus.year && focus.month != null) {
-    const m = monthTip(focus.year, focus.month);
-    const wk = focus.week || 1;
-    const t = 0.4 + (wk - 1) * 0.18;
-    const u = 1 - t;
-    const cx =
-      u * u * m.baseX + 2 * u * t * ((m.baseX + m.tipX) / 2) + t * t * m.tipX;
-    const cy =
-      u * u * m.baseY +
-      2 * u * t * ((m.baseY + m.tipY) / 2 - 6) +
-      t * t * m.tipY;
-    return `${cx - 90} ${cy - 70} 180 140`;
-  }
   return `0 0 ${TREE_VB.w} ${TREE_VB.h}`;
 }
 
