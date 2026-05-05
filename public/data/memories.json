@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Bahçemiz — Master Anı Kartları",
     "description": "Bahçemiz — birlikte büyüttüğümüz anılar, ZQWQZ'den bugüne.",
-    "total_cards": 94,
+    "total_cards": 100,
     "date_range": "2017-11-05 → 2026-04-30",
     "data_source": "kendi anılarımız",
     "generated": "2026-05-02",
@@ -3265,6 +3265,372 @@
       "story": "9 yıl önce bugün, ikimiz de 'evet' dedik. O günden beri her sene aynı tarihte bu cümleyi içimizden tekrar ediyoruz.",
       "is_pinned": true,
       "ai_confidence": "high"
+    },
+    {
+      "id": "2018-01-16-ofiste-dusmek",
+      "date": "2018-01-16",
+      "title": "Şirkete girerken düşmek",
+      "subtitle": "yarim hitabının doğduğu sabah",
+      "category": "ilkler",
+      "tags": [
+        "yarim",
+        "ilk",
+        "şirket",
+        "düşme",
+        "ofis"
+      ],
+      "story": "16 Ocak 2018, Salı sabahı. Erdoğan evden yeni çıkmış, Yarim ona yetişemediği için telefonunu açıyor: *Günaydın aşk. Yeni çıktın evden. Uyuyakaknıın.*\n\n10:17'de işin başında küçük felaket:\n\n*Düştüm ya şirkete girerken.*\n*Moralim bozuk.*\n*Ya sürekli rezil oluyorum sikicem.*\n\nAçıklama da geliyor: yerler kaygan, dışarda yağmur, girişte kayıp düşüyor — ondan önce de bir kadın daha düşmüş. Güvenlik koşa koşa yardıma geliyor.\n\nErdoğan'ın tepkisi tatlı bir alay: *Ama malsın ajsjdjgmb / Kafada bişey var ajdjgjvv.* Yarim *iyiyim aşk* deyip günü devam ettiriyor.\n\nBu gün, chat arşivinde *yarim* hitabının ilk geçtiği gündür. *Yarım saat mi sürdü* kelime oyunundan başlayıp kalıcı bir hitaba dönüşmesi tam burada — ofis girişinde kayıp düşen ve 'malım' diye kendine sövülen kadın için.",
+      "quote": "Düştüm ya şirkete girerken. Moralim bozuk.",
+      "whatsapp_excerpt": [
+        {
+          "sender": "Yarim",
+          "text": "Günayfın aşk",
+          "time": "09:21"
+        },
+        {
+          "sender": "Yarim",
+          "text": "Yeni çıktın evden",
+          "time": "09:21"
+        },
+        {
+          "sender": "Yarim",
+          "text": "Düştüm ya şirkete girerken",
+          "time": "10:17"
+        },
+        {
+          "sender": "Yarim",
+          "text": "Moralim bozuk",
+          "time": "10:17"
+        },
+        {
+          "sender": "Yarim",
+          "text": "Ya sürekli rezil oluyorum sikicem",
+          "time": "10:17"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "İyi misin nası düştün yav",
+          "time": "11:02"
+        },
+        {
+          "sender": "Yarim",
+          "text": "Kaydım düştüm. Güvenlik tabii hemen koşuyo yardıma",
+          "time": "11:09"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "Ama malsın ajsjdjgmb",
+          "time": "11:09"
+        }
+      ],
+      "location": null,
+      "song_ref": null,
+      "mood": "funny",
+      "is_pinned": false,
+      "media_count_estimate": 0,
+      "ai_confidence": "high",
+      "_batch": "added_2026_05"
+    },
+    {
+      "id": "2018-03-24-orrospu-cinemaximum",
+      "date": "2018-03-24",
+      "title": "ORROSPU çocukları — sinema biletleri",
+      "subtitle": "Cumartesi akşamı, fiyat şoku",
+      "category": "kucuksey",
+      "tags": [
+        "sinema",
+        "Cinemaximum",
+        "indirim",
+        "Black Panther",
+        "öfke"
+      ],
+      "story": "24 Mart 2018, Cumartesi akşamı 20:20. İkisi de evde, akşamlık plan yapıyorlar. Erdoğan Cinemaximum sitesinde fiyatlara bakıyor: *İstanbul'daki sinemalarin aq bu ne ya. Cinemaximum sonuçta. Ama 2D filmler daha uygun, 24 TL.*\n\nSonra 50 kuruşluk indirim görünce patlıyor:\n\n***ORRRRRRRRROSPU ÇOCUKLARIIIIIIIJJK***\n*Neyin indirimi bu 50 kuruş shdjjcmfmvkc*\n\nYarim alternatif buluyor — Kanyon'da ScreenX teknolojili Black Panther 18.5 TL, ama 25 yaş altı öğrenci kimliği gerekiyor. Erdoğan: *25 yaş var djfnfm. Valla gidek diyosan, bana okey.*\n\nAkşam 21:00 sularında bilet ararken küçük bir gerginlik geçiyor — 9'a bilet var ama akşam 22'ye kalmış. Pertingen mood'u çoktan yerleşmiş.\n\nBu *ORROSPU* anı, Erdoğan'ın 2018 baharındaki imza-tepkilerinden biri olarak kayıtlara geçiyor. İçinde sinema, fiyat şikayeti, 50 kuruş, 25 yaş kimliği, ve sıradan bir Cumartesi akşamının havası var.",
+      "quote": "ORRRRRRRRROSPU ÇOCUKLARIIIIIIIJJK / Neyin indirimi bu 50 kuruş",
+      "whatsapp_excerpt": [
+        {
+          "sender": "Erdoğan",
+          "text": "İstanbul'daki sinemalarin aq bu ne ya",
+          "time": "20:22"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "Ama 2D filmler daha uygun, 24 TL",
+          "time": "20:24"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "ORRRRRRRRROSPU ÇOCUKLARIIIIIIIJJK",
+          "time": "20:24"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "Neyin indirimi bu 50 kuruş shdjjcmfmvkc",
+          "time": "20:24"
+        },
+        {
+          "sender": "Yarim",
+          "text": "Screenx teknolojili Black Panther 18.5muş — Kanyon'da varmış",
+          "time": "20:25"
+        },
+        {
+          "sender": "Yarim",
+          "text": "Öğrenci kimliği gösteriyon ama. 25 yaş altıymış",
+          "time": "20:26"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "25 yas var djfnfm. Valla gidek diyosan, bağa okey",
+          "time": "20:26"
+        }
+      ],
+      "location": {
+        "name": "Cinemaximum / Kanyon",
+        "context": "Black Panther aramaları"
+      },
+      "song_ref": null,
+      "mood": "funny",
+      "is_pinned": false,
+      "media_count_estimate": 0,
+      "ai_confidence": "high",
+      "_batch": "added_2026_05"
+    },
+    {
+      "id": "2018-10-02-capslock-romantizmi",
+      "date": "2018-10-02",
+      "title": "BEN SENİ ÇOK SEVİYOOOOOMMMMM",
+      "subtitle": "Salı akşamı, capslock romantizmi",
+      "category": "kucuksey",
+      "tags": [
+        "capslock",
+        "ALL CAPS",
+        "romantik",
+        "akşam"
+      ],
+      "story": "2 Ekim 2018, Salı. Sıradan bir gün — öğleden sonra Yarim arkadaşlarıyla yemekten dönmüş, *eski futbol röportajları izliyorduk, sana da izleticem akşam* diyor. Akşam yemeği planı (nudo mu, makarna+köfte mi). Yarim için PC araştırması başlıyor — i7, 4 binin altı, fiyat karşılaştırmaları.\n\nGün yavaş geçiyor. Akşam saat 20:22'de Erdoğan'dan beklenmedik patlama, hiçbir şeye cevap olmadan, hiçbir bağlama bağlanmadan, ALL CAPS:\n\n***BEN SENİ ÇOK SEVİYOOOOOOMMMMMM***\n\nYarim sakin tepki veriyor: bir gülme emojisi, kısa bir *ben de*. Hayatın ortasında, mesai bitmiş, herkes evde, PC fiyatları bakılırken ortaya düşen bir capslock romantizmi. Sıradan günlerin kendiliğinden yükselen sesi.",
+      "quote": "BEN SENİ ÇOK SEVİYOOOOOOMMMMMM",
+      "whatsapp_excerpt": [
+        {
+          "sender": "Yarim",
+          "text": "Yemekten döndük aşk. Baya goygoy çevirdik",
+          "time": "13:30"
+        },
+        {
+          "sender": "Yarim",
+          "text": "Eski futbol röportajları izleticem sana da akşam",
+          "time": "13:31"
+        },
+        {
+          "sender": "Yarim",
+          "text": "Akşam nudo yiyelim",
+          "time": "14:21"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "Ben kalan makarna yanına köfte yapabiliriz diye düşünmüştüm",
+          "time": "14:51"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "BEN SENİ ÇOK SEVİYOOOOOOMMMMMM",
+          "time": "20:22"
+        }
+      ],
+      "location": null,
+      "song_ref": null,
+      "mood": "romantic",
+      "is_pinned": false,
+      "media_count_estimate": 0,
+      "ai_confidence": "high",
+      "_batch": "added_2026_05"
+    },
+    {
+      "id": "2022-12-12-yolladim-asksu",
+      "date": "2022-12-12",
+      "title": "Yolladım aşksu",
+      "subtitle": "kış başı, yeni bir lakap",
+      "category": "kucuksey",
+      "tags": [
+        "aşksu",
+        "lakap",
+        "IBAN",
+        "ev-sahibi",
+        "Nilgün"
+      ],
+      "story": "12 Aralık 2022, Pazartesi öğlesi. Ev koordinasyonu — Yarim 11:00'de hatırlatıyor: *para atacaktın aşk. Nilgün'ün no'su 05321665380. Bir de yeni ev sahibine yazacaktın ölçüler için.*\n\nErdoğan Yapı Kredi IBAN istiyor. Yarim hesabını lockluyor, IBAN atıyor. 12:33'te Erdoğan kısa cevap:\n\n***yolladım aşksu***\n\n*Aşksu* — *aşkım + su* karışımı, kelime sözlüklerine girmeyen, sadece bu çiftin yumuşak hitap deposunda var olan bir varyant. IBAN'lar, ev sahipleri, telefon numaralarıyla dolu sıradan bir öğle muhabbetinin ortasında, bir lakap belirliyor.",
+      "quote": "yolladım aşksu",
+      "whatsapp_excerpt": [
+        {
+          "sender": "Yarim",
+          "text": "para atacaktın aşk",
+          "time": "11:00"
+        },
+        {
+          "sender": "Yarim",
+          "text": "05321665380 - nilgülün no",
+          "time": "11:00"
+        },
+        {
+          "sender": "Yarim",
+          "text": "ha bir de yeni ev sahibine yazacaktın ölçüler için",
+          "time": "11:00"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "Yapı kredi ibanini atar mısın aşk",
+          "time": "11:36"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "Ev sahibine yazdım. Nilgünü de aricamm",
+          "time": "11:37"
+        },
+        {
+          "sender": "Yarim",
+          "text": "atıyorum. hesabımı lockladım",
+          "time": "12:19"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "yolladım aşksu",
+          "time": "12:33"
+        }
+      ],
+      "location": null,
+      "song_ref": null,
+      "mood": "happy",
+      "is_pinned": false,
+      "media_count_estimate": 0,
+      "ai_confidence": "high",
+      "_batch": "added_2026_05"
+    },
+    {
+      "id": "2024-11-12-cay-bitmis-sap-kabusu",
+      "date": "2024-11-12",
+      "title": "Çay bitmiş, SAP patlamış",
+      "subtitle": "bir Pazartesi: küçük gerginlik ve eşli kahkaha",
+      "category": "kucuksey",
+      "tags": [
+        "SAP",
+        "iş",
+        "çay",
+        "küçük tartışma",
+        "akşam kahkahası"
+      ],
+      "story": "12 Kasım 2024, Pazartesi öğle. Ofise giden Yarim'in ilk mesajı kısa ve sert: *aşk çay bitmiş. neden söylemedin.*\n\nErdoğan: *Aklıma gelmedi sipariş verirken. Cuma çıkmadan hızlı hızlı verdim sorry.*\n\nYarim hala dert ediyor: *bu mu zoruna gitti ya. yemiyorum yemek falan da ne dertmişim sana.* Erdoğan sakin: *Bana dert değilsin.* 7 dakika sonra muhabbet yumuşar, küçük gerginlik kapanır.\n\nAkşamüstü Erdoğan'ın iş hayatından SAP kabusu patlar — onun gün boyu çalıştığı sistem yine bir hata atmış. Yarim'e mesaj atar:\n\n***ALIN SİZE YENİ HATA. ajnfmkafjm.***\n\nYarim'in cevabı kürsüden konuşur gibi: *şansımı bahtımı sikim ya.* Sabah çay-bitmiş-gerginliği akşamın eşli SAP kahkahasında erir. Yan yana küfür eden iki insan — bir gün böyle de geçer.",
+      "quote": "ALIN SİZE YENİ HATA. ajnfmkafjm.",
+      "whatsapp_excerpt": [
+        {
+          "sender": "Yarim",
+          "text": "aşk çay bitmiş",
+          "time": "13:30"
+        },
+        {
+          "sender": "Yarim",
+          "text": "neden söylemedin",
+          "time": "13:30"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "Aklıma gelmedi sipariş verirken",
+          "time": "13:31"
+        },
+        {
+          "sender": "Yarim",
+          "text": "bu mu zoruna gitti ya",
+          "time": "13:39"
+        },
+        {
+          "sender": "Yarim",
+          "text": "yemiyorum yemek falan da ne dertmişim sana",
+          "time": "13:39"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "Bana dert değilsin",
+          "time": "13:43"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "ALIN SİZE YENİ HATA. ajnfmkafjm.",
+          "time": "16:30"
+        },
+        {
+          "sender": "Yarim",
+          "text": "şansımı bahtımı sikim ya",
+          "time": "16:32"
+        }
+      ],
+      "location": null,
+      "song_ref": null,
+      "mood": "funny",
+      "is_pinned": false,
+      "media_count_estimate": 0,
+      "ai_confidence": "high",
+      "_batch": "added_2026_05"
+    },
+    {
+      "id": "2026-04-27-tuvalet-zamanlama",
+      "date": "2026-04-27",
+      "title": "Apartman uyarısı, tuvalete denk gelen zamanlama",
+      "subtitle": "bir Pazartesi 15:36, hayatın ufak senkronları",
+      "category": "kucuksey",
+      "tags": [
+        "apartman",
+        "tuvalet",
+        "komik zamanlama",
+        "Pazartesi"
+      ],
+      "story": "27 Nisan 2026, Pazartesi öğleden sonra. Apartmandan duyuru gelmiş, Erdoğan ekran görüntüsünü hemen Yarim'e iletiyor: ***❗Dikkat❗*** — su işiyle ilgili bir uyarı, sifon çekmemek falan.\n\nYarim 9 dakika sonra cevap atar:\n\n*e ben tuvaletteyim*\n*yan tarafta tuvaleti çalıştırıyor duyuyorum*\n*sıçtım bi de*\n*böyle mi bırakayım burayı*\n\nErdoğan kahkaha emojisinden başka cevap bulamıyor: *Hahahshs. Yapacak birşey yok o zaman. Yarasın.* Yarim sonradan: *bitti. yettims.*\n\nHayatın küçük senkronlarından biri. Apartmanın su uyarısı tam Yarim'in tuvalette olduğu dakikaya denk geliyor. Yıllar geçer, beraber yaşamayı evde fark etmenin yollarından biri böyle anlardır.",
+      "quote": "e ben tuvaletteyim / sıçtım bi de",
+      "whatsapp_excerpt": [
+        {
+          "sender": "Erdoğan",
+          "text": "❗Dikkat❗",
+          "time": "15:27"
+        },
+        {
+          "sender": "Yarim",
+          "text": "e ben tuvaletteyim",
+          "time": "15:36"
+        },
+        {
+          "sender": "Yarim",
+          "text": "yan tarafta tuvaleti çalıştırıyor duyuyorum",
+          "time": "15:36"
+        },
+        {
+          "sender": "Yarim",
+          "text": "sıçtım bi de",
+          "time": "15:37"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "Hahahshs. Yapacak birşey yok o zaman. Yarasın",
+          "time": "15:37"
+        },
+        {
+          "sender": "Yarim",
+          "text": "böyle mi bırakayım burayı",
+          "time": "15:37"
+        },
+        {
+          "sender": "Yarim",
+          "text": "bitti",
+          "time": "17:25"
+        },
+        {
+          "sender": "Erdoğan",
+          "text": "yettims",
+          "time": "17:28"
+        }
+      ],
+      "location": null,
+      "song_ref": null,
+      "mood": "funny",
+      "is_pinned": false,
+      "media_count_estimate": 0,
+      "ai_confidence": "high",
+      "_batch": "added_2026_05"
     }
   ]
 }

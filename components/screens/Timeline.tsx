@@ -742,7 +742,9 @@ function ZoomSlider({
         top: "50%",
         transform: "translateY(-50%)",
         zIndex: 5,
-        background: "rgba(255,255,255,0.7)",
+        // Theme-aware translucent surface — adapts cream-on-light vs
+        // dark-slate-on-dark.
+        background: "color-mix(in srgb, var(--surface-2) 88%, transparent)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         borderRadius: 999,
@@ -751,7 +753,7 @@ function ZoomSlider({
         flexDirection: "column",
         gap: 2,
         boxShadow: "var(--shadow-md)",
-        border: "1px solid var(--border-soft)",
+        border: "1px solid var(--border)",
       }}
     >
       {ZOOM_LEVELS.map((l) => (
@@ -765,16 +767,19 @@ function ZoomSlider({
             borderRadius: "50%",
             border: "none",
             background: level === l ? "var(--accent)" : "transparent",
-            color: level === l ? "var(--surface-2)" : "var(--text-muted)",
+            // Inactive uses --text (full contrast) instead of --text-muted
+            // so dark themes don't render mint-on-mint invisibility.
+            color: level === l ? "var(--surface-2)" : "var(--text)",
             cursor: "pointer",
-            fontSize: 9,
+            fontSize: 11,
             fontFamily: "var(--font-body)",
-            fontWeight: 600,
+            fontWeight: 700,
             letterSpacing: 0.5,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             transition: "all 200ms",
+            opacity: level === l ? 1 : 0.7,
           }}
         >
           {labels[l]}
