@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BottomNav } from "@/components/ui/BottomNav";
 import { CategoryHero, CategoryLucideIcon } from "@/components/svg/CategoryIcons";
 import { getMemoriesForDay, loadMemories } from "@/lib/data";
 import { CATEGORY_META } from "@/lib/categories";
@@ -275,7 +274,6 @@ export default async function TodayPage() {
         </>
       )}
 
-      <BottomNav />
     </main>
   );
 }

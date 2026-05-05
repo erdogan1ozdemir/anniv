@@ -1,5 +1,4 @@
 import { Timeline } from "@/components/screens/Timeline";
-import { BottomNav } from "@/components/ui/BottomNav";
 import { loadMemories } from "@/lib/data";
 import { memoryToEvent } from "@/lib/tree-data";
 
@@ -9,7 +8,6 @@ export default async function Home() {
   return (
     <>
       <Timeline events={events} memories={memories} season="spring" />
-      <BottomNav />
     </>
   );
 }

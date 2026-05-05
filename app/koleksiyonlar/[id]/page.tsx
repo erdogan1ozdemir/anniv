@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BottomNav } from "@/components/ui/BottomNav";
 import { CategoryHero } from "@/components/svg/CategoryIcons";
 import { loadMemories } from "@/lib/data";
 import { getAllClusters, getCluster } from "@/lib/clusters";
@@ -215,7 +214,6 @@ export default async function ClusterDetailPage({
         })}
       </div>
 
-      <BottomNav />
     </main>
   );
 }

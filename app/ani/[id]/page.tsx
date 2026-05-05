@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { MemoryDetail } from "@/components/screens/MemoryDetail";
-import { BottomNav } from "@/components/ui/BottomNav";
 import {
   getAdjacentMemories,
   getMemoriesByCategory,
@@ -39,7 +38,6 @@ export default async function MemoryPage({
         prevId={neighbors.prev?.id ?? null}
         nextId={neighbors.next?.id ?? null}
       />
-      <BottomNav />
     </>
   );
 }

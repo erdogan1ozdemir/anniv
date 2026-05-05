@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter, Caveat } from "next/font/google";
 import { PageTransition } from "@/components/ui/PageTransition";
+import { BottomNav } from "@/components/ui/BottomNav";
+import { AppShell } from "@/components/ui/AppShell";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -49,7 +51,11 @@ export default function RootLayout({
       <body
         className={`${cormorant.variable} ${inter.variable} ${caveat.variable}`}
       >
-        <PageTransition>{children}</PageTransition>
+        <AppShell>
+          <PageTransition>{children}</PageTransition>
+          {/* Persistent across page navigation — sits in root layout */}
+          <BottomNav />
+        </AppShell>
       </body>
     </html>
   );

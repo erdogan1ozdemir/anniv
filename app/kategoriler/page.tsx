@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BottomNav } from "@/components/ui/BottomNav";
 import { CategoryHero } from "@/components/svg/CategoryIcons";
 import { loadMemories } from "@/lib/data";
 import { CATEGORY_META } from "@/lib/categories";
@@ -151,7 +150,6 @@ export default async function CategoriesPage() {
         })}
       </div>
 
-      <BottomNav />
     </main>
   );
 }

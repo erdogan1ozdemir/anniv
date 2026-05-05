@@ -1,5 +1,4 @@
 import { JediScreen } from "@/components/screens/JediScreen";
-import { BottomNav } from "@/components/ui/BottomNav";
 import { loadMemories } from "@/lib/data";
 
 export default async function JediPage() {
@@ -12,7 +11,6 @@ export default async function JediPage() {
   return (
     <>
       <JediScreen memories={jediMemories} />
-      <BottomNav />
     </>
   );
 }
