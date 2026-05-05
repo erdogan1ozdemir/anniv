@@ -10,7 +10,7 @@ export type ThemeId =
   | "coastal"
   | "coastal-dark"
   | "meadow"
-  | "vintage"
+  | "moonlit-sage"
   | "twilight";
 
 export const THEMES: Array<{
@@ -28,7 +28,7 @@ export const THEMES: Array<{
   {
     id: "coastal-dark",
     label: "Gece Sahili",
-    swatch: "linear-gradient(135deg, #13201d 0%, #2d3d3a 100%)",
+    swatch: "linear-gradient(135deg, #13201d 0%, #324641 100%)",
     blurb: "koyu yeşil, gece nefesi",
   },
   {
@@ -38,10 +38,10 @@ export const THEMES: Array<{
     blurb: "kır çiçeği, sıcak terra",
   },
   {
-    id: "vintage",
-    label: "Eski Kâğıt",
-    swatch: "linear-gradient(135deg, #f4ecd8 0%, #b8654a 100%)",
-    blurb: "antika defter sayfası",
+    id: "moonlit-sage",
+    label: "Moonlit Sage",
+    swatch: "linear-gradient(135deg, #1a2226 0%, #3a4f3e 50%, #c89999 100%)",
+    blurb: "soğuk gümüş, ay ışığında adaçayı",
   },
   {
     id: "twilight",
