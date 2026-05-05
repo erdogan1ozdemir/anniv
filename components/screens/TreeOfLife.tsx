@@ -564,39 +564,54 @@ export function TreeOfLife({
 
       <OrganicTrunk />
 
-      {/* Decorative Y-branches — 10 extra year-style branches
+      {/* Decorative Y-branches — 18 extra year-style branches
            sprouting from the trunk between actual year branches.
            Each branch matches year-branch SIZE (not smaller filler).
            No year pill — pure visual filler so the trunk feels like
-           a real tree with branches everywhere. */}
+           a real tree with branches everywhere. Interleave LEFT and
+           RIGHT so neither side feels empty. */}
       {showCanopyFill && (
         <g pointerEvents="none">
-          {Array.from({ length: 10 }).map((_, di) => {
+          {Array.from({ length: 18 }).map((_, di) => {
             const rng = seedRand(di * 727 + 31);
-            // Distribute decorative branches along the trunk vertically.
-            // Stagger left/right with index parity but ALSO interleave
-            // y-positions so both sides get evenly spaced branches.
+            // Distribute decorative branches along the trunk vertically:
+            // 9 per side, alternating L/R, spanning roughly y=200..2150.
             const sideMul: 1 | -1 = di % 2 === 0 ? -1 : 1;
-            const yPos =
-              200 + Math.floor(di / 2) * 380 + (di % 2) * 180 + rng() * 50;
+            const slot = Math.floor(di / 2); // 0..8
+            const yPos = 220 + slot * 215 + (di % 2) * 105 + rng() * 35;
             const startX = TRUNK_X + sideMul * 14;
-            // Angle now includes sideMul so left/right branches actually
-            // point left/right (was double-multiplied below before).
-            const angle = sideMul * (0.4 + rng() * 0.4);
+            // Polar angle convention: 0 = right, π/2 = up, π = left.
+            // Tilt above horizontal: 45–75°.
+            const tilt = Math.PI / 4 + rng() * 0.55;
+            const angle = sideMul === 1 ? tilt : Math.PI - tilt;
             const segs = 5 + Math.floor(rng() * 2); // 5-6 segments
             const baseSegLen = 50 + rng() * 28;
-            // Walk segment-by-segment with kink at each junction
+            // Walk segment-by-segment with kink at each junction.
+            // FIRST kink bends UPWARD (toward π/2) per design rule;
+            // subsequent kinks alternate sign for zigzag.
             const points: Array<{ x: number; y: number }> = [
               { x: r1(startX), y: r1(yPos) },
             ];
             let dx = startX;
             let dy = yPos;
             let dAng = angle;
+            let lastSign = 0;
             for (let k = 0; k < segs; k++) {
               const segLen = baseSegLen * Math.pow(0.84, k);
-              dAng += (rng() - 0.5) * 0.55;
+              let sign: 1 | -1;
+              if (k === 0) {
+                // First kink: rotate toward up (π/2).
+                sign = dAng < Math.PI / 2 ? 1 : -1;
+              } else {
+                // Zigzag: usually flip sign, sometimes hold.
+                const flip = rng() > 0.25;
+                sign = (flip ? -lastSign : lastSign) as 1 | -1;
+              }
+              const kinkMag = 0.35 + rng() * 0.4;
+              dAng += sign * kinkMag;
+              lastSign = sign;
               dx += Math.cos(dAng) * segLen;
-              dy -= Math.sin(dAng) * segLen * 0.55 - segLen * 0.18;
+              dy -= Math.sin(dAng) * segLen;
               points.push({ x: r1(dx), y: r1(dy) });
             }
             // 2 leaves per segment + 1 flower per segment for fullness
@@ -813,16 +828,28 @@ export function TreeOfLife({
                     const angle = parentAngle + sideMul * (Math.PI / 2 + (baseRng() - 0.5) * 0.6);
                     const segs = 2 + Math.floor(baseRng() * 2); // 2-3
                     const baseSegLen = 14 + baseRng() * 10;
-                    // Segment-by-segment walk with per-junction kink
+                    // Segment-by-segment walk with per-junction kink.
+                    // FIRST kink bends UPWARD (toward π/2); subsequent
+                    // kinks zigzag with alternating sign.
                     const subPoints: Array<{ x: number; y: number }> = [
                       { x: r1(j.x), y: r1(j.y) },
                     ];
                     let bx = j.x;
                     let by = j.y;
                     let bAng = angle;
+                    let bLastSign: 1 | -1 = 1;
                     for (let k = 0; k < segs; k++) {
                       const segLen = baseSegLen * Math.pow(0.82, k);
-                      bAng += (baseRng() - 0.5) * 0.6;
+                      let sign: 1 | -1;
+                      if (k === 0) {
+                        sign = bAng < Math.PI / 2 ? 1 : -1;
+                      } else {
+                        const flip = baseRng() > 0.3;
+                        sign = (flip ? -bLastSign : bLastSign) as 1 | -1;
+                      }
+                      const kinkMag = 0.35 + baseRng() * 0.4;
+                      bAng += sign * kinkMag;
+                      bLastSign = sign;
                       bx += Math.cos(bAng) * segLen;
                       by -= Math.sin(bAng) * segLen;
                       subPoints.push({ x: r1(bx), y: r1(by) });
@@ -903,29 +930,35 @@ export function TreeOfLife({
                   const yearRng = seedRand(year * 211 + 7);
                   return seasons.map((s, si) => {
                     const pt = yearPointAt(year, s.t);
-                    const upBias = s.side > 0 ? Math.PI / 2 : -Math.PI / 2;
+                    // Mevsim twigs always start aimed UPWARD (sky-bias).
+                    // s.side determines whether the twig sits slightly
+                    // left or right of straight-up so the year curve
+                    // sprouts in both directions.
                     const angle =
-                      upBias +
-                      tip.side * (0.18 + (yearRng() - 0.5) * 0.4) +
-                      (yearRng() - 0.5) * 0.5;
+                      Math.PI / 2 +
+                      s.side * (0.25 + (yearRng() - 0.5) * 0.4) +
+                      (yearRng() - 0.5) * 0.3;
                     const baseSegLen = 14 + yearRng() * 10;
-                    // Zigzag kink — alternating sign so the branch
-                    // visibly bends in different directions instead
-                    // of curving smoothly in one.
+                    // FIRST kink bends UPWARD (toward π/2); subsequent
+                    // kinks zigzag with alternating sign.
                     const points: Array<{ x: number; y: number }> = [
                       { x: r1(pt.x), y: r1(pt.y) },
                     ];
                     let cx = pt.x;
                     let cy = pt.y;
                     let cAng = angle;
-                    let lastSign = yearRng() > 0.5 ? 1 : -1;
+                    let lastSign: 1 | -1 = 1;
                     for (let i = 0; i < s.segs; i++) {
                       const segLen = baseSegLen * Math.pow(0.82, i);
-                      // Alternate kink direction (zigzag) with 25%
-                      // chance to skip flip → not perfectly regular.
-                      const flip = yearRng() > 0.25;
-                      const sign = flip ? -lastSign : lastSign;
-                      const kinkMag = 0.55 + yearRng() * 0.45;
+                      let sign: 1 | -1;
+                      if (i === 0) {
+                        // First kink → rotate toward up.
+                        sign = cAng < Math.PI / 2 ? 1 : -1;
+                      } else {
+                        const flip = yearRng() > 0.25;
+                        sign = (flip ? -lastSign : lastSign) as 1 | -1;
+                      }
+                      const kinkMag = 0.45 + yearRng() * 0.45;
                       cAng = cAng + sign * kinkMag;
                       lastSign = sign;
                       cx += Math.cos(cAng) * segLen;
